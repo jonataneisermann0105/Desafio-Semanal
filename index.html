@@ -14,7 +14,6 @@
             position: relative;
         }
         
-        /* Overlay escuro */
         body::before {
             content: '';
             position: fixed;
@@ -27,7 +26,6 @@
             z-index: 1;
         }
         
-        /* Bruxa do lado direito */
         .witch-right {
             position: fixed;
             right: 0;
@@ -39,42 +37,11 @@
             background-position: center 30%;
             z-index: 5;
             opacity: 0.45;
-            mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, transparent 100%);
             filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.8));
             transform: scaleX(-1);
             pointer-events: none;
         }
         
-        /* Partículas mágicas */
-        .magic-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(200, 180, 255, 0.9);
-            border-radius: 50%;
-            animation: float-magic linear infinite;
-            box-shadow: 0 0 25px rgba(138, 43, 226, 1);
-        }
-        
-        @keyframes float-magic {
-            0% { transform: translateY(110vh) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-20vh) translateX(-30px); opacity: 0; }
-        }
-        
-        /* Livro flutuante */
         .floating-book {
             position: fixed;
             top: 2vh;
@@ -83,18 +50,9 @@
             font-size: 5rem;
             z-index: 5;
             filter: drop-shadow(0 0 40px #8a2be2);
-            animation: book-float 5s ease-in-out infinite;
-            cursor: pointer;
             text-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
         
-        @keyframes book-float {
-            0%, 100% { transform: translateX(-50%) translateY(0) rotate(-2deg); }
-            25% { transform: translateX(-50%) translateY(-20px) rotate(3deg); }
-            75% { transform: translateX(-50%) translateY(10px) rotate(-1deg); }
-        }
-        
-        /* Timer visual */
         .timer-bar {
             position: fixed;
             top: 0;
@@ -109,11 +67,9 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, #ffd700, #8a2be2);
-            transition: width linear;
             box-shadow: 0 0 20px #ffd700;
         }
         
-        /* Slides */
         .slide { 
             display: none; 
             width: 100vw; 
@@ -123,40 +79,30 @@
             position: absolute;
             top: 0;
             left: 0;
-            animation: fadeIn 0.8s ease-in-out;
             padding: 1vh 3vw;
             z-index: 10;
         }
         .slide.active { display: flex; }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* Navegação */
         .nav-btn {
             position: fixed;
             bottom: 2.5vh;
-            background: linear-gradient(145deg, #2a1b3d, #1a0f2a);
+            background: #2a1b3d;
             border: 3px solid #b8860b;
             padding: 1.2vh 2.5vw;
             font-size: 2vh;
             font-weight: bold;
             border-radius: 40px 10px 40px 10px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.7);
             z-index: 100;
             color: #e6d5b8;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-family: 'Cinzel', serif;
-            backdrop-filter: blur(5px);
             min-width: 130px;
         }
         .nav-btn:hover { 
-            transform: translateY(-5px) scale(1.05); 
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+            background: #3a2b4d;
             border-color: #ffd700;
         }
         .prev-btn { left: 2vw; }
@@ -178,26 +124,21 @@
             background: rgba(100, 70, 130, 0.6);
             cursor: pointer;
             border: 2px solid #b8860b;
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
         }
         .dot.active { 
             background: #ffd700; 
             width: 6vh; 
             border-radius: 30px; 
-            box-shadow: 0 0 30px #ffd700; 
             border-color: #8a2be2;
         }
         
-        /* SLIDE 0: Introdução */
         .container-intro {
             text-align: center;
             max-width: 80%;
             width: 1100px;
             padding: 4vh 6vw;
             background: rgba(20, 10, 30, 0.94);
-            backdrop-filter: blur(25px);
             border-radius: 80px 30px 80px 30px;
-            box-shadow: 0 0 200px rgba(138, 43, 226, 0.8);
             border: 4px solid rgba(184, 134, 11, 0.7);
             margin: auto;
         }
@@ -205,23 +146,15 @@
         .intro-icon {
             font-size: 8vh;
             margin-bottom: 1.5vh;
-            filter: drop-shadow(0 0 50px #8a2be2);
-            animation: pulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 50px #8a2be2); }
-            50% { transform: scale(1.1); filter: drop-shadow(0 0 90px #ffd700); }
         }
         
         .intro-title {
             font-size: 6vh;
             margin-bottom: 1.5vh;
             color: #ffd700;
-            text-shadow: 0 0 40px rgba(138, 43, 226, 1), 4px 4px 0 #4b0082;
+            text-shadow: 4px 4px 0 #4b0082;
             font-weight: 900;
             letter-spacing: 5px;
-            line-height: 1.2;
         }
         
         .intro-subtitle {
@@ -247,10 +180,6 @@
             color: #ffd700;
             font-weight: bold;
             margin: 2.5vh 0;
-            text-shadow: 0 0 45px #ffd700;
-            background: linear-gradient(45deg, #ffd700, #8a2be2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
         .intro-footer {
@@ -259,24 +188,15 @@
             margin-top: 2.5vh;
             border-top: 2px solid #b8860b;
             padding-top: 2.5vh;
-            line-height: 1.6;
         }
         
-        .intro-footer strong {
-            color: #b19cd9;
-            font-size: 2.5vh;
-        }
-        
-        /* SLIDE 1: Desafio */
         .container-desafio { 
             text-align: center; 
             max-width: 85%;
             width: 1200px;
             padding: 3vh 4.5vw;
             background: rgba(240, 230, 210, 0.96);
-            backdrop-filter: blur(20px);
             border-radius: 70px 25px 70px 25px;
-            box-shadow: 0 50px 150px rgba(0, 0, 0, 0.9), 0 0 0 4px #b8860b;
             border: 5px solid #8a2be2;
             margin: auto;
             position: relative;
@@ -289,11 +209,10 @@
             left: 2.5vw;
             font-size: 2.2vh;
             color: #ffd700;
-            background: linear-gradient(145deg, #2a1b3d, #1a0f2a);
+            background: #2a1b3d;
             padding: 0.8vh 2vw;
             border: 2px solid #b8860b;
             border-radius: 40px 8px 40px 8px;
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.8);
         }
         
         .crystal-ball {
@@ -301,13 +220,6 @@
             top: -20px;
             right: 3.5vw;
             font-size: 6.5vh;
-            animation: rotate 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px #8a2be2);
-        }
-        
-        @keyframes rotate {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); filter: drop-shadow(0 0 70px #ffd700); }
         }
         
         .container-desafio h1 { 
@@ -335,13 +247,6 @@
             padding: 2.5vh 3.5vw;
             border-left: 9px solid #8a2be2;
             border-radius: 22px 0 22px 0;
-            box-shadow: inset 0 0 35px rgba(138, 43, 226, 0.25);
-        }
-        
-        .problema strong:first-child {
-            font-size: 2.6vh;
-            display: block;
-            margin-bottom: 0.8vh;
         }
         
         .evidencia {
@@ -365,16 +270,140 @@
             font-weight: bold;
         }
         
-        /* SLIDE 3: Regras */
+        .container-ranking { 
+            text-align: center; 
+            max-width: 95%;
+            width: 1400px;
+            padding: 2vh 2vw;
+            margin: auto;
+        }
+        
+        .ranking-title {
+            font-size: 6.5vh;
+            margin-bottom: 0.5vh;
+            color: #ffd700;
+            text-shadow: 4px 4px 0 #4b0082;
+            letter-spacing: 6px;
+        }
+        
+        .ranking-subtitle {
+            font-size: 3.2vh;
+            color: #b19cd9;
+            margin-bottom: 2.5vh;
+            font-style: italic;
+        }
+        
+        .podio {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 2vw;
+            margin: 2vh 0 4vh;
+        }
+        
+        .podio-place {
+            padding: 2.5vh 2vw;
+            border: 4px solid;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .primeiro {
+            width: 28vw;
+            height: 45vh;
+            border-color: #ffd700;
+            background: #0a6b0a;
+        }
+        
+        .segundo {
+            width: 24vw;
+            height: 40vh;
+            border-color: #c0c0c0;
+            background: #8b0000;
+        }
+        
+        .terceiro {
+            width: 24vw;
+            height: 36vh;
+            border-color: #cd7f32;
+            background: #0a2a4a;
+        }
+        
+        .badge {
+            font-size: 6vh;
+            margin-bottom: 0.8vh;
+        }
+        
+        .position {
+            font-size: 3.2vh;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 0.8vh;
+            text-transform: uppercase;
+        }
+        
+        .rank-badge {
+            font-size: 2.2vh;
+            color: #ffd700;
+            background: rgba(0,0,0,0.5);
+            padding: 0.4vh 1.2vw;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 0.8vh;
+        }
+        
+        .name {
+            font-size: 2.8vh;
+            color: #e6d5b8;
+            font-weight: bold;
+            margin-bottom: 0.8vh;
+        }
+        
+        .points {
+            font-size: 4.2vh;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .points-small {
+            font-size: 2vh;
+            color: #b19cd9;
+            margin-top: 0.8vh;
+        }
+        
+        .ranking-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2vw;
+            margin-top: 4vh;
+        }
+        
+        .rank-item {
+            background: #2a1b3d;
+            padding: 2.5vh 1vw;
+            border-radius: 50px 12px 50px 12px;
+            border: 3px solid #b8860b;
+            font-size: 2.5vh;
+            color: #e6d5b8;
+            text-align: center;
+        }
+        
+        .rank-item .rank-title {
+            color: #ffd700;
+            font-size: 0.9em;
+            display: block;
+            margin-top: 0.8vh;
+        }
+        
         .container-regras {
             text-align: center;
             max-width: 90%;
             width: 1300px;
             padding: 2vh 3vw;
             background: rgba(20, 10, 30, 0.95);
-            backdrop-filter: blur(25px);
             border-radius: 70px 25px 70px 25px;
-            box-shadow: 0 0 200px rgba(138, 43, 226, 0.8), 0 0 0 4px #b8860b;
             border: 5px solid #ffd700;
             margin: auto;
             position: relative;
@@ -449,13 +478,6 @@
             font-weight: bold;
         }
         
-        .criterio-destaque small {
-            color: #b19cd9;
-            font-size: 1.9vh;
-            display: block;
-            margin-top: 0.5vh;
-        }
-        
         .pontuacao-tabela {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -493,26 +515,16 @@
             text-align: center;
         }
         
-        .extra-point strong {
-            color: #ffd700;
-            font-size: 2.3vh;
-        }
-        
-        /* QR Code */
         .qr-container {
             position: fixed;
             bottom: 10vh;
             right: 2.5vw;
-            background: rgba(42, 27, 61, 0.97);
-            backdrop-filter: blur(20px);
+            background: #2a1b3d;
             padding: 2vh 1.5vw;
             border-radius: 60px 15px 60px 15px;
             border: 3px solid #b8860b;
-            box-shadow: 0 0 80px rgba(138, 43, 226, 0.9);
             z-index: 50;
-            animation: float 4s ease-in-out infinite;
             cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -520,14 +532,7 @@
         }
         
         .qr-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 100px rgba(255, 215, 0, 0.8);
             border-color: #ffd700;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
         
         .qr-label { 
@@ -535,7 +540,6 @@
             margin-bottom: 1.5vh; 
             color: #ffd700; 
             text-align: center;
-            text-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
             white-space: nowrap;
         }
         
@@ -546,7 +550,6 @@
             border: 3px solid #ffd700;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -565,167 +568,9 @@
             margin-top: 1vh; 
             color: #b19cd9; 
             text-align: center;
-            font-style: italic;
             white-space: nowrap;
         }
         
-        /* SLIDE 2: Ranking */
-        .container-ranking { 
-            text-align: center; 
-            max-width: 95%;
-            width: 1400px;
-            padding: 2vh 2vw;
-            margin: auto;
-        }
-        
-        .ranking-title {
-            font-size: 6.5vh;
-            margin-bottom: 0.5vh;
-            color: #ffd700;
-            text-shadow: 0 0 50px rgba(138, 43, 226, 1), 4px 4px 0 #4b0082;
-            letter-spacing: 6px;
-        }
-        
-        .ranking-subtitle {
-            font-size: 3.2vh;
-            color: #b19cd9;
-            margin-bottom: 2.5vh;
-            font-style: italic;
-        }
-        
-        /* Pódio */
-        .podio {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 2vw;
-            margin: 2vh 0 4vh;
-        }
-        
-        .podio-place {
-            backdrop-filter: blur(20px);
-            border-radius: 90px 25px 90px 25px;
-            padding: 2.5vh 2vw;
-            box-shadow: 0 40px 90px rgba(0,0,0,0.9), 0 0 0 3px #b8860b;
-            text-align: center;
-            border: 4px solid;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.5s;
-        }
-        
-        .podio-place:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 50px 110px rgba(255, 215, 0, 0.5);
-        }
-        
-        .primeiro {
-            width: 28vw;
-            height: 45vh;
-            border-color: #ffd700;
-            background: linear-gradient(145deg, #2a5a2a, #0a6b0a);
-        }
-        
-        .segundo {
-            width: 24vw;
-            height: 40vh;
-            border-color: #c0c0c0;
-            background: linear-gradient(145deg, #8b0000, #4a1a2c);
-        }
-        
-        .terceiro {
-            width: 24vw;
-            height: 36vh;
-            border-color: #cd7f32;
-            background: linear-gradient(145deg, #0a2a4a, #001b3a);
-        }
-        
-        .badge {
-            font-size: 6vh;
-            margin-bottom: 0.8vh;
-            filter: drop-shadow(0 0 25px currentColor);
-        }
-        
-        .position {
-            font-size: 3.2vh;
-            font-weight: bold;
-            color: #ffd700;
-            margin-bottom: 0.8vh;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-        
-        .rank-badge {
-            font-size: 2.2vh;
-            color: #ffd700;
-            background: rgba(0,0,0,0.5);
-            padding: 0.4vh 1.2vw;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 0.8vh;
-        }
-        
-        .name {
-            font-size: 2.8vh;
-            color: #e6d5b8;
-            font-weight: bold;
-            margin-bottom: 0.8vh;
-            text-shadow: 0 0 20px #8a2be2;
-        }
-        
-        .points {
-            font-size: 4.2vh;
-            color: #ffd700;
-            font-weight: bold;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
-        }
-        
-        .points-small {
-            font-size: 2vh;
-            color: #b19cd9;
-            margin-top: 0.8vh;
-        }
-        
-        /* Ranking do 4º ao 7º lugar */
-        .ranking-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2vw;
-            margin-top: 4vh;
-            max-width: 100%;
-        }
-        
-        .rank-item {
-            background: rgba(42, 27, 61, 0.95);
-            backdrop-filter: blur(15px);
-            padding: 2.5vh 1vw;
-            border-radius: 50px 12px 50px 12px;
-            border: 3px solid #b8860b;
-            font-size: 2.5vh;
-            color: #e6d5b8;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7), inset 0 0 30px rgba(138, 43, 226, 0.3);
-            text-align: center;
-            transition: all 0.4s;
-            line-height: 1.5;
-        }
-        
-        .rank-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: #ffd700;
-            box-shadow: 0 25px 50px rgba(255, 215, 0, 0.5), inset 0 0 40px #8a2be2;
-        }
-        
-        .rank-item .rank-title {
-            color: #ffd700;
-            font-size: 0.9em;
-            display: block;
-            margin-top: 0.8vh;
-            font-family: 'Cinzel', serif;
-            text-shadow: 0 0 10px #8a2be2;
-        }
-        
-        /* IA Credit */
         .ia-credit {
             position: fixed;
             bottom: 7vh;
@@ -739,36 +584,20 @@
             border: 1px solid rgba(184, 134, 11, 0.4);
             z-index: 150;
             white-space: nowrap;
-            backdrop-filter: blur(4px);
-            pointer-events: none;
-            letter-spacing: 1px;
-            font-weight: 300;
-        }
-        
-        /* Scrollbar oculta */
-        ::-webkit-scrollbar {
-            display: none;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Timer Visual -->
     <div class="timer-bar">
         <div class="timer-progress" id="timerProgress"></div>
     </div>
     
-    <!-- Partículas -->
-    <div class="magic-particles" id="particles"></div>
-    
-    <!-- Decorações -->
     <div class="witch-right"></div>
     <div class="floating-book">📜✨</div>
     
-    <!-- IA Credit -->
     <div class="ia-credit">✨ Material desenvolvido com auxílio de Perplexity e DeepSeek ✨</div>
     
-    <!-- SLIDE 0: Introdução -->
     <div class="slide active" id="slide0">
         <div class="container-intro">
             <div class="intro-icon">🧙‍♀️⚡🔮</div>
@@ -780,7 +609,7 @@
                 ⚡ Eleve-se nos círculos da magia
             </p>
             <p class="intro-highlight">
-                A RODA DO TEMPO GIRA
+                UM ENIGMA TE ESPERA
             </p>
             <p class="intro-footer">
                 Grão-Conselho dos Magos<br>
@@ -790,7 +619,6 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: Desafio -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
             <div class="spell-number">ENIGMA #001</div>
@@ -807,22 +635,19 @@
                 <em style="font-size: 0.95em;">📝 Trace o círculo mágico em pergaminho e explique seu raciocínio! Dica: a simetria do círculo revela verdades ocultas.</em>
             </div>
             <p class="instrucao">📸 Envie: Pergaminho com a resolução + nome/turma</p>
-            <p class="prazo">⏰ Prazo: Lua Cheia (Sexta 23h59)</p>
+            <p class="prazo">⏰ Prazo: Lua Nova (18/03 23h59)</p>
         </div>
         
-        <!-- QR Code -->
-        <div class="qr-container" onclick="window.open('https://forms.gle/SEU_FORMULARIO_AQUI', '_blank')">
+        <div class="qr-container" onclick="window.location.href='https://forms.gle/SEU_FORMULARIO_AQUI'">
             <div class="qr-label">📤 ENVIAR RESPOSTA</div>
             <div class="qr-code-wrapper">
                 <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/frame1.png?raw=true" 
-                     alt="QR Code para formulário"
-                     onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/SEU_FORMULARIO_AQUI';">
+                     alt="QR Code para formulário">
             </div>
             <div class="qr-footer">📱 Aponte a câmera</div>
         </div>
     </div>
     
-    <!-- SLIDE 2: Ranking -->
     <div class="slide" id="slide2">
         <div class="container-ranking">
             <h2 class="ranking-title">GRÃO-CONSELHO</h2>
@@ -857,7 +682,6 @@
                 </div>
             </div>
             
-            <!-- Ranking 4º ao 7º lugar -->
             <div class="ranking-grid">
                 <div class="rank-item">
                     4º Aluno 4 - 12<br>
@@ -879,7 +703,6 @@
         </div>
     </div>
     
-    <!-- SLIDE 3: Regras -->
     <div class="slide" id="slide3">
         <div class="container-regras">
             <h2 class="regras-title">📜 DECRETO ARCANO 📜</h2>
@@ -906,7 +729,7 @@
                     <h3>🏆 CRITÉRIO DE AVALIAÇÃO</h3>
                     <div class="criterio-destaque">
                         <p>📌 AS 7 RESPOSTAS MAIS BEM FUNDAMENTADAS</p>
-                        <small>Empate no fundamento? Desempate por agilidade (quem enviou antes)</small>
+                        <small style="color: #b19cd9;">Empate no fundamento? Desempate por agilidade (quem enviou antes)</small>
                     </div>
                     
                     <h3 style="margin-top: 1.5vh;">📊 PONTUAÇÃO</h3>
@@ -937,71 +760,44 @@
         </div>
     </div>
     
-    <!-- Navegação -->
     <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◄ Anterior</button>
     <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo ►</button>
     
-    <!-- Indicadores (4 slides) -->
     <div class="slide-indicator">
-        <span class="dot active" onclick="goToSlide(1)"></span>
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
         <span class="dot" onclick="goToSlide(2)"></span>
         <span class="dot" onclick="goToSlide(3)"></span>
-        <span class="dot" onclick="goToSlide(4)"></span>
     </div>
     
     <script>
-        // Partículas
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 60; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 12 + 6) + 's';
-            particle.style.animationDelay = Math.random() * 6 + 's';
-            particle.style.width = (Math.random() * 8 + 3) + 'px';
-            particle.style.height = particle.style.width;
-            particlesContainer.appendChild(particle);
-        }
+        var currentSlide = 0;
+        var totalSlides = 4;
+        var timerInterval = null;
+        var timerProgress = document.getElementById('timerProgress');
         
-        // Controle de slides
-        let currentSlide = 1;
-        const totalSlides = 4;
-        
-        // Tempos em milissegundos
-        const slideTimes = {
-            1: 20000,    // Slide 0 (Introdução): 20s
-            2: 60000,    // Slide 1 (Desafio): 1min
-            3: 20000,    // Slide 2 (Ranking): 20s
-            4: 20000     // Slide 3 (Regras): 20s
-        };
-        
-        // Elementos do timer
-        const timerProgress = document.getElementById('timerProgress');
-        let timerInterval = null;
-        let timeLeft = 0;
-        let totalTime = 0;
+        var slideTimes = [20, 60, 20, 20]; // tempos em segundos
         
         function showSlide(n) {
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
+            var slides = document.getElementsByClassName('slide');
+            var dots = document.getElementsByClassName('dot');
             
-            if (n > totalSlides) currentSlide = 1;
-            if (n < 1) currentSlide = totalSlides;
+            if (n >= totalSlides) currentSlide = 0;
+            if (n < 0) currentSlide = totalSlides - 1;
             
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].className = slides[i].className.replace(' active', '');
+                dots[i].className = dots[i].className.replace(' active', '');
+            }
             
-            slides[currentSlide - 1].classList.add('active');
-            dots[currentSlide - 1].classList.add('active');
+            slides[currentSlide].className += ' active';
+            dots[currentSlide].className += ' active';
             
-            // Reinicia o timer
             resetTimer();
         }
         
         function changeSlide(n) {
-            // Para o timer atual
             stopTimer();
-            // Muda o slide
             currentSlide += n;
             showSlide(currentSlide);
         }
@@ -1012,29 +808,24 @@
             showSlide(currentSlide);
         }
         
-        // Funções do timer
         function startTimer() {
-            stopTimer(); // Para qualquer timer existente
+            stopTimer();
             
-            totalTime = slideTimes[currentSlide] || 20000;
-            timeLeft = totalTime;
+            var timeLeft = slideTimes[currentSlide];
+            var totalTime = timeLeft;
             
-            // Atualiza a barra de progresso
-            updateProgressBar();
+            updateProgressBar(0);
             
-            // Inicia o intervalo
-            timerInterval = setInterval(() => {
-                timeLeft -= 100; // Reduz 100ms a cada tick
+            timerInterval = setInterval(function() {
+                timeLeft = timeLeft - 0.1;
                 
                 if (timeLeft <= 0) {
-                    // Tempo acabou, muda de slide
-                    stopTimer();
                     changeSlide(1);
                 } else {
-                    // Atualiza a barra
-                    updateProgressBar();
+                    var progress = ((totalTime - timeLeft) / totalTime) * 100;
+                    updateProgressBar(progress);
                 }
-            }, 100); // Atualiza a cada 100ms para animação suave
+            }, 100);
         }
         
         function stopTimer() {
@@ -1044,9 +835,10 @@
             }
         }
         
-        function updateProgressBar() {
-            const progress = ((totalTime - timeLeft) / totalTime) * 100;
-            timerProgress.style.width = progress + '%';
+        function updateProgressBar(progress) {
+            if (timerProgress) {
+                timerProgress.style.width = progress + '%';
+            }
         }
         
         function resetTimer() {
@@ -1054,63 +846,14 @@
             startTimer();
         }
         
-        // Event listeners
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-            if (e.key === 'ArrowRight') changeSlide(1);
-        });
+        document.onkeydown = function(e) {
+            if (e.keyCode == 37) changeSlide(-1);
+            if (e.keyCode == 39) changeSlide(1);
+        };
         
-        // Inicia o timer quando a página carrega
-        window.addEventListener('load', () => {
+        window.onload = function() {
             startTimer();
-        });
-        
-        // Pausa o timer quando o usuário interage e reinicia depois
-        let interactionTimeout;
-        document.addEventListener('click', () => {
-            // Pausa o timer
-            stopTimer();
-            
-            // Limpa o timeout anterior
-            if (interactionTimeout) clearTimeout(interactionTimeout);
-            
-            // Reinicia o timer após 30 segundos de inatividade
-            interactionTimeout = setTimeout(() => {
-                startTimer();
-            }, 30000);
-        });
-        
-        document.addEventListener('mousemove', () => {
-            // Pausa o timer
-            stopTimer();
-            
-            // Limpa o timeout anterior
-            if (interactionTimeout) clearTimeout(interactionTimeout);
-            
-            // Reinicia o timer após 30 segundos de inatividade
-            interactionTimeout = setTimeout(() => {
-                startTimer();
-            }, 30000);
-        });
-        
-        // Efeito no QR Code
-        document.querySelector('.qr-container').addEventListener('click', function(e) {
-            this.style.transform = 'scale(1.1)';
-            this.style.boxShadow = '0 0 100px rgba(255, 215, 0, 0.9)';
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.boxShadow = '';
-            }, 300);
-        });
-        
-        // Log para debug
-        console.log('Sistema de slides iniciado!');
-        console.log('Tempos:', {
-            introducao: '20s',
-            desafio: '60s', 
-            ranking: '20s',
-            regras: '20s'
-        });
+        };
     </script>
 </body>
 </html>
