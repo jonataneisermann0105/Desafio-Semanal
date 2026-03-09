@@ -94,6 +94,25 @@
             75% { transform: translateX(-50%) translateY(10px) rotate(-1deg); }
         }
         
+        /* Timer visual */
+        .timer-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        
+        .timer-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ffd700, #8a2be2);
+            transition: width linear;
+            box-shadow: 0 0 20px #ffd700;
+        }
+        
         /* Slides */
         .slide { 
             display: none; 
@@ -437,17 +456,6 @@
             margin-top: 0.5vh;
         }
         
-        .prazo-destaque {
-            font-size: 2.8vh;
-            color: #ffd700;
-            text-align: center;
-            margin: 1vh 0;
-            padding: 1vh;
-            background: rgba(184, 134, 11, 0.2);
-            border-radius: 40px 10px 40px 10px;
-            border: 2px solid #8a2be2;
-        }
-        
         .pontuacao-tabela {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -490,7 +498,7 @@
             font-size: 2.3vh;
         }
         
-        /* QR Code - com texto mais direto */
+        /* QR Code */
         .qr-container {
             position: fixed;
             bottom: 10vh;
@@ -745,6 +753,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Timer Visual -->
+    <div class="timer-bar">
+        <div class="timer-progress" id="timerProgress"></div>
+    </div>
     
     <!-- Partículas -->
     <div class="magic-particles" id="particles"></div>
@@ -768,7 +780,7 @@
                 ⚡ Eleve-se nos círculos da magia
             </p>
             <p class="intro-highlight">
-                O ENIGMA TE ESPERA
+                A RODA DO TEMPO GIRA
             </p>
             <p class="intro-footer">
                 Grão-Conselho dos Magos<br>
@@ -798,7 +810,7 @@
             <p class="prazo">⏰ Prazo: Lua Cheia (Sexta 23h59)</p>
         </div>
         
-        <!-- QR Code com texto mais direto -->
+        <!-- QR Code -->
         <div class="qr-container" onclick="window.open('https://forms.gle/SEU_FORMULARIO_AQUI', '_blank')">
             <div class="qr-label">📤 ENVIAR RESPOSTA</div>
             <div class="qr-code-wrapper">
@@ -955,13 +967,19 @@
         let currentSlide = 1;
         const totalSlides = 4;
         
-        // Tempos: 20s, 1min, 20s, 20s
+        // Tempos em milissegundos
         const slideTimes = {
             1: 20000,    // Slide 0 (Introdução): 20s
             2: 60000,    // Slide 1 (Desafio): 1min
             3: 20000,    // Slide 2 (Ranking): 20s
             4: 20000     // Slide 3 (Regras): 20s
         };
+        
+        // Elementos do timer
+        const timerProgress = document.getElementById('timerProgress');
+        let timerInterval = null;
+        let timeLeft = 0;
+        let totalTime = 0;
         
         function showSlide(n) {
             const slides = document.querySelectorAll('.slide');
@@ -976,43 +994,104 @@
             slides[currentSlide - 1].classList.add('active');
             dots[currentSlide - 1].classList.add('active');
             
+            // Reinicia o timer
             resetTimer();
         }
         
         function changeSlide(n) {
+            // Para o timer atual
+            stopTimer();
+            // Muda o slide
             currentSlide += n;
             showSlide(currentSlide);
         }
         
         function goToSlide(n) {
+            stopTimer();
             currentSlide = n;
             showSlide(currentSlide);
         }
         
-        // Teclado
+        // Funções do timer
+        function startTimer() {
+            stopTimer(); // Para qualquer timer existente
+            
+            totalTime = slideTimes[currentSlide] || 20000;
+            timeLeft = totalTime;
+            
+            // Atualiza a barra de progresso
+            updateProgressBar();
+            
+            // Inicia o intervalo
+            timerInterval = setInterval(() => {
+                timeLeft -= 100; // Reduz 100ms a cada tick
+                
+                if (timeLeft <= 0) {
+                    // Tempo acabou, muda de slide
+                    stopTimer();
+                    changeSlide(1);
+                } else {
+                    // Atualiza a barra
+                    updateProgressBar();
+                }
+            }, 100); // Atualiza a cada 100ms para animação suave
+        }
+        
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+        
+        function updateProgressBar() {
+            const progress = ((totalTime - timeLeft) / totalTime) * 100;
+            timerProgress.style.width = progress + '%';
+        }
+        
+        function resetTimer() {
+            stopTimer();
+            startTimer();
+        }
+        
+        // Event listeners
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
         });
         
-        // Timer
-        let timer;
-        
-        function startTimer() {
-            const currentTime = slideTimes[currentSlide] || 20000;
-            timer = setTimeout(() => {
-                changeSlide(1);
-            }, currentTime);
-        }
-        
-        function resetTimer() {
-            if (timer) clearTimeout(timer);
+        // Inicia o timer quando a página carrega
+        window.addEventListener('load', () => {
             startTimer();
-        }
+        });
         
-        startTimer();
-        document.addEventListener('click', resetTimer);
-        document.addEventListener('keydown', resetTimer);
+        // Pausa o timer quando o usuário interage e reinicia depois
+        let interactionTimeout;
+        document.addEventListener('click', () => {
+            // Pausa o timer
+            stopTimer();
+            
+            // Limpa o timeout anterior
+            if (interactionTimeout) clearTimeout(interactionTimeout);
+            
+            // Reinicia o timer após 30 segundos de inatividade
+            interactionTimeout = setTimeout(() => {
+                startTimer();
+            }, 30000);
+        });
+        
+        document.addEventListener('mousemove', () => {
+            // Pausa o timer
+            stopTimer();
+            
+            // Limpa o timeout anterior
+            if (interactionTimeout) clearTimeout(interactionTimeout);
+            
+            // Reinicia o timer após 30 segundos de inatividade
+            interactionTimeout = setTimeout(() => {
+                startTimer();
+            }, 30000);
+        });
         
         // Efeito no QR Code
         document.querySelector('.qr-container').addEventListener('click', function(e) {
@@ -1022,7 +1101,15 @@
                 this.style.transform = '';
                 this.style.boxShadow = '';
             }, 300);
-            resetTimer();
+        });
+        
+        // Log para debug
+        console.log('Sistema de slides iniciado!');
+        console.log('Tempos:', {
+            introducao: '20s',
+            desafio: '60s', 
+            ranking: '20s',
+            regras: '20s'
         });
     </script>
 </body>
