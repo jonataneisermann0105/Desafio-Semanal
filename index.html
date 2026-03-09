@@ -248,7 +248,7 @@
             font-size: 2.5vh;
         }
         
-        /* SLIDE 1: Desafio - ESPAÇAMENTO EQUILIBRADO */
+        /* SLIDE 1: Desafio */
         .container-desafio { 
             text-align: center; 
             max-width: 85%;
@@ -346,8 +346,152 @@
             font-weight: bold;
         }
         
-        /* Grimório */
-        .grimoire-container {
+        /* SLIDE 3: Regras */
+        .container-regras {
+            text-align: center;
+            max-width: 90%;
+            width: 1300px;
+            padding: 2vh 3vw;
+            background: rgba(20, 10, 30, 0.95);
+            backdrop-filter: blur(25px);
+            border-radius: 70px 25px 70px 25px;
+            box-shadow: 0 0 200px rgba(138, 43, 226, 0.8), 0 0 0 4px #b8860b;
+            border: 5px solid #ffd700;
+            margin: auto;
+            position: relative;
+            z-index: 20;
+            color: #e6d5b8;
+        }
+        
+        .regras-title {
+            font-size: 5vh;
+            color: #ffd700;
+            text-shadow: 0 0 40px rgba(138, 43, 226, 1);
+            margin-bottom: 1vh;
+            letter-spacing: 4px;
+        }
+        
+        .regras-subtitle {
+            font-size: 2.5vh;
+            color: #b19cd9;
+            margin-bottom: 2vh;
+            font-style: italic;
+            border-bottom: 2px solid #b8860b;
+            padding-bottom: 0.5vh;
+        }
+        
+        .regras-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2vw;
+            text-align: left;
+            margin: 1.5vh 0;
+        }
+        
+        .regras-col {
+            background: rgba(75, 0, 130, 0.3);
+            padding: 2vh 1.5vw;
+            border-radius: 50px 15px 50px 15px;
+            border: 2px solid #b8860b;
+        }
+        
+        .regras-col h3 {
+            color: #ffd700;
+            font-size: 2.8vh;
+            margin-bottom: 1.5vh;
+            text-align: center;
+        }
+        
+        .regras-item {
+            margin: 1.5vh 0;
+            font-size: 2.2vh;
+            line-height: 1.4;
+        }
+        
+        .regras-item strong {
+            color: #ffd700;
+            font-size: 2.3vh;
+            display: block;
+            margin-bottom: 0.3vh;
+        }
+        
+        .criterio-destaque {
+            background: rgba(138, 43, 226, 0.4);
+            border: 2px solid #ffd700;
+            border-radius: 40px 10px 40px 10px;
+            padding: 1.2vh;
+            margin: 1.5vh 0;
+            text-align: center;
+        }
+        
+        .criterio-destaque p {
+            color: #ffd700;
+            font-size: 2.4vh;
+            font-weight: bold;
+        }
+        
+        .criterio-destaque small {
+            color: #b19cd9;
+            font-size: 1.9vh;
+            display: block;
+            margin-top: 0.5vh;
+        }
+        
+        .prazo-destaque {
+            font-size: 2.8vh;
+            color: #ffd700;
+            text-align: center;
+            margin: 1vh 0;
+            padding: 1vh;
+            background: rgba(184, 134, 11, 0.2);
+            border-radius: 40px 10px 40px 10px;
+            border: 2px solid #8a2be2;
+        }
+        
+        .pontuacao-tabela {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8vw;
+            margin: 1.5vh 0;
+        }
+        
+        .pontuacao-item {
+            background: rgba(138, 43, 226, 0.3);
+            padding: 1vh;
+            border-radius: 30px 8px 30px 8px;
+            border: 2px solid #ffd700;
+            text-align: center;
+        }
+        
+        .pontuacao-pos {
+            font-size: 2.2vh;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .pontuacao-valor {
+            font-size: 2.5vh;
+            color: #b19cd9;
+        }
+        
+        .extra-point {
+            font-size: 2.2vh;
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 1.2vh;
+            border-radius: 40px 10px 40px 10px;
+            border: 2px solid #b8860b;
+            margin: 1vh 0;
+            text-align: center;
+        }
+        
+        .extra-point strong {
+            color: #ffd700;
+            font-size: 2.3vh;
+        }
+        
+        /* QR Code - com texto mais direto */
+        .qr-container {
             position: fixed;
             bottom: 10vh;
             right: 2.5vw;
@@ -359,6 +503,18 @@
             box-shadow: 0 0 80px rgba(138, 43, 226, 0.9);
             z-index: 50;
             animation: float 4s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 200px;
+        }
+        
+        .qr-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 100px rgba(255, 215, 0, 0.8);
+            border-color: #ffd700;
         }
         
         @keyframes float {
@@ -366,36 +522,46 @@
             50% { transform: translateY(-10px); }
         }
         
-        .grimoire {
+        .qr-label { 
+            font-size: 2.2vh; 
+            margin-bottom: 1.5vh; 
+            color: #ffd700; 
+            text-align: center;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+            white-space: nowrap;
+        }
+        
+        .qr-code-wrapper {
             width: 160px;
             height: 160px;
+            background: #ffffff;
             border: 3px solid #ffd700;
-            border-radius: 45px 10px 45px 10px;
-            background: #2a1b3d;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5.5rem;
-            color: #ffd700;
-            box-shadow: inset 0 0 50px rgba(138, 43, 226, 0.7);
-            cursor: pointer;
+            margin-bottom: 1vh;
         }
         
-        .grimoire-label { 
-            font-size: 2.2vh; 
-            margin-bottom: 1vh; 
-            color: #ffd700; 
-            text-align: center;
+        .qr-code-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
         }
         
-        .grimoire-footer {
+        .qr-footer {
             font-size: 1.8vh; 
             margin-top: 1vh; 
             color: #b19cd9; 
             text-align: center;
+            font-style: italic;
+            white-space: nowrap;
         }
         
-        /* SLIDE 2: Ranking - TOP 7 */
+        /* SLIDE 2: Ranking */
         .container-ranking { 
             text-align: center; 
             max-width: 95%;
@@ -551,7 +717,7 @@
             text-shadow: 0 0 10px #8a2be2;
         }
         
-        /* IA Credit - POSICIONADO ENTRE OS BOTÕES E O INDICADOR */
+        /* IA Credit */
         .ia-credit {
             position: fixed;
             bottom: 7vh;
@@ -587,7 +753,7 @@
     <div class="witch-right"></div>
     <div class="floating-book">📜✨</div>
     
-    <!-- IA Credit - REPOSICIONADO -->
+    <!-- IA Credit -->
     <div class="ia-credit">✨ Material desenvolvido com auxílio de Perplexity e DeepSeek ✨</div>
     
     <!-- SLIDE 0: Introdução -->
@@ -602,7 +768,7 @@
                 ⚡ Eleve-se nos círculos da magia
             </p>
             <p class="intro-highlight">
-                O GRIMÓRIO TE AGUARDA
+                O ENIGMA TE ESPERA
             </p>
             <p class="intro-footer">
                 Grão-Conselho dos Magos<br>
@@ -612,7 +778,7 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: Desafio - ESPAÇAMENTO EQUILIBRADO -->
+    <!-- SLIDE 1: Desafio -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
             <div class="spell-number">ENIGMA #001</div>
@@ -632,14 +798,19 @@
             <p class="prazo">⏰ Prazo: Lua Cheia (Sexta 23h59)</p>
         </div>
         
-        <div class="grimoire-container">
-            <div class="grimoire-label">Grimório de Envio</div>
-            <div class="grimoire">📖</div>
-            <div class="grimoire-footer">Toque para enviar seu feitiço</div>
+        <!-- QR Code com texto mais direto -->
+        <div class="qr-container" onclick="window.open('https://forms.gle/SEU_FORMULARIO_AQUI', '_blank')">
+            <div class="qr-label">📤 ENVIAR RESPOSTA</div>
+            <div class="qr-code-wrapper">
+                <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/frame1.png?raw=true" 
+                     alt="QR Code para formulário"
+                     onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/SEU_FORMULARIO_AQUI';">
+            </div>
+            <div class="qr-footer">📱 Aponte a câmera</div>
         </div>
     </div>
     
-    <!-- SLIDE 2: Ranking - TOP 7 -->
+    <!-- SLIDE 2: Ranking -->
     <div class="slide" id="slide2">
         <div class="container-ranking">
             <h2 class="ranking-title">GRÃO-CONSELHO</h2>
@@ -696,15 +867,74 @@
         </div>
     </div>
     
+    <!-- SLIDE 3: Regras -->
+    <div class="slide" id="slide3">
+        <div class="container-regras">
+            <h2 class="regras-title">📜 DECRETO ARCANO 📜</h2>
+            <p class="regras-subtitle">Regras e Pontuação</p>
+            
+            <div class="regras-grid">
+                <div class="regras-col">
+                    <h3>⚡ PARTICIPAÇÃO</h3>
+                    <div class="regras-item">
+                        <strong>📅 Prazo Final:</strong>
+                        Próxima Lua Nova - 18/03/2026
+                    </div>
+                    <div class="regras-item">
+                        <strong>🎓 Público:</strong>
+                        Todos estudantes do ensino médio integrado
+                    </div>
+                    <div class="regras-item">
+                        <strong>⭐ Extra:</strong>
+                        Atendimento do prof. Jonatan (sexta à tarde) explicando a resolução = +1 ponto
+                    </div>
+                </div>
+                
+                <div class="regras-col">
+                    <h3>🏆 CRITÉRIO DE AVALIAÇÃO</h3>
+                    <div class="criterio-destaque">
+                        <p>📌 AS 7 RESPOSTAS MAIS BEM FUNDAMENTADAS</p>
+                        <small>Empate no fundamento? Desempate por agilidade (quem enviou antes)</small>
+                    </div>
+                    
+                    <h3 style="margin-top: 1.5vh;">📊 PONTUAÇÃO</h3>
+                    <div class="pontuacao-tabela">
+                        <div class="pontuacao-item">
+                            <div class="pontuacao-pos">1º</div>
+                            <div class="pontuacao-valor">4 pts</div>
+                        </div>
+                        <div class="pontuacao-item">
+                            <div class="pontuacao-pos">2º</div>
+                            <div class="pontuacao-valor">3 pts</div>
+                        </div>
+                        <div class="pontuacao-item">
+                            <div class="pontuacao-pos">3º</div>
+                            <div class="pontuacao-valor">2 pts</div>
+                        </div>
+                        <div class="pontuacao-item">
+                            <div class="pontuacao-pos">4º-7º</div>
+                            <div class="pontuacao-valor">1 pt</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="extra-point">
+                <strong>🏛️ VALIDAÇÃO:</strong> Respostas avaliadas pelo Grão-Conselho
+            </div>
+        </div>
+    </div>
+    
     <!-- Navegação -->
     <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◄ Anterior</button>
     <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo ►</button>
     
-    <!-- Indicadores -->
+    <!-- Indicadores (4 slides) -->
     <div class="slide-indicator">
         <span class="dot active" onclick="goToSlide(1)"></span>
         <span class="dot" onclick="goToSlide(2)"></span>
         <span class="dot" onclick="goToSlide(3)"></span>
+        <span class="dot" onclick="goToSlide(4)"></span>
     </div>
     
     <script>
@@ -723,7 +953,15 @@
         
         // Controle de slides
         let currentSlide = 1;
-        const totalSlides = 3;
+        const totalSlides = 4;
+        
+        // Tempos: 20s, 1min, 20s, 20s
+        const slideTimes = {
+            1: 20000,    // Slide 0 (Introdução): 20s
+            2: 60000,    // Slide 1 (Desafio): 1min
+            3: 20000,    // Slide 2 (Ranking): 20s
+            4: 20000     // Slide 3 (Regras): 20s
+        };
         
         function showSlide(n) {
             const slides = document.querySelectorAll('.slide');
@@ -737,6 +975,8 @@
             
             slides[currentSlide - 1].classList.add('active');
             dots[currentSlide - 1].classList.add('active');
+            
+            resetTimer();
         }
         
         function changeSlide(n) {
@@ -755,30 +995,34 @@
             if (e.key === 'ArrowRight') changeSlide(1);
         });
         
-        // Grimório
-        document.querySelector('.grimoire').addEventListener('click', function() {
-            this.style.transform = 'scale(1.2) rotate(10deg)';
-            this.style.boxShadow = 'inset 0 0 100px #ffd700';
+        // Timer
+        let timer;
+        
+        function startTimer() {
+            const currentTime = slideTimes[currentSlide] || 20000;
+            timer = setTimeout(() => {
+                changeSlide(1);
+            }, currentTime);
+        }
+        
+        function resetTimer() {
+            if (timer) clearTimeout(timer);
+            startTimer();
+        }
+        
+        startTimer();
+        document.addEventListener('click', resetTimer);
+        document.addEventListener('keydown', resetTimer);
+        
+        // Efeito no QR Code
+        document.querySelector('.qr-container').addEventListener('click', function(e) {
+            this.style.transform = 'scale(1.1)';
+            this.style.boxShadow = '0 0 100px rgba(255, 215, 0, 0.9)';
             setTimeout(() => {
                 this.style.transform = '';
                 this.style.boxShadow = '';
-            }, 400);
-            alert('📨 Pergaminho enviado ao Grão-Conselho!');
-        });
-        
-        // Auto slide
-        let timer;
-        function startAutoSlide() {
-            timer = setTimeout(() => {
-                changeSlide(1);
-                startAutoSlide();
-            }, 40000);
-        }
-        startAutoSlide();
-        
-        document.addEventListener('click', () => {
-            clearTimeout(timer);
-            startAutoSlide();
+            }, 300);
+            resetTimer();
         });
     </script>
 </body>
