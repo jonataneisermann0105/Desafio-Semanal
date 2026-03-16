@@ -282,20 +282,16 @@
             margin-bottom: 1.5vh;
         }
         
-        /* Ícones de mago como símbolos */
+        /* Ícones de mago com imagens */
         .mago-icon {
             width: 80px;
             height: 80px;
             border-radius: 50%;
             border: 3px solid #ffd700;
             box-shadow: 0 0 30px #8a2be2;
-            background: #2a1b3d;
-            position: relative;
-            font-size: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffd700;
+            background-size: cover;
+            background-position: center;
+            background-color: #2a1b3d;
         }
         
         .intro-title {
@@ -482,21 +478,17 @@
             background: linear-gradient(135deg, #0a2a4a, #0a1a2a);
         }
         
-        /* Bolinhas do pódio com símbolos */
+        /* Bolinhas do pódio com imagens */
         .mago-img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             border: 3px solid #ffd700;
             margin: 0 auto 1vh;
-            background: #2a1b3d;
-            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-color: #2a1b3d;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            color: #ffd700;
         }
         
         .position {
@@ -562,13 +554,9 @@
             border-radius: 50%;
             border: 2px solid #ffd700;
             margin-bottom: 1vh;
-            background: #1a0f2a;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            color: #ffd700;
+            background-size: cover;
+            background-position: center;
+            background-color: #1a0f2a;
         }
         
         .rank-item .rank-title {
@@ -777,7 +765,7 @@
         <div class="timer-progress" id="timerProgress"></div>
     </div>
     
-    <!-- Elementos místicos CSS (apenas símbolos, sem bonecos) -->
+    <!-- Elementos místicos CSS -->
     <div class="mystic-symbol"></div>
     <div class="mystic-symbol-right"></div>
     
@@ -789,9 +777,10 @@
     <div class="slide active" id="slide0">
         <div class="container-intro">
             <div class="intro-icon">
-                <div class="mago-icon">⚡</div>
-                <div class="mago-icon">✨</div>
-                <div class="mago-icon">🔮</div>
+                <!-- 👇 COLE AQUI OS LINKS DAS 3 IMAGENS DO TOPO -->
+                <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=1161&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="mago-icon" style="background-image: url('[COLE AQUI O LINK DA IMAGEM 2]');"></div>
+                <div class="mago-icon" style="background-image: url('https://images.unsplash.com/photo-1618329075618-0d0c6ee9807b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
             </div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
             <p class="intro-subtitle">Ordem dos Magos</p>
@@ -845,11 +834,12 @@
     <div class="slide" id="slide2">
         <div class="container-ranking">
             <h2 class="ranking-title">GRÃO-CONSELHO</h2>
-            <p class="ranking-subtitle">Os 7 Arquimagos da Academia</p>
+            <p class="ranking-subtitle">Os Arquimagos da Academia</p>
             
             <div class="podio">
                 <div class="podio-place segundo">
-                    <div class="mago-img">✨</div>
+                    <!-- 👇 COLE AQUI O LINK DA IMAGEM DO 2º LUGAR -->
+                    <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1733141534071-7be1afd79f30?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
                     <div class="position">2º LUGAR</div>
                     <div class="rank-badge">Maga Celestial</div>
                     <div class="name">Aluno 2</div>
@@ -858,7 +848,8 @@
                 </div>
                 
                 <div class="podio-place primeiro">
-                    <div class="mago-img">⚡</div>
+                    <!-- 👇 COLE AQUI O LINK DA IMAGEM DO 1º LUGAR -->
+                    <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
                     <div class="position">1º LUGAR</div>
                     <div class="rank-badge">Mago Supremo</div>
                     <div class="name">Aluno 1</div>
@@ -867,7 +858,8 @@
                 </div>
                 
                 <div class="podio-place terceiro">
-                    <div class="mago-img">🔮</div>
+                    <!-- 👇 COLE AQUI O LINK DA IMAGEM DO 3º LUGAR -->
+                    <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1570736247658-7e647090cf8b?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
                     <div class="position">3º LUGAR</div>
                     <div class="rank-badge">Mago das Sombras</div>
                     <div class="name">Aluno 3</div>
@@ -877,23 +869,24 @@
             </div>
             
             <div class="ranking-grid">
+                <!-- 👇 4º AO 7º LUGAR - USE AS MESMAS IMAGENS OU REPITA -->
                 <div class="rank-item">
-                    <div class="small-mago">🌙</div>
+                    <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1572979129454-dce4055c1f68?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
                     4º Aluno 4 - 12<br>
                     <span class="rank-title">Mago Elemental</span>
                 </div>
                 <div class="rank-item">
-                    <div class="small-mago">☀️</div>
+                    <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1771148835096-b843d0b539a2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
                     5º Aluno 5 - 11<br>
                     <span class="rank-title">Feiticeiro Lunar</span>
                 </div>
                 <div class="rank-item">
-                    <div class="small-mago">⭐</div>
+                    <div class="small-mago" style="background-image: url('[COLE AQUI O LINK DA IMAGEM 3]');"></div>
                     6º Aluno 6 - 10<br>
                     <span class="rank-title">Vidente</span>
                 </div>
                 <div class="rank-item">
-                    <div class="small-mago">🌙</div>
+                    <div class="small-mago" style="background-image: url('[COLE AQUI O LINK DA IMAGEM 1]');"></div>
                     7º Aluno 7 - 9<br>
                     <span class="rank-title">Escriba Mágico</span>
                 </div>
