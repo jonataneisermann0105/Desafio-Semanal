@@ -51,6 +51,12 @@
             z-index: 5;
             filter: drop-shadow(0 0 40px #8a2be2);
             text-shadow: 0 0 30px rgba(0,0,0,0.5);
+            color: #ffd700;
+        }
+        
+        /* Fallback para símbolos */
+        .symbol {
+            font-family: 'Arial Unicode MS', 'Segoe UI Symbol', 'Arial', sans-serif;
         }
         
         .timer-bar {
@@ -146,6 +152,7 @@
         .intro-icon {
             font-size: 8vh;
             margin-bottom: 1.5vh;
+            color: #ffd700;
         }
         
         .intro-title {
@@ -220,6 +227,7 @@
             top: -20px;
             right: 3.5vw;
             font-size: 6.5vh;
+            color: #8a2be2;
         }
         
         .container-desafio h1 { 
@@ -334,6 +342,7 @@
         .badge {
             font-size: 6vh;
             margin-bottom: 0.8vh;
+            color: #ffd700;
         }
         
         .position {
@@ -585,6 +594,17 @@
             z-index: 150;
             white-space: nowrap;
         }
+
+        /* Fallback específico para navegadores muito antigos */
+        .no-emoji .emoji-text {
+            display: none;
+        }
+        .no-emoji .emoji-fallback {
+            display: inline;
+        }
+        .emoji-fallback {
+            display: none;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -594,18 +614,18 @@
     </div>
     
     <div class="witch-right"></div>
-    <div class="floating-book">📜✨</div>
+    <div class="floating-book">⌘ ☯ ⚡</div>
     
-    <div class="ia-credit">✨ Material desenvolvido com auxílio de Perplexity e DeepSeek ✨</div>
+    <div class="ia-credit">☾ Material desenvolvido com auxílio de Perplexity e DeepSeek ☯</div>
     
     <div class="slide active" id="slide0">
         <div class="container-intro">
-            <div class="intro-icon">🧙‍♀️⚡🔮</div>
+            <div class="intro-icon">☾ ☯ ⚡ ⌘</div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
             <p class="intro-subtitle">Ordem dos Magos</p>
             <p class="intro-cta">
-                🌙 Desvende os mistérios arcanos<br>
-                🔮 Domine a geometria mística<br>
+                ☾ Desvende os mistérios arcanos<br>
+                ☯ Domine a geometria mística<br>
                 ⚡ Eleve-se nos círculos da magia
             </p>
             <p class="intro-highlight">
@@ -622,31 +642,31 @@
     <div class="slide" id="slide1">
         <div class="container-desafio">
             <div class="spell-number">ENIGMA #001</div>
-            <div class="crystal-ball">🔮</div>
+            <div class="crystal-ball">◈</div>
             
-            <h1>🌀 A RODA DO TEMPO 🌀</h1>
+            <h1>⌘ A RODA DO TEMPO ⌘</h1>
             <p class="subtitulo">Problema de Geometria Arcano</p>
             <div class="problema">
-                <strong>📜 ENUNCIADO DO GRÃO-MESTRE:</strong><br><br>
+                <strong>⌘ ENUNCIADO DO GRÃO-MESTRE:</strong><br><br>
                 Uma <strong>roda gigante mística</strong> gira no Grande Festival de Yule. <strong>Maria e Paulo</strong> estão sentados em cadeiras <strong>diametralmente opostas</strong> (posições opostas na roda).<br><br>
                 <span class="evidencia">⚡ 1ª VISÃO:</span> Quando Maria está a <strong>3 metros</strong> de altura do solo, Paulo encontra-se a <strong>5 metros</strong> de altura.<br><br>
-                <span class="evidencia">🌙 2ª VISÃO:</span> A roda continua girando no mesmo sentido, como as estações do ano...<br><br>
+                <span class="evidencia">☾ 2ª VISÃO:</span> A roda continua girando no mesmo sentido, como as estações do ano...<br><br>
                 <strong style="font-size: 1.1em; color: #8a2be2;">❓ QUAL SERÁ A ALTURA DE PAULO QUANDO MARIA ATINGIR 7 METROS?</strong><br><br>
-                <em style="font-size: 0.95em;">📝 Trace o círculo mágico em pergaminho e explique seu raciocínio! Dica: a simetria do círculo revela verdades ocultas.</em>
+                <em style="font-size: 0.95em;">⌘ Trace o círculo mágico em pergaminho e explique seu raciocínio! Dica: a simetria do círculo revela verdades ocultas.</em>
             </div>
-            <p class="instrucao">📸 Envie: Pergaminho com a resolução + nome/turma</p>
+            <p class="instrucao">⌘ Envie: Pergaminho com a resolução + nome/turma</p>
             <p class="prazo">⏰ Prazo: Lua Crescente (25/03 23h59)</p>
         </div>
         
         <div class="qr-container" onclick="window.location.href='https://forms.gle/rq2RunrMKTJh14X79'">
-            <div class="qr-label">📤 ENVIAR RESPOSTA</div>
+            <div class="qr-label">⌘ ENVIAR RESPOSTA</div>
             <div class="qr-code-wrapper">
-                <a href="https://forms.gle/rq2RunrMKTJh14X79" >
+                <a href="https://forms.gle/rq2RunrMKTJh14X79">
                 <img src="frame1.png" 
                      alt="QR Code para formulário"/>
                     </a>
             </div>
-            <div class="qr-footer">📱 Aponte a câmera</div>
+            <div class="qr-footer">☯ Aponte a câmera</div>
         </div>
     </div>
     
@@ -657,30 +677,30 @@
             
             <div class="podio">
                 <div class="podio-place segundo">
-                    <div class="badge">🧙‍♀️</div>
+                    <div class="badge">☾</div>
                     <div class="position">2º</div>
                     <div class="rank-badge">Maga Celestial</div>
                     <div class="name">Aluno 2</div>
                     <div class="points">14</div>
-                    <div class="points-small">⭐⭐⭐⭐⭐</div>
+                    <div class="points-small">⚡⚡⚡⚡⚡</div>
                 </div>
                 
                 <div class="podio-place primeiro">
-                    <div class="badge">🧙‍♂️</div>
+                    <div class="badge">☯</div>
                     <div class="position">1º</div>
                     <div class="rank-badge">Mago Supremo</div>
                     <div class="name">Aluno 1</div>
                     <div class="points">15</div>
-                    <div class="points-small">⭐⭐⭐⭐⭐⭐</div>
+                    <div class="points-small">⚡⚡⚡⚡⚡⚡</div>
                 </div>
                 
                 <div class="podio-place terceiro">
-                    <div class="badge">🧙</div>
+                    <div class="badge">◈</div>
                     <div class="position">3º</div>
                     <div class="rank-badge">Mago das Sombras</div>
                     <div class="name">Aluno 3</div>
                     <div class="points">13</div>
-                    <div class="points-small">⭐⭐⭐⭐⭐</div>
+                    <div class="points-small">⚡⚡⚡⚡⚡</div>
                 </div>
             </div>
             
@@ -707,22 +727,22 @@
     
     <div class="slide" id="slide3">
         <div class="container-regras">
-            <h2 class="regras-title">📜 DECRETO ARCANO 📜</h2>
+            <h2 class="regras-title">⌘ DECRETO ARCANO ⌘</h2>
             <p class="regras-subtitle">Regras e Pontuação</p>
             
             <div class="regras-grid">
                 <div class="regras-col">
                     <h3>⚡ PARTICIPAÇÃO</h3>
                     <div class="regras-item">
-                        <strong>📅 Prazo Final:</strong>
+                        <strong>⌘ Prazo Final:</strong>
                         Próxima Lua Crescente - 25/03/2026
                     </div>
                     <div class="regras-item">
-                        <strong>🎓 Público:</strong>
+                        <strong>☯ Público:</strong>
                         Todos estudantes do ensino médio integrado
                     </div>
                     <div class="regras-item">
-                        <strong>⭐ Extra:</strong>
+                        <strong>⚡ Extra:</strong>
                         Atendimento do prof. Jonatan (sexta à tarde) explicando a resolução = +1 ponto
                     </div>
                 </div>
@@ -730,11 +750,11 @@
                 <div class="regras-col">
                     <h3>🏆 CRITÉRIO DE AVALIAÇÃO</h3>
                     <div class="criterio-destaque">
-                        <p>📌 AS 7 RESPOSTAS MAIS BEM FUNDAMENTADAS</p>
+                        <p>⌘ AS 7 RESPOSTAS MAIS BEM FUNDAMENTADAS</p>
                         <small style="color: #b19cd9;">Empate no fundamento? Desempate por agilidade (quem enviou antes)</small>
                     </div>
                     
-                    <h3 style="margin-top: 1.5vh;">📊 PONTUAÇÃO</h3>
+                    <h3 style="margin-top: 1.5vh;">⌘ PONTUAÇÃO</h3>
                     <div class="pontuacao-tabela">
                         <div class="pontuacao-item">
                             <div class="pontuacao-pos">1º</div>
@@ -757,7 +777,7 @@
             </div>
             
             <div class="extra-point">
-                <strong>🏛️ VALIDAÇÃO:</strong> Respostas avaliadas pelo Grão-Conselho
+                <strong>☯ VALIDAÇÃO:</strong> Respostas avaliadas pelo Grão-Conselho
             </div>
         </div>
     </div>
@@ -855,6 +875,13 @@
         
         window.onload = function() {
             startTimer();
+            
+            // Detecta se o navegador não suporta emojis (fallback)
+            var testEmoji = document.createElement('span');
+            testEmoji.innerHTML = '☯';
+            if (testEmoji.offsetWidth === 0) {
+                document.body.className += ' no-emoji';
+            }
         };
     </script>
 </body>
