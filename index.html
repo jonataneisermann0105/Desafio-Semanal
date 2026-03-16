@@ -6,14 +6,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Cinzel', 'Georgia', 'Times New Roman', serif;
-            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop') no-repeat center center fixed;
-            background-size: cover;
+            background: #0a0514;
             width: 100vw;
             height: 100vh;
             overflow: hidden;
             position: relative;
         }
         
+        /* Fundo estrelado com CSS puro */
         body::before {
             content: '';
             position: fixed;
@@ -21,82 +21,275 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 5, 20, 0.7);
-            pointer-events: none;
+            background: radial-gradient(circle at 20% 30%, #2a1b3d, #0a0514);
+            z-index: 0;
+        }
+        
+        /* Estrelas com CSS */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 1;
         }
         
-        /* Magos laterais - SUBSTITUA ESTAS URLs */
+        .star {
+            position: absolute;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        
+        /* Magos laterais desenhados com CSS */
         .witch-right {
             position: fixed;
-            right: 0;
+            right: 2vw;
             bottom: 0;
-            width: 28vh;
-            height: 60vh;
-            background: url('https://cdn.pixabay.com/photo/2020/11/07/13/41/wizard-5720477_960_720.png') no-repeat;
-            background-size: cover;
-            background-position: center 30%;
+            width: 25vh;
+            height: 55vh;
             z-index: 5;
             opacity: 0.45;
-            filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.8));
+            filter: drop-shadow(0 0 30px #8a2be2);
             transform: scaleX(-1);
             pointer-events: none;
         }
         
         .witch-left {
             position: fixed;
-            left: 0;
+            left: 2vw;
             bottom: 0;
-            width: 28vh;
-            height: 60vh;
-            background: url('https://cdn.pixabay.com/photo/2017/01/31/16/00/witch-2025988_960_720.png') no-repeat;
-            background-size: cover;
-            background-position: center 30%;
+            width: 25vh;
+            height: 55vh;
             z-index: 5;
             opacity: 0.4;
-            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+            filter: drop-shadow(0 0 30px #ffd700);
             pointer-events: none;
         }
         
-        /* Livro flutuante */
+        /* Chapéu do mago */
+        .hat {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8vh solid transparent;
+            border-right: 8vh solid transparent;
+            border-bottom: 15vh solid #4b0082;
+        }
+        
+        .hat::after {
+            content: '';
+            position: absolute;
+            top: 10vh;
+            left: -3vh;
+            width: 6vh;
+            height: 3vh;
+            background: #ffd700;
+            border-radius: 50%;
+        }
+        
+        /* Cabeça do mago */
+        .head {
+            position: absolute;
+            top: 13vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10vh;
+            height: 10vh;
+            background: #e6d5b8;
+            border-radius: 50%;
+            border: 0.5vh solid #4b0082;
+        }
+        
+        /* Olhos */
+        .eye-left, .eye-right {
+            position: absolute;
+            top: 4vh;
+            width: 1.5vh;
+            height: 1.5vh;
+            background: #2a1b3d;
+            border-radius: 50%;
+        }
+        .eye-left { left: 2vh; }
+        .eye-right { right: 2vh; }
+        
+        /* Barba */
+        .beard {
+            position: absolute;
+            top: 6vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6vh;
+            height: 4vh;
+            background: #b19cd9;
+            border-radius: 0 0 3vh 3vh;
+        }
+        
+        /* Corpo do mago (manto) */
+        .robe {
+            position: absolute;
+            top: 22vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14vh;
+            height: 25vh;
+            background: #2a1b3d;
+            border-radius: 5vh 5vh 0 0;
+            border: 0.5vh solid #b8860b;
+        }
+        
+        /* Braços */
+        .arm-left, .arm-right {
+            position: absolute;
+            top: 24vh;
+            width: 4vh;
+            height: 12vh;
+            background: #2a1b3d;
+            border: 0.5vh solid #b8860b;
+        }
+        .arm-left { left: 3vh; transform: rotate(10deg); }
+        .arm-right { right: 3vh; transform: rotate(-10deg); }
+        
+        /* Livro flutuante desenhado com CSS */
         .floating-book {
             position: fixed;
             top: 2vh;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
-            height: 120px;
-            background: url('https://cdn.pixabay.com/photo/2018/01/17/18/43/book-3088775_960_720.png') no-repeat center;
-            background-size: contain;
+            width: 15vh;
+            height: 12vh;
+            background: #8b4513;
+            border: 0.5vh solid #ffd700;
+            border-radius: 1vh 2vh 1vh 2vh;
             z-index: 5;
             filter: drop-shadow(0 0 40px #8a2be2);
+            animation: float 3s infinite;
         }
         
-        /* Símbolos místicos */
+        .floating-book::before {
+            content: '';
+            position: absolute;
+            top: 1vh;
+            left: 1vh;
+            width: 13vh;
+            height: 10vh;
+            background: #e6d5b8;
+            border-radius: 0.5vh;
+        }
+        
+        .floating-book::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffd700;
+            font-size: 5vh;
+        }
+        
+        @keyframes float {
+            0% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+        
+        /* Bola de cristal CSS */
+        .crystal-ball {
+            position: absolute;
+            top: -30px;
+            right: 3.5vw;
+            width: 8vh;
+            height: 8vh;
+            background: radial-gradient(circle at 30% 30%, #b19cd9, #4b0082);
+            border-radius: 50%;
+            border: 0.3vh solid #ffd700;
+            box-shadow: 0 0 30px #8a2be2;
+            z-index: 21;
+            animation: glow 2s infinite;
+        }
+        
+        .crystal-ball::before {
+            content: '●';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            color: white;
+            font-size: 2vh;
+            opacity: 0.8;
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 30px #8a2be2; }
+            50% { box-shadow: 0 0 50px #ffd700; }
+            100% { box-shadow: 0 0 30px #8a2be2; }
+        }
+        
+        /* Símbolos místicos CSS */
         .mystic-symbol {
             position: fixed;
             top: 15vh;
             left: 5vw;
-            width: 80px;
-            height: 80px;
-            background: url('https://cdn.pixabay.com/photo/2013/07/13/01/24/crystal-ball-155437_960_720.png') no-repeat center;
-            background-size: contain;
+            width: 8vh;
+            height: 8vh;
+            border: 0.3vh solid #ffd700;
+            border-radius: 50%;
             z-index: 4;
             opacity: 0.6;
-            filter: drop-shadow(0 0 20px #ffd700);
+            animation: rotate 10s infinite linear;
+        }
+        
+        .mystic-symbol::before {
+            content: '✧';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffd700;
+            font-size: 4vh;
         }
         
         .mystic-symbol-right {
             position: fixed;
             bottom: 15vh;
             right: 5vw;
-            width: 100px;
-            height: 100px;
-            background: url('https://cdn.pixabay.com/photo/2017/01/31/23/03/magic-2027927_960_720.png') no-repeat center;
-            background-size: contain;
+            width: 10vh;
+            height: 10vh;
+            border: 0.3vh solid #8a2be2;
+            border-radius: 30% 70% 30% 70%;
             z-index: 4;
             opacity: 0.5;
-            filter: drop-shadow(0 0 20px #8a2be2);
+            animation: pulse 3s infinite;
+        }
+        
+        .mystic-symbol-right::before {
+            content: '⚝';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8a2be2;
+            font-size: 5vh;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
         }
         
         .timer-bar {
@@ -191,18 +384,6 @@
             overflow: hidden;
         }
         
-        .container-intro::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://cdn.pixabay.com/photo/2016/03/31/18/42/background-1295117_960_720.png') repeat;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        
         .intro-icon {
             display: flex;
             justify-content: center;
@@ -210,14 +391,31 @@
             margin-bottom: 1.5vh;
         }
         
+        /* Ícones de mago CSS para as bolinhas */
         .mago-icon {
             width: 80px;
             height: 80px;
             border-radius: 50%;
             border: 3px solid #ffd700;
             box-shadow: 0 0 30px #8a2be2;
-            object-fit: cover;
+            background: #2a1b3d;
+            position: relative;
         }
+        
+        .mago-icon::before {
+            content: '🧙';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #ffd700;
+        }
+        
+        /* Variações para diferentes magos */
+        .mago-icon:nth-child(1)::before { content: '🧙'; }
+        .mago-icon:nth-child(2)::before { content: '🧝'; }
+        .mago-icon:nth-child(3)::before { content: '🧚'; }
         
         .intro-title {
             font-size: 6vh;
@@ -286,20 +484,6 @@
             padding: 0.8vh 2vw;
             border: 2px solid #b8860b;
             border-radius: 40px 8px 40px 8px;
-            z-index: 21;
-        }
-        
-        .crystal-ball {
-            position: absolute;
-            top: -30px;
-            right: 3.5vw;
-            width: 80px;
-            height: 80px;
-            background: url('https://cdn.pixabay.com/photo/2017/08/01/01/33/blue-2562528_960_720.jpg') no-repeat center;
-            background-size: cover;
-            border-radius: 50%;
-            border: 3px solid #8a2be2;
-            box-shadow: 0 0 30px #8a2be2;
             z-index: 21;
         }
         
@@ -416,27 +600,43 @@
             background: linear-gradient(135deg, #0a2a4a, #0a1a2a);
         }
         
+        /* Bolinhas do pódio com CSS */
         .mago-img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             border: 3px solid #ffd700;
             margin: 0 auto 1vh;
-            background-size: cover;
-            background-position: center;
+            background: #2a1b3d;
+            position: relative;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
         }
         
-        /* ===== ÁREA PARA SUBSTITUIR AS IMAGENS DOS MAGOS ===== */
-        /* 1º, 2º e 3º lugares - ESCOLHA 3 IMAGENS DIFERENTES */
-        .mago1-img { 
-            background-image: url('https://cdn.pixabay.com/photo/2023/06/06/17/02/wizard-8045640_960_720.jpg'); 
+        .mago1-img::before { 
+            content: '🧙';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
         }
-        .mago2-img { 
-            background-image: url('https://cdn.pixabay.com/photo/2023/03/14/15/19/wizard-7852700_960_720.jpg'); 
+        
+        .mago2-img::before { 
+            content: '🧝';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
         }
-        .mago3-img { 
-            background-image: url('https://cdn.pixabay.com/photo/2022/11/19/22/13/ai-generated-7603344_960_720.jpg'); 
+        
+        .mago3-img::before { 
+            content: '🧚';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
         }
         
         .position {
@@ -502,15 +702,14 @@
             border-radius: 50%;
             border: 2px solid #ffd700;
             margin-bottom: 1vh;
-            background-size: cover;
-            background-position: center;
+            background: #1a0f2a;
+            position: relative;
         }
         
-        /* 4º ao 7º lugar - ESCOLHA 4 IMAGENS DIFERENTES */
-        .rank4-img { background-image: url('https://cdn.pixabay.com/photo/2024/02/04/11/23/ai-generated-8551735_960_720.jpg'); }
-        .rank5-img { background-image: url('https://cdn.pixabay.com/photo/2024/02/05/09/47/ai-generated-8554743_960_720.jpg'); }
-        .rank6-img { background-image: url('https://cdn.pixabay.com/photo/2023/07/25/12/12/ai-generated-8149152_960_720.png'); }
-        .rank7-img { background-image: url('https://cdn.pixabay.com/photo/2023/06/21/15/19/ai-generated-8079227_960_720.jpg'); }
+        .rank4-img::before { content: '🧙'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; }
+        .rank5-img::before { content: '🧝'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; }
+        .rank6-img::before { content: '🧚'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; }
+        .rank7-img::before { content: '🧙'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; }
         
         .rank-item .rank-title {
             color: #ffd700;
@@ -707,23 +906,60 @@
             z-index: 150;
             white-space: nowrap;
         }
+
+        /* Gerador de estrelas */
+        .star1 { width: 2px; height: 2px; top: 10%; left: 20%; }
+        .star2 { width: 3px; height: 3px; top: 30%; left: 80%; }
+        .star3 { width: 1px; height: 1px; top: 50%; left: 40%; }
+        .star4 { width: 4px; height: 4px; top: 70%; left: 60%; }
+        .star5 { width: 2px; height: 2px; top: 90%; left: 10%; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Estrelas no fundo -->
+    <div class="stars">
+        <div class="star star1"></div>
+        <div class="star star2"></div>
+        <div class="star star3"></div>
+        <div class="star star4"></div>
+        <div class="star star5"></div>
+    </div>
+    
     <div class="timer-bar">
         <div class="timer-progress" id="timerProgress"></div>
     </div>
     
-    <!-- Magos laterais -->
-    <div class="witch-right"></div>
-    <div class="witch-left"></div>
+    <!-- Magos laterais desenhados com CSS -->
+    <div class="witch-right">
+        <div class="hat"></div>
+        <div class="head">
+            <div class="eye-left"></div>
+            <div class="eye-right"></div>
+            <div class="beard"></div>
+        </div>
+        <div class="robe"></div>
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+    </div>
     
-    <!-- Elementos místicos -->
+    <div class="witch-left">
+        <div class="hat"></div>
+        <div class="head">
+            <div class="eye-left"></div>
+            <div class="eye-right"></div>
+            <div class="beard"></div>
+        </div>
+        <div class="robe"></div>
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+    </div>
+    
+    <!-- Elementos místicos CSS -->
     <div class="mystic-symbol"></div>
     <div class="mystic-symbol-right"></div>
     
-    <!-- Livro flutuante -->
+    <!-- Livro flutuante CSS -->
     <div class="floating-book"></div>
     
     <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
@@ -731,10 +967,9 @@
     <div class="slide active" id="slide0">
         <div class="container-intro">
             <div class="intro-icon">
-                <!-- 3 MAGOS DO TOPO - SUBSTITUA ESTAS URLs -->
-                <img class="mago-icon" src="https://cdn.pixabay.com/photo/2024/05/19/16/17/ai-generated-8773018_960_720.jpg" alt="Mago">
-                <img class="mago-icon" src="https://cdn.pixabay.com/photo/2024/02/27/17/09/ai-generated-8600229_960_720.jpg" alt="Maga">
-                <img class="mago-icon" src="https://cdn.pixabay.com/photo/2024/05/21/18/12/ai-generated-8779020_960_720.jpg" alt="Feiticeiro">
+                <div class="mago-icon"></div>
+                <div class="mago-icon"></div>
+                <div class="mago-icon"></div>
             </div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
             <p class="intro-subtitle">Ordem dos Magos</p>
@@ -994,6 +1229,18 @@
         
         window.onload = function() {
             startTimer();
+            
+            // Criar mais estrelas
+            for (var i = 0; i < 50; i++) {
+                var star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = (Math.random() * 3 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                document.querySelector('.stars').appendChild(star);
+            }
         };
     </script>
 </body>
