@@ -380,38 +380,44 @@
         }
         
         .problema { 
-            font-size: 3vh;
+            font-size: 2.8vh;
             line-height: 1.5;
             margin: 1vh 0;
             color: #1a0f2a;
             text-align: left;
             background: rgba(255, 250, 240, 0.95);
-            padding: 1.8vh 3vw;
+            padding: 2vh 3vw;
             border-left: 9px solid #8a2be2;
             border-radius: 22px 0 22px 0;
         }
         
-        .problema strong:first-child {
+        /* REMOVIDA a regra que escondia o primeiro strong */
+        /* .problema strong:first-child {
             display: none;
+        } */
+        
+        .problema strong {
+            color: #4b0082;
+            font-weight: 900;
         }
         
         .evidencia {
             color: #8a2be2;
             font-weight: bold;
-            font-size: 2.8vh;
+            font-size: 2.6vh;
             display: inline-block;
-            margin: 0.2vh 0;
+            margin: 0.5vh 0;
         }
         
         .instrucao { 
-            font-size: 2.6vh;
+            font-size: 2.4vh;
             margin: 0.8vh 0;
             color: #8a2be2; 
             font-weight: bold;
         }
         
         .prazo { 
-            font-size: 2.4vh;
+            font-size: 2.2vh;
             color: #4b0082; 
             font-weight: bold;
             margin-bottom: 0.5vh;
@@ -813,7 +819,7 @@
             <h1>A RODA DO TEMPO</h1>
             <p class="subtitulo">Problema de Geometria Arcano</p>
             <div class="problema">
-                Uma roda gigante mística gira no Grande Festival de Yule. <strong>Maria e Paulo</strong> estão sentados em cadeiras <strong>diametralmente opostas</strong>.<br><br>
+                <strong>Uma roda gigante mística</strong> gira no Grande Festival de Yule. <strong>Maria e Paulo</strong> estão sentados em cadeiras <strong>diametralmente opostas</strong>.<br><br>
                 <span class="evidencia">PRIMEIRA VISÃO:</span> Quando Maria está a <strong>3 metros</strong> de altura, Paulo está a <strong>5 metros</strong>.<br><br>
                 <span class="evidencia">SEGUNDA VISÃO:</span> A <strong>roda gigante</strong> continua girando no mesmo sentido...<br><br>
                 <strong style="font-size: 1.2em; color: #8a2be2;">QUAL A ALTURA DE PAULO QUANDO MARIA ATINGIR 7 METROS?</strong><br>
