@@ -26,13 +26,14 @@
             z-index: 1;
         }
         
+        /* Magos laterais - SUBSTITUA ESTAS URLs */
         .witch-right {
             position: fixed;
             right: 0;
             bottom: 0;
             width: 28vh;
             height: 60vh;
-            background: url('https://images.unsplash.com/photo-1541907489-e7d2d2c3f3b6?w=500&h=800&fit=crop') no-repeat;
+            background: url('https://cdn.pixabay.com/photo/2020/11/07/13/41/wizard-5720477_960_720.png') no-repeat;
             background-size: cover;
             background-position: center 30%;
             z-index: 5;
@@ -42,21 +43,60 @@
             pointer-events: none;
         }
         
+        .witch-left {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 28vh;
+            height: 60vh;
+            background: url('https://cdn.pixabay.com/photo/2017/01/31/16/00/witch-2025988_960_720.png') no-repeat;
+            background-size: cover;
+            background-position: center 30%;
+            z-index: 5;
+            opacity: 0.4;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+            pointer-events: none;
+        }
+        
+        /* Livro flutuante */
         .floating-book {
             position: fixed;
             top: 2vh;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 5rem;
+            width: 120px;
+            height: 120px;
+            background: url('https://cdn.pixabay.com/photo/2018/01/17/18/43/book-3088775_960_720.png') no-repeat center;
+            background-size: contain;
             z-index: 5;
             filter: drop-shadow(0 0 40px #8a2be2);
-            text-shadow: 0 0 30px rgba(0,0,0,0.5);
-            color: #ffd700;
         }
         
-        /* Fallback para símbolos */
-        .symbol {
-            font-family: 'Arial Unicode MS', 'Segoe UI Symbol', 'Arial', sans-serif;
+        /* Símbolos místicos */
+        .mystic-symbol {
+            position: fixed;
+            top: 15vh;
+            left: 5vw;
+            width: 80px;
+            height: 80px;
+            background: url('https://cdn.pixabay.com/photo/2013/07/13/01/24/crystal-ball-155437_960_720.png') no-repeat center;
+            background-size: contain;
+            z-index: 4;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 20px #ffd700);
+        }
+        
+        .mystic-symbol-right {
+            position: fixed;
+            bottom: 15vh;
+            right: 5vw;
+            width: 100px;
+            height: 100px;
+            background: url('https://cdn.pixabay.com/photo/2017/01/31/23/03/magic-2027927_960_720.png') no-repeat center;
+            background-size: contain;
+            z-index: 4;
+            opacity: 0.5;
+            filter: drop-shadow(0 0 20px #8a2be2);
         }
         
         .timer-bar {
@@ -147,12 +187,36 @@
             border-radius: 80px 30px 80px 30px;
             border: 4px solid rgba(184, 134, 11, 0.7);
             margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://cdn.pixabay.com/photo/2016/03/31/18/42/background-1295117_960_720.png') repeat;
+            opacity: 0.1;
+            pointer-events: none;
         }
         
         .intro-icon {
-            font-size: 8vh;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
             margin-bottom: 1.5vh;
-            color: #ffd700;
+        }
+        
+        .mago-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 30px #8a2be2;
+            object-fit: cover;
         }
         
         .intro-title {
@@ -162,6 +226,8 @@
             text-shadow: 4px 4px 0 #4b0082;
             font-weight: 900;
             letter-spacing: 5px;
+            position: relative;
+            z-index: 2;
         }
         
         .intro-subtitle {
@@ -220,14 +286,21 @@
             padding: 0.8vh 2vw;
             border: 2px solid #b8860b;
             border-radius: 40px 8px 40px 8px;
+            z-index: 21;
         }
         
         .crystal-ball {
             position: absolute;
-            top: -20px;
+            top: -30px;
             right: 3.5vw;
-            font-size: 6.5vh;
-            color: #8a2be2;
+            width: 80px;
+            height: 80px;
+            background: url('https://cdn.pixabay.com/photo/2017/08/01/01/33/blue-2562528_960_720.jpg') no-repeat center;
+            background-size: cover;
+            border-radius: 50%;
+            border: 3px solid #8a2be2;
+            box-shadow: 0 0 30px #8a2be2;
+            z-index: 21;
         }
         
         .container-desafio h1 { 
@@ -284,6 +357,9 @@
             width: 1400px;
             padding: 2vh 2vw;
             margin: auto;
+            background: rgba(20, 10, 30, 0.85);
+            border-radius: 70px 25px 70px 25px;
+            border: 5px solid #ffd700;
         }
         
         .ranking-title {
@@ -316,33 +392,51 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-radius: 40px 15px 40px 15px;
         }
         
         .primeiro {
             width: 28vw;
-            height: 45vh;
+            min-height: 45vh;
             border-color: #ffd700;
-            background: #0a6b0a;
+            background: linear-gradient(135deg, #0a6b0a, #1a4a1a);
         }
         
         .segundo {
             width: 24vw;
-            height: 40vh;
+            min-height: 40vh;
             border-color: #c0c0c0;
-            background: #8b0000;
+            background: linear-gradient(135deg, #8b0000, #4a0000);
         }
         
         .terceiro {
             width: 24vw;
-            height: 36vh;
+            min-height: 36vh;
             border-color: #cd7f32;
-            background: #0a2a4a;
+            background: linear-gradient(135deg, #0a2a4a, #0a1a2a);
         }
         
-        .badge {
-            font-size: 6vh;
-            margin-bottom: 0.8vh;
-            color: #ffd700;
+        .mago-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            margin: 0 auto 1vh;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* ===== ÁREA PARA SUBSTITUIR AS IMAGENS DOS MAGOS ===== */
+        /* 1º, 2º e 3º lugares - ESCOLHA 3 IMAGENS DIFERENTES */
+        .mago1-img { 
+            background-image: url('https://cdn.pixabay.com/photo/2023/06/06/17/02/wizard-8045640_960_720.jpg'); 
+        }
+        .mago2-img { 
+            background-image: url('https://cdn.pixabay.com/photo/2023/03/14/15/19/wizard-7852700_960_720.jpg'); 
+        }
+        .mago3-img { 
+            background-image: url('https://cdn.pixabay.com/photo/2022/11/19/22/13/ai-generated-7603344_960_720.jpg'); 
         }
         
         .position {
@@ -397,7 +491,26 @@
             font-size: 2.5vh;
             color: #e6d5b8;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+        
+        .small-mago {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #ffd700;
+            margin-bottom: 1vh;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* 4º ao 7º lugar - ESCOLHA 4 IMAGENS DIFERENTES */
+        .rank4-img { background-image: url('https://cdn.pixabay.com/photo/2024/02/04/11/23/ai-generated-8551735_960_720.jpg'); }
+        .rank5-img { background-image: url('https://cdn.pixabay.com/photo/2024/02/05/09/47/ai-generated-8554743_960_720.jpg'); }
+        .rank6-img { background-image: url('https://cdn.pixabay.com/photo/2023/07/25/12/12/ai-generated-8149152_960_720.png'); }
+        .rank7-img { background-image: url('https://cdn.pixabay.com/photo/2023/06/21/15/19/ai-generated-8079227_960_720.jpg'); }
         
         .rank-item .rank-title {
             color: #ffd700;
@@ -594,17 +707,6 @@
             z-index: 150;
             white-space: nowrap;
         }
-
-        /* Fallback específico para navegadores muito antigos */
-        .no-emoji .emoji-text {
-            display: none;
-        }
-        .no-emoji .emoji-fallback {
-            display: inline;
-        }
-        .emoji-fallback {
-            display: none;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -613,20 +715,33 @@
         <div class="timer-progress" id="timerProgress"></div>
     </div>
     
+    <!-- Magos laterais -->
     <div class="witch-right"></div>
-    <div class="floating-book">⌘ ☯ ⚡</div>
+    <div class="witch-left"></div>
     
-    <div class="ia-credit">☾ Material desenvolvido com auxílio de Perplexity e DeepSeek ☯</div>
+    <!-- Elementos místicos -->
+    <div class="mystic-symbol"></div>
+    <div class="mystic-symbol-right"></div>
+    
+    <!-- Livro flutuante -->
+    <div class="floating-book"></div>
+    
+    <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
     
     <div class="slide active" id="slide0">
         <div class="container-intro">
-            <div class="intro-icon">☾ ☯ ⚡ ⌘</div>
+            <div class="intro-icon">
+                <!-- 3 MAGOS DO TOPO - SUBSTITUA ESTAS URLs -->
+                <img class="mago-icon" src="https://cdn.pixabay.com/photo/2024/05/19/16/17/ai-generated-8773018_960_720.jpg" alt="Mago">
+                <img class="mago-icon" src="https://cdn.pixabay.com/photo/2024/02/27/17/09/ai-generated-8600229_960_720.jpg" alt="Maga">
+                <img class="mago-icon" src="https://cdn.pixabay.com/photo/2024/05/21/18/12/ai-generated-8779020_960_720.jpg" alt="Feiticeiro">
+            </div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
             <p class="intro-subtitle">Ordem dos Magos</p>
             <p class="intro-cta">
-                ☾ Desvende os mistérios arcanos<br>
-                ☯ Domine a geometria mística<br>
-                ⚡ Eleve-se nos círculos da magia
+                Desvende os mistérios arcanos<br>
+                Domine a geometria mística<br>
+                Eleve-se nos círculos da magia
             </p>
             <p class="intro-highlight">
                 UM ENIGMA TE ESPERA
@@ -641,32 +756,32 @@
     
     <div class="slide" id="slide1">
         <div class="container-desafio">
-            <div class="spell-number">ENIGMA #001</div>
-            <div class="crystal-ball">◈</div>
+            <div class="spell-number">ENIGMA 001</div>
+            <div class="crystal-ball"></div>
             
-            <h1>⌘ A RODA DO TEMPO ⌘</h1>
+            <h1>A RODA DO TEMPO</h1>
             <p class="subtitulo">Problema de Geometria Arcano</p>
             <div class="problema">
-                <strong>⌘ ENUNCIADO DO GRÃO-MESTRE:</strong><br><br>
+                <strong>ENUNCIADO DO GRÃO-MESTRE:</strong><br><br>
                 Uma <strong>roda gigante mística</strong> gira no Grande Festival de Yule. <strong>Maria e Paulo</strong> estão sentados em cadeiras <strong>diametralmente opostas</strong> (posições opostas na roda).<br><br>
-                <span class="evidencia">⚡ 1ª VISÃO:</span> Quando Maria está a <strong>3 metros</strong> de altura do solo, Paulo encontra-se a <strong>5 metros</strong> de altura.<br><br>
-                <span class="evidencia">☾ 2ª VISÃO:</span> A roda continua girando no mesmo sentido, como as estações do ano...<br><br>
-                <strong style="font-size: 1.1em; color: #8a2be2;">❓ QUAL SERÁ A ALTURA DE PAULO QUANDO MARIA ATINGIR 7 METROS?</strong><br><br>
-                <em style="font-size: 0.95em;">⌘ Trace o círculo mágico em pergaminho e explique seu raciocínio! Dica: a simetria do círculo revela verdades ocultas.</em>
+                <span class="evidencia">PRIMEIRA VISÃO:</span> Quando Maria está a <strong>3 metros</strong> de altura do solo, Paulo encontra-se a <strong>5 metros</strong> de altura.<br><br>
+                <span class="evidencia">SEGUNDA VISÃO:</span> A roda continua girando no mesmo sentido, como as estações do ano...<br><br>
+                <strong style="font-size: 1.1em; color: #8a2be2;">QUAL SERÁ A ALTURA DE PAULO QUANDO MARIA ATINGIR 7 METROS?</strong><br><br>
+                <em style="font-size: 0.95em;">Trace o círculo mágico em pergaminho e explique seu raciocínio! Dica: a simetria do círculo revela verdades ocultas.</em>
             </div>
-            <p class="instrucao">⌘ Envie: Pergaminho com a resolução + nome/turma</p>
-            <p class="prazo">⏰ Prazo: Lua Crescente (25/03 23h59)</p>
+            <p class="instrucao">Envie: Pergaminho com a resolução + nome/turma</p>
+            <p class="prazo">Prazo: Lua Crescente (25/03 23h59)</p>
         </div>
         
         <div class="qr-container" onclick="window.location.href='https://forms.gle/rq2RunrMKTJh14X79'">
-            <div class="qr-label">⌘ ENVIAR RESPOSTA</div>
+            <div class="qr-label">ENVIAR RESPOSTA</div>
             <div class="qr-code-wrapper">
                 <a href="https://forms.gle/rq2RunrMKTJh14X79">
                 <img src="frame1.png" 
                      alt="QR Code para formulário"/>
                     </a>
             </div>
-            <div class="qr-footer">☯ Aponte a câmera</div>
+            <div class="qr-footer">Aponte a câmera</div>
         </div>
     </div>
     
@@ -677,47 +792,51 @@
             
             <div class="podio">
                 <div class="podio-place segundo">
-                    <div class="badge">☾</div>
-                    <div class="position">2º</div>
+                    <div class="mago-img mago2-img"></div>
+                    <div class="position">2º LUGAR</div>
                     <div class="rank-badge">Maga Celestial</div>
                     <div class="name">Aluno 2</div>
                     <div class="points">14</div>
-                    <div class="points-small">⚡⚡⚡⚡⚡</div>
+                    <div class="points-small">Nível 5</div>
                 </div>
                 
                 <div class="podio-place primeiro">
-                    <div class="badge">☯</div>
-                    <div class="position">1º</div>
+                    <div class="mago-img mago1-img"></div>
+                    <div class="position">1º LUGAR</div>
                     <div class="rank-badge">Mago Supremo</div>
                     <div class="name">Aluno 1</div>
                     <div class="points">15</div>
-                    <div class="points-small">⚡⚡⚡⚡⚡⚡</div>
+                    <div class="points-small">Nível 6</div>
                 </div>
                 
                 <div class="podio-place terceiro">
-                    <div class="badge">◈</div>
-                    <div class="position">3º</div>
+                    <div class="mago-img mago3-img"></div>
+                    <div class="position">3º LUGAR</div>
                     <div class="rank-badge">Mago das Sombras</div>
                     <div class="name">Aluno 3</div>
                     <div class="points">13</div>
-                    <div class="points-small">⚡⚡⚡⚡⚡</div>
+                    <div class="points-small">Nível 5</div>
                 </div>
             </div>
             
             <div class="ranking-grid">
                 <div class="rank-item">
+                    <div class="small-mago rank4-img"></div>
                     4º Aluno 4 - 12<br>
                     <span class="rank-title">Mago Elemental</span>
                 </div>
                 <div class="rank-item">
+                    <div class="small-mago rank5-img"></div>
                     5º Aluno 5 - 11<br>
                     <span class="rank-title">Feiticeiro Lunar</span>
                 </div>
                 <div class="rank-item">
+                    <div class="small-mago rank6-img"></div>
                     6º Aluno 6 - 10<br>
                     <span class="rank-title">Vidente</span>
                 </div>
                 <div class="rank-item">
+                    <div class="small-mago rank7-img"></div>
                     7º Aluno 7 - 9<br>
                     <span class="rank-title">Escriba Mágico</span>
                 </div>
@@ -727,34 +846,34 @@
     
     <div class="slide" id="slide3">
         <div class="container-regras">
-            <h2 class="regras-title">⌘ DECRETO ARCANO ⌘</h2>
+            <h2 class="regras-title">DECRETO ARCANO</h2>
             <p class="regras-subtitle">Regras e Pontuação</p>
             
             <div class="regras-grid">
                 <div class="regras-col">
-                    <h3>⚡ PARTICIPAÇÃO</h3>
+                    <h3>PARTICIPAÇÃO</h3>
                     <div class="regras-item">
-                        <strong>⌘ Prazo Final:</strong>
+                        <strong>Prazo Final:</strong>
                         Próxima Lua Crescente - 25/03/2026
                     </div>
                     <div class="regras-item">
-                        <strong>☯ Público:</strong>
+                        <strong>Público:</strong>
                         Todos estudantes do ensino médio integrado
                     </div>
                     <div class="regras-item">
-                        <strong>⚡ Extra:</strong>
+                        <strong>Extra:</strong>
                         Atendimento do prof. Jonatan (sexta à tarde) explicando a resolução = +1 ponto
                     </div>
                 </div>
                 
                 <div class="regras-col">
-                    <h3>🏆 CRITÉRIO DE AVALIAÇÃO</h3>
+                    <h3>CRITÉRIO DE AVALIAÇÃO</h3>
                     <div class="criterio-destaque">
-                        <p>⌘ AS 7 RESPOSTAS MAIS BEM FUNDAMENTADAS</p>
+                        <p>AS 7 RESPOSTAS MAIS BEM FUNDAMENTADAS</p>
                         <small style="color: #b19cd9;">Empate no fundamento? Desempate por agilidade (quem enviou antes)</small>
                     </div>
                     
-                    <h3 style="margin-top: 1.5vh;">⌘ PONTUAÇÃO</h3>
+                    <h3 style="margin-top: 1.5vh;">PONTUAÇÃO</h3>
                     <div class="pontuacao-tabela">
                         <div class="pontuacao-item">
                             <div class="pontuacao-pos">1º</div>
@@ -777,13 +896,13 @@
             </div>
             
             <div class="extra-point">
-                <strong>☯ VALIDAÇÃO:</strong> Respostas avaliadas pelo Grão-Conselho
+                <strong>VALIDAÇÃO:</strong> Respostas avaliadas pelo Grão-Conselho
             </div>
         </div>
     </div>
     
-    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◄ Anterior</button>
-    <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo ►</button>
+    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">Anterior</button>
+    <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo</button>
     
     <div class="slide-indicator">
         <span class="dot active" onclick="goToSlide(0)"></span>
@@ -798,7 +917,7 @@
         var timerInterval = null;
         var timerProgress = document.getElementById('timerProgress');
         
-        var slideTimes = [20, 60, 20, 20]; // tempos em segundos
+        var slideTimes = [20, 60, 20, 20];
         
         function showSlide(n) {
             var slides = document.getElementsByClassName('slide');
@@ -875,13 +994,6 @@
         
         window.onload = function() {
             startTimer();
-            
-            // Detecta se o navegador não suporta emojis (fallback)
-            var testEmoji = document.createElement('span');
-            testEmoji.innerHTML = '☯';
-            if (testEmoji.offsetWidth === 0) {
-                document.body.className += ' no-emoji';
-            }
         };
     </script>
 </body>
