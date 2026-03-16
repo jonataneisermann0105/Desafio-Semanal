@@ -6,14 +6,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Cinzel', 'Georgia', 'Times New Roman', serif;
-            background: #0a0514;
+            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop') no-repeat center center fixed;
+            background-size: cover;
             width: 100vw;
             height: 100vh;
             overflow: hidden;
             position: relative;
         }
         
-        /* Fundo estrelado com CSS puro */
         body::before {
             content: '';
             position: fixed;
@@ -21,8 +21,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 30%, #2a1b3d, #0a0514);
-            z-index: 0;
+            background: rgba(10, 5, 20, 0.7);
+            pointer-events: none;
+            z-index: 1;
         }
         
         /* Estrelas com CSS */
@@ -32,7 +33,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 2;
+            pointer-events: none;
         }
         
         .star {
@@ -47,118 +49,6 @@
             50% { opacity: 1; }
             100% { opacity: 0.2; }
         }
-        
-        /* Magos laterais desenhados com CSS */
-        .witch-right {
-            position: fixed;
-            right: 2vw;
-            bottom: 0;
-            width: 25vh;
-            height: 55vh;
-            z-index: 5;
-            opacity: 0.45;
-            filter: drop-shadow(0 0 30px #8a2be2);
-            transform: scaleX(-1);
-            pointer-events: none;
-        }
-        
-        .witch-left {
-            position: fixed;
-            left: 2vw;
-            bottom: 0;
-            width: 25vh;
-            height: 55vh;
-            z-index: 5;
-            opacity: 0.4;
-            filter: drop-shadow(0 0 30px #ffd700);
-            pointer-events: none;
-        }
-        
-        /* Chapéu do mago */
-        .hat {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 8vh solid transparent;
-            border-right: 8vh solid transparent;
-            border-bottom: 15vh solid #4b0082;
-        }
-        
-        .hat::after {
-            content: '';
-            position: absolute;
-            top: 10vh;
-            left: -3vh;
-            width: 6vh;
-            height: 3vh;
-            background: #ffd700;
-            border-radius: 50%;
-        }
-        
-        /* Cabeça do mago */
-        .head {
-            position: absolute;
-            top: 13vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10vh;
-            height: 10vh;
-            background: #e6d5b8;
-            border-radius: 50%;
-            border: 0.5vh solid #4b0082;
-        }
-        
-        /* Olhos */
-        .eye-left, .eye-right {
-            position: absolute;
-            top: 4vh;
-            width: 1.5vh;
-            height: 1.5vh;
-            background: #2a1b3d;
-            border-radius: 50%;
-        }
-        .eye-left { left: 2vh; }
-        .eye-right { right: 2vh; }
-        
-        /* Barba */
-        .beard {
-            position: absolute;
-            top: 6vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6vh;
-            height: 4vh;
-            background: #b19cd9;
-            border-radius: 0 0 3vh 3vh;
-        }
-        
-        /* Corpo do mago (manto) */
-        .robe {
-            position: absolute;
-            top: 22vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 14vh;
-            height: 25vh;
-            background: #2a1b3d;
-            border-radius: 5vh 5vh 0 0;
-            border: 0.5vh solid #b8860b;
-        }
-        
-        /* Braços */
-        .arm-left, .arm-right {
-            position: absolute;
-            top: 24vh;
-            width: 4vh;
-            height: 12vh;
-            background: #2a1b3d;
-            border: 0.5vh solid #b8860b;
-        }
-        .arm-left { left: 3vh; transform: rotate(10deg); }
-        .arm-right { right: 3vh; transform: rotate(-10deg); }
         
         /* Livro flutuante desenhado com CSS */
         .floating-book {
@@ -382,6 +272,7 @@
             margin: auto;
             position: relative;
             overflow: hidden;
+            z-index: 15;
         }
         
         .intro-icon {
@@ -391,7 +282,7 @@
             margin-bottom: 1.5vh;
         }
         
-        /* Ícones de mago CSS para as bolinhas */
+        /* Ícones de mago como símbolos */
         .mago-icon {
             width: 80px;
             height: 80px;
@@ -400,22 +291,12 @@
             box-shadow: 0 0 30px #8a2be2;
             background: #2a1b3d;
             position: relative;
-        }
-        
-        .mago-icon::before {
-            content: '🧙';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #ffd700;
         }
-        
-        /* Variações para diferentes magos */
-        .mago-icon:nth-child(1)::before { content: '🧙'; }
-        .mago-icon:nth-child(2)::before { content: '🧝'; }
-        .mago-icon:nth-child(3)::before { content: '🧚'; }
         
         .intro-title {
             font-size: 6vh;
@@ -544,6 +425,7 @@
             background: rgba(20, 10, 30, 0.85);
             border-radius: 70px 25px 70px 25px;
             border: 5px solid #ffd700;
+            z-index: 15;
         }
         
         .ranking-title {
@@ -600,7 +482,7 @@
             background: linear-gradient(135deg, #0a2a4a, #0a1a2a);
         }
         
-        /* Bolinhas do pódio com CSS */
+        /* Bolinhas do pódio com símbolos */
         .mago-img {
             width: 100px;
             height: 100px;
@@ -610,33 +492,11 @@
             background: #2a1b3d;
             position: relative;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-        }
-        
-        .mago1-img::before { 
-            content: '🧙';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 50px;
-        }
-        
-        .mago2-img::before { 
-            content: '🧝';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 50px;
-        }
-        
-        .mago3-img::before { 
-            content: '🧚';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 50px;
+            color: #ffd700;
         }
         
         .position {
@@ -704,12 +564,12 @@
             margin-bottom: 1vh;
             background: #1a0f2a;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #ffd700;
         }
-        
-        .rank4-img::before { content: '🧙'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; }
-        .rank5-img::before { content: '🧝'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; }
-        .rank6-img::before { content: '🧚'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; }
-        .rank7-img::before { content: '🧙'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; }
         
         .rank-item .rank-title {
             color: #ffd700;
@@ -728,7 +588,7 @@
             border: 5px solid #ffd700;
             margin: auto;
             position: relative;
-            z-index: 20;
+            z-index: 15;
             color: #e6d5b8;
         }
         
@@ -906,56 +766,18 @@
             z-index: 150;
             white-space: nowrap;
         }
-
-        /* Gerador de estrelas */
-        .star1 { width: 2px; height: 2px; top: 10%; left: 20%; }
-        .star2 { width: 3px; height: 3px; top: 30%; left: 80%; }
-        .star3 { width: 1px; height: 1px; top: 50%; left: 40%; }
-        .star4 { width: 4px; height: 4px; top: 70%; left: 60%; }
-        .star5 { width: 2px; height: 2px; top: 90%; left: 10%; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Estrelas no fundo -->
-    <div class="stars">
-        <div class="star star1"></div>
-        <div class="star star2"></div>
-        <div class="star star3"></div>
-        <div class="star star4"></div>
-        <div class="star star5"></div>
-    </div>
+    <div class="stars"></div>
     
     <div class="timer-bar">
         <div class="timer-progress" id="timerProgress"></div>
     </div>
     
-    <!-- Magos laterais desenhados com CSS -->
-    <div class="witch-right">
-        <div class="hat"></div>
-        <div class="head">
-            <div class="eye-left"></div>
-            <div class="eye-right"></div>
-            <div class="beard"></div>
-        </div>
-        <div class="robe"></div>
-        <div class="arm-left"></div>
-        <div class="arm-right"></div>
-    </div>
-    
-    <div class="witch-left">
-        <div class="hat"></div>
-        <div class="head">
-            <div class="eye-left"></div>
-            <div class="eye-right"></div>
-            <div class="beard"></div>
-        </div>
-        <div class="robe"></div>
-        <div class="arm-left"></div>
-        <div class="arm-right"></div>
-    </div>
-    
-    <!-- Elementos místicos CSS -->
+    <!-- Elementos místicos CSS (apenas símbolos, sem bonecos) -->
     <div class="mystic-symbol"></div>
     <div class="mystic-symbol-right"></div>
     
@@ -967,9 +789,9 @@
     <div class="slide active" id="slide0">
         <div class="container-intro">
             <div class="intro-icon">
-                <div class="mago-icon"></div>
-                <div class="mago-icon"></div>
-                <div class="mago-icon"></div>
+                <div class="mago-icon">⚡</div>
+                <div class="mago-icon">✨</div>
+                <div class="mago-icon">🔮</div>
             </div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
             <p class="intro-subtitle">Ordem dos Magos</p>
@@ -1027,7 +849,7 @@
             
             <div class="podio">
                 <div class="podio-place segundo">
-                    <div class="mago-img mago2-img"></div>
+                    <div class="mago-img">✨</div>
                     <div class="position">2º LUGAR</div>
                     <div class="rank-badge">Maga Celestial</div>
                     <div class="name">Aluno 2</div>
@@ -1036,7 +858,7 @@
                 </div>
                 
                 <div class="podio-place primeiro">
-                    <div class="mago-img mago1-img"></div>
+                    <div class="mago-img">⚡</div>
                     <div class="position">1º LUGAR</div>
                     <div class="rank-badge">Mago Supremo</div>
                     <div class="name">Aluno 1</div>
@@ -1045,7 +867,7 @@
                 </div>
                 
                 <div class="podio-place terceiro">
-                    <div class="mago-img mago3-img"></div>
+                    <div class="mago-img">🔮</div>
                     <div class="position">3º LUGAR</div>
                     <div class="rank-badge">Mago das Sombras</div>
                     <div class="name">Aluno 3</div>
@@ -1056,22 +878,22 @@
             
             <div class="ranking-grid">
                 <div class="rank-item">
-                    <div class="small-mago rank4-img"></div>
+                    <div class="small-mago">🌙</div>
                     4º Aluno 4 - 12<br>
                     <span class="rank-title">Mago Elemental</span>
                 </div>
                 <div class="rank-item">
-                    <div class="small-mago rank5-img"></div>
+                    <div class="small-mago">☀️</div>
                     5º Aluno 5 - 11<br>
                     <span class="rank-title">Feiticeiro Lunar</span>
                 </div>
                 <div class="rank-item">
-                    <div class="small-mago rank6-img"></div>
+                    <div class="small-mago">⭐</div>
                     6º Aluno 6 - 10<br>
                     <span class="rank-title">Vidente</span>
                 </div>
                 <div class="rank-item">
-                    <div class="small-mago rank7-img"></div>
+                    <div class="small-mago">🌙</div>
                     7º Aluno 7 - 9<br>
                     <span class="rank-title">Escriba Mágico</span>
                 </div>
@@ -1230,7 +1052,7 @@
         window.onload = function() {
             startTimer();
             
-            // Criar mais estrelas
+            // Criar estrelas
             for (var i = 0; i < 50; i++) {
                 var star = document.createElement('div');
                 star.className = 'star';
