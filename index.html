@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Academia Arcana - Ordem dos Magos [TV 50"]</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Academia Arcana - Desafio 2 | Enigma dos Três Algarismos</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -21,12 +23,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 5, 20, 0.7);
+            background: rgba(10, 5, 20, 0.75);
             pointer-events: none;
             z-index: 1;
         }
         
-        /* Estrelas com CSS */
         .stars {
             position: fixed;
             top: 0;
@@ -50,7 +51,6 @@
             100% { opacity: 0.2; }
         }
         
-        /* Livro flutuante desenhado com CSS */
         .floating-book {
             position: fixed;
             top: 2vh;
@@ -93,7 +93,6 @@
             100% { transform: translateX(-50%) translateY(0); }
         }
         
-        /* Bola de cristal CSS */
         .crystal-ball {
             position: absolute;
             top: -30px;
@@ -124,7 +123,6 @@
             100% { box-shadow: 0 0 30px #8a2be2; }
         }
         
-        /* Símbolos místicos CSS */
         .mystic-symbol {
             position: fixed;
             top: 15vh;
@@ -271,7 +269,6 @@
             border: 4px solid rgba(184, 134, 11, 0.7);
             margin: auto;
             position: relative;
-            overflow: hidden;
             z-index: 15;
         }
         
@@ -282,7 +279,6 @@
             margin-bottom: 1.5vh;
         }
         
-        /* Ícones de mago com imagens */
         .mago-icon {
             width: 80px;
             height: 80px;
@@ -301,8 +297,6 @@
             text-shadow: 4px 4px 0 #4b0082;
             font-weight: 900;
             letter-spacing: 5px;
-            position: relative;
-            z-index: 2;
         }
         
         .intro-subtitle {
@@ -341,8 +335,8 @@
         .container-desafio { 
             text-align: center; 
             max-width: 85%;
-            width: 1200px;
-            padding: 2vh 4.5vw 1.5vh;
+            width: 1100px;
+            padding: 2vh 4vw 1.8vh;
             background: rgba(240, 230, 210, 0.96);
             border-radius: 70px 25px 70px 25px;
             border: 5px solid #8a2be2;
@@ -379,26 +373,27 @@
             font-style: italic;
         }
         
-        .problema { 
-            font-size: 2.8vh;
+        .enunciado-original {
+            background: #2a1b3d;
+            border-radius: 30px;
+            padding: 2vh 2vw;
+            margin: 1.5vh 0;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: 3.2vh;
+            color: #ffd700;
+            border: 3px solid #b8860b;
+            font-weight: bold;
             line-height: 1.5;
-            margin: 1vh 0;
-            color: #1a0f2a;
-            text-align: left;
-            background: rgba(255, 250, 240, 0.95);
-            padding: 2vh 3vw;
-            border-left: 9px solid #8a2be2;
-            border-radius: 22px 0 22px 0;
         }
         
-        /* REMOVIDA a regra que escondia o primeiro strong */
-        /* .problema strong:first-child {
-            display: none;
-        } */
+        .enunciado-original p {
+            margin: 0.8vh 0;
+        }
         
-        .problema strong {
-            color: #4b0082;
-            font-weight: 900;
+        .enunciado-original .destaque {
+            color: #ffaa66;
+            font-size: 3.5vh;
         }
         
         .evidencia {
@@ -406,12 +401,24 @@
             font-weight: bold;
             font-size: 2.6vh;
             display: inline-block;
-            margin: 0.5vh 0;
+            margin: 0.8vh 0;
+        }
+        
+        .problema-texto {
+            font-size: 2.8vh;
+            line-height: 1.4;
+            margin: 1.2vh 0;
+            color: #1a0f2a;
+            text-align: left;
+            background: rgba(255, 250, 240, 0.95);
+            padding: 1.8vh 2.5vw;
+            border-left: 9px solid #8a2be2;
+            border-radius: 22px 0 22px 0;
         }
         
         .instrucao { 
             font-size: 2.4vh;
-            margin: 0.8vh 0;
+            margin: 1vh 0;
             color: #8a2be2; 
             font-weight: bold;
         }
@@ -425,8 +432,8 @@
         
         .container-ranking { 
             text-align: center; 
-            max-width: 95%;
-            width: 1400px;
+            max-width: 85%;
+            width: 1100px;
             padding: 1.5vh 1.5vw;
             margin: auto;
             background: rgba(20, 10, 30, 0.85);
@@ -489,7 +496,6 @@
             background: linear-gradient(135deg, #0a2a4a, #0a1a2a);
         }
         
-        /* Bolinhas do pódio com imagens */
         .mago-img {
             width: 80px;
             height: 80px;
@@ -578,122 +584,136 @@
             margin-top: 0.5vh;
         }
         
-        .container-regras {
+        /* NOVO SLIDE: APENAS CRITÉRIOS DE AVALIAÇÃO (SEM METADE ESQUERDA) */
+        .container-criterios {
             text-align: center;
-            max-width: 90%;
-            width: 1300px;
-            padding: 1.5vh 2.5vw;
-            background: rgba(20, 10, 30, 0.95);
+            max-width: 75%;
+            width: 900px;
+            padding: 2.5vh 3vw;
+            background: rgba(20, 10, 30, 0.96);
             border-radius: 70px 25px 70px 25px;
             border: 5px solid #ffd700;
             margin: auto;
             position: relative;
             z-index: 15;
-            color: #e6d5b8;
+            backdrop-filter: blur(3px);
         }
         
-        .regras-title {
+        .criterios-title {
             font-size: 4.5vh;
             color: #ffd700;
-            text-shadow: 0 0 40px rgba(138, 43, 226, 1);
-            margin-bottom: 0.5vh;
+            text-shadow: 0 0 20px #8a2be2;
+            margin-bottom: 2vh;
             letter-spacing: 3px;
         }
         
-        .regras-subtitle {
-            font-size: 2.2vh;
-            color: #b19cd9;
-            margin-bottom: 1.5vh;
-            font-style: italic;
-            border-bottom: 2px solid #b8860b;
-            padding-bottom: 0.3vh;
-        }
-        
-        .regras-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5vw;
-            text-align: left;
-            margin: 1vh 0;
-        }
-        
-        .regras-col {
-            background: rgba(75, 0, 130, 0.3);
-            padding: 1.5vh 1.2vw;
+        .criterio-card {
+            background: rgba(75, 0, 130, 0.5);
+            border: 3px solid #b8860b;
             border-radius: 50px 15px 50px 15px;
-            border: 2px solid #b8860b;
-        }
-        
-        .regras-col h3 {
-            color: #ffd700;
-            font-size: 2.4vh;
-            margin-bottom: 1vh;
+            padding: 2.5vh 2vw;
+            margin: 1.5vh auto;
             text-align: center;
+            width: 90%;
         }
         
-        .regras-item {
-            margin: 1vh 0;
-            font-size: 2vh;
-            line-height: 1.3;
-        }
-        
-        .regras-item strong {
+        .criterio-destaque-novo {
+            font-size: 3.2vh;
             color: #ffd700;
-            font-size: 2.1vh;
-            display: block;
-            margin-bottom: 0.2vh;
+            font-weight: bold;
+            margin-bottom: 1.5vh;
         }
         
-        .criterio-destaque {
+        .criterio-texto {
+            font-size: 2.6vh;
+            color: #e6d5b8;
+            line-height: 1.4;
+        }
+        
+        .criterio-texto strong {
+            color: #ffaa66;
+        }
+        
+        .regra-extra {
+            margin-top: 2.5vh;
             background: rgba(138, 43, 226, 0.4);
+            border-radius: 40px;
+            padding: 1.5vh;
             border: 2px solid #ffd700;
-            border-radius: 40px 10px 40px 10px;
-            padding: 0.8vh;
-            margin: 1vh 0;
-            text-align: center;
         }
         
-        .criterio-destaque p {
+        .regra-extra p {
             color: #ffd700;
             font-size: 2.2vh;
-            font-weight: bold;
         }
         
-        .pontuacao-tabela {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.5vw;
-            margin: 1vh 0;
-        }
-        
-        .pontuacao-item {
-            background: rgba(138, 43, 226, 0.3);
-            padding: 0.8vh;
-            border-radius: 30px 8px 30px 8px;
-            border: 2px solid #ffd700;
+        /* SLIDE DE PONTUAÇÃO POR TURMA (20 segundos) */
+        .container-pontuacao-turmas {
             text-align: center;
+            max-width: 85%;
+            width: 1100px;
+            padding: 3vh 2vw;
+            background: linear-gradient(145deg, #0f0a1f, #1e1230);
+            border-radius: 80px 30px 80px 30px;
+            border: 6px solid #ffd700;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
+            margin: auto;
+            z-index: 15;
         }
         
-        .pontuacao-pos {
-            font-size: 2vh;
+        .turmas-title {
+            font-size: 5vh;
             color: #ffd700;
-            font-weight: bold;
+            text-shadow: 0 0 15px #8a2be2;
+            margin-bottom: 1.5vh;
+            letter-spacing: 4px;
         }
         
-        .pontuacao-valor {
-            font-size: 2.2vh;
+        .turmas-sub {
+            font-size: 2.5vh;
             color: #b19cd9;
+            margin-bottom: 3vh;
+            font-style: italic;
         }
         
-        .extra-point {
-            font-size: 2vh;
+        .turmas-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3vw;
+            flex-wrap: wrap;
+            margin: 2vh 0;
+        }
+        
+        .turma-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #b8860b;
+            border-radius: 60px 20px 60px 20px;
+            padding: 2vh 2vw;
+            min-width: 220px;
+            backdrop-filter: blur(4px);
+            transition: transform 0.3s;
+        }
+        
+        .turma-card h3 {
+            font-size: 3.5vh;
             color: #ffd700;
-            background: rgba(255, 215, 0, 0.1);
-            padding: 0.8vh;
-            border-radius: 40px 10px 40px 10px;
-            border: 2px solid #b8860b;
-            margin: 0.8vh 0;
-            text-align: center;
+            margin-bottom: 1.2vh;
+            border-bottom: 2px solid #8a2be2;
+            display: inline-block;
+            padding-bottom: 0.5vh;
+        }
+        
+        .turma-pontos {
+            font-size: 6vh;
+            font-weight: bold;
+            color: #e6d5b8;
+            margin: 1vh 0;
+            text-shadow: 2px 2px 0 #4b0082;
+        }
+        
+        .turma-detalhe {
+            font-size: 2vh;
+            color: #b19cd9;
         }
         
         .qr-container {
@@ -766,42 +786,43 @@
             z-index: 150;
             white-space: nowrap;
         }
+        
+        @media (max-width: 700px) {
+            .container-criterios { max-width: 90%; }
+            .turma-card { min-width: 160px; }
+            .turma-card h3 { font-size: 2.8vh; }
+            .turma-pontos { font-size: 4.5vh; }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Estrelas no fundo -->
     <div class="stars"></div>
-    
     <div class="timer-bar">
         <div class="timer-progress" id="timerProgress"></div>
     </div>
-    
-    <!-- Elementos místicos CSS -->
     <div class="mystic-symbol"></div>
     <div class="mystic-symbol-right"></div>
-    
-    <!-- Livro flutuante CSS -->
     <div class="floating-book"></div>
-    
     <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
     
+    <!-- SLIDE 0: INTRO -->
     <div class="slide active" id="slide0">
         <div class="container-intro">
             <div class="intro-icon">
-                <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                <div class="mago-icon" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop');"></div>
+                <div class="mago-icon" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div>
+                <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
             </div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
-            <p class="intro-subtitle">Ordem dos Magos</p>
+            <p class="intro-subtitle">Ordem dos Magos • Desafio 2</p>
             <p class="intro-cta">
-                Desvende os mistérios arcanos<br>
-                Domine a geometria mística<br>
-                Eleve-se nos círculos da magia
+                ✦ A Magia dos Números Revela o Caminho ✦<br>
+                Desvende o enigma dos três algarismos<br>
+                Eleve-se nos círculos da sabedoria aritmética
             </p>
             <p class="intro-highlight">
-                UM ENIGMA TE ESPERA
+                O ENIGMA DOS TRÊS ALGARISMOS
             </p>
             <p class="intro-footer">
                 Grão-Conselho dos Magos<br>
@@ -811,175 +832,168 @@
         </div>
     </div>
     
+    <!-- SLIDE 1: DESAFIO -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
-            <div class="spell-number">ENIGMA 001</div>
+            <div class="spell-number">DESAFIO 2</div>
             <div class="crystal-ball"></div>
-            
-            <h1>A RODA DO TEMPO</h1>
-            <p class="subtitulo">Problema de Geometria Arcano</p>
-            <div class="problema">
-                Uma roda gigante mística gira no Grande Festival de Yule. Maria e Paulo estão sentados em cadeiras diametralmente opostas.<br><br>
-                <span class="evidencia">PRIMEIRA VISÃO:</span> Quando Maria está a <strong>3 metros</strong> de altura, Paulo está a <strong>5 metros</strong>.<br><br>
-                <span class="evidencia">SEGUNDA VISÃO:</span> A roda gigante continua girando no mesmo sentido...<br><br>
-                <strong style="font-size: 1.2em; color: #8a2be2;">QUAL A ALTURA DE PAULO QUANDO MARIA ATINGIR 7 METROS?</strong><br>
-                <em style="font-size: 1.0em;">Dica: a simetria do círculo revela verdades ocultas.</em>
+            <h1>🌀 O ENIGMA DOS TRÊS ALGARISMOS 🌀</h1>
+            <p class="subtitulo">Representação Decimal • Equações Diofantinas</p>
+            <div class="enunciado-original">
+                <p>A soma dos números naturais de três algarismos distintos</p>
+                <p class="destaque">n = abc &nbsp;&nbsp;e&nbsp;&nbsp; m = bca</p>
+                <p>é <strong>10 vezes</strong> o produto dos algarismos <strong>a, b e c</strong>.</p>
+                <p style="margin-top: 1.2vh;">✨ <strong>Determine o número n.</strong> ✨</p>
             </div>
-            <p class="instrucao">Envie: Pergaminho com resolução detalhada</p>
-            <p class="prazo">Prazo: Lua Crescente (25/03 23h59)</p>
+            <div class="problema-texto">
+                <span class="evidencia">📌 OBSERVAÇÃO:</span><br>
+                As notações n = abc e m = bca não indicam produtos,<br>
+                e sim a representação de n e m no sistema decimal.<br><br>
+                Exemplo: Se a = 1, b = 2, c = 3 → n = 123 e m = 231.
+            </div>
+            <p class="instrucao">📜 ENVIAR: Pergaminho com resolução detalhada e o valor de n</p>
+            <p class="prazo">⏳ Prazo: Lua Cheia (01/04 23h59) • Pontuação para os 5 melhores fundamentos</p>
         </div>
-        
         <div class="qr-container" onclick="window.location.href='https://forms.gle/rq2RunrMKTJh14X79'">
-            <div class="qr-label">ENVIAR RESPOSTA</div>
+            <div class="qr-label">📤 ENVIAR RESPOSTA</div>
             <div class="qr-code-wrapper">
                 <a href="https://forms.gle/rq2RunrMKTJh14X79">
-                <img src="frame1.png" 
-                     alt="QR Code para formulário"/>
-                    </a>
+                    <img src="frame2.png" alt="QR Code para formulário"/>
+                </a>
             </div>
             <div class="qr-footer">Aponte a câmera</div>
         </div>
     </div>
     
+    <!-- SLIDE 2: RANKING DESAFIO 1 (mantido) -->
     <div class="slide" id="slide2">
         <div class="container-ranking">
             <h2 class="ranking-title">GRÃO-CONSELHO</h2>
-            <p class="ranking-subtitle">Os Arquimagos da Academia</p>
-            
+            <p class="ranking-subtitle">Os Arquimagos da Academia • Desafio 1</p>
             <div class="podio">
                 <div class="podio-place segundo">
-                    <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
                     <div class="position">2º LUGAR</div>
-                    <div class="rank-badge">Maga Celestial</div>
-                    <div class="name">Aluno 2</div>
-                    <div class="points">14</div>
-                    <div class="points-small">Nível 5</div>
+                    <div class="rank-badge">Mago do Tempo</div>
+                    <div class="name">Gustavo Oliveira (IIW2024A)</div>
+                    <div class="points">3 pontos</div>
+                    <div class="points-small">Nível 1</div>
                 </div>
-                
                 <div class="podio-place primeiro">
-                    <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div>
                     <div class="position">1º LUGAR</div>
                     <div class="rank-badge">Mago Supremo</div>
-                    <div class="name">Aluno 1</div>
-                    <div class="points">15</div>
-                    <div class="points-small">Nível 6</div>
+                    <div class="name">Pedro Sozza (EIN2023)</div>
+                    <div class="points">4 pontos</div>
+                    <div class="points-small">Nível 1</div>
                 </div>
-                
                 <div class="podio-place terceiro">
-                    <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
                     <div class="position">3º LUGAR</div>
                     <div class="rank-badge">Mago Elemental</div>
-                    <div class="name">Aluno 3</div>
-                    <div class="points">13</div>
-                    <div class="points-small">Nível 5</div>
+                    <div class="name">Eduardo Ambrosio (EIN2024)</div>
+                    <div class="points">2 pontos</div>
+                    <div class="points-small">Nível 1</div>
                 </div>
             </div>
-            
             <div class="ranking-grid">
                 <div class="rank-item">
-                    <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1572979129454-dce4055c1f68?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                    4º Aluno 4 - 12<br>
+                    <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1572979129454-dce4055c1f68?q=80&w=1171&auto=format&fit=crop');"></div>
+                    4º Pedro Gomes (IIW2024A) - 1 ponto<br>
                     <span class="rank-title">Mago das Sombras</span>
                 </div>
                 <div class="rank-item">
-                    <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1771148835096-b843d0b539a2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                    5º Aluno 5 - 11<br>
+                    <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1771148835096-b843d0b539a2?q=80&w=687&auto=format&fit=crop');"></div>
+                    5º Diego Ribeiro (EIN2023) - 1 ponto<br>
                     <span class="rank-title">Feiticeiro Lunar</span>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- SLIDE 3: APENAS CRITÉRIOS DE AVALIAÇÃO (metade esquerda removida, nova regra: menos erros e prioridade envio) -->
     <div class="slide" id="slide3">
-        <div class="container-regras">
-            <h2 class="regras-title">DECRETO ARCANO</h2>
-            <p class="regras-subtitle">Regras e Pontuação</p>
-            
-            <div class="regras-grid">
-                <div class="regras-col">
-                    <h3>PARTICIPAÇÃO</h3>
-                    <div class="regras-item">
-                        <strong>Prazo Final:</strong>
-                        Próxima Lua Crescente - 25/03/2026
-                    </div>
-                    <div class="regras-item">
-                        <strong>Público:</strong>
-                        Todos estudantes do ensino médio integrado
-                    </div>
-                    <div class="regras-item">
-                        <strong>Extra:</strong>
-                        Atendimento do prof. Jonatan (sexta à tarde) explicando a resolução = +1 ponto
-                    </div>
-                </div>
-                
-                <div class="regras-col">
-                    <h3>CRITÉRIO DE AVALIAÇÃO</h3>
-                    <div class="criterio-destaque">
-                        <p>AS 5 RESPOSTAS MAIS BEM FUNDAMENTADAS</p>
-                        <small style="color: #b19cd9;">Empate no fundamento? Desempate por agilidade (quem enviou antes)</small>
-                    </div>
-                    
-                    <h3 style="margin-top: 1.5vh;">PONTUAÇÃO</h3>
-                    <div class="pontuacao-tabela">
-                        <div class="pontuacao-item">
-                            <div class="pontuacao-pos">1º</div>
-                            <div class="pontuacao-valor">4 pts</div>
-                        </div>
-                        <div class="pontuacao-item">
-                            <div class="pontuacao-pos">2º</div>
-                            <div class="pontuacao-valor">3 pts</div>
-                        </div>
-                        <div class="pontuacao-item">
-                            <div class="pontuacao-pos">3º</div>
-                            <div class="pontuacao-valor">2 pts</div>
-                        </div>
-                        <div class="pontuacao-item">
-                            <div class="pontuacao-pos">4º e 5º</div>
-                            <div class="pontuacao-valor">1 pt</div>
-                        </div>
-                    </div>
-                </div>
+        <div class="container-criterios">
+            <h2 class="criterios-title">📜 DECRETO DOS CRITÉRIOS 📜</h2>
+            <div class="criterio-card">
+                <div class="criterio-destaque-novo">✨ AVALIAÇÃO POR PRECISÃO ✨</div>
+<div class="criterio-texto">
+    <strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>
+    
+    ➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>
+    
+    ➤ Critério de desempate: <strong>ordem de envio</strong>.<br>
+</div>
             </div>
-            
-            <div class="extra-point">
-                <strong>VALIDAÇÃO:</strong> Respostas avaliadas pelo Grão-Conselho
+            <div class="regra-extra">
+                <p>🏆 Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p>
             </div>
         </div>
     </div>
     
-    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">Anterior</button>
-    <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo</button>
-    
-    <div class="slide-indicator">
-        <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot" onclick="goToSlide(1)"></span>
-        <span class="dot" onclick="goToSlide(2)"></span>
-        <span class="dot" onclick="goToSlide(3)"></span>
+    <!-- NOVO SLIDE 4: PONTUAÇÃO POR TURMA (20 segundos) -->
+    <div class="slide" id="slide4">
+        <div class="container-pontuacao-turmas">
+            <h2 class="turmas-title">🏆 PONTUAÇÃO TOTAL POR TURMA 🏆</h2>
+            <p class="turmas-sub">Pontuação acumulada - Desafio 1</p>
+            <div class="turmas-grid">
+                <div class="turma-card">
+                    <h3>⚡ EIN2023</h3>
+                    <div class="turma-pontos">5 pts</div>
+                    <div class="turma-detalhe">Magos Veteranos</div>
+                </div>
+                <div class="turma-card">
+                    <h3>🔥 IIW2024A</h3>
+                    <div class="turma-pontos">4 pts</div>
+                    <div class="turma-detalhe">Chamas da Inovação</div>
+                </div>
+                <div class="turma-card">
+                    <h3>🌙 EIN2024</h3>
+                    <div class="turma-pontos">2 pts</div>
+                    <div class="turma-detalhe">Sábios Lunares</div>
+                </div>
+            </div>
+            <div class="regra-extra" style="margin-top: 2vh;">
+                <p>🏅 A turma líder ao final do ciclo receberá honraria arcana!</p>
+                <p style="font-size: 1.8vh;">Pontuação atualizada após cada desafio.</p>
+            </div>
+        </div>
     </div>
     
+    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◀ Anterior</button>
+    <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo ▶</button>
+    
+    <div class="slide-indicator" id="slideIndicators"></div>
+    
     <script>
+        // agora totalSlides = 5 (0 a 4)
         var currentSlide = 0;
-        var totalSlides = 4;
+        var totalSlides = 5;
         var timerInterval = null;
         var timerProgress = document.getElementById('timerProgress');
+        // duração dos slides: intro 20s, desafio 100s, ranking 25s, criterios 20s, pontuacao turmas 20s
+        var slideTimes = [20, 100, 25, 20, 20];
         
-        var slideTimes = [20, 60, 20, 20];
+        function updateIndicators() {
+            const container = document.getElementById('slideIndicators');
+            if(!container) return;
+            let dotsHtml = '';
+            for(let i=0; i<totalSlides; i++) {
+                dotsHtml += `<span class="dot ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})"></span>`;
+            }
+            container.innerHTML = dotsHtml;
+        }
         
         function showSlide(n) {
             var slides = document.getElementsByClassName('slide');
-            var dots = document.getElementsByClassName('dot');
-            
             if (n >= totalSlides) currentSlide = 0;
             if (n < 0) currentSlide = totalSlides - 1;
             
             for (var i = 0; i < slides.length; i++) {
                 slides[i].className = slides[i].className.replace(' active', '');
-                dots[i].className = dots[i].className.replace(' active', '');
             }
-            
             slides[currentSlide].className += ' active';
-            dots[currentSlide].className += ' active';
-            
+            updateIndicators();
             resetTimer();
         }
         
@@ -997,15 +1011,12 @@
         
         function startTimer() {
             stopTimer();
-            
             var timeLeft = slideTimes[currentSlide];
             var totalTime = timeLeft;
-            
             updateProgressBar(0);
             
             timerInterval = setInterval(function() {
                 timeLeft = timeLeft - 0.1;
-                
                 if (timeLeft <= 0) {
                     changeSlide(1);
                 } else {
@@ -1023,9 +1034,7 @@
         }
         
         function updateProgressBar(progress) {
-            if (timerProgress) {
-                timerProgress.style.width = progress + '%';
-            }
+            if (timerProgress) timerProgress.style.width = progress + '%';
         }
         
         function resetTimer() {
@@ -1039,10 +1048,9 @@
         };
         
         window.onload = function() {
+            updateIndicators();
             startTimer();
-            
-            // Criar estrelas
-            for (var i = 0; i < 50; i++) {
+            for (var i = 0; i < 80; i++) {
                 var star = document.createElement('div');
                 star.className = 'star';
                 star.style.width = (Math.random() * 3 + 1) + 'px';
