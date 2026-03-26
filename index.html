@@ -51,8 +51,6 @@
             100% { opacity: 0.2; }
         }
         
-        /* O estilo do .floating-book foi removido */
-        
         .crystal-ball {
             position: absolute;
             top: -30px;
@@ -544,7 +542,7 @@
             margin-top: 0.5vh;
         }
         
-        /* NOVO SLIDE: APENAS CRITÉRIOS DE AVALIAÇÃO (SEM METADE ESQUERDA) */
+        /* SLIDE CRITÉRIOS (apenas card central) */
         .container-criterios {
             text-align: center;
             max-width: 75%;
@@ -607,7 +605,7 @@
             font-size: 2.2vh;
         }
         
-        /* SLIDE DE PONTUAÇÃO POR TURMA (20 segundos) */
+        /* SLIDE PONTUAÇÃO TURMAS */
         .container-pontuacao-turmas {
             text-align: center;
             max-width: 85%;
@@ -747,6 +745,16 @@
             white-space: nowrap;
         }
         
+        /* Estilo para fonte maior da fonte do slide (critérios) */
+        .fonte-slide-grande {
+            font-size: 2.2vh !important;
+            background: rgba(0,0,0,0.5);
+            border-radius: 30px;
+            padding: 0.8vh 2vw;
+            margin-top: 2vh;
+            display: inline-block;
+        }
+        
         @media (max-width: 700px) {
             .container-criterios { max-width: 90%; }
             .turma-card { min-width: 160px; }
@@ -763,7 +771,6 @@
     </div>
     <div class="mystic-symbol"></div>
     <div class="mystic-symbol-right"></div>
-    <!-- O elemento com a classe "floating-book" foi removido -->
     <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
     
     <!-- SLIDE 0: INTRO -->
@@ -792,7 +799,7 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: DESAFIO -->
+    <!-- SLIDE 1: DESAFIO (com a observação ampliada incluindo a equação solicitada) -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
             <div class="spell-number">DESAFIO 2</div>
@@ -809,7 +816,7 @@
                 <span class="evidencia"> OBSERVAÇÃO:</span><br>
                 As notações n = abc e m = bca não indicam produtos,<br>
                 e sim a representação de n e m no sistema decimal.<br><br>
-                Exemplo: Se a = 1, b = 2, c = 3 → n = 123 e m = 231.
+                <strong>Logo: n = 100a + 10b + c  &nbsp;&nbsp;e&nbsp;&nbsp; m = 100b + 10c + a</strong><br>
             </div>
             <p class="instrucao"> ENVIAR: Pergaminho com resolução detalhada e o valor de n</p>
             <p class="prazo"> Prazo: Lua Cheia (01/04 23h59) </p>
@@ -825,7 +832,7 @@
         </div>
     </div>
     
-    <!-- SLIDE 2: RANKING DESAFIO 1 (mantido) -->
+    <!-- SLIDE 2: RANKING DESAFIO 1 -->
     <div class="slide" id="slide2">
         <div class="container-ranking">
             <h2 class="ranking-title">GRÃO-CONSELHO</h2>
@@ -871,27 +878,29 @@
         </div>
     </div>
     
-    <!-- SLIDE 3: APENAS CRITÉRIOS DE AVALIAÇÃO (metade esquerda removida, nova regra: menos erros e prioridade envio) -->
+    <!-- SLIDE 3: CRITÉRIOS DE AVALIAÇÃO (com a fonte do slide maior) -->
     <div class="slide" id="slide3">
         <div class="container-criterios">
             <h2 class="criterios-title"> DECRETO DOS CRITÉRIOS </h2>
             <div class="criterio-card">
                 <div class="criterio-destaque-novo"> AVALIAÇÃO POR PRECISÃO </div>
-<div class="criterio-texto">
-    <strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>
-    
-    ➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>
-    
-    ➤ Critério de desempate: <strong>ordem de envio</strong>.<br>
-</div>
+                <div class="criterio-texto">
+                    <strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>
+                    ➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>
+                    ➤ Critério de desempate: <strong>ordem de envio</strong>.<br>
+                </div>
             </div>
             <div class="regra-extra">
                 <p> Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p>
             </div>
+            <!-- FONTE DO SLIDE COM TAMANHO MAIOR -->
+            <div class="fonte-slide-grande">
+                📜 Fonte: Slide sobre critérios de divisibilidade e representação decimal – Prof. Arcano M. Torres
+            </div>
         </div>
     </div>
     
-    <!-- NOVO SLIDE 4: PONTUAÇÃO POR TURMA (20 segundos) -->
+    <!-- SLIDE 4: PONTUAÇÃO POR TURMA -->
     <div class="slide" id="slide4">
         <div class="container-pontuacao-turmas">
             <h2 class="turmas-title"> PONTUAÇÃO TOTAL POR TURMA </h2>
@@ -926,12 +935,10 @@
     <div class="slide-indicator" id="slideIndicators"></div>
     
     <script>
-        // agora totalSlides = 5 (0 a 4)
         var currentSlide = 0;
         var totalSlides = 5;
         var timerInterval = null;
         var timerProgress = document.getElementById('timerProgress');
-        // duração dos slides: intro 20s, desafio 100s, ranking 25s, criterios 20s, pontuacao turmas 20s
         var slideTimes = [20, 100, 25, 20, 20];
         
         function updateIndicators() {
