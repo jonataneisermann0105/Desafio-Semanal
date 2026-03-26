@@ -51,47 +51,7 @@
             100% { opacity: 0.2; }
         }
         
-        .floating-book {
-            position: fixed;
-            top: 2vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 15vh;
-            height: 12vh;
-            background: #8b4513;
-            border: 0.5vh solid #ffd700;
-            border-radius: 1vh 2vh 1vh 2vh;
-            z-index: 5;
-            filter: drop-shadow(0 0 40px #8a2be2);
-            animation: float 3s infinite;
-        }
-        
-        .floating-book::before {
-            content: '';
-            position: absolute;
-            top: 1vh;
-            left: 1vh;
-            width: 13vh;
-            height: 10vh;
-            background: #e6d5b8;
-            border-radius: 0.5vh;
-        }
-        
-        .floating-book::after {
-            content: '✦';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #ffd700;
-            font-size: 5vh;
-        }
-        
-        @keyframes float {
-            0% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-            100% { transform: translateX(-50%) translateY(0); }
-        }
+        /* O estilo do .floating-book foi removido */
         
         .crystal-ball {
             position: absolute;
@@ -803,7 +763,7 @@
     </div>
     <div class="mystic-symbol"></div>
     <div class="mystic-symbol-right"></div>
-    <div class="floating-book"></div>
+    <!-- O elemento com a classe "floating-book" foi removido -->
     <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
     
     <!-- SLIDE 0: INTRO -->
@@ -837,7 +797,7 @@
         <div class="container-desafio">
             <div class="spell-number">DESAFIO 2</div>
             <div class="crystal-ball"></div>
-            <h1>🌀 O ENIGMA DOS TRÊS ALGARISMOS 🌀</h1>
+            <h1> O ENIGMA DOS TRÊS ALGARISMOS </h1>
             <p class="subtitulo">Representação Decimal • Equações Diofantinas</p>
             <div class="enunciado-original">
                 <p>A soma dos números naturais de três algarismos distintos</p>
@@ -846,16 +806,16 @@
                 <p style="margin-top: 1.2vh;"> <strong>Determine o número n.</strong> </p>
             </div>
             <div class="problema-texto">
-                <span class="evidencia">📌 OBSERVAÇÃO:</span><br>
+                <span class="evidencia"> OBSERVAÇÃO:</span><br>
                 As notações n = abc e m = bca não indicam produtos,<br>
                 e sim a representação de n e m no sistema decimal.<br><br>
                 Exemplo: Se a = 1, b = 2, c = 3 → n = 123 e m = 231.
             </div>
-            <p class="instrucao">📜 ENVIAR: Pergaminho com resolução detalhada e o valor de n</p>
-            <p class="prazo">⏳ Prazo: Lua Cheia (01/04 23h59) • Pontuação para os 5 melhores fundamentos</p>
+            <p class="instrucao"> ENVIAR: Pergaminho com resolução detalhada e o valor de n</p>
+            <p class="prazo"> Prazo: Lua Cheia (01/04 23h59) </p>
         </div>
         <div class="qr-container" onclick="window.location.href='https://forms.gle/rq2RunrMKTJh14X79'">
-            <div class="qr-label">📤 ENVIAR RESPOSTA</div>
+            <div class="qr-label"> ENVIAR RESPOSTA</div>
             <div class="qr-code-wrapper">
                 <a href="https://forms.gle/FnP5r1FXkeRTitNr9">
                     <img src="frame2.png" alt="QR Code para formulário"/>
@@ -914,9 +874,9 @@
     <!-- SLIDE 3: APENAS CRITÉRIOS DE AVALIAÇÃO (metade esquerda removida, nova regra: menos erros e prioridade envio) -->
     <div class="slide" id="slide3">
         <div class="container-criterios">
-            <h2 class="criterios-title">📜 DECRETO DOS CRITÉRIOS 📜</h2>
+            <h2 class="criterios-title"> DECRETO DOS CRITÉRIOS </h2>
             <div class="criterio-card">
-                <div class="criterio-destaque-novo">✨ AVALIAÇÃO POR PRECISÃO ✨</div>
+                <div class="criterio-destaque-novo"> AVALIAÇÃO POR PRECISÃO </div>
 <div class="criterio-texto">
     <strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>
     
@@ -926,7 +886,7 @@
 </div>
             </div>
             <div class="regra-extra">
-                <p>🏆 Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p>
+                <p> Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p>
             </div>
         </div>
     </div>
@@ -954,7 +914,7 @@
                 </div>
             </div>
             <div class="regra-extra" style="margin-top: 2vh;">
-                <p>🏅 A turma líder ao final do ciclo receberá honraria arcana!</p>
+                <p> A turma líder ao final do ano receberá honraria arcana!</p>
                 <p style="font-size: 1.8vh;">Pontuação atualizada após cada desafio.</p>
             </div>
         </div>
