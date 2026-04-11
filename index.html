@@ -290,10 +290,10 @@
             padding-top: 2.5vh;
         }
         
-        /* CONTAINER DO DESAFIO - LAYOUT LADO A LADO */
+        /* CONTAINER DO DESAFIO - DESLOCADO PARA DIREITA */
         .container-desafio { 
             text-align: center; 
-            max-width: 90%;
+            max-width: 85%;
             width: 1300px;
             padding: 2vh 3vw;
             background: rgba(240, 230, 210, 0.96);
@@ -302,13 +302,15 @@
             margin: auto;
             position: relative;
             z-index: 20;
+            margin-left: auto;
+            margin-right: 5vw;
         }
         
         .desafio-content {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             gap: 3vw;
             margin: 1.5vh 0;
         }
@@ -357,11 +359,11 @@
             text-align: center;
         }
         
-        /* ENUNCIADO MISTERIOSO - SEM SÍMBOLOS EXTRAS */
+        /* ENUNCIADO MISTERIOSO - SEM DICA */
         .enunciado-magico {
             background: #2a1b3d;
             border-radius: 30px;
-            padding: 2vh 2vw;
+            padding: 2.5vh 2vw;
             margin-bottom: 2vh;
             text-align: center;
             font-family: 'Georgia', serif;
@@ -381,26 +383,6 @@
             font-size: 5vh;
             font-family: monospace;
             letter-spacing: 4px;
-        }
-        
-        .evidencia {
-            color: #8a2be2;
-            font-weight: bold;
-            font-size: 2.4vh;
-            display: inline-block;
-            margin: 1vh 0;
-        }
-        
-        .problema-texto {
-            font-size: 2.4vh;
-            line-height: 1.4;
-            margin: 1.5vh 0;
-            color: #1a0f2a;
-            text-align: left;
-            background: rgba(255, 250, 240, 0.95);
-            padding: 1.5vh 2vw;
-            border-left: 9px solid #8a2be2;
-            border-radius: 22px 0 22px 0;
         }
         
         .instrucao { 
@@ -804,6 +786,10 @@
             .container-criterios { max-width: 90%; }
             .turma-card { min-width: 160px; }
             .desafio-imagem { max-width: 350px; }
+            .container-desafio {
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
@@ -843,7 +829,7 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: DESAFIO 4 - LAYOUT LADO A LADO -->
+    <!-- SLIDE 1: DESAFIO 4 - SEM DICA, CONTEÚDO RECUADO PARA DIREITA -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
             <div class="spell-number">DESAFIO 4</div>
@@ -852,19 +838,12 @@
             <p class="subtitulo">Geometria Sagrada • Relações de Área • Raciocínio Visual</p>
             
             <div class="desafio-content">
-                <!-- LADO ESQUERDO - ENUNCIADO -->
+                <!-- LADO ESQUERDO - ENUNCIADO (SEM DICA) -->
                 <div class="desafio-left">
                     <div class="enunciado-magico">
                         <p>"Pelo selo ancestral dos círculos místicos...</p>
                         <p><strong class="destaque">S₁ + S₂ + S₃ = 8</strong></p>
                         <p>Revelai o poder do Grande Círculo <strong>S</strong>."</p>
-                    </div>
-                    
-                    <div class="problema-texto">
-                        <span class="evidencia">🔮 DICA DO ARQUIMAGO:</span><br>
-                        Círculos que se tocam compartilham sua essência...<br>
-                        A distância entre centros é a soma dos raios.<br>
-                        Lembre: <strong>A = π·r²</strong>. Expressai S₁, S₂ e S₃ em função do raio de S.
                     </div>
                     
                     <p class="instrucao">📜 ENVIAR: Pergaminho com resolução detalhada e o valor de S</p>
