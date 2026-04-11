@@ -290,17 +290,41 @@
             padding-top: 2.5vh;
         }
         
+        /* CONTAINER DO DESAFIO - LAYOUT LADO A LADO */
         .container-desafio { 
             text-align: center; 
-            max-width: 85%;
-            width: 1100px;
-            padding: 2vh 4vw 1.8vh;
+            max-width: 90%;
+            width: 1300px;
+            padding: 2vh 3vw;
             background: rgba(240, 230, 210, 0.96);
             border-radius: 70px 25px 70px 25px;
             border: 5px solid #8a2be2;
             margin: auto;
             position: relative;
             z-index: 20;
+        }
+        
+        .desafio-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3vw;
+            margin: 1.5vh 0;
+        }
+        
+        /* LADO ESQUERDO - ENUNCIADO */
+        .desafio-left {
+            flex: 1;
+            text-align: left;
+        }
+        
+        /* LADO DIREITO - FIGURA */
+        .desafio-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .spell-number {
@@ -317,64 +341,94 @@
         }
         
         .container-desafio h1 { 
-            font-size: 4.5vh;
-            margin: 1.2vh 0 0.2vh;
+            font-size: 4vh;
+            margin: 1vh 0 0.2vh;
             color: #2a1b3d;
             text-shadow: 3px 3px 0 #b8860b;
             letter-spacing: 3px;
+            text-align: center;
         }
         
         .subtitulo { 
-            font-size: 2.5vh;
-            margin-bottom: 0.8vh;
+            font-size: 2.2vh;
+            margin-bottom: 1.5vh;
             color: #4b0082;
             font-style: italic;
+            text-align: center;
         }
         
-        /* ENUNCIADO CURTO E MISTERIOSO */
+        /* ENUNCIADO MISTERIOSO - SEM SÍMBOLOS EXTRAS */
         .enunciado-magico {
             background: #2a1b3d;
             border-radius: 30px;
-            padding: 1.8vh 2vw;
-            margin: 1.5vh 0;
+            padding: 2vh 2vw;
+            margin-bottom: 2vh;
             text-align: center;
             font-family: 'Georgia', serif;
-            font-size: 3.2vh;
+            font-size: 3vh;
             color: #ffd700;
             border: 3px solid #b8860b;
             font-weight: bold;
-            line-height: 1.4;
+            line-height: 1.5;
         }
         
         .enunciado-magico p {
-            margin: 0.5vh 0;
+            margin: 0.8vh 0;
         }
         
         .enunciado-magico .destaque {
             color: #ffaa66;
-            font-size: 4vh;
+            font-size: 5vh;
             font-family: monospace;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
         }
         
-        .runas {
-            font-size: 2.5vh;
-            letter-spacing: 3px;
-            color: #b19cd9;
-        }
-        
-        /* Estilo para a imagem do desafio - REDUZIDO */
-        .desafio-imagem {
-            margin: 1.5vh auto;
-            text-align: center;
-            max-width: 55%;
-            width: auto;
-            border-radius: 30px;
-            border: 3px solid #b8860b;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            background: #1a0f2a;
+        .evidencia {
+            color: #8a2be2;
+            font-weight: bold;
+            font-size: 2.4vh;
             display: inline-block;
+            margin: 1vh 0;
+        }
+        
+        .problema-texto {
+            font-size: 2.4vh;
+            line-height: 1.4;
+            margin: 1.5vh 0;
+            color: #1a0f2a;
+            text-align: left;
+            background: rgba(255, 250, 240, 0.95);
+            padding: 1.5vh 2vw;
+            border-left: 9px solid #8a2be2;
+            border-radius: 22px 0 22px 0;
+        }
+        
+        .instrucao { 
+            font-size: 2.2vh;
+            margin: 1.5vh 0 0.5vh;
+            color: #8a2be2; 
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .prazo { 
+            font-size: 2vh;
+            color: #4b0082; 
+            font-weight: bold;
+            margin-bottom: 0.5vh;
+            text-align: center;
+        }
+        
+        /* FIGURA GRANDE - LADO DIREITO */
+        .desafio-imagem {
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            border: 4px solid #b8860b;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+            background: #1a0f2a;
         }
         
         .desafio-imagem img {
@@ -382,46 +436,10 @@
             height: auto;
             display: block;
             transition: transform 0.3s ease;
-            max-height: 38vh;
-            object-fit: contain;
         }
         
         .desafio-imagem img:hover {
             transform: scale(1.02);
-        }
-        
-        .evidencia {
-            color: #8a2be2;
-            font-weight: bold;
-            font-size: 2.6vh;
-            display: inline-block;
-            margin: 0.8vh 0;
-        }
-        
-        .problema-texto {
-            font-size: 2.6vh;
-            line-height: 1.4;
-            margin: 1.2vh 0;
-            color: #1a0f2a;
-            text-align: left;
-            background: rgba(255, 250, 240, 0.95);
-            padding: 1.5vh 2.5vw;
-            border-left: 9px solid #8a2be2;
-            border-radius: 22px 0 22px 0;
-        }
-        
-        .instrucao { 
-            font-size: 2.4vh;
-            margin: 1vh 0;
-            color: #8a2be2; 
-            font-weight: bold;
-        }
-        
-        .prazo { 
-            font-size: 2.2vh;
-            color: #4b0082; 
-            font-weight: bold;
-            margin-bottom: 0.5vh;
         }
         
         .container-ranking { 
@@ -779,12 +797,13 @@
             white-space: nowrap;
         }
         
-        @media (max-width: 700px) {
+        @media (max-width: 900px) {
+            .desafio-content {
+                flex-direction: column;
+            }
             .container-criterios { max-width: 90%; }
             .turma-card { min-width: 160px; }
-            .turma-card h3 { font-size: 2.8vh; }
-            .turma-pontos { font-size: 4.5vh; }
-            .desafio-imagem { max-width: 75%; }
+            .desafio-imagem { max-width: 350px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
@@ -824,7 +843,7 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: DESAFIO 4 - ENUNCIADO CURTO E MISTERIOSO -->
+    <!-- SLIDE 1: DESAFIO 4 - LAYOUT LADO A LADO -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
             <div class="spell-number">DESAFIO 4</div>
@@ -832,28 +851,33 @@
             <h1>⚡ O ENIGMA DOS CÍRCULOS ENCANTADOS ⚡</h1>
             <p class="subtitulo">Geometria Sagrada • Relações de Área • Raciocínio Visual</p>
             
-            <!-- ENUNCIADO CURTO E MISTERIOSO -->
-            <div class="enunciado-magico">
-                <p class="runas">⚝ ◈ ⚝ ◈ ⚝</p>
-                <p>"Pelo selo ancestral dos círculos místicos...</p>
-                <p><strong>S₁ + S₂ + S₃ = 8</strong></p>
-                <p>Revelai o poder do Grande Círculo <strong>S</strong>."</p>
-                <p class="runas">⚝ ◈ ⚝ ◈ ⚝</p>
+            <div class="desafio-content">
+                <!-- LADO ESQUERDO - ENUNCIADO -->
+                <div class="desafio-left">
+                    <div class="enunciado-magico">
+                        <p>"Pelo selo ancestral dos círculos místicos...</p>
+                        <p><strong class="destaque">S₁ + S₂ + S₃ = 8</strong></p>
+                        <p>Revelai o poder do Grande Círculo <strong>S</strong>."</p>
+                    </div>
+                    
+                    <div class="problema-texto">
+                        <span class="evidencia">🔮 DICA DO ARQUIMAGO:</span><br>
+                        Círculos que se tocam compartilham sua essência...<br>
+                        A distância entre centros é a soma dos raios.<br>
+                        Lembre: <strong>A = π·r²</strong>. Expressai S₁, S₂ e S₃ em função do raio de S.
+                    </div>
+                    
+                    <p class="instrucao">📜 ENVIAR: Pergaminho com resolução detalhada e o valor de S</p>
+                    <p class="prazo">🌕 Prazo: Lua Cheia (25/04 23h59)</p>
+                </div>
+                
+                <!-- LADO DIREITO - FIGURA GRANDE -->
+                <div class="desafio-right">
+                    <div class="desafio-imagem">
+                        <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/desafio%234.png?raw=true" alt="Imagem do Desafio 4 - Círculos tangentes com áreas S1, S2, S3 e S">
+                    </div>
+                </div>
             </div>
-            
-            <!-- IMAGEM DO DESAFIO - TAMANHO REDUZIDO -->
-            <div class="desafio-imagem">
-                <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/desafio%234.png?raw=true" alt="Imagem do Desafio 4 - Círculos tangentes com áreas S1, S2, S3 e S">
-            </div>
-            
-            <div class="problema-texto">
-                <span class="evidencia">🔮 DICA DO ARQUIMAGO:</span><br>
-                Círculos que se tocam compartilham sua essência...<br>
-                A distância entre centros é a soma dos raios.<br>
-                Lembre: <strong>A = π·r²</strong>. Expressai S₁, S₂ e S₃ em função do raio de S.
-            </div>
-            <p class="instrucao">📜 ENVIAR: Pergaminho com resolução detalhada e o valor de S</p>
-            <p class="prazo">🌕 Prazo: Lua Cheia (25/04 23h59)</p>
         </div>
         <div class="qr-container" onclick="window.location.href='https://forms.gle/4vFosRSt3aJRzcoK7'">
             <div class="qr-label">🔮 ENVIAR RESPOSTA</div>
