@@ -301,6 +301,23 @@
             margin: auto;
             position: relative;
             z-index: 20;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+        
+        /* Scroll personalizado */
+        .container-desafio::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .container-desafio::-webkit-scrollbar-track {
+            background: #2a1b3d;
+            border-radius: 10px;
+        }
+        
+        .container-desafio::-webkit-scrollbar-thumb {
+            background: #b8860b;
+            border-radius: 10px;
         }
         
         .spell-number {
@@ -356,16 +373,18 @@
             letter-spacing: 2px;
         }
         
-        /* Estilo para a imagem do desafio */
+        /* Estilo para a imagem do desafio - REDUZIDO e ajustado para não cortar */
         .desafio-imagem {
-            margin: 2vh auto;
+            margin: 1.5vh auto;
             text-align: center;
-            max-width: 80%;
+            max-width: 55%;
+            width: auto;
             border-radius: 30px;
             border: 3px solid #b8860b;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0,0,0,0.3);
             background: #1a0f2a;
+            display: inline-block;
         }
         
         .desafio-imagem img {
@@ -373,6 +392,8 @@
             height: auto;
             display: block;
             transition: transform 0.3s ease;
+            max-height: 40vh;
+            object-fit: contain;
         }
         
         .desafio-imagem img:hover {
@@ -773,7 +794,7 @@
             .turma-card { min-width: 160px; }
             .turma-card h3 { font-size: 2.8vh; }
             .turma-pontos { font-size: 4.5vh; }
-            .desafio-imagem { max-width: 95%; }
+            .desafio-imagem { max-width: 75%; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
@@ -826,7 +847,7 @@
                 <p>Determine o valor de <strong>S</strong>.</p>
             </div>
             
-            <!-- IMAGEM DO DESAFIO 4 INSERIDA AQUI -->
+            <!-- IMAGEM DO DESAFIO 4 - TAMANHO REDUZIDO -->
             <div class="desafio-imagem">
                 <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/desafio%234.png?raw=true" alt="Imagem do Desafio 4 - Círculos tangentes com áreas S1, S2, S3 e S">
             </div>
