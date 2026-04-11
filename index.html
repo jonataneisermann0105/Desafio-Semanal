@@ -305,7 +305,6 @@
             overflow-y: auto;
         }
         
-        /* Scroll personalizado */
         .container-desafio::-webkit-scrollbar {
             width: 8px;
         }
@@ -348,32 +347,72 @@
             font-style: italic;
         }
         
-        .enunciado-original {
-            background: #2a1b3d;
+        /* ENUNCIADO MÁGICO - VERSÃO MISTÉRIO */
+        .enunciado-magico {
+            background: linear-gradient(135deg, #1a0f2a, #2a1b3d);
             border-radius: 30px;
-            padding: 2vh 2vw;
+            padding: 2.5vh 2vw;
             margin: 1.5vh 0;
             text-align: center;
-            font-family: 'Georgia', serif;
-            font-size: 3.2vh;
-            color: #ffd700;
-            border: 3px solid #b8860b;
+            font-family: 'Cinzel', 'Georgia', serif;
+            font-size: 2.8vh;
+            color: #e6d5b8;
+            border: 3px solid #ffd700;
             font-weight: bold;
             line-height: 1.5;
+            position: relative;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
         }
         
-        .enunciado-original p {
-            margin: 0.8vh 0;
+        .enunciado-magico::before {
+            content: '✦';
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            font-size: 3vh;
+            color: #ffd700;
+            opacity: 0.8;
         }
         
-        .enunciado-original .destaque {
-            color: #ffaa66;
-            font-size: 4vh;
+        .enunciado-magico::after {
+            content: '✦';
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+            font-size: 3vh;
+            color: #ffd700;
+            opacity: 0.8;
+        }
+        
+        .enunciado-magico p {
+            margin: 1.2vh 0;
+        }
+        
+        .runas {
             font-family: monospace;
-            letter-spacing: 2px;
+            font-size: 2.2vh;
+            letter-spacing: 4px;
+            color: #b19cd9;
         }
         
-        /* Estilo para a imagem do desafio - REDUZIDO e ajustado para não cortar */
+        .enunciado-magico .destaque {
+            color: #ffaa66;
+            font-size: 5vh;
+            font-family: monospace;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px #ffd700;
+        }
+        
+        .selo-magico {
+            display: inline-block;
+            background: rgba(138, 43, 226, 0.3);
+            padding: 0.3vh 1.5vw;
+            border-radius: 30px;
+            border: 1px dashed #ffd700;
+            font-size: 2.2vh;
+            margin-top: 1vh;
+        }
+        
         .desafio-imagem {
             margin: 1.5vh auto;
             text-align: center;
@@ -409,8 +448,8 @@
         }
         
         .problema-texto {
-            font-size: 2.8vh;
-            line-height: 1.4;
+            font-size: 2.6vh;
+            line-height: 1.5;
             margin: 1.2vh 0;
             color: #1a0f2a;
             text-align: left;
@@ -425,6 +464,10 @@
             margin: 1vh 0;
             color: #8a2be2; 
             font-weight: bold;
+            background: rgba(138, 43, 226, 0.15);
+            display: inline-block;
+            padding: 0.8vh 2vw;
+            border-radius: 40px;
         }
         
         .prazo { 
@@ -795,6 +838,7 @@
             .turma-card h3 { font-size: 2.8vh; }
             .turma-pontos { font-size: 4.5vh; }
             .desafio-imagem { max-width: 75%; }
+            .enunciado-magico { font-size: 2.2vh; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
@@ -834,36 +878,47 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: DESAFIO 4 (Círculos e Áreas) -->
+    <!-- SLIDE 1: DESAFIO 4 - VERSÃO MÁGICA/MISTÉRIO -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
-            <div class="spell-number">DESAFIO 4</div>
+            <div class="spell-number">⚜️ DESAFIO ARCANO IV ⚜️</div>
             <div class="crystal-ball"></div>
-            <h1> O ENIGMA DOS CÍRCULOS ENCANTADOS </h1>
-            <p class="subtitulo">Geometria Sagrada • Relações de Área • Raciocínio Visual</p>
-            <div class="enunciado-original">
-                <p>Considere a figura abaixo, onde:</p>
-                <p class="destaque">S₁ + S₂ + S₃ = 8</p>
-                <p>Determine o valor de <strong>S</strong>.</p>
+            <h1> 𓋹 O ENIGMA DOS CÍRCULOS ENCANTADOS 𓋹</h1>
+            <p class="subtitulo">✨ Selos de Poder • Geometria das Esferas • Sabedoria Oculta ✨</p>
+            
+            <!-- ENUNCIADO COM TEMÁTICA MÁGICA -->
+            <div class="enunciado-magico">
+                <p class="runas">⚝ ⌾ ☯ ⌾ ⚝</p>
+                <p>"Nas profundezas do Grimório Antigo, um pergaminho perdido revela um selo mágico ancestral...</p>
+                <p>Três círculos místicos <strong>S₁, S₂ e S₃</strong> tangenciam-se entre si e com o Grande Círculo de Poder <strong>S</strong>.</p>
+                <p>A antiga profecia afirma que a soma das áreas dos círculos menores é igual a <strong class="destaque">8</strong> unidades arcanas.</p>
+                <p class="selo-magico">⚡ O Selo Mágico está quase completo... apenas o poder do círculo maior permanece oculto! ⚡</p>
+                <p class="runas">⚝ ⌾ ☯ ⌾ ⚝</p>
             </div>
             
-            <!-- IMAGEM DO DESAFIO 4 - TAMANHO REDUZIDO -->
+            <!-- IMAGEM DO DESAFIO -->
             <div class="desafio-imagem">
-                <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/desafio%234.png?raw=true" alt="Imagem do Desafio 4 - Círculos tangentes com áreas S1, S2, S3 e S">
+                <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/desafio%234.png?raw=true" alt="Selos Mágicos - Círculos tangentes com áreas S1, S2, S3 e S">
             </div>
             
             <div class="problema-texto">
-                <span class="evidencia"> DICA DO ARQUIMAGO:</span><br>
-                Observe a relação entre os raios dos círculos. Círculos tangentes<br>
-                exteriormente têm distância entre centros igual à soma dos raios.<br>
-                Utilize a proporcionalidade entre área e o quadrado do raio (A = π·r²).<br>
-                Tente expressar S₁, S₂ e S₃ em termos do raio do círculo maior (S).
+                <span class="evidencia">🔮 VISÃO DO ARQUIMAGO MERLIN 🔮</span><br>
+                "Observem, jovens aprendizes, a dança dos círculos encantados!<br>
+                Círculos que se tocam compartilham sua essência mágica...<br>
+                <strong>A distância entre seus centros é a soma de seus raios</strong>, pois a magia flui livremente entre eles.<br><br>
+                Lembrai-vos: <strong>A = π·r²</strong> — a área do selo é proporcional ao quadrado de seu raio.<br>
+                Expressai S₁, S₂ e S₃ em função do raio do Grande Círculo S, e o véu da ignorância se dissipará!"
             </div>
-            <p class="instrucao"> ENVIAR: Pergaminho com resolução detalhada e o valor de S</p>
-            <p class="prazo"> Prazo: Lua Cheia (25/04 23h59) </p>
+            
+            <p class="instrucao">📜 ENTREGA DO PERGAMINHO: Resolução detalhada + o valor oculto de S 📜</p>
+            <p class="prazo">🌕 Prazo Final: Sob a Luz da Lua Cheia (25/04 - 23h59) 🌕</p>
+            
+            <div style="margin: 1vh 0 0.5vh;">
+                <span style="font-size: 1.8vh; color: #4b0082;">🏆 Magos que desvendarem o enigma serão imortalizados no Livro das Runas! 🏆</span>
+            </div>
         </div>
         <div class="qr-container" onclick="window.location.href='https://forms.gle/4vFosRSt3aJRzcoK7'">
-            <div class="qr-label"> ENVIAR RESPOSTA</div>
+            <div class="qr-label">🔮 ENVIAR RESPOSTA 🔮</div>
             <div class="qr-code-wrapper">
                 <a href="https://forms.gle/4vFosRSt3aJRzcoK7">
                     <img src="frame3.png" alt="QR Code para formulário"/>
@@ -873,10 +928,10 @@
         </div>
     </div>
     
-    <!-- SLIDE 2: RANKING DESAFIOS ANTERIORES (mantido) -->
+    <!-- SLIDE 2: RANKING DESAFIOS ANTERIORES -->
     <div class="slide" id="slide2">
         <div class="container-ranking">
-            <h2 class="ranking-title">GRÃO-CONSELHO</h2>
+            <h2 class="ranking-title">🏆 GRÃO-CONSELHO 🏆</h2>
             <p class="ranking-subtitle">Os Arquimagos da Academia • Desafios 1, 2 e 3</p>
             <div class="podio">
                 <div class="podio-place segundo">
@@ -884,85 +939,85 @@
                     <div class="position">2º LUGAR</div>
                     <div class="rank-badge">Mago do Tempo</div>
                     <div class="name">Pedro Gomes (IIW2024A)</div>
-                    <div class="points">7 pontos</div>
-                    <div class="points-small">Nível 3</div>
+                    <div class="points">7 pts</div>
+                    <div class="points-small">Nível Arcano III</div>
                 </div>
                 <div class="podio-place primeiro">
                     <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div>
                     <div class="position">1º LUGAR</div>
                     <div class="rank-badge">Mago Supremo</div>
                     <div class="name">Eduardo Ambrosio (EIN2024)</div>
-                    <div class="points">8 pontos</div>
-                    <div class="points-small">Nível 3</div>
+                    <div class="points">8 pts</div>
+                    <div class="points-small">Nível Arcano III</div>
                 </div>
                 <div class="podio-place terceiro">
                     <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
                     <div class="position">3º LUGAR</div>
                     <div class="rank-badge">Mago Elemental</div>
                     <div class="name">Diego Ribeiro (EIN2023)</div>
-                    <div class="points">7 pontos</div>
-                    <div class="points-small">Nível 3</div>
+                    <div class="points">7 pts</div>
+                    <div class="points-small">Nível Arcano III</div>
                 </div>
             </div>
             <div class="ranking-grid">
                 <div class="rank-item">
                     <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1572979129454-dce4055c1f68?q=80&w=1171&auto=format&fit=crop');"></div>
-                    4º Gustavo Oliveira (IIW2024A) - 4 pontos<br>
+                    4º Gustavo Oliveira (IIW2024A) - 4 pts<br>
                     <span class="rank-title">Mago das Sombras</span>
                 </div>
                 <div class="rank-item">
                     <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1771148835096-b843d0b539a2?q=80&w=687&auto=format&fit=crop');"></div>
-                    5º Pedro Sozza (EIN2023) - 4 pontos<br>
+                    5º Pedro Sozza (EIN2023) - 4 pts<br>
                     <span class="rank-title">Feiticeiro Lunar</span>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- SLIDE 3: APENAS CRITÉRIOS DE AVALIAÇÃO -->
+    <!-- SLIDE 3: CRITÉRIOS DE AVALIAÇÃO -->
     <div class="slide" id="slide3">
         <div class="container-criterios">
-            <h2 class="criterios-title"> DECRETO DOS CRITÉRIOS </h2>
+            <h2 class="criterios-title">⚜️ DECRETO DOS CRITÉRIOS ⚜️</h2>
             <div class="criterio-card">
-                <div class="criterio-destaque-novo"> AVALIAÇÃO POR PRECISÃO </div>
+                <div class="criterio-destaque-novo">✨ AVALIAÇÃO POR PRECISÃO MÁGICA ✨</div>
                 <div class="criterio-texto">
-                    <strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>
+                    <strong>O pergaminho deve conter a solução mais precisa e bem elaborada possível.</strong><br><br>
                     
                     ➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>
                     
-                    ➤ Critério de desempate: <strong>ordem de envio</strong>.<br>
+                    ➤ Critério de desempate: <strong>ordem de envio ao Conselho</strong>.<br>
                 </div>
             </div>
             <div class="regra-extra">
-                <p> Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p>
+                <p>🏅 Pontuação Mágica: 1º lugar = 4 cristais | 2º = 3 cristais | 3º = 2 cristais | 4º e 5º = 1 cristal 🏅</p>
             </div>
         </div>
     </div>
     
-    <!-- SLIDE 4: PONTUAÇÃO POR TURMA (atualizada com Desafio 3) -->
+    <!-- SLIDE 4: PONTUAÇÃO POR TURMA -->
     <div class="slide" id="slide4">
         <div class="container-pontuacao-turmas">
-            <h2 class="turmas-title"> PONTUAÇÃO TOTAL POR TURMA </h2>
-            <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2 e 3</p>
+            <h2 class="turmas-title">📜 PONTUAÇÃO TOTAL POR TURMA 📜</h2>
+            <p class="turmas-sub">Cristais Arcanos Acumulados - Desafios I, II e III</p>
             <div class="turmas-grid">
                 <div class="turma-card">
-                    <h3> IIW2024A</h3>
-                    <div class="turma-pontos">11 pts</div>
+                    <h3>🏛️ IIW2024A</h3>
+                    <div class="turma-pontos">11 cristais</div>
                     <div class="turma-detalhe">Magos Veteranos</div>
                 </div>
                 <div class="turma-card">
-                    <h3> EIN2023</h3>
-                    <div class="turma-pontos">11 pts</div>
+                    <h3>🔥 EIN2023</h3>
+                    <div class="turma-pontos">11 cristais</div>
                     <div class="turma-detalhe">Chamas da Inovação</div>
                 </div>
                 <div class="turma-card">
-                    <h3> EIN2024</h3>
-                    <div class="turma-pontos">8 pts</div>
+                    <h3>🌙 EIN2024</h3>
+                    <div class="turma-pontos">8 cristais</div>
                     <div class="turma-detalhe">Sábios Lunares</div>
                 </div>
             </div>
             <div class="regra-extra" style="margin-top: 2vh;">
-                <p> A turma líder ao final do ano receberá honraria arcana!</p>
+                <p>✨ A turma líder ao final do ano receberá a Honraria Arcana Suprema! ✨</p>
                 <p style="font-size: 1.8vh;">Pontuação atualizada após cada desafio.</p>
             </div>
         </div>
@@ -978,7 +1033,6 @@
         var totalSlides = 5;
         var timerInterval = null;
         var timerProgress = document.getElementById('timerProgress');
-        // Aumentei o tempo do slide do desafio (índice 1) para 300 segundos
         var slideTimes = [20, 300, 25, 20, 20];
         
         function updateIndicators() {
