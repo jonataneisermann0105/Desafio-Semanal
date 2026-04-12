@@ -707,6 +707,79 @@
             color: #b19cd9;
         }
         
+        /* CONTAINER DE CURIOSIDADE - MULHERES NA MATEMÁTICA */
+        .container-curiosidade {
+            text-align: center;
+            max-width: 85%;
+            width: 1100px;
+            padding: 3vh 3vw;
+            background: rgba(20, 10, 30, 0.94);
+            border-radius: 70px 25px 70px 25px;
+            border: 5px solid #ffd700;
+            margin: auto;
+            position: relative;
+            z-index: 15;
+            backdrop-filter: blur(3px);
+        }
+        
+        .curiosidade-title {
+            font-size: 4.5vh;
+            color: #ffd700;
+            text-shadow: 0 0 20px #8a2be2;
+            margin-bottom: 2vh;
+            letter-spacing: 3px;
+        }
+        
+        .curiosidade-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 3vw;
+            margin: 2vh 0;
+        }
+        
+        .curiosidade-imagem {
+            flex: 0.8;
+            text-align: center;
+        }
+        
+        .curiosidade-imagem img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 50%;
+            border: 4px solid #ffd700;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+            background-color: #2a1b3d;
+        }
+        
+        .curiosidade-texto {
+            flex: 1.5;
+            text-align: left;
+            color: #e6d5b8;
+            font-size: 2.6vh;
+            line-height: 1.5;
+            background: rgba(75, 0, 130, 0.4);
+            padding: 2vh 2vw;
+            border-radius: 40px 15px 40px 15px;
+            border: 2px solid #b8860b;
+        }
+        
+        .curiosidade-texto strong {
+            color: #ffd700;
+        }
+        
+        .curiosidade-texto .citacao {
+            font-style: italic;
+            color: #b19cd9;
+            margin-top: 1.5vh;
+            font-size: 2.2vh;
+            border-top: 1px solid #b8860b;
+            padding-top: 1.5vh;
+        }
+        
         .qr-container {
             position: fixed;
             bottom: 10vh;
@@ -782,6 +855,9 @@
             .desafio-content {
                 flex-direction: column;
             }
+            .curiosidade-content {
+                flex-direction: column;
+            }
             .container-criterios { max-width: 90%; }
             .turma-card { min-width: 160px; }
             .desafio-imagem { max-width: 350px; }
@@ -828,7 +904,7 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: DESAFIO 4 - COM FIGURA MAIS À ESQUERDA -->
+    <!-- SLIDE 1: DESAFIO 4 -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
             <div class="spell-number">DESAFIO 4</div>
@@ -837,7 +913,6 @@
             <p class="subtitulo">Geometria Sagrada • Relações de Área • Raciocínio Visual</p>
             
             <div class="desafio-content">
-                <!-- LADO ESQUERDO - ENUNCIADO -->
                 <div class="desafio-left">
                     <div class="enunciado-magico">
                         <p>Pelo selo ancestral dos círculos místicos...</p>
@@ -849,10 +924,9 @@
                     <p class="prazo">🌕 Prazo: Lua Cheia (25/04 23h59)</p>
                 </div>
                 
-                <!-- LADO DIREITO - FIGURA (AGORA MAIS À ESQUERDA PROPORCIONALMENTE) -->
                 <div class="desafio-right">
                     <div class="desafio-imagem">
-                        <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/desafio%234.png?raw=true" alt="Imagem do Desafio 4 - Círculos tangentes com áreas S1, S2, S3 e S">
+                        <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/desafio%234.png?raw=true" alt="Imagem do Desafio 4">
                     </div>
                 </div>
             </div>
@@ -963,6 +1037,26 @@
         </div>
     </div>
     
+    <!-- SLIDE 5: CURIOSIDADE - MULHERES NA MATEMÁTICA (HIPÁTIA) -->
+    <div class="slide" id="slide5">
+        <div class="container-curiosidade">
+            <h2 class="curiosidade-title">✨ SABEDORIA ANCESTRAL ✨</h2>
+            <div class="curiosidade-content">
+                <div class="curiosidade-imagem">
+                    <img src="https://raw.githubusercontent.com/jonataneisermann0105/Desafio-Semanal/main/hipatia.jpg" alt="Hipátia de Alexandria - Matemática e Filósofa" onerror="this.src='https://cdn.pixabay.com/photo/2016/03/31/20/31/woman-1296454_640.png'">
+                </div>
+                <div class="curiosidade-texto">
+                    <strong>⚜️ HIPÁTIA DE ALEXANDRIA (c. 355–415 d.C.) ⚜️</strong><br><br>
+                    Uma das primeiras mulheres matemáticas da história, Hipátia foi chefe da Escola Neoplatônica de Alexandria. Ela escreveu tratados sobre geometria, álgebra e astronomia, além de ter inventado o hidrômetro e o astrolábio.<br><br>
+                    Sua coragem e sabedoria iluminaram as ciências em tempos sombrios. Até hoje, é símbolo do conhecimento feminino na matemática e na filosofia.<br><br>
+                    <div class="citacao">
+                        "Reserve o direito de pensar, pois mesmo pensar errado é melhor do que não pensar."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◀ Anterior</button>
     <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo ▶</button>
     
@@ -970,10 +1064,10 @@
     
     <script>
         var currentSlide = 0;
-        var totalSlides = 5;
+        var totalSlides = 6;
         var timerInterval = null;
         var timerProgress = document.getElementById('timerProgress');
-        var slideTimes = [20, 300, 25, 20, 20];
+        var slideTimes = [20, 300, 25, 20, 20, 25];
         
         function updateIndicators() {
             const container = document.getElementById('slideIndicators');
