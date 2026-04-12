@@ -290,7 +290,7 @@
             padding-top: 2.5vh;
         }
         
-        /* CONTAINER DO DESAFIO - DESLOCADO PARA DIREITA */
+        /* CONTAINER DO DESAFIO - MAIS RECUADO PARA EVITAR QR CODE */
         .container-desafio { 
             text-align: center; 
             max-width: 85%;
@@ -299,11 +299,10 @@
             background: rgba(240, 230, 210, 0.96);
             border-radius: 70px 25px 70px 25px;
             border: 5px solid #8a2be2;
-            margin: auto;
             position: relative;
             z-index: 20;
-            margin-left: auto;
-            margin-right: 5vw;
+            margin-left: 0;
+            margin-right: 12vw;
         }
         
         .desafio-content {
@@ -311,19 +310,19 @@
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            gap: 3vw;
+            gap: 2vw;
             margin: 1.5vh 0;
         }
         
-        /* LADO ESQUERDO - ENUNCIADO */
+        /* LADO ESQUERDO - ENUNCIADO (MAIS LARGO) */
         .desafio-left {
-            flex: 1;
+            flex: 1.2;
             text-align: left;
         }
         
-        /* LADO DIREITO - FIGURA */
+        /* LADO DIREITO - FIGURA (MENOR PROPORÇÃO PARA FICAR LONGE DO QR) */
         .desafio-right {
-            flex: 1;
+            flex: 0.8;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -359,7 +358,7 @@
             text-align: center;
         }
         
-        /* ENUNCIADO MISTERIOSO - SEM DICA */
+        /* ENUNCIADO MISTERIOSO */
         .enunciado-magico {
             background: #2a1b3d;
             border-radius: 30px;
@@ -401,11 +400,11 @@
             text-align: center;
         }
         
-        /* FIGURA GRANDE - LADO DIREITO */
+        /* FIGURA - TAMANHO AJUSTADO PARA FICAR LONGE DO QR */
         .desafio-imagem {
             text-align: center;
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             border-radius: 30px;
             border: 4px solid #b8860b;
             overflow: hidden;
@@ -829,7 +828,7 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: DESAFIO 4 - SEM DICA, CONTEÚDO RECUADO PARA DIREITA -->
+    <!-- SLIDE 1: DESAFIO 4 - COM FIGURA MAIS À ESQUERDA -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
             <div class="spell-number">DESAFIO 4</div>
@@ -838,7 +837,7 @@
             <p class="subtitulo">Geometria Sagrada • Relações de Área • Raciocínio Visual</p>
             
             <div class="desafio-content">
-                <!-- LADO ESQUERDO - ENUNCIADO (SEM DICA) -->
+                <!-- LADO ESQUERDO - ENUNCIADO -->
                 <div class="desafio-left">
                     <div class="enunciado-magico">
                         <p>"Pelo selo ancestral dos círculos místicos...</p>
@@ -850,7 +849,7 @@
                     <p class="prazo">🌕 Prazo: Lua Cheia (25/04 23h59)</p>
                 </div>
                 
-                <!-- LADO DIREITO - FIGURA GRANDE -->
+                <!-- LADO DIREITO - FIGURA (AGORA MAIS À ESQUERDA PROPORCIONALMENTE) -->
                 <div class="desafio-right">
                     <div class="desafio-imagem">
                         <img src="https://github.com/jonataneisermann0105/Desafio-Semanal/blob/main/desafio%234.png?raw=true" alt="Imagem do Desafio 4 - Círculos tangentes com áreas S1, S2, S3 e S">
