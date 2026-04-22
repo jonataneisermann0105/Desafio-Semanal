@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Academia Arcana - Desafio 4 | O Enigma dos Círculos Encantados</title>
+    <title>Academia Arcana - Desafio 5 | O Enigma do Incêndio</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -290,42 +290,18 @@
             padding-top: 2.5vh;
         }
         
-        /* CONTAINER DO DESAFIO - MAIS RECUADO PARA EVITAR QR CODE */
+        /* CONTAINER DO DESAFIO - CENTRALIZADO SEM IMAGEM */
         .container-desafio { 
             text-align: center; 
-            max-width: 85%;
-            width: 1300px;
-            padding: 2vh 3vw;
+            max-width: 75%;
+            width: 900px;
+            padding: 3vh 4vw;
             background: rgba(240, 230, 210, 0.96);
             border-radius: 70px 25px 70px 25px;
             border: 5px solid #8a2be2;
             position: relative;
             z-index: 20;
-            margin-left: 0;
-            margin-right: 12vw;
-        }
-        
-        .desafio-content {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 2vw;
-            margin: 1.5vh 0;
-        }
-        
-        /* LADO ESQUERDO - ENUNCIADO (MAIS LARGO) */
-        .desafio-left {
-            flex: 1.2;
-            text-align: left;
-        }
-        
-        /* LADO DIREITO - FIGURA (MENOR PROPORÇÃO PARA FICAR LONGE DO QR) */
-        .desafio-right {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: auto;
         }
         
         .spell-number {
@@ -342,8 +318,8 @@
         }
         
         .container-desafio h1 { 
-            font-size: 4vh;
-            margin: 1vh 0 0.2vh;
+            font-size: 4.5vh;
+            margin: 1vh 0 0.5vh;
             color: #2a1b3d;
             text-shadow: 3px 3px 0 #b8860b;
             letter-spacing: 3px;
@@ -352,7 +328,7 @@
         
         .subtitulo { 
             font-size: 2.2vh;
-            margin-bottom: 1.5vh;
+            margin-bottom: 2vh;
             color: #4b0082;
             font-style: italic;
             text-align: center;
@@ -362,26 +338,32 @@
         .enunciado-magico {
             background: #2a1b3d;
             border-radius: 30px;
-            padding: 2.5vh 2vw;
+            padding: 3vh 2vw;
             margin-bottom: 2vh;
             text-align: center;
             font-family: 'Georgia', serif;
-            font-size: 3vh;
+            font-size: 2.8vh;
             color: #ffd700;
             border: 3px solid #b8860b;
             font-weight: bold;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         
         .enunciado-magico p {
-            margin: 0.8vh 0;
+            margin: 1vh 0;
         }
         
         .enunciado-magico .destaque {
             color: #ffaa66;
-            font-size: 5vh;
+            font-size: 3.2vh;
             font-family: monospace;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
+        }
+        
+        .enunciado-magico .cidade {
+            color: #ffaa66;
+            font-weight: bold;
+            font-size: 3vh;
         }
         
         .instrucao { 
@@ -400,34 +382,12 @@
             text-align: center;
         }
         
-        /* FIGURA - TAMANHO AJUSTADO PARA FICAR LONGE DO QR */
-        .desafio-imagem {
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-            border-radius: 30px;
-            border: 4px solid #b8860b;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(0,0,0,0.4);
-            background: #1a0f2a;
-        }
-        
-        .desafio-imagem img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        
-        .desafio-imagem img:hover {
-            transform: scale(1.02);
-        }
-        
-        .container-ranking { 
+        /* SLIDE DO PÓDIO - APENAS OS 3 PRIMEIROS */
+        .container-podio { 
             text-align: center; 
             max-width: 85%;
-            width: 1100px;
-            padding: 1.5vh 1.5vw;
+            width: 1000px;
+            padding: 2vh 2vw;
             margin: auto;
             background: rgba(20, 10, 30, 0.85);
             border-radius: 70px 25px 70px 25px;
@@ -435,27 +395,30 @@
             z-index: 15;
         }
         
-        .ranking-title {
-            font-size: 5.5vh;
-            margin-bottom: 0.3vh;
+        .podio-title {
+            font-size: 5vh;
+            margin-bottom: 0.5vh;
             color: #ffd700;
             text-shadow: 4px 4px 0 #4b0082;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
         }
         
-        .ranking-subtitle {
-            font-size: 2.8vh;
+        .podio-subtitle {
+            font-size: 2.5vh;
             color: #b19cd9;
-            margin-bottom: 1.5vh;
+            margin-bottom: 2vh;
             font-style: italic;
+            border-bottom: 2px solid #b8860b;
+            display: inline-block;
+            padding-bottom: 0.8vh;
         }
         
         .podio {
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 1.5vw;
-            margin: 1vh 0 2vh;
+            gap: 2vw;
+            margin: 2vh 0 1vh;
         }
         
         .podio-place {
@@ -466,24 +429,26 @@
             flex-direction: column;
             justify-content: space-between;
             border-radius: 40px 15px 40px 15px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
         }
         
         .primeiro {
-            width: 25vw;
+            width: 26vw;
             min-height: 38vh;
             border-color: #ffd700;
             background: linear-gradient(135deg, #0a6b0a, #1a4a1a);
         }
         
         .segundo {
-            width: 22vw;
+            width: 23vw;
             min-height: 34vh;
             border-color: #c0c0c0;
             background: linear-gradient(135deg, #8b0000, #4a0000);
         }
         
         .terceiro {
-            width: 22vw;
+            width: 23vw;
             min-height: 30vh;
             border-color: #cd7f32;
             background: linear-gradient(135deg, #0a2a4a, #0a1a2a);
@@ -538,43 +503,70 @@
             margin-top: 0.5vh;
         }
         
-        .ranking-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1vw;
-            margin-top: 2vh;
-            justify-content: center;
+        /* SLIDE DO RANKING ACUMULADO GERAL - APENAS 5 PRIMEIROS */
+        .container-ranking-geral {
+            text-align: center;
+            max-width: 80%;
+            width: 800px;
+            padding: 3vh 2vw;
+            background: rgba(20, 10, 30, 0.92);
+            border-radius: 70px 25px 70px 25px;
+            border: 5px solid #ffd700;
+            margin: auto;
+            z-index: 15;
         }
         
-        .rank-item {
-            background: #2a1b3d;
-            padding: 1.2vh 0.5vw;
-            border-radius: 50px 12px 50px 12px;
-            border: 3px solid #b8860b;
+        .ranking-geral-title {
+            font-size: 4.5vh;
+            margin-bottom: 0.5vh;
+            color: #ffd700;
+            text-shadow: 4px 4px 0 #4b0082;
+            letter-spacing: 3px;
+        }
+        
+        .ranking-geral-sub {
             font-size: 2.2vh;
-            color: #e6d5b8;
-            text-align: center;
+            color: #b19cd9;
+            margin-bottom: 2vh;
+            font-style: italic;
+        }
+        
+        .ranking-list {
             display: flex;
             flex-direction: column;
+            gap: 1vh;
+            margin-top: 1.5vh;
+        }
+        
+        .rank-row {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            background: rgba(42, 27, 61, 0.8);
+            padding: 1vh 2vw;
+            border-radius: 40px;
+            font-size: 2.2vh;
+            color: #e6d5b8;
+            border-left: 5px solid #ffd700;
         }
         
-        .small-mago {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid #ffd700;
-            margin-bottom: 0.8vh;
-            background-size: cover;
-            background-position: center;
-            background-color: #1a0f2a;
-        }
-        
-        .rank-item .rank-title {
+        .rank-row .rank-pos {
+            font-weight: bold;
             color: #ffd700;
-            font-size: 0.85em;
-            display: block;
-            margin-top: 0.5vh;
+            width: 15%;
+            text-align: left;
+        }
+        
+        .rank-row .rank-name {
+            width: 55%;
+            text-align: left;
+        }
+        
+        .rank-row .rank-points {
+            width: 30%;
+            text-align: right;
+            font-weight: bold;
+            color: #ffaa66;
         }
         
         .container-criterios {
@@ -707,7 +699,6 @@
             color: #b19cd9;
         }
         
-        /* CONTAINER DE CURIOSIDADE - MULHERES NA MATEMÁTICA */
         .container-curiosidade {
             text-align: center;
             max-width: 85%;
@@ -836,34 +827,27 @@
             white-space: nowrap;
         }
         
-        .ia-credit {
-            position: fixed;
-            bottom: 7vh;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 215, 0, 0.7);
-            font-size: 1.7vh;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 0.5vh 2vw;
-            border-radius: 30px;
-            border: 1px solid rgba(184, 134, 11, 0.4);
-            z-index: 150;
-            white-space: nowrap;
-        }
-        
         @media (max-width: 900px) {
-            .desafio-content {
-                flex-direction: column;
-            }
             .curiosidade-content {
                 flex-direction: column;
             }
             .container-criterios { max-width: 90%; }
             .turma-card { min-width: 160px; }
-            .desafio-imagem { max-width: 350px; }
             .container-desafio {
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 90%;
+                margin: auto;
+            }
+            .podio {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5vh;
+            }
+            .primeiro, .segundo, .terceiro {
+                width: 80%;
+                min-height: auto;
+            }
+            .container-ranking-geral {
+                width: 90%;
             }
         }
     </style>
@@ -887,14 +871,14 @@
                 <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
             </div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
-            <p class="intro-subtitle">Ordem dos Magos • Desafio 4</p>
+            <p class="intro-subtitle">Ordem dos Magos • Desafio 5</p>
             <p class="intro-cta">
-                ✦ A Geometria Sagrada Revela a Verdade ✦<br>
-                Desvende o enigma dos círculos encantados<br>
-                Eleve-se nos círculos da sabedoria geométrica
+                ✦ O Enigma do Incêndio ✦<br>
+                Desvende a verdade por trás das palavras<br>
+                Onde a lógica e a magia se entrelaçam
             </p>
             <p class="intro-highlight">
-                O ENIGMA DOS CÍRCULOS ENCANTADOS
+                AS TRÊS CIDADES DA FALÁCIA
             </p>
             <p class="intro-footer">
                 Grão-Conselho dos Magos<br>
@@ -904,92 +888,110 @@
         </div>
     </div>
     
-    <!-- SLIDE 1: DESAFIO 4 -->
+    <!-- SLIDE 1: DESAFIO 5 (SEM IMAGEM LATERAL) -->
     <div class="slide" id="slide1">
         <div class="container-desafio">
-            <div class="spell-number">DESAFIO 4</div>
+            <div class="spell-number">DESAFIO 5</div>
             <div class="crystal-ball"></div>
-            <h1> O ENIGMA DOS CÍRCULOS ENCANTADOS </h1>
-            <p class="subtitulo">Geometria Sagrada • Relações de Área • Raciocínio Visual</p>
+            <h1> O ENIGMA DO INCÊNDIO </h1>
+            <p class="subtitulo">Lógica Mágica • Paradoxos • Raciocínio Dedutivo</p>
             
-            <div class="desafio-content">
-                <div class="desafio-left">
-                    <div class="enunciado-magico">
-                        <p>Pelo selo ancestral dos círculos místicos...</p>
-                        <p><strong class="destaque">S₁ + S₂ + S₃ = 8</strong></p>
-                        <p>Revelai o valor de <strong>S</strong>.</p>
-                    </div>
-                    
-                    <p class="instrucao">📜 ENVIAR: Pergaminho com resolução detalhada e o valor de S</p>
-                    <p class="prazo">🌕 Prazo: Lua Nova (17/04 23h59)</p>
-                </div>
-                
-                <div class="desafio-right">
-                    <div class="desafio-imagem">
-                        <img src="desafio4.jpg" alt="Imagem do Desafio 4">
-                    </div>
-                </div>
+            <div class="enunciado-magico" style="text-align: justify;">
+                <p> Um reino tem três cidades:</p>
+                <p><span class="cidade"> VERITASIUM</span>, onde todos dizem a <strong style="color:#aaffaa;">VERDADE</strong>;</p>
+                <p><span class="cidade"> FALLACIUM</span>, onde todos <strong style="color:#ffaaaa;">MENTEM</strong>;</p>
+                <p><span class="cidade"> DÚPLEXA</span>, onde as pessoas alternam entre <strong style="color:#aaffaa;">VERDADE</strong> e <strong style="color:#ffaaaa;">MENTIRA</strong>.</p>
+                <p style="margin-top: 2vh;">Houve um incêndio em uma dessas cidades. O Corpo de Bombeiros recebeu a seguinte ligação:</p>
+                <p><strong style="font-size:3vh;">"— Tem um incêndio aqui!"</strong></p>
+                <p><strong style="font-size:3vh;">"— Onde?"</strong></p>
+                <p><strong style="font-size:3vh;">"— Em Dúplexa."</strong></p>
+                <p style="margin-top: 2vh;"> <strong style="font-size:3.5vh; color:#ffaa66;">Para onde os bombeiros devem ir?</strong></p>
             </div>
+            
+            <p class="prazo"> Prazo: Lua Cheia (01/05 23h59)</p>
         </div>
         <div class="qr-container" onclick="window.location.href='https://forms.gle/KstAMNGRCfPSanwB7'">
             <div class="qr-label">🔮 ENVIAR RESPOSTA</div>
             <div class="qr-code-wrapper">
                 <a href="https://forms.gle/KstAMNGRCfPSanwB7">
-                    <img src="frame4.png" alt="QR Code para formulário"/>
+                    <img src="frame5.png" alt="QR Code para formulário"/>
                 </a>
             </div>
             <div class="qr-footer">Aponte a câmera</div>
         </div>
     </div>
     
-    <!-- SLIDE 2: RANKING DESAFIOS ANTERIORES -->
+    <!-- SLIDE 2: PÓDIO - CONQUISTADORES DAS INSÍGNIAS DO 1º MÊS (APENAS 3 PRIMEIROS) -->
     <div class="slide" id="slide2">
-        <div class="container-ranking">
-            <h2 class="ranking-title">GRÃO-CONSELHO</h2>
-            <p class="ranking-subtitle">Os Arquimagos da Academia • Desafios 1, 2 e 3</p>
+        <div class="container-podio">
+            <h2 class="podio-title"> CONQUISTADORES DAS INSÍGNIAS </h2>
+            <p class="podio-subtitle">1º Mês • Desafios 1, 2, 3 e 4</p>
             <div class="podio">
                 <div class="podio-place segundo">
                     <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
                     <div class="position">2º LUGAR</div>
                     <div class="rank-badge">Mago do Tempo</div>
-                    <div class="name">Pedro Gomes (IIW2024A)</div>
-                    <div class="points">7 pontos</div>
-                    <div class="points-small">Nível 3</div>
+                    <div class="name">Diego Ribeiro (EIN2023)</div>
+                    <div class="points">10 pts</div>
+                    <div class="points-small">Nível 4</div>
                 </div>
                 <div class="podio-place primeiro">
                     <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div>
                     <div class="position">1º LUGAR</div>
                     <div class="rank-badge">Mago Supremo</div>
                     <div class="name">Eduardo Ambrosio (EIN2024)</div>
-                    <div class="points">8 pontos</div>
-                    <div class="points-small">Nível 3</div>
+                    <div class="points">12 pts</div>
+                    <div class="points-small">Nível 4</div>
                 </div>
                 <div class="podio-place terceiro">
                     <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
                     <div class="position">3º LUGAR</div>
                     <div class="rank-badge">Mago Elemental</div>
-                    <div class="name">Diego Ribeiro (EIN2023)</div>
-                    <div class="points">7 pontos</div>
+                    <div class="name">Pedro Gomes (IIW2024A)</div>
+                    <div class="points">7 pts</div>
                     <div class="points-small">Nível 3</div>
-                </div>
-            </div>
-            <div class="ranking-grid">
-                <div class="rank-item">
-                    <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1572979129454-dce4055c1f68?q=80&w=1171&auto=format&fit=crop');"></div>
-                    4º Gustavo Oliveira (IIW2024A) - 4 pontos<br>
-                    <span class="rank-title">Mago das Sombras</span>
-                </div>
-                <div class="rank-item">
-                    <div class="small-mago" style="background-image: url('https://images.unsplash.com/photo-1771148835096-b843d0b539a2?q=80&w=687&auto=format&fit=crop');"></div>
-                    5º Pedro Sozza (EIN2023) - 4 pontos<br>
-                    <span class="rank-title">Feiticeiro Lunar</span>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- SLIDE 3: CRITÉRIOS DE AVALIAÇÃO -->
+    <!-- SLIDE 3: RANKING ACUMULADO GERAL - APENAS 5 PRIMEIROS -->
     <div class="slide" id="slide3">
+        <div class="container-ranking-geral">
+            <h2 class="ranking-geral-title"> RANKING ACUMULADO GERAL </h2>
+            <p class="ranking-geral-sub">Pontuação total após 4 desafios • Top 5</p>
+            <div class="ranking-list">
+                <div class="rank-row">
+                    <span class="rank-pos">1º</span>
+                    <span class="rank-name">Eduardo Ambrosio (EIN2024)</span>
+                    <span class="rank-points">12 pontos</span>
+                </div>
+                <div class="rank-row">
+                    <span class="rank-pos">2º</span>
+                    <span class="rank-name">Diego Ribeiro (EIN2023)</span>
+                    <span class="rank-points">10 pontos</span>
+                </div>
+                <div class="rank-row">
+                    <span class="rank-pos">3º</span>
+                    <span class="rank-name">Pedro Gomes (IIW2024A)</span>
+                    <span class="rank-points">7 pontos</span>
+                </div>
+                <div class="rank-row">
+                    <span class="rank-pos">4º</span>
+                    <span class="rank-name">Gustavo Oliveira (IIW2024A)</span>
+                    <span class="rank-points">4 pontos</span>
+                </div>
+                <div class="rank-row">
+                    <span class="rank-pos">5º</span>
+                    <span class="rank-name">Pedro Sozza (EIN2023)</span>
+                    <span class="rank-points">4 pontos</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SLIDE 4: CRITÉRIOS DE AVALIAÇÃO -->
+    <div class="slide" id="slide4">
         <div class="container-criterios">
             <h2 class="criterios-title"> DECRETO DOS CRITÉRIOS </h2>
             <div class="criterio-card">
@@ -1008,25 +1010,25 @@
         </div>
     </div>
     
-    <!-- SLIDE 4: PONTUAÇÃO POR TURMA -->
-    <div class="slide" id="slide4">
+    <!-- SLIDE 5: PONTUAÇÃO POR TURMA -->
+    <div class="slide" id="slide5">
         <div class="container-pontuacao-turmas">
             <h2 class="turmas-title"> PONTUAÇÃO TOTAL POR TURMA </h2>
-            <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2 e 3</p>
+            <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3 e 4</p>
             <div class="turmas-grid">
                 <div class="turma-card">
-                    <h3> IIW2024A</h3>
-                    <div class="turma-pontos">11 pts</div>
+                    <h3> EIN2023</h3>
+                    <div class="turma-pontos">14 pts</div>
                     <div class="turma-detalhe">Magos Veteranos</div>
                 </div>
                 <div class="turma-card">
-                    <h3> EIN2023</h3>
-                    <div class="turma-pontos">11 pts</div>
+                    <h3> EIN2024</h3>
+                    <div class="turma-pontos">12 pts</div>
                     <div class="turma-detalhe">Chamas da Inovação</div>
                 </div>
                 <div class="turma-card">
-                    <h3> EIN2024</h3>
-                    <div class="turma-pontos">8 pts</div>
+                    <h3> IIW2024A</h3>
+                    <div class="turma-pontos">11 pts</div>
                     <div class="turma-detalhe">Sábios Lunares</div>
                 </div>
             </div>
@@ -1037,20 +1039,20 @@
         </div>
     </div>
     
-    <!-- SLIDE 5: CURIOSIDADE - MULHERES NA MATEMÁTICA (HIPÁTIA) -->
-    <div class="slide" id="slide5">
+    <!-- SLIDE 6: CURIOSIDADE - EMMY NOETHER -->
+    <div class="slide" id="slide6">
         <div class="container-curiosidade">
             <h2 class="curiosidade-title"> SABEDORIA ANCESTRAL </h2>
             <div class="curiosidade-content">
                 <div class="curiosidade-imagem">
-                    <img src="hipatia.jpg" alt="Hipátia de Alexandria - Matemática e Filósofa" onerror="this.src='https://cdn.pixabay.com/photo/2016/03/31/20/31/woman-1296454_640.png'">
+                    <img src="emmy_noether.jpg" alt="Emmy Noether - Matemática e Física" onerror="this.src='https://cdn.pixabay.com/photo/2016/03/31/20/31/woman-1296454_640.png'">
                 </div>
                 <div class="curiosidade-texto">
-                    <strong> HIPÁTIA DE ALEXANDRIA (c. 355–415 d.C.) </strong><br><br>
-                    Uma das primeiras mulheres matemáticas da história, Hipátia foi chefe da Escola Neoplatônica de Alexandria. Ela escreveu tratados sobre geometria, álgebra e astronomia, além de ter inventado o hidrômetro e o astrolábio.<br><br>
-                    Sua coragem e sabedoria iluminaram as ciências em tempos sombrios. Até hoje, é símbolo do conhecimento feminino na matemática e na filosofia.<br><br>
+                    <strong> EMMY NOETHER (1882–1935) </strong><br><br>
+                    Considerada a "mãe da álgebra moderna", Emmy Noether revolucionou a matemática com seus teoremas sobre invariantes e anéis. Albert Einstein a descreveu como o "gênio matemático criativo mais significativo" desde o início do ensino superior para mulheres.<br><br>
+                    O Teorema de Noether conecta simetrias na física a leis de conservação — uma ponte perfeita entre lógica, matemática e o mundo real.<br><br>
                     <div class="citacao">
-                        "Reserve o direito de pensar, pois mesmo pensar errado é melhor do que não pensar."
+                        "A matemática pura é a poesia das ideias lógicas."
                     </div>
                 </div>
             </div>
@@ -1064,10 +1066,10 @@
     
     <script>
         var currentSlide = 0;
-        var totalSlides = 6;
+        var totalSlides = 7;
         var timerInterval = null;
         var timerProgress = document.getElementById('timerProgress');
-        var slideTimes = [20, 300, 25, 20, 20, 25];
+        var slideTimes = [20, 300, 25, 20, 20, 20, 25];
         
         function updateIndicators() {
             const container = document.getElementById('slideIndicators');
