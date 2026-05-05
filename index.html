@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Academia Arcana - Desafio 5 | O Enigma do Incêndio</title>
+    <title>Academia Arcana - Desafio 6 | Relógio das Formas</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -290,7 +290,6 @@
             padding-top: 2.5vh;
         }
         
-        /* CONTAINER DO DESAFIO - CENTRALIZADO SEM IMAGEM */
         .container-desafio { 
             text-align: center; 
             max-width: 75%;
@@ -334,7 +333,6 @@
             text-align: center;
         }
         
-        /* ENUNCIADO MISTERIOSO */
         .enunciado-magico {
             background: #2a1b3d;
             border-radius: 30px;
@@ -349,21 +347,91 @@
             line-height: 1.6;
         }
         
-        .enunciado-magico p {
-            margin: 1vh 0;
+        .enunciado-magico p { margin: 1vh 0; }
+        .enunciado-magico .cidade { color: #ffaa66; font-weight: bold; font-size: 3vh; }
+
+        .desafio-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2vw;
+            margin-bottom: 1vh;
         }
-        
-        .enunciado-magico .destaque {
-            color: #ffaa66;
-            font-size: 3.2vh;
-            font-family: monospace;
+
+        .figura-magica {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .figura-magica svg {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            background: radial-gradient(circle at center, #1a1024, #08040f);
+            border-radius: 30px;
+            border: 3px solid #b8860b;
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.35);
+            padding: 1vh;
+        }
+
+        .figura-magica svg.grande {
+            max-width: 390px;
+        }
+
+        .legenda-pontos {
+            margin-top: 1vh;
+            font-size: 2vh;
+            color: #4b0082;
+            font-weight: bold;
+        }
+
+        .container-resolucao {
+            text-align: center;
+            max-width: 75%;
+            width: 920px;
+            padding: 3vh 4vw;
+            background: rgba(20, 10, 30, 0.95);
+            border-radius: 70px 25px 70px 25px;
+            border: 5px solid #ffd700;
+            margin: auto;
+            z-index: 20;
+            position: relative;
+        }
+
+        .resolucao-title {
+            font-size: 4.2vh;
+            color: #ffd700;
+            text-shadow: 3px 3px 0 #4b0082;
+            margin-bottom: 1.5vh;
             letter-spacing: 2px;
         }
-        
-        .enunciado-magico .cidade {
-            color: #ffaa66;
-            font-weight: bold;
+
+        .resolucao-box {
+            background: rgba(75, 0, 130, 0.35);
+            border: 3px solid #b8860b;
+            border-radius: 35px;
+            padding: 2.2vh 2vw;
+            color: #e6d5b8;
+            font-size: 2.5vh;
+            line-height: 1.55;
+            text-align: left;
+        }
+
+        .resolucao-box p { margin: 1.2vh 0; }
+
+        .resposta-final {
+            margin-top: 2vh;
             font-size: 3vh;
+            color: #ffd700;
+            font-weight: bold;
+            text-align: center;
+            background: rgba(0,0,0,0.35);
+            padding: 1.2vh 1vw;
+            border-radius: 30px;
+            border: 2px solid #8a2be2;
         }
         
         .instrucao { 
@@ -381,488 +449,112 @@
             margin-bottom: 0.5vh;
             text-align: center;
         }
-        
-        /* SLIDE DO PÓDIO - APENAS OS 3 PRIMEIROS */
+
+        .container-podio, .container-ranking-geral, .container-criterios, .container-pontuacao-turmas, .container-curiosidade {
+            margin: auto;
+            z-index: 15;
+        }
+
         .container-podio { 
             text-align: center; 
             max-width: 85%;
             width: 1000px;
             padding: 2vh 2vw;
-            margin: auto;
             background: rgba(20, 10, 30, 0.85);
             border-radius: 70px 25px 70px 25px;
             border: 5px solid #ffd700;
-            z-index: 15;
         }
+        .podio-title { font-size: 5vh; margin-bottom: 0.5vh; color: #ffd700; text-shadow: 4px 4px 0 #4b0082; letter-spacing: 3px; }
+        .podio-subtitle { font-size: 2.5vh; color: #b19cd9; margin-bottom: 2vh; font-style: italic; border-bottom: 2px solid #b8860b; display: inline-block; padding-bottom: 0.8vh; }
+        .podio { display: flex; justify-content: center; align-items: flex-end; gap: 2vw; margin: 2vh 0 1vh; }
+        .podio-place { padding: 1.5vh 1.5vw; border: 4px solid; text-align: center; display: flex; flex-direction: column; justify-content: space-between; border-radius: 40px 15px 40px 15px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+        .primeiro { width: 26vw; min-height: 38vh; border-color: #ffd700; background: linear-gradient(135deg, #0a6b0a, #1a4a1a); }
+        .segundo { width: 23vw; min-height: 34vh; border-color: #c0c0c0; background: linear-gradient(135deg, #8b0000, #4a0000); }
+        .terceiro { width: 23vw; min-height: 30vh; border-color: #cd7f32; background: linear-gradient(135deg, #0a2a4a, #0a1a2a); }
+        .mago-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #ffd700; margin: 0 auto 0.8vh; background-size: cover; background-position: center; background-color: #2a1b3d; box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
+        .position { font-size: 2.8vh; font-weight: bold; color: #ffd700; margin-bottom: 0.5vh; text-transform: uppercase; }
+        .rank-badge { font-size: 2vh; color: #ffd700; background: rgba(0,0,0,0.5); padding: 0.3vh 1vw; border-radius: 30px; display: inline-block; margin-bottom: 0.5vh; }
+        .name { font-size: 2.4vh; color: #e6d5b8; font-weight: bold; margin-bottom: 0.5vh; }
+        .points { font-size: 3.8vh; color: #ffd700; font-weight: bold; }
+        .points-small { font-size: 1.8vh; color: #b19cd9; margin-top: 0.5vh; }
         
-        .podio-title {
-            font-size: 5vh;
-            margin-bottom: 0.5vh;
-            color: #ffd700;
-            text-shadow: 4px 4px 0 #4b0082;
-            letter-spacing: 3px;
-        }
-        
-        .podio-subtitle {
-            font-size: 2.5vh;
-            color: #b19cd9;
-            margin-bottom: 2vh;
-            font-style: italic;
-            border-bottom: 2px solid #b8860b;
-            display: inline-block;
-            padding-bottom: 0.8vh;
-        }
-        
-        .podio {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 2vw;
-            margin: 2vh 0 1vh;
-        }
-        
-        .podio-place {
-            padding: 1.5vh 1.5vw;
-            border: 4px solid;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-radius: 40px 15px 40px 15px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-        }
-        
-        .primeiro {
-            width: 26vw;
-            min-height: 38vh;
-            border-color: #ffd700;
-            background: linear-gradient(135deg, #0a6b0a, #1a4a1a);
-        }
-        
-        .segundo {
-            width: 23vw;
-            min-height: 34vh;
-            border-color: #c0c0c0;
-            background: linear-gradient(135deg, #8b0000, #4a0000);
-        }
-        
-        .terceiro {
-            width: 23vw;
-            min-height: 30vh;
-            border-color: #cd7f32;
-            background: linear-gradient(135deg, #0a2a4a, #0a1a2a);
-        }
-        
-        .mago-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid #ffd700;
-            margin: 0 auto 0.8vh;
-            background-size: cover;
-            background-position: center;
-            background-color: #2a1b3d;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-        }
-        
-        .position {
-            font-size: 2.8vh;
-            font-weight: bold;
-            color: #ffd700;
-            margin-bottom: 0.5vh;
-            text-transform: uppercase;
-        }
-        
-        .rank-badge {
-            font-size: 2vh;
-            color: #ffd700;
-            background: rgba(0,0,0,0.5);
-            padding: 0.3vh 1vw;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 0.5vh;
-        }
-        
-        .name {
-            font-size: 2.4vh;
-            color: #e6d5b8;
-            font-weight: bold;
-            margin-bottom: 0.5vh;
-        }
-        
-        .points {
-            font-size: 3.8vh;
-            color: #ffd700;
-            font-weight: bold;
-        }
-        
-        .points-small {
-            font-size: 1.8vh;
-            color: #b19cd9;
-            margin-top: 0.5vh;
-        }
-        
-        /* SLIDE DO RANKING ACUMULADO GERAL - APENAS 5 PRIMEIROS */
         .container-ranking-geral {
-            text-align: center;
-            max-width: 80%;
-            width: 800px;
-            padding: 3vh 2vw;
-            background: rgba(20, 10, 30, 0.92);
-            border-radius: 70px 25px 70px 25px;
-            border: 5px solid #ffd700;
-            margin: auto;
-            z-index: 15;
+            text-align: center; max-width: 80%; width: 800px; padding: 3vh 2vw;
+            background: rgba(20, 10, 30, 0.92); border-radius: 70px 25px 70px 25px; border: 5px solid #ffd700;
         }
-        
-        .ranking-geral-title {
-            font-size: 4.5vh;
-            margin-bottom: 0.5vh;
-            color: #ffd700;
-            text-shadow: 4px 4px 0 #4b0082;
-            letter-spacing: 3px;
-        }
-        
-        .ranking-geral-sub {
-            font-size: 2.2vh;
-            color: #b19cd9;
-            margin-bottom: 2vh;
-            font-style: italic;
-        }
-        
-        .ranking-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1vh;
-            margin-top: 1.5vh;
-        }
-        
-        .rank-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(42, 27, 61, 0.8);
-            padding: 1vh 2vw;
-            border-radius: 40px;
-            font-size: 2.2vh;
-            color: #e6d5b8;
-            border-left: 5px solid #ffd700;
-        }
-        
-        .rank-row .rank-pos {
-            font-weight: bold;
-            color: #ffd700;
-            width: 15%;
-            text-align: left;
-        }
-        
-        .rank-row .rank-name {
-            width: 55%;
-            text-align: left;
-        }
-        
-        .rank-row .rank-points {
-            width: 30%;
-            text-align: right;
-            font-weight: bold;
-            color: #ffaa66;
-        }
+        .ranking-geral-title { font-size: 4.5vh; margin-bottom: 0.5vh; color: #ffd700; text-shadow: 4px 4px 0 #4b0082; letter-spacing: 3px; }
+        .ranking-geral-sub { font-size: 2.2vh; color: #b19cd9; margin-bottom: 2vh; font-style: italic; }
+        .ranking-list { display: flex; flex-direction: column; gap: 1vh; margin-top: 1.5vh; }
+        .rank-row { display: flex; justify-content: space-between; align-items: center; background: rgba(42, 27, 61, 0.8); padding: 1vh 2vw; border-radius: 40px; font-size: 2.2vh; color: #e6d5b8; border-left: 5px solid #ffd700; }
+        .rank-row .rank-pos { font-weight: bold; color: #ffd700; width: 15%; text-align: left; }
+        .rank-row .rank-name { width: 55%; text-align: left; }
+        .rank-row .rank-points { width: 30%; text-align: right; font-weight: bold; color: #ffaa66; }
         
         .container-criterios {
-            text-align: center;
-            max-width: 75%;
-            width: 900px;
-            padding: 2.5vh 3vw;
-            background: rgba(20, 10, 30, 0.96);
-            border-radius: 70px 25px 70px 25px;
-            border: 5px solid #ffd700;
-            margin: auto;
-            position: relative;
-            z-index: 15;
-            backdrop-filter: blur(3px);
+            text-align: center; max-width: 75%; width: 900px; padding: 2.5vh 3vw;
+            background: rgba(20, 10, 30, 0.96); border-radius: 70px 25px 70px 25px; border: 5px solid #ffd700; position: relative; backdrop-filter: blur(3px);
         }
-        
-        .criterios-title {
-            font-size: 4.5vh;
-            color: #ffd700;
-            text-shadow: 0 0 20px #8a2be2;
-            margin-bottom: 2vh;
-            letter-spacing: 3px;
-        }
-        
-        .criterio-card {
-            background: rgba(75, 0, 130, 0.5);
-            border: 3px solid #b8860b;
-            border-radius: 50px 15px 50px 15px;
-            padding: 2.5vh 2vw;
-            margin: 1.5vh auto;
-            text-align: center;
-            width: 90%;
-        }
-        
-        .criterio-destaque-novo {
-            font-size: 3.2vh;
-            color: #ffd700;
-            font-weight: bold;
-            margin-bottom: 1.5vh;
-        }
-        
-        .criterio-texto {
-            font-size: 2.6vh;
-            color: #e6d5b8;
-            line-height: 1.4;
-        }
-        
-        .criterio-texto strong {
-            color: #ffaa66;
-        }
-        
-        .regra-extra {
-            margin-top: 2.5vh;
-            background: rgba(138, 43, 226, 0.4);
-            border-radius: 40px;
-            padding: 1.5vh;
-            border: 2px solid #ffd700;
-        }
-        
-        .regra-extra p {
-            color: #ffd700;
-            font-size: 2.2vh;
-        }
+        .criterios-title { font-size: 4.5vh; color: #ffd700; text-shadow: 0 0 20px #8a2be2; margin-bottom: 2vh; letter-spacing: 3px; }
+        .criterio-card { background: rgba(75, 0, 130, 0.5); border: 3px solid #b8860b; border-radius: 50px 15px 50px 15px; padding: 2.5vh 2vw; margin: 1.5vh auto; text-align: center; width: 90%; }
+        .criterio-destaque-novo { font-size: 3.2vh; color: #ffd700; font-weight: bold; margin-bottom: 1.5vh; }
+        .criterio-texto { font-size: 2.6vh; color: #e6d5b8; line-height: 1.4; }
+        .criterio-texto strong { color: #ffaa66; }
+        .regra-extra { margin-top: 2.5vh; background: rgba(138, 43, 226, 0.4); border-radius: 40px; padding: 1.5vh; border: 2px solid #ffd700; }
+        .regra-extra p { color: #ffd700; font-size: 2.2vh; }
         
         .container-pontuacao-turmas {
-            text-align: center;
-            max-width: 85%;
-            width: 1100px;
-            padding: 3vh 2vw;
-            background: linear-gradient(145deg, #0f0a1f, #1e1230);
-            border-radius: 80px 30px 80px 30px;
-            border: 6px solid #ffd700;
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
-            margin: auto;
-            z-index: 15;
+            text-align: center; max-width: 85%; width: 1100px; padding: 3vh 2vw;
+            background: linear-gradient(145deg, #0f0a1f, #1e1230); border-radius: 80px 30px 80px 30px; border: 6px solid #ffd700; box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
         }
-        
-        .turmas-title {
-            font-size: 5vh;
-            color: #ffd700;
-            text-shadow: 0 0 15px #8a2be2;
-            margin-bottom: 1.5vh;
-            letter-spacing: 4px;
-        }
-        
-        .turmas-sub {
-            font-size: 2.5vh;
-            color: #b19cd9;
-            margin-bottom: 3vh;
-            font-style: italic;
-        }
-        
-        .turmas-grid {
-            display: flex;
-            justify-content: center;
-            gap: 3vw;
-            flex-wrap: wrap;
-            margin: 2vh 0;
-        }
-        
-        .turma-card {
-            background: rgba(0, 0, 0, 0.7);
-            border: 3px solid #b8860b;
-            border-radius: 60px 20px 60px 20px;
-            padding: 2vh 2vw;
-            min-width: 220px;
-            backdrop-filter: blur(4px);
-            transition: transform 0.3s;
-        }
-        
-        .turma-card h3 {
-            font-size: 3.5vh;
-            color: #ffd700;
-            margin-bottom: 1.2vh;
-            border-bottom: 2px solid #8a2be2;
-            display: inline-block;
-            padding-bottom: 0.5vh;
-        }
-        
-        .turma-pontos {
-            font-size: 6vh;
-            font-weight: bold;
-            color: #e6d5b8;
-            margin: 1vh 0;
-            text-shadow: 2px 2px 0 #4b0082;
-        }
-        
-        .turma-detalhe {
-            font-size: 2vh;
-            color: #b19cd9;
-        }
+        .turmas-title { font-size: 5vh; color: #ffd700; text-shadow: 0 0 15px #8a2be2; margin-bottom: 1.5vh; letter-spacing: 4px; }
+        .turmas-sub { font-size: 2.5vh; color: #b19cd9; margin-bottom: 3vh; font-style: italic; }
+        .turmas-grid { display: flex; justify-content: center; gap: 3vw; flex-wrap: wrap; margin: 2vh 0; }
+        .turma-card { background: rgba(0, 0, 0, 0.7); border: 3px solid #b8860b; border-radius: 60px 20px 60px 20px; padding: 2vh 2vw; min-width: 220px; backdrop-filter: blur(4px); transition: transform 0.3s; }
+        .turma-card h3 { font-size: 3.5vh; color: #ffd700; margin-bottom: 1.2vh; border-bottom: 2px solid #8a2be2; display: inline-block; padding-bottom: 0.5vh; }
+        .turma-pontos { font-size: 6vh; font-weight: bold; color: #e6d5b8; margin: 1vh 0; text-shadow: 2px 2px 0 #4b0082; }
+        .turma-detalhe { font-size: 2vh; color: #b19cd9; }
         
         .container-curiosidade {
-            text-align: center;
-            max-width: 85%;
-            width: 1100px;
-            padding: 3vh 3vw;
-            background: rgba(20, 10, 30, 0.94);
-            border-radius: 70px 25px 70px 25px;
-            border: 5px solid #ffd700;
-            margin: auto;
-            position: relative;
-            z-index: 15;
-            backdrop-filter: blur(3px);
+            text-align: center; max-width: 85%; width: 1100px; padding: 3vh 3vw;
+            background: rgba(20, 10, 30, 0.94); border-radius: 70px 25px 70px 25px; border: 5px solid #ffd700; position: relative; backdrop-filter: blur(3px);
         }
-        
-        .curiosidade-title {
-            font-size: 4.5vh;
-            color: #ffd700;
-            text-shadow: 0 0 20px #8a2be2;
-            margin-bottom: 2vh;
-            letter-spacing: 3px;
-        }
-        
-        .curiosidade-content {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 3vw;
-            margin: 2vh 0;
-        }
-        
-        .curiosidade-imagem {
-            flex: 0.8;
-            text-align: center;
-        }
-        
-        .curiosidade-imagem img {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
-            border-radius: 50%;
-            border: 4px solid #ffd700;
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
-            object-fit: cover;
-            aspect-ratio: 1 / 1;
-            background-color: #2a1b3d;
-        }
-        
-        .curiosidade-texto {
-            flex: 1.5;
-            text-align: left;
-            color: #e6d5b8;
-            font-size: 2.6vh;
-            line-height: 1.5;
-            background: rgba(75, 0, 130, 0.4);
-            padding: 2vh 2vw;
-            border-radius: 40px 15px 40px 15px;
-            border: 2px solid #b8860b;
-        }
-        
-        .curiosidade-texto strong {
-            color: #ffd700;
-        }
-        
-        .curiosidade-texto .citacao {
-            font-style: italic;
-            color: #b19cd9;
-            margin-top: 1.5vh;
-            font-size: 2.2vh;
-            border-top: 1px solid #b8860b;
-            padding-top: 1.5vh;
-        }
+        .curiosidade-title { font-size: 4.5vh; color: #ffd700; text-shadow: 0 0 20px #8a2be2; margin-bottom: 2vh; letter-spacing: 3px; }
+        .curiosidade-content { display: flex; flex-direction: row; align-items: center; gap: 3vw; margin: 2vh 0; }
+        .curiosidade-imagem { flex: 0.8; text-align: center; }
+        .curiosidade-imagem img { width: 100%; max-width: 280px; height: auto; border-radius: 50%; border: 4px solid #ffd700; box-shadow: 0 0 30px rgba(138, 43, 226, 0.6); object-fit: cover; aspect-ratio: 1 / 1; background-color: #2a1b3d; }
+        .curiosidade-texto { flex: 1.5; text-align: left; color: #e6d5b8; font-size: 2.6vh; line-height: 1.5; background: rgba(75, 0, 130, 0.4); padding: 2vh 2vw; border-radius: 40px 15px 40px 15px; border: 2px solid #b8860b; }
+        .curiosidade-texto strong { color: #ffd700; }
+        .curiosidade-texto .citacao { font-style: italic; color: #b19cd9; margin-top: 1.5vh; font-size: 2.2vh; border-top: 1px solid #b8860b; padding-top: 1.5vh; }
         
         .qr-container {
-            position: fixed;
-            bottom: 10vh;
-            right: 2.5vw;
-            background: #2a1b3d;
-            padding: 2vh 1.5vw;
-            border-radius: 60px 15px 60px 15px;
-            border: 3px solid #b8860b;
-            z-index: 50;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 200px;
+            position: fixed; bottom: 10vh; right: 2.5vw; background: #2a1b3d; padding: 2vh 1.5vw; border-radius: 60px 15px 60px 15px; border: 3px solid #b8860b; z-index: 50; cursor: pointer; display: flex; flex-direction: column; align-items: center; min-width: 200px;
         }
-        
-        .qr-container:hover {
-            border-color: #ffd700;
-        }
-        
-        .qr-label { 
-            font-size: 2.2vh; 
-            margin-bottom: 1.5vh; 
-            color: #ffd700; 
-            text-align: center;
-            white-space: nowrap;
-        }
-        
-        .qr-code-wrapper {
-            width: 160px;
-            height: 160px;
-            background: #ffffff;
-            border: 3px solid #ffd700;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1vh;
-        }
-        
-        .qr-code-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-        
-        .qr-footer {
-            font-size: 1.8vh; 
-            margin-top: 1vh; 
-            color: #b19cd9; 
-            text-align: center;
-            white-space: nowrap;
-        }
+        .qr-container:hover { border-color: #ffd700; }
+        .qr-label { font-size: 2.2vh; margin-bottom: 1.5vh; color: #ffd700; text-align: center; white-space: nowrap; }
+        .qr-code-wrapper { width: 160px; height: 160px; background: #ffffff; border: 3px solid #ffd700; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 1vh; }
+        .qr-code-wrapper img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .qr-footer { font-size: 1.8vh; margin-top: 1vh; color: #b19cd9; text-align: center; white-space: nowrap; }
+        .ia-credit { position: fixed; top: 1.2vh; right: 1.5vw; z-index: 100; color: #d8c8ff; font-size: 1.6vh; background: rgba(42, 27, 61, 0.75); padding: 0.6vh 1vw; border: 1px solid rgba(255, 215, 0, 0.45); border-radius: 20px; backdrop-filter: blur(3px); }
         
         @media (max-width: 900px) {
-            .curiosidade-content {
-                flex-direction: column;
-            }
-            .container-criterios { max-width: 90%; }
+            .curiosidade-content, .desafio-flex { flex-direction: column; }
+            .container-criterios, .container-resolucao, .container-desafio { max-width: 90%; }
             .turma-card { min-width: 160px; }
-            .container-desafio {
-                max-width: 90%;
-                margin: auto;
-            }
-            .podio {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5vh;
-            }
-            .primeiro, .segundo, .terceiro {
-                width: 80%;
-                min-height: auto;
-            }
-            .container-ranking-geral {
-                width: 90%;
-            }
+            .podio { flex-direction: column; align-items: center; gap: 1.5vh; }
+            .primeiro, .segundo, .terceiro { width: 80%; min-height: auto; }
+            .container-ranking-geral { width: 90%; }
+            .qr-container { min-width: 160px; transform: scale(0.9); transform-origin: bottom right; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="stars"></div>
-    <div class="timer-bar">
-        <div class="timer-progress" id="timerProgress"></div>
-    </div>
+    <div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div>
     <div class="mystic-symbol"></div>
     <div class="mystic-symbol-right"></div>
     <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
     
-    <!-- SLIDE 0: INTRO -->
     <div class="slide active" id="slide0">
         <div class="container-intro">
             <div class="intro-icon">
@@ -871,30 +563,19 @@
                 <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
             </div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
-            <p class="intro-subtitle">Ordem dos Magos • Desafio 5</p>
-            <p class="intro-cta">
-                Desvende a verdade por trás das palavras<br>
-                Onde a lógica e a magia se entrelaçam
-            </p>
-            <p class="intro-highlight">
-                O ENIGMA DO INCÊNDIO
-            </p>
-            <p class="intro-footer">
-                Grão-Conselho dos Magos<br>
-                <strong>Instituto Federal do Paraná</strong><br>
-                Torre Assis Chateaubriand
-            </p>
+            <p class="intro-subtitle">Ordem dos Magos • Desafio 6</p>
+            <p class="intro-cta">Desvende figuras, padrões e enigmas arcanos<br>Onde a lógica e a magia se entrelaçam</p>
+            <p class="intro-highlight">O RELÓGIO DOS TRIÂNGULOS</p>
+            <p class="intro-footer">Grão-Conselho dos Magos<br><strong>Instituto Federal do Paraná</strong><br>Torre Assis Chateaubriand</p>
         </div>
     </div>
     
-    <!-- SLIDE 1: DESAFIO 5 (SEM IMAGEM LATERAL) -->
-    <div class="slide" id="slide1">
+    <div class="slide" id="slide0">
         <div class="container-desafio">
-            <div class="spell-number">DESAFIO 5</div>
+            <div class="spell-number">DESAFIO 5, DA SEMANA PASSADA...</div>
             <div class="crystal-ball"></div>
             <h1> O ENIGMA DO INCÊNDIO </h1>
             <p class="subtitulo">Lógica Mágica • Paradoxos • Raciocínio Dedutivo</p>
-            
             <div class="enunciado-magico" style="text-align: justify;">
                 <p> Um reino tem três cidades:</p>
                 <p><span class="cidade"> VERITASIUM</span>, onde todos dizem a <strong style="color:#aaffaa;">VERDADE</strong>;</p>
@@ -904,155 +585,179 @@
                 <p><strong style="font-size:3vh;">"— Tem um incêndio aqui!"</strong></p>
                 <p><strong style="font-size:3vh;">"— Onde?"</strong></p>
                 <p><strong style="font-size:3vh;">"— Em Dúplexa."</strong></p>
-                <p style="margin-top: 2vh;"> <strong style="font-size:3.5vh; color:#ffaa66;">Para onde os bombeiros devem ir?</strong></p>
+                <p style="margin-top: 2vh;"><strong style="font-size:3.5vh; color:#ffaa66;">Para onde os bombeiros devem ir?</strong></p>
             </div>
-            
             <p class="prazo"> Prazo: Lua Cheia (01/05 23h59)</p>
         </div>
-        <div class="qr-container" onclick="window.location.href='https://forms.gle/17w7kwYLSEdPZUoQ6'">
+        <div class="qr-container" onclick="window.location.href='https://forms.gle/5G37j3nYvkEnVBMUA'">
             <div class="qr-label">🔮 ENVIAR RESPOSTA</div>
-            <div class="qr-code-wrapper">
-                <a href="https://forms.gle/17w7kwYLSEdPZUoQ6">
-                    <img src="frame5.png" alt="QR Code para formulário"/>
-                </a>
-            </div>
+            <div class="qr-code-wrapper"><a href="https://forms.gle/5G37j3nYvkEnVBMUA"><img src="frame5.png" alt="QR Code para formulário"/></a></div>
             <div class="qr-footer">Aponte a câmera</div>
         </div>
     </div>
-    
-    <!-- SLIDE 2: PÓDIO - CONQUISTADORES DAS INSÍGNIAS DO 1º MÊS (APENAS 3 PRIMEIROS) -->
+
     <div class="slide" id="slide2">
+        <div class="container-resolucao">
+            <div class="spell-number">RESOLUÇÃO 5</div>
+            <h2 class="resolucao-title"> A RESPOSTA DO ENIGMA </h2>
+                        <div class="resolucao-box">
+                <p><strong style="color:#ffd700;">Os bombeiros devem ir para <span style="color:#aaffaa;">Veritasium</span>.</strong></p>
+                <p>Para descobrir isso, vamos analisar <strong>quem fez a ligação</strong>.</p>
+                <p><strong>Se quem ligou fosse de <span style="color:#aaffaa;">Veritasium</span></strong>, então as duas falas teriam de ser verdadeiras. Mas isso é impossível, porque a pessoa estaria em <span style="color:#aaffaa;">Veritasium</span> e, ao mesmo tempo, afirmaria corretamente que o incêndio está em <span style="color:#66ccff;">Dúplexa</span>.</p>
+                <p><strong>Se quem ligou fosse de <span style="color:#66ccff;">Dúplexa</span></strong>, precisamos analisar as duas alternâncias possíveis.</p>
+                <p>No caso <strong>verdade → mentira</strong>, a frase <strong>"Tem um incêndio aqui"</strong> seria verdadeira, então haveria incêndio em <span style="color:#66ccff;">Dúplexa</span>. Mas a segunda fala, <strong>"Em Dúplexa"</strong>, teria de ser mentira, o que contradiz a primeira.</p>
+                <p>No caso <strong>mentira → verdade</strong>, a primeira fala diria que <strong>não</strong> há incêndio em <span style="color:#66ccff;">Dúplexa</span>. Só que a segunda afirmaria exatamente o contrário: que o incêndio é em <span style="color:#66ccff;">Dúplexa</span>.</p>
+                <p style="margin-bottom: 1vh;">Logo, quem ligou <strong>não</strong> pode ser de <span style="color:#66ccff;">Dúplexa</span>, nem de <span style="color:#aaffaa;">Veritasium</span>. Resta apenas <span style="color:#ff7777;"><strong>Fallacium</strong></span>, onde as duas falas são mentiras (não há incêndio <strong>aqui</strong> e também <strong>não</strong> é em <span style="color:#66ccff;">Dúplexa</span>), concluindo que o incêndio só pode estar em <span style="color:#aaffaa;"><strong>Veritasium</strong></span>.</p>
+            </div>           <div class="resposta-final">⚡ Destino dos bombeiros: VERITASIUM ⚡</div>
+        </div>
+    </div>
+    
+    <div class="slide" id="slide3">
         <div class="container-podio">
-            <h2 class="podio-title"> CONQUISTADORES DAS INSÍGNIAS </h2>
-            <p class="podio-subtitle">1º Mês • Desafios 1, 2, 3 e 4</p>
+            <h2 class="podio-title"> PÓDIO DO DESAFIO 5 </h2>
+            <p class="podio-subtitle">2º Mês • Desafio 5</p>
             <div class="podio">
                 <div class="podio-place segundo">
                     <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                    <div class="position">2º LUGAR</div>
-                    <div class="rank-badge">Mago do Tempo</div>
-                    <div class="name">Diego Ribeiro (EIN2023)</div>
-                    <div class="points">10 pts</div>
-                    <div class="points-small">Nível 4</div>
+                    <div class="position">2º LUGAR</div><div class="rank-badge">Mago do Tempo</div><div class="name">João Victor (EIN2024)</div><div class="points">+3 pts</div><div class="points-small">Nível 1</div>
                 </div>
                 <div class="podio-place primeiro">
                     <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div>
-                    <div class="position">1º LUGAR</div>
-                    <div class="rank-badge">Mago Supremo</div>
-                    <div class="name">Eduardo Ambrosio (EIN2024)</div>
-                    <div class="points">12 pts</div>
-                    <div class="points-small">Nível 4</div>
+                    <div class="position">1º LUGAR</div><div class="rank-badge">Mago Supremo</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+4 pts</div><div class="points-small">Nível 5</div>
                 </div>
                 <div class="podio-place terceiro">
-                    <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
-                    <div class="position">3º LUGAR</div>
-                    <div class="rank-badge">Mago Elemental</div>
-                    <div class="name">Pedro Gomes (IIW2024A)</div>
-                    <div class="points">7 pts</div>
-                    <div class="points-small">Nível 3</div>
+                    <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="position">3º LUGAR</div><div class="rank-badge">Maga Celestial</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+2 pts</div><div class="points-small">Nível 1</div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- SLIDE 3: RANKING ACUMULADO GERAL - APENAS 5 PRIMEIROS -->
-    <div class="slide" id="slide3">
+    <div class="slide" id="slide7">
+        <div class="container-desafio">
+            <div class="spell-number">DESAFIO 6</div>
+            <div class="crystal-ball"></div>
+            <h1> RELÓGIO DOS TRIÂNGULOS </h1>
+            <p class="subtitulo">Combinatória geométrica • 12 pontos na circunferência</p>
+            <div class="desafio-flex" style="align-items:center; gap: 2vw;">
+                <div class="figura-magica" style="flex: 1.5; max-width: 70%;">
+                    <svg class="grande" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" aria-label="Relógio com 12 pontos na circunferência" style="width:100%; height:auto; max-height:66vh;">
+                        <defs>
+                            <radialGradient id="clockBg" cx="50%" cy="50%" r="62%">
+                                <stop offset="0%" stop-color="#1b1031"/>
+                                <stop offset="100%" stop-color="#07040d"/>
+                            </radialGradient>
+                        </defs>
+                        <rect x="0" y="0" width="700" height="700" rx="28" fill="url(#clockBg)"/>
+                        <circle cx="350" cy="350" r="260" fill="none" stroke="#ffd700" stroke-width="6" opacity="0.9"/>
+                        
+                        <!-- 12 pontos matematicamente exatos sobre a circunferência de raio 260 -->
+                        <!-- Ângulos: 0°, 30°, 60°, 90°, 120°, 150°, 180°, 210°, 240°, 270°, 300°, 330° -->
+                        <!-- Fórmula: x = 350 + 260 * cos(ângulo), y = 350 + 260 * sin(ângulo) -->
+                        
+                        <!-- 0° (12 horas) -->
+                        <circle cx="610" cy="350" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 30° (1 hora) -->
+                        <circle cx="575.13" cy="480" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 60° (2 horas) -->
+                        <circle cx="480" cy="575.13" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 90° (3 horas) -->
+                        <circle cx="350" cy="610" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 120° (4 horas) -->
+                        <circle cx="220" cy="575.13" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 150° (5 horas) -->
+                        <circle cx="124.87" cy="480" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 180° (6 horas) -->
+                        <circle cx="90" cy="350" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 210° (7 horas) -->
+                        <circle cx="124.87" cy="220" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 240° (8 horas) -->
+                        <circle cx="220" cy="124.87" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 270° (9 horas) -->
+                        <circle cx="350" cy="90" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 300° (10 horas) -->
+                        <circle cx="480" cy="124.87" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
+                        
+                        <!-- 330° (11 horas) -->
+                        <circle cx="575.13" cy="220" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
+                    </svg>
+                </div>
+                <div class="enunciado-magico" style="flex: 0.95;">
+                    <p>No relógio há <strong>12 pontos marcados sobre a circunferência</strong>.</p>
+                    <p>Usando <strong>quaisquer 3 desses 12 pontos</strong> como vértices, <strong>quantos triângulos diferentes</strong> podem ser formados?</p>
+                    
+                </div>
+            </div>
+            <p class="instrucao">Envie sua resposta no formulário com o número exato de triângulos.</p>
+            <p class="prazo"> Prazo: Lua Minguante (09/05 23h59)</p>
+        </div>
+        <div class="qr-container" onclick="window.location.href='https://forms.gle/17w7kwYLSEdPZUoQ6'">
+            <div class="qr-label">🔮 ENVIAR RESPOSTA</div>
+            <div class="qr-code-wrapper"><a href="https://forms.gle/17w7kwYLSEdPZUoQ6"><img src="frame5.png" alt="QR Code para formulário"/></a></div>
+            <div class="qr-footer">Aponte a câmera</div>
+        </div>
+    </div>
+<div class="slide" id="slide4">
         <div class="container-ranking-geral">
             <h2 class="ranking-geral-title"> RANKING ACUMULADO GERAL </h2>
             <p class="ranking-geral-sub">Pontuação total após 4 desafios • Top 5</p>
             <div class="ranking-list">
-                <div class="rank-row">
-                    <span class="rank-pos">1º</span>
-                    <span class="rank-name">Eduardo Ambrosio (EIN2024)</span>
-                    <span class="rank-points">12 pontos</span>
-                </div>
-                <div class="rank-row">
-                    <span class="rank-pos">2º</span>
-                    <span class="rank-name">Diego Ribeiro (EIN2023)</span>
-                    <span class="rank-points">10 pontos</span>
-                </div>
-                <div class="rank-row">
-                    <span class="rank-pos">3º</span>
-                    <span class="rank-name">Pedro Gomes (IIW2024A)</span>
-                    <span class="rank-points">7 pontos</span>
-                </div>
-                <div class="rank-row">
-                    <span class="rank-pos">4º</span>
-                    <span class="rank-name">Gustavo Oliveira (IIW2024A)</span>
-                    <span class="rank-points">4 pontos</span>
-                </div>
-                <div class="rank-row">
-                    <span class="rank-pos">5º</span>
-                    <span class="rank-name">Pedro Sozza (EIN2023)</span>
-                    <span class="rank-points">4 pontos</span>
-                </div>
+                <div class="rank-row"><span class="rank-pos">1º</span><span class="rank-name">Eduardo Ambrosio (EIN2024)</span><span class="rank-points">16 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">2º</span><span class="rank-name">Diego Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">3º</span><span class="rank-name">Pedro Gomes (IIW2024A)</span><span class="rank-points">7 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">4º</span><span class="rank-name">Gustavo Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">5º</span><span class="rank-name">Pedro Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">6º</span><span class="rank-name">João Victor (EIN2024)</span><span class="rank-points">3 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">7º</span><span class="rank-name">Maria Luiza (MEC2026)</span><span class="rank-points">2 pontos</span></div>
             </div>
         </div>
     </div>
     
-    <!-- SLIDE 4: CRITÉRIOS DE AVALIAÇÃO -->
-    <div class="slide" id="slide4">
+    <div class="slide" id="slide5">
         <div class="container-criterios">
             <h2 class="criterios-title"> DECRETO DOS CRITÉRIOS </h2>
             <div class="criterio-card">
                 <div class="criterio-destaque-novo"> AVALIAÇÃO POR PRECISÃO </div>
-                <div class="criterio-texto">
-                    <strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>
-                    
-                    ➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>
-                    
-                    ➤ Critério de desempate: <strong>ordem de envio</strong>.<br>
-                </div>
+                <div class="criterio-texto"><strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>➤ Critério de desempate: <strong>ordem de envio</strong>.<br></div>
             </div>
-            <div class="regra-extra">
-                <p> Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p>
-            </div>
+            <div class="regra-extra"><p> Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p></div>
         </div>
     </div>
     
-    <!-- SLIDE 5: PONTUAÇÃO POR TURMA -->
-    <div class="slide" id="slide5">
+    <div class="slide" id="slide6">
         <div class="container-pontuacao-turmas">
             <h2 class="turmas-title"> PONTUAÇÃO TOTAL POR TURMA </h2>
-            <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3 e 4</p>
+            <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4 e 5</p>
             <div class="turmas-grid">
-                <div class="turma-card">
-                    <h3> EIN2023</h3>
-                    <div class="turma-pontos">14 pts</div>
-                    <div class="turma-detalhe">Magos Veteranos</div>
-                </div>
-                <div class="turma-card">
-                    <h3> EIN2024</h3>
-                    <div class="turma-pontos">12 pts</div>
-                    <div class="turma-detalhe">Chamas da Inovação</div>
-                </div>
-                <div class="turma-card">
-                    <h3> IIW2024A</h3>
-                    <div class="turma-pontos">11 pts</div>
-                    <div class="turma-detalhe">Sábios Lunares</div>
-                </div>
+                <div class="turma-card"><h3> EIN2024</h3><div class="turma-pontos">19 pts</div><div class="turma-detalhe">Magos Veteranos</div></div>
+                <div class="turma-card"><h3> EIN2023</h3><div class="turma-pontos">14 pts</div><div class="turma-detalhe">Chamas da Inovação</div></div>
+                <div class="turma-card"><h3> IIW2024A</h3><div class="turma-pontos">11 pts</div><div class="turma-detalhe">Sábios Lunares</div></div>
+                <div class="turma-card"><h3> MEC2026</h3><div class="turma-pontos">2 pts</div><div class="turma-detalhe">Sentinelas Estelares</div></div>
             </div>
-            <div class="regra-extra" style="margin-top: 2vh;">
-                <p> A turma líder ao final do ano receberá honraria arcana!</p>
-                <p style="font-size: 1.8vh;">Pontuação atualizada após cada desafio.</p>
-            </div>
+            <div class="regra-extra" style="margin-top: 2vh;"><p> A turma líder ao final do ano receberá honraria arcana!</p><p style="font-size: 1.8vh;">Pontuação atualizada após cada desafio.</p></div>
         </div>
     </div>
-    
-    <!-- SLIDE 6: CURIOSIDADE - EMMY NOETHER -->
-    <div class="slide" id="slide6">
+
+        <div class="slide" id="slide8">
         <div class="container-curiosidade">
-            <h2 class="curiosidade-title"> SABEDORIA ANCESTRAL </h2>
+            <h2 class="curiosidade-title"> SABEDORIA MATEMÁTICA </h2>
             <div class="curiosidade-content">
-                <div class="curiosidade-imagem">
-                    <img src="emmy_noether.jpg" alt="Emmy Noether - Matemática e Física" onerror="this.src='https://cdn.pixabay.com/photo/2016/03/31/20/31/woman-1296454_640.png'">
-                </div>
+                <div class="curiosidade-imagem"><img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Maryam_Mirzakhani_in_Seoul_2014_%28cropped%29.jpg/500px-Maryam_Mirzakhani_in_Seoul_2014_%28cropped%29.jpg'"></div>
                 <div class="curiosidade-texto">
-                    <strong> EMMY NOETHER (1882–1935) </strong><br><br>
-                    Considerada a "mãe da álgebra moderna", Emmy Noether revolucionou a matemática com seus teoremas sobre invariantes e anéis. Albert Einstein a descreveu como o "gênio matemático criativo mais significativo" desde o início do ensino superior para mulheres.<br><br>
-                    O Teorema de Noether conecta simetrias na física a leis de conservação — uma ponte perfeita entre lógica, matemática e o mundo real.<br><br>
-                    <div class="citacao">
-                        "A matemática pura é a poesia das ideias lógicas."
-                    </div>
+                    <strong> MARYAM MIRZAKHANI (1977–2017) </strong><br><br>
+                    Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> (2014), o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>
+                    Mirzakhani descrevia seu trabalho como "desenhar" — usando intuição geométrica para resolver problemas complexos. Sua genialidade e humildade inspiraram uma geração inteira de jovens cientistas ao redor do mundo.<br><br>
+                    <div class="citacao">"A beleza da matemática só se mostra a paciência."</div>
                 </div>
             </div>
         </div>
@@ -1060,15 +765,14 @@
     
     <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◀ Anterior</button>
     <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo ▶</button>
-    
     <div class="slide-indicator" id="slideIndicators"></div>
     
     <script>
         var currentSlide = 0;
-        var totalSlides = 7;
+        var totalSlides = 9;
         var timerInterval = null;
         var timerProgress = document.getElementById('timerProgress');
-        var slideTimes = [20, 300, 25, 20, 20, 20, 25];
+        var slideTimes = [20, 60, 60, 25, 300, 20, 20, 20, 25];
         
         function updateIndicators() {
             const container = document.getElementById('slideIndicators');
@@ -1084,7 +788,6 @@
             var slides = document.getElementsByClassName('slide');
             if (n >= totalSlides) currentSlide = 0;
             if (n < 0) currentSlide = totalSlides - 1;
-            
             for (var i = 0; i < slides.length; i++) {
                 slides[i].className = slides[i].className.replace(' active', '');
             }
@@ -1093,24 +796,14 @@
             resetTimer();
         }
         
-        function changeSlide(n) {
-            stopTimer();
-            currentSlide += n;
-            showSlide(currentSlide);
-        }
-        
-        function goToSlide(n) {
-            stopTimer();
-            currentSlide = n;
-            showSlide(currentSlide);
-        }
+        function changeSlide(n) { stopTimer(); currentSlide += n; showSlide(currentSlide); }
+        function goToSlide(n) { stopTimer(); currentSlide = n; showSlide(currentSlide); }
         
         function startTimer() {
             stopTimer();
             var timeLeft = slideTimes[currentSlide];
             var totalTime = timeLeft;
             updateProgressBar(0);
-            
             timerInterval = setInterval(function() {
                 timeLeft = timeLeft - 0.1;
                 if (timeLeft <= 0) {
@@ -1122,21 +815,9 @@
             }, 100);
         }
         
-        function stopTimer() {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-        }
-        
-        function updateProgressBar(progress) {
-            if (timerProgress) timerProgress.style.width = progress + '%';
-        }
-        
-        function resetTimer() {
-            stopTimer();
-            startTimer();
-        }
+        function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
+        function updateProgressBar(progress) { if (timerProgress) timerProgress.style.width = progress + '%'; }
+        function resetTimer() { stopTimer(); startTimer(); }
         
         document.onkeydown = function(e) {
             if (e.keyCode == 37) changeSlide(-1);
