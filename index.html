@@ -536,6 +536,27 @@
         .qr-footer { font-size: 1.8vh; margin-top: 1vh; color: #b19cd9; text-align: center; white-space: nowrap; }
         .ia-credit { position: fixed; top: 1.2vh; right: 1.5vw; z-index: 100; color: #d8c8ff; font-size: 1.6vh; background: rgba(42, 27, 61, 0.75); padding: 0.6vh 1vw; border: 1px solid rgba(255, 215, 0, 0.45); border-radius: 20px; backdrop-filter: blur(3px); }
         
+        /* Novo estilo para a imagem da matemática inspirado no QR Code */
+        .math-image-wrapper {
+            width: 100%;
+            max-width: 280px;
+            background: #1a0f2e;
+            border: 3px solid #ffd700;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 1;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+        }
+        .math-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
         @media (max-width: 900px) {
             .curiosidade-content, .desafio-flex { flex-direction: column; }
             .container-criterios, .container-resolucao, .container-desafio { max-width: 90%; }
@@ -710,7 +731,7 @@
 <div class="slide" id="slide4">
         <div class="container-ranking-geral">
             <h2 class="ranking-geral-title"> RANKING ACUMULADO GERAL </h2>
-            <p class="ranking-geral-sub">Pontuação total após 5 desafios</p>
+            <p class="ranking-geral-sub">Pontuação total após 4 desafios • Top 5</p>
             <div class="ranking-list">
                 <div class="rank-row"><span class="rank-pos">1º</span><span class="rank-name">Eduardo Ambrosio (EIN2024)</span><span class="rank-points">16 pontos</span></div>
                 <div class="rank-row"><span class="rank-pos">2º</span><span class="rank-name">Diego Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
@@ -752,7 +773,11 @@
         <div class="container-curiosidade">
             <h2 class="curiosidade-title"> SABEDORIA MATEMÁTICA </h2>
             <div class="curiosidade-content">
-                <div class="curiosidade-imagem"><img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields"></div>
+                <div class="curiosidade-imagem">
+                    <div class="math-image-wrapper">
+                        <img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields">
+                    </div>
+                </div>
                 <div class="curiosidade-texto">
                     <strong> MARYAM MIRZAKHANI (1977–2017) </strong><br><br>
                     Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> (2014), o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>
