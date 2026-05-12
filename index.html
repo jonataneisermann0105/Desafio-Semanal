@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Academia Arcana - Desafio 6 | Relógio das Formas</title>
+    <title>Academia Arcana - Desafio 7 | As Idades Invertidas do Mago</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -450,7 +450,7 @@
             text-align: center;
         }
 
-        .container-podio, .container-ranking-geral, .container-criterios, .container-pontuacao-turmas, .container-curiosidade {
+        .container-podio, .container-ranking-geral, .container-criterios, .container-pontuacao-turmas, .container-curiosidade, .container-curiosidade {
             margin: auto;
             z-index: 15;
         }
@@ -531,12 +531,11 @@
         }
         .qr-container:hover { border-color: #ffd700; }
         .qr-label { font-size: 2.2vh; margin-bottom: 1.5vh; color: #ffd700; text-align: center; white-space: nowrap; }
-        .qr-code-wrapper { width: 160px; height: 160px; background: #ffffff; border: 3px solid #ffd700; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 1vh; }
+        .qr-code-wrapper { width: 100px; height: 100px; background: #ffffff; border: 3px solid #ffd700; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 1vh; }
         .qr-code-wrapper img { width: 100%; height: 100%; object-fit: contain; display: block; }
         .qr-footer { font-size: 1.8vh; margin-top: 1vh; color: #b19cd9; text-align: center; white-space: nowrap; }
         .ia-credit { position: fixed; top: 1.2vh; right: 1.5vw; z-index: 100; color: #d8c8ff; font-size: 1.6vh; background: rgba(42, 27, 61, 0.75); padding: 0.6vh 1vw; border: 1px solid rgba(255, 215, 0, 0.45); border-radius: 20px; backdrop-filter: blur(3px); }
         
-        /* Novo estilo para a imagem da matemática inspirado no QR Code */
         .math-image-wrapper {
             width: 100%;
             max-width: 280px;
@@ -576,6 +575,7 @@
     <div class="mystic-symbol-right"></div>
     <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
     
+    <!-- Slide 0: Intro -->
     <div class="slide active" id="slide0">
         <div class="container-intro">
             <div class="intro-icon">
@@ -584,206 +584,155 @@
                 <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
             </div>
             <h2 class="intro-title">ACADEMIA ARCANA</h2>
-            <p class="intro-subtitle">Ordem dos Magos • Desafio 6</p>
+            <p class="intro-subtitle">Ordem dos Magos • Desafio 7</p>
             <p class="intro-cta">Desvende figuras, padrões e enigmas arcanos<br>Onde a lógica e a magia se entrelaçam</p>
-            <p class="intro-highlight">O RELÓGIO DOS TRIÂNGULOS</p>
+            <p class="intro-highlight">O ENIGMA DAS IDADES INVERTIDAS</p>
             <p class="intro-footer">Grão-Conselho dos Magos<br><strong>Instituto Federal do Paraná</strong><br>Torre Assis Chateaubriand</p>
         </div>
     </div>
     
-    <div class="slide" id="slide0">
+    <!-- Slide 1: DESAFIO 6 (Triângulos no relógio) -->
+    <div class="slide" id="slide1">
         <div class="container-desafio">
-            <div class="spell-number">DESAFIO 5, DA SEMANA PASSADA...</div>
-            <div class="crystal-ball"></div>
-            <h1> O ENIGMA DO INCÊNDIO </h1>
-            <p class="subtitulo">Lógica Mágica • Paradoxos • Raciocínio Dedutivo</p>
-            <div class="enunciado-magico" style="text-align: justify;">
-                <p> Um reino tem três cidades:</p>
-                <p><span class="cidade"> VERITASIUM</span>, onde todos dizem a <strong style="color:#aaffaa;">VERDADE</strong>;</p>
-                <p><span class="cidade"> FALLACIUM</span>, onde todos <strong style="color:#ffaaaa;">MENTEM</strong>;</p>
-                <p><span class="cidade"> DÚPLEXA</span>, onde as pessoas alternam entre <strong style="color:#aaffaa;">VERDADE</strong> e <strong style="color:#ffaaaa;">MENTIRA</strong>.</p>
-                <p style="margin-top: 2vh;">Houve um incêndio em uma dessas cidades. O Corpo de Bombeiros recebeu a seguinte ligação:</p>
-                <p><strong style="font-size:3vh;">"— Tem um incêndio aqui!"</strong></p>
-                <p><strong style="font-size:3vh;">"— Onde?"</strong></p>
-                <p><strong style="font-size:3vh;">"— Em Dúplexa."</strong></p>
-                <p style="margin-top: 2vh;"><strong style="font-size:3.5vh; color:#ffaa66;">Para onde os bombeiros devem ir?</strong></p>
-            </div>
-            <p class="prazo"> Prazo: Lua Cheia (01/05 23h59)</p>
-        </div>
-        <div class="qr-container" onclick="window.location.href='https://forms.gle/5G37j3nYvkEnVBMUA'">
-            <div class="qr-label">🔮 ENVIAR RESPOSTA</div>
-            <div class="qr-code-wrapper"><a href="https://forms.gle/5G37j3nYvkEnVBMUA"><img src="frame6.png" alt="QR Code para formulário"/></a></div>
-            <div class="qr-footer">Aponte a câmera</div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide2">
-        <div class="container-resolucao">
-            <div class="spell-number">RESOLUÇÃO 5</div>
-            <h2 class="resolucao-title"> A RESPOSTA DO ENIGMA </h2>
-                        <div class="resolucao-box">
-                <p><strong style="color:#ffd700;">Os bombeiros devem ir para <span style="color:#aaffaa;">Veritasium</span>.</strong></p>
-                <p>Para descobrir isso, vamos analisar <strong>quem fez a ligação</strong>.</p>
-                <p><strong>Se quem ligou fosse de <span style="color:#aaffaa;">Veritasium</span></strong>, então as duas falas teriam de ser verdadeiras. Mas isso é impossível, porque a pessoa estaria em <span style="color:#aaffaa;">Veritasium</span> e, ao mesmo tempo, afirmaria corretamente que o incêndio está em <span style="color:#66ccff;">Dúplexa</span>.</p>
-                <p><strong>Se quem ligou fosse de <span style="color:#66ccff;">Dúplexa</span></strong>, precisamos analisar as duas alternâncias possíveis.</p>
-                <p>No caso <strong>verdade → mentira</strong>, a frase <strong>"Tem um incêndio aqui"</strong> seria verdadeira, então haveria incêndio em <span style="color:#66ccff;">Dúplexa</span>. Mas a segunda fala, <strong>"Em Dúplexa"</strong>, teria de ser mentira, o que contradiz a primeira.</p>
-                <p>No caso <strong>mentira → verdade</strong>, a primeira fala diria que <strong>não</strong> há incêndio em <span style="color:#66ccff;">Dúplexa</span>. Só que a segunda afirmaria exatamente o contrário: que o incêndio é em <span style="color:#66ccff;">Dúplexa</span>.</p>
-                <p style="margin-bottom: 1vh;">Logo, quem ligou <strong>não</strong> pode ser de <span style="color:#66ccff;">Dúplexa</span>, nem de <span style="color:#aaffaa;">Veritasium</span>. Resta apenas <span style="color:#ff7777;"><strong>Fallacium</strong></span>, onde as duas falas são mentiras (não há incêndio <strong>aqui</strong> e também <strong>não</strong> é em <span style="color:#66ccff;">Dúplexa</span>), concluindo que o incêndio só pode estar em <span style="color:#aaffaa;"><strong>Veritasium</strong></span>.</p>
-            </div>           <div class="resposta-final"> Destino dos bombeiros: VERITASIUM </div>
-        </div>
-    </div>
-    
-    <div class="slide" id="slide3">
-        <div class="container-podio">
-            <h2 class="podio-title"> PÓDIO DO DESAFIO 5 </h2>
-            <p class="podio-subtitle">2º Mês • Desafio 5</p>
-            <div class="podio">
-                <div class="podio-place segundo">
-                    <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                    <div class="position">2º LUGAR</div><div class="rank-badge">Mago do Tempo</div><div class="name">João Victor (EIN2024)</div><div class="points">+3 pts</div><div class="points-small">Nível 1</div>
-                </div>
-                <div class="podio-place primeiro">
-                    <div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div>
-                    <div class="position">1º LUGAR</div><div class="rank-badge">Mago Supremo</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+4 pts</div><div class="points-small">Nível 5</div>
-                </div>
-                <div class="podio-place terceiro">
-                    <div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                    <div class="position">3º LUGAR</div><div class="rank-badge">Maga Celestial</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+2 pts</div><div class="points-small">Nível 1</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="slide" id="slide7">
-        <div class="container-desafio">
-            <div class="spell-number">DESAFIO 6</div>
+            <div class="spell-number">DESAFIO DA SEMANA PASSADA...</div>
             <div class="crystal-ball"></div>
             <h1> RELÓGIO DOS TRIÂNGULOS </h1>
             <p class="subtitulo">Combinatória geométrica • 12 pontos na circunferência</p>
             <div class="desafio-flex" style="align-items:center; gap: 2vw;">
                 <div class="figura-magica" style="flex: 1.5; max-width: 70%;">
                     <svg class="grande" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" aria-label="Relógio com 12 pontos na circunferência" style="width:100%; height:auto; max-height:66vh;">
-                        <defs>
-                            <radialGradient id="clockBg" cx="50%" cy="50%" r="62%">
-                                <stop offset="0%" stop-color="#1b1031"/>
-                                <stop offset="100%" stop-color="#07040d"/>
-                            </radialGradient>
-                        </defs>
+                        <defs><radialGradient id="clockBg" cx="50%" cy="50%" r="62%"><stop offset="0%" stop-color="#1b1031"/><stop offset="100%" stop-color="#07040d"/></radialGradient></defs>
                         <rect x="0" y="0" width="700" height="700" rx="28" fill="url(#clockBg)"/>
                         <circle cx="350" cy="350" r="260" fill="none" stroke="#ffd700" stroke-width="6" opacity="0.9"/>
-                        
-                        <!-- 12 pontos matematicamente exatos sobre a circunferência de raio 260 -->
-                        <!-- Ângulos: 0°, 30°, 60°, 90°, 120°, 150°, 180°, 210°, 240°, 270°, 300°, 330° -->
-                        <!-- Fórmula: x = 350 + 260 * cos(ângulo), y = 350 + 260 * sin(ângulo) -->
-                        
-                        <!-- 0° (12 horas) -->
                         <circle cx="610" cy="350" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 30° (1 hora) -->
                         <circle cx="575.13" cy="480" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 60° (2 horas) -->
                         <circle cx="480" cy="575.13" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 90° (3 horas) -->
                         <circle cx="350" cy="610" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 120° (4 horas) -->
                         <circle cx="220" cy="575.13" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 150° (5 horas) -->
                         <circle cx="124.87" cy="480" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 180° (6 horas) -->
                         <circle cx="90" cy="350" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 210° (7 horas) -->
                         <circle cx="124.87" cy="220" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 240° (8 horas) -->
                         <circle cx="220" cy="124.87" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 270° (9 horas) -->
                         <circle cx="350" cy="90" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 300° (10 horas) -->
                         <circle cx="480" cy="124.87" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        
-                        <!-- 330° (11 horas) -->
                         <circle cx="575.13" cy="220" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
                     </svg>
                 </div>
                 <div class="enunciado-magico" style="flex: 0.95;">
                     <p>Em um relógio há <strong>12 pontos marcados sobre a circunferência</strong>.</p>
                     <p>Usando <strong>quaisquer 3 desses 12 pontos</strong> como vértices, <strong>quantos triângulos diferentes</strong> podem ser formados?</p>
-                    
                 </div>
             </div>
             <p class="instrucao">Envie sua resposta no formulário com o número exato de triângulos.</p>
             <p class="prazo"> Prazo: Lua Minguante (09/05 23h59)</p>
         </div>
-        <div class="qr-container" onclick="window.location.href='https://forms.gle/17w7kwYLSEdPZUoQ6'">
-            <div class="qr-label">🔮 ENVIAR RESPOSTA</div>
-            <div class="qr-code-wrapper"><a href="https://forms.gle/17w7kwYLSEdPZUoQ6"><img src="frame6.png" alt="QR Code para formulário"/></a></div>
+        <div class="qr-container" onclick="window.location.href='https://forms.gle/dijCPNjc8TyGZ8vb8'">
+            <div class="qr-label">ENVIAR RESPOSTA</div>
+            <div class="qr-code-wrapper"><a href="https://forms.gle/dijCPNjc8TyGZ8vb8"><img src="frame7.png" alt="QR Code para formulário"/></a></div>
             <div class="qr-footer">Aponte a câmera</div>
         </div>
     </div>
-<div class="slide" id="slide4">
-        <div class="container-ranking-geral">
-            <h2 class="ranking-geral-title"> RANKING ACUMULADO GERAL </h2>
-            <p class="ranking-geral-sub">Pontuação total após 5 desafios</p>
-            <div class="ranking-list">
-                <div class="rank-row"><span class="rank-pos">1º</span><span class="rank-name">Eduardo Ambrosio (EIN2024)</span><span class="rank-points">16 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">2º</span><span class="rank-name">Diego Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">3º</span><span class="rank-name">Pedro Gomes (IIW2024A)</span><span class="rank-points">7 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">4º</span><span class="rank-name">Gustavo Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">5º</span><span class="rank-name">Pedro Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">6º</span><span class="rank-name">João Victor (EIN2024)</span><span class="rank-points">3 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">7º</span><span class="rank-name">Maria Luiza (MEC2026)</span><span class="rank-points">2 pontos</span></div>
+
+    <!-- Slide 2: RESOLUÇÃO DO DESAFIO 6 -->
+    <div class="slide" id="slide2">
+        <div class="container-resolucao">
+            <div class="spell-number">RESOLUÇÃO DO DESAFIO DA SEMANA PASSADA...</div>
+            <h2 class="resolucao-title"> TRIÂNGULOS NO RELÓGIO MÁGICO </h2>
+            <div class="resolucao-box">
+                <p>O número de triângulos é o número de maneiras de escolher <strong>3 pontos distintos</strong> entre os 12 da circunferência.</p>
+                <p>A ordem dos vértices não importa.</p>
+                <p>Primeiro calculamos <strong>12 × 11 × 10 = 1320</strong> possibilidades ordenadas.</p>
+                <p>Mas cada triângulo é contado várias vezes: o triângulo ABC é o mesmo que ACB, CAB, CBA, BAC, BCA. Ou seja, cada triângulo aparece <strong>6 vezes</strong> (3! = 6).</p>
+                <p>Por isso, dividimos o total ordenado por 6: <strong>1320 ÷ 6 = 220</strong>.</p>
+                <p style="margin-top: 1.5vh;">Portanto, <strong style="color:#ffd700; font-size:3vh;">220 triângulos</strong> distintos.</p>
             </div>
+            <div class="resposta-final"> RESPOSTA: 220 TRIÂNGULOS </div>
         </div>
     </div>
     
-    <div class="slide" id="slide5">
+    <!-- Slide 3: Pódio -->
+    <div class="slide" id="slide3">
+        <div class="container-podio">
+            <h2 class="podio-title"> PÓDIO DO DESAFIO 6 </h2>
+            <p class="podio-subtitle">2º Mês • Desafio 6 (Relógio dos Triângulos)</p>
+            <div class="podio">
+                <div class="podio-place segundo"><div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div><div class="position">2º LUGAR</div><div class="rank-badge">Maga Celestial</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+3 pts</div><div class="points-small">Nível 1</div></div>
+                <div class="podio-place primeiro"><div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div><div class="position">1º LUGAR</div><div class="rank-badge">Mago Supremo</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+4 pts</div><div class="points-small">Nível 5</div></div>
+                <div class="podio-place terceiro"><div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div><div class="position">3º LUGAR</div><div class="rank-badge">Mago do Tempo</div><div class="name">Aluno 3</div><div class="points">+2 pts</div><div class="points-small">Nível 1</div></div>
+            </div>
+        </div>
+    </div>
+
+<!-- Slide 4: DESAFIO 7 - O Enigma das Idades Invertidas -->
+    <div class="slide" id="slide4">
+        <div class="container-desafio">
+            <div class="spell-number">DESAFIO 7</div>
+            <div class="crystal-ball"></div>
+            <h1> ENIGMA DAS IDADES INVERTIDAS </h1>
+            <p class="subtitulo">Profecia Numérica • Algarismos Místicos</p>
+            <div class="enunciado-magico">
+                <p>O jovem mago <strong>Felipe</strong>, ao celebrar seu 14º aniversário, descobriu um encantamento nas idades: seu pai, um mago arcano, possuía <strong>41 anos</strong> — os algarismos estavam <strong>invertidos</strong>! (14 ↔ 41)</p>
+                <p>Uma profecia ancestral afirma que ambos viverão até os <strong>100 anos</strong>. Durante essa longa jornada, em <strong>quantos outros momentos</strong> além deste o fenômeno das <strong>idades com algarismos invertidos</strong> voltará a ocorrer?</p>
+                <p class="cidade">Considere apenas idades inteiras (em anos).</p>
+            </div>
+            <p class="instrucao">Envie o número exato de coincidências futuras (sem contar o momento atual).</p>
+            <p class="prazo"> Prazo: Lua Nova (16/05 23h59)</p>
+        </div>
+        <div class="qr-container" onclick="window.location.href='https://forms.gle/ABC123NOVOlinkMAGICO'">
+            <div class="qr-label">ENVIAR RESPOSTA</div>
+            <div class="qr-code-wrapper"><a href="https://forms.gle/ABC123NOVOlinkMAGICO"><img src="frame7.png" alt="QR Code Desafio 7"/></a></div>
+            <div class="qr-footer">Aponte a câmera</div>
+        </div>
+    </div>
+    
+    <!-- Slide 6: Critérios -->
+    <div class="slide" id="slide6">
         <div class="container-criterios">
             <h2 class="criterios-title"> DECRETO DOS CRITÉRIOS </h2>
-            <div class="criterio-card">
-                <div class="criterio-destaque-novo"> AVALIAÇÃO POR PRECISÃO </div>
-                <div class="criterio-texto"><strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>➤ Critério de desempate: <strong>ordem de envio</strong>.<br></div>
-            </div>
+            <div class="criterio-card"><div class="criterio-destaque-novo"> AVALIAÇÃO POR PRECISÃO </div><div class="criterio-texto"><strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>➤ Critério de desempate: <strong>ordem de envio</strong>.<br></div></div>
             <div class="regra-extra"><p> Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p></div>
         </div>
     </div>
+
+    <!-- Slide 5: Ranking Geral -->
+    <div class="slide" id="slide5">
+        <div class="container-ranking-geral">
+            <h2 class="ranking-geral-title"> RANKING ACUMULADO GERAL </h2>
+            <p class="ranking-geral-sub">Pontuação total após 6 desafios</p>
+            <div class="ranking-list">
+                <div class="rank-row"><span class="rank-pos">1º</span><span class="rank-name">Eduardo Ambrosio (EIN2024)</span><span class="rank-points">20 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">2º</span><span class="rank-name">Diego Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">3º</span><span class="rank-name">Pedro Gomes (IIW2024A)</span><span class="rank-points">7 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">4º</span><span class="rank-name">Maria Luiza (MEC2026)</span><span class="rank-points">5 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">5º</span><span class="rank-name">Gustavo Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">6º</span><span class="rank-name">Pedro Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div>
+                <div class="rank-row"><span class="rank-pos">7º</span><span class="rank-name">João Victor (EIN2024)</span><span class="rank-points">3 pontos</span></div>
+            </div>
+        </div>
+    </div>
     
-    <div class="slide" id="slide6">
+    <!-- Slide 7: Pontuação por turma -->
+    <div class="slide" id="slide7">
         <div class="container-pontuacao-turmas">
             <h2 class="turmas-title"> PONTUAÇÃO TOTAL POR TURMA </h2>
-            <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4 e 5</p>
+            <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4, 5 e 6</p>
             <div class="turmas-grid">
-                <div class="turma-card"><h3> EIN2024</h3><div class="turma-pontos">19 pts</div><div class="turma-detalhe">Magos Veteranos</div></div>
+                <div class="turma-card"><h3> EIN2024</h3><div class="turma-pontos">23 pts</div><div class="turma-detalhe">Magos Veteranos</div></div>
                 <div class="turma-card"><h3> EIN2023</h3><div class="turma-pontos">14 pts</div><div class="turma-detalhe">Chamas da Inovação</div></div>
                 <div class="turma-card"><h3> IIW2024A</h3><div class="turma-pontos">11 pts</div><div class="turma-detalhe">Sábios Lunares</div></div>
-                <div class="turma-card"><h3> MEC2026</h3><div class="turma-pontos">2 pts</div><div class="turma-detalhe">Sentinelas Estelares</div></div>
+                <div class="turma-card"><h3> MEC2026</h3><div class="turma-pontos">5 pts</div><div class="turma-detalhe">Sentinelas Estelares</div></div>
             </div>
             <div class="regra-extra" style="margin-top: 2vh;"><p> A turma líder ao final do ano receberá honraria arcana!</p><p style="font-size: 1.8vh;">Pontuação atualizada após cada desafio.</p></div>
         </div>
     </div>
 
+    <!-- Slide 8: Curiosidade (Maryam Mirzakhani) -->
     <div class="slide" id="slide8">
         <div class="container-curiosidade">
             <h2 class="curiosidade-title"> SABEDORIA MATEMÁTICA </h2>
             <div class="curiosidade-content">
-                <div class="curiosidade-imagem">
-                    <div class="math-image-wrapper">
-                        <img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields">
-                    </div>
-                </div>
-                <div class="curiosidade-texto">
-                    <strong> MARYAM MIRZAKHANI (1977–2017) </strong><br><br>
-                    Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> (2014), o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>
-                    Mirzakhani descrevia seu trabalho como "desenhar" — usando intuição geométrica para resolver problemas complexos. Sua genialidade e humildade inspiraram uma geração inteira de jovens cientistas ao redor do mundo.<br><br>
-                    <div class="citacao">"A beleza da matemática só se mostra à paciência."</div>
-                </div>
+                <div class="curiosidade-imagem"><div class="math-image-wrapper"><img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields"></div></div>
+                <div class="curiosidade-texto"><strong> MARYAM MIRZAKHANI (1977–2017) </strong><br><br>Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> (2014), o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>Mirzakhani descrevia seu trabalho como "desenhar" — usando intuição geométrica para resolver problemas complexos. Sua genialidade e humildade inspiraram uma geração inteira de jovens cientistas ao redor do mundo.<br><br><div class="citacao">"A beleza da matemática só se mostra à paciência."</div></div>
             </div>
         </div>
     </div>
@@ -797,7 +746,7 @@
         var totalSlides = 9;
         var timerInterval = null;
         var timerProgress = document.getElementById('timerProgress');
-        var slideTimes = [20, 60, 60, 25, 300, 20, 20, 20, 25];
+        var slideTimes = [20, 30, 30, 25, 100, 25, 25, 25, 25];
         
         function updateIndicators() {
             const container = document.getElementById('slideIndicators');
