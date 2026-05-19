@@ -1,817 +1,437 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Academia Arcana - Desafio 7 | As Idades Invertidas do Mago</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Cinzel', 'Georgia', 'Times New Roman', serif;
-            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop') no-repeat center center fixed;
-            background-size: cover;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 5, 20, 0.75);
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-        
-        .star {
-            position: absolute;
-            background: #ffd700;
-            border-radius: 50%;
-            animation: twinkle 2s infinite;
-        }
-        
-        @keyframes twinkle {
-            0% { opacity: 0.2; }
-            50% { opacity: 1; }
-            100% { opacity: 0.2; }
-        }
-        
-        .crystal-ball {
-            position: absolute;
-            top: -30px;
-            right: 3.5vw;
-            width: 8vh;
-            height: 8vh;
-            background: radial-gradient(circle at 30% 30%, #b19cd9, #4b0082);
-            border-radius: 50%;
-            border: 0.3vh solid #ffd700;
-            box-shadow: 0 0 30px #8a2be2;
-            z-index: 21;
-            animation: glow 2s infinite;
-        }
-        
-        .crystal-ball::before {
-            content: '●';
-            position: absolute;
-            top: 20%;
-            left: 20%;
-            color: white;
-            font-size: 2vh;
-            opacity: 0.8;
-        }
-        
-        @keyframes glow {
-            0% { box-shadow: 0 0 30px #8a2be2; }
-            50% { box-shadow: 0 0 50px #ffd700; }
-            100% { box-shadow: 0 0 30px #8a2be2; }
-        }
-        
-        .mystic-symbol {
-            position: fixed;
-            top: 15vh;
-            left: 5vw;
-            width: 8vh;
-            height: 8vh;
-            border: 0.3vh solid #ffd700;
-            border-radius: 50%;
-            z-index: 4;
-            opacity: 0.6;
-            animation: rotate 10s infinite linear;
-        }
-        
-        .mystic-symbol::before {
-            content: '✧';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #ffd700;
-            font-size: 4vh;
-        }
-        
-        .mystic-symbol-right {
-            position: fixed;
-            bottom: 15vh;
-            right: 5vw;
-            width: 10vh;
-            height: 10vh;
-            border: 0.3vh solid #8a2be2;
-            border-radius: 30% 70% 30% 70%;
-            z-index: 4;
-            opacity: 0.5;
-            animation: pulse 3s infinite;
-        }
-        
-        .mystic-symbol-right::before {
-            content: '⚝';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #8a2be2;
-            font-size: 5vh;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 0.5; }
-        }
-        
-        .timer-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(0,0,0,0.3);
-            z-index: 1000;
-        }
-        
-        .timer-progress {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #ffd700, #8a2be2);
-            box-shadow: 0 0 20px #ffd700;
-        }
-        
-        .slide { 
-            display: none; 
-            width: 100vw; 
-            height: 100vh;
-            justify-content: center; 
-            align-items: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 1vh 3vw;
-            z-index: 10;
-        }
-        .slide.active { display: flex; }
-        
-        .nav-btn {
-            position: fixed;
-            bottom: 2.5vh;
-            background: #2a1b3d;
-            border: 3px solid #b8860b;
-            padding: 1.2vh 2.5vw;
-            font-size: 2vh;
-            font-weight: bold;
-            border-radius: 40px 10px 40px 10px;
-            cursor: pointer;
-            z-index: 100;
-            color: #e6d5b8;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-family: 'Cinzel', serif;
-            min-width: 130px;
-        }
-        .nav-btn:hover { 
-            background: #3a2b4d;
-            border-color: #ffd700;
-        }
-        .prev-btn { left: 2vw; }
-        .next-btn { right: 2vw; }
-        
-        .slide-indicator {
-            position: fixed;
-            bottom: 3vh;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 2vw;
-            z-index: 100;
-        }
-        .dot {
-            width: 2vh;
-            height: 2vh;
-            border-radius: 50%;
-            background: rgba(100, 70, 130, 0.6);
-            cursor: pointer;
-            border: 2px solid #b8860b;
-        }
-        .dot.active { 
-            background: #ffd700; 
-            width: 6vh; 
-            border-radius: 30px; 
-            border-color: #8a2be2;
-        }
-        
-        .container-intro {
-            text-align: center;
-            max-width: 80%;
-            width: 1100px;
-            padding: 4vh 6vw;
-            background: rgba(20, 10, 30, 0.94);
-            border-radius: 80px 30px 80px 30px;
-            border: 4px solid rgba(184, 134, 11, 0.7);
-            margin: auto;
-            position: relative;
-            z-index: 15;
-        }
-        
-        .intro-icon {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5vh;
-        }
-        
-        .mago-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid #ffd700;
-            box-shadow: 0 0 30px #8a2be2;
-            background-size: cover;
-            background-position: center;
-            background-color: #2a1b3d;
-        }
-        
-        .intro-title {
-            font-size: 6vh;
-            margin-bottom: 1.5vh;
-            color: #ffd700;
-            text-shadow: 4px 4px 0 #4b0082;
-            font-weight: 900;
-            letter-spacing: 5px;
-        }
-        
-        .intro-subtitle {
-            font-size: 3.2vh;
-            color: #b19cd9;
-            margin-bottom: 2.5vh;
-            font-style: italic;
-        }
-        
-        .intro-cta {
-            font-size: 2.8vh;
-            color: #e6d5b8;
-            line-height: 1.9;
-            margin: 2.5vh 0;
-            background: rgba(75, 0, 130, 0.4);
-            padding: 2.5vh;
-            border-radius: 50px 15px 50px 15px;
-            border: 2px solid #b8860b;
-        }
-        
-        .intro-highlight {
-            font-size: 4vh;
-            color: #ffd700;
-            font-weight: bold;
-            margin: 2.5vh 0;
-        }
-        
-        .intro-footer {
-            font-size: 2.3vh;
-            color: #a67c9e;
-            margin-top: 2.5vh;
-            border-top: 2px solid #b8860b;
-            padding-top: 2.5vh;
-        }
-        
-        .container-desafio { 
-            text-align: center; 
-            max-width: 75%;
-            width: 900px;
-            padding: 3vh 4vw;
-            background: rgba(240, 230, 210, 0.96);
-            border-radius: 70px 25px 70px 25px;
-            border: 5px solid #8a2be2;
-            position: relative;
-            z-index: 20;
-            margin: auto;
-        }
-        
-        .spell-number {
-            position: absolute;
-            top: 1.5vh;
-            left: 2.5vw;
-            font-size: 2.2vh;
-            color: #ffd700;
-            background: #2a1b3d;
-            padding: 0.5vh 2vw;
-            border: 2px solid #b8860b;
-            border-radius: 40px 8px 40px 8px;
-            z-index: 21;
-        }
-        
-        .container-desafio h1 { 
-            font-size: 4.5vh;
-            margin: 1vh 0 0.5vh;
-            color: #2a1b3d;
-            text-shadow: 3px 3px 0 #b8860b;
-            letter-spacing: 3px;
-            text-align: center;
-        }
-        
-        .subtitulo { 
-            font-size: 2.2vh;
-            margin-bottom: 2vh;
-            color: #4b0082;
-            font-style: italic;
-            text-align: center;
-        }
-        
-        .enunciado-magico {
-            background: #2a1b3d;
-            border-radius: 30px;
-            padding: 3vh 2vw;
-            margin-bottom: 2vh;
-            text-align: center;
-            font-family: 'Georgia', serif;
-            font-size: 2.8vh;
-            color: #ffd700;
-            border: 3px solid #b8860b;
-            font-weight: bold;
-            line-height: 1.6;
-        }
-        
-        .enunciado-magico p { margin: 1vh 0; }
-        .enunciado-magico .cidade { color: #ffaa66; font-weight: bold; font-size: 3vh; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>Academia Arcana - Desafio 8 | Triângulo Oculto</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Cinzel,Georgia,serif;background:url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop') no-repeat center center fixed;background-size:cover;width:100vw;height:100vh;overflow:hidden;position:relative}
+  body:before{content:'';position:fixed;inset:0;background:rgba(10,5,20,.75);pointer-events:none;z-index:1}
+  .stars,.mystic-symbol,.mystic-symbol-right,.ia-credit,.timer-bar,.slide-indicator,.nav-btn{position:fixed;z-index:100}
+  .stars{inset:0;z-index:2;pointer-events:none}
+  .star{position:absolute;background:#ffd700;border-radius:50%;animation:twinkle 2s infinite}
+  @keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+  .mystic-symbol{top:15vh;left:5vw;width:8vh;height:8vh;border:.3vh solid #ffd700;border-radius:50%;opacity:.6;animation:rotate 10s linear infinite;z-index:4}
+  .mystic-symbol:before{content:'✦';position:absolute;inset:0;display:grid;place-items:center;color:#ffd700;font-size:4vh}
+  .mystic-symbol-right{bottom:15vh;right:5vw;width:10vh;height:10vh;border:.3vh solid #8a2be2;border-radius:30% 70% 30% 70%;opacity:.5;animation:pulse 3s infinite;z-index:4}
+  .mystic-symbol-right:before{content:'✧';position:absolute;inset:0;display:grid;place-items:center;color:#8a2be2;font-size:5vh}
+  @keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.2);opacity:.8}}
+  .timer-bar{top:0;left:0;width:100%;height:4px;background:rgba(0,0,0,.3);z-index:1000}
+  .timer-progress{height:100%;width:0;background:linear-gradient(90deg,#ffd700,#8a2be2);box-shadow:0 0 20px #ffd700}
+  .slide{display:none;width:100vw;height:100vh;justify-content:center;align-items:center;position:absolute;inset:0;padding:1vh 3vw;z-index:10}
+  .slide.active{display:flex}
+  .container-intro,.container-desafio,.container-resolucao,.container-podio,.container-ranking-geral,.container-criterios,.container-pontuacao-turmas,.container-curiosidade{position:relative;margin:auto;z-index:15;text-align:center}
+  .container-intro{max-width:80%;width:1100px;padding:4vh 6vw;background:rgba(20,10,30,.94);border-radius:80px 30px 80px 30px;border:4px solid rgba(184,134,11,.7)}
+  .intro-icon{display:flex;justify-content:center;gap:2rem;margin-bottom:1.5vh}
+  .mago-icon{width:80px;height:80px;border-radius:50%;border:3px solid #ffd700;box-shadow:0 0 30px #8a2be2;background-size:cover;background-position:center;background-color:#2a1b3d}
+  .intro-title{font-size:6vh;margin-bottom:1.5vh;color:#ffd700;text-shadow:4px 4px 0 #4b0082;font-weight:900;letter-spacing:5px}
+  .intro-subtitle{font-size:3.2vh;color:#b19cd9;margin-bottom:2.5vh;font-style:italic}
+  .intro-cta{font-size:2.8vh;color:#e6d5b8;line-height:1.9;margin:2.5vh 0;background:rgba(75,0,130,.4);padding:2.5vh;border-radius:50px 15px 50px 15px;border:2px solid #b8860b}
+  .intro-highlight{font-size:4vh;color:#ffd700;font-weight:bold;margin:2.5vh 0}
+  .intro-footer{font-size:2.3vh;color:#a67c9e;margin-top:2.5vh;border-top:2px solid #b8860b;padding-top:2.5vh}
+  .container-desafio{max-width:75%;width:920px;padding:1.8vh 3vw 1.8vh 3vw;background:rgba(240,230,210,.96);border-radius:70px 25px 70px 25px;border:5px solid #8a2be2}
+  .spell-number{position:absolute;top:1.5vh;left:2.5vw;font-size:2.2vh;color:#ffd700;background:#2a1b3d;padding:.5vh 2vw;border:2px solid #b8860b;border-radius:40px 8px 40px 8px;z-index:21}
+  .container-desafio h1,.resolucao-title,.podio-title,.ranking-geral-title,.criterios-title,.turmas-title,.curiosidade-title{letter-spacing:3px}
+  .container-desafio h1{font-size:3.5vh;margin:0.3vh 0 0.2vh;color:#2a1b3d;text-shadow:2px 2px 0 #b8860b}
+  .subtitulo{font-size:1.8vh;margin-bottom:0.8vh;color:#4b0082;font-style:italic}
+  .desafio-flex{display:flex;flex-direction:column;gap:0.6vh;margin-bottom:0.3vh;align-items:center}
+  .enunciado-magico{max-width:90%;margin:auto;font-size:2.3vh;line-height:1.35;text-align:center;font-family:Georgia,serif;color:#ffd700;border:3px solid #b8860b;border-radius:30px;background:#2a1b3d;padding:1.2vh 2vw;font-weight:bold}
+  .enunciado-magico p{margin:0.4vh 0}
+  .enunciado-magico .cidade{color:#ffaa66;font-weight:bold;font-size:2.5vh}
+  .figura-magica{width:100%;max-width:580px;margin:0 auto;align-items:center;justify-content:center;display:flex;flex-direction:column}
+  .figura-magica svg{width:100%;max-width:540px;height:auto;background:radial-gradient(circle at center,#1a1024,#08040f);border-radius:30px;border:3px solid #b8860b;box-shadow:0 0 25px rgba(138,43,226,.35);padding:0.6vh}
+  .figura-magica svg.grande{max-width:540px}
+  .area-text-svg{font-size:2vh;font-weight:bold;color:#ffd700;background:#1f102e;padding:0.3vh 2vw;border-radius:40px;margin-bottom:0.5vh;display:inline-block;border:2px solid #b8860b}
+  .legenda-pontos{margin-top:0.5vh;font-size:1.7vh;color:#4b0082;font-weight:bold}
+  .instrucao,.prazo{font-size:1.7vh;margin:0.2vh 0}
+  .container-resolucao{max-width:75%;width:920px;padding:3vh 4vw;background:rgba(20,10,30,.95);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
+  .resolucao-title{font-size:4.2vh;color:#ffd700;text-shadow:3px 3px 0 #4b0082;margin-bottom:1.5vh}
+  .resolucao-box{background:rgba(75,0,130,.35);border:3px solid #b8860b;border-radius:35px;padding:2.2vh 2vw;color:#e6d5b8;font-size:2.5vh;line-height:1.55;text-align:left}
+  .resolucao-box p{margin:1.2vh 0}
+  .resposta-final{margin-top:2vh;font-size:3vh;color:#ffd700;font-weight:bold;text-align:center;background:rgba(0,0,0,.35);padding:1.2vh 1vw;border-radius:30px;border:2px solid #8a2be2}
+  .container-podio{max-width:85%;width:1000px;padding:2vh 2vw;background:rgba(20,10,30,.85);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
+  .podio-title{font-size:5vh;margin-bottom:.5vh;color:#ffd700;text-shadow:4px 4px 0 #4b0082}
+  .podio-subtitle{font-size:2.5vh;color:#b19cd9;margin-bottom:2vh;font-style:italic;border-bottom:2px solid #b8860b;display:inline-block;padding-bottom:.8vh}
+  .podio{display:flex;justify-content:center;align-items:flex-end;gap:2vw;margin:2vh 0 1vh}
+  .podio-place{padding:1.5vh 1.5vw;border:4px solid;text-align:center;display:flex;flex-direction:column;justify-content:space-between;border-radius:40px 15px 40px 15px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+  .primeiro{width:26vw;min-height:38vh;border-color:#ffd700;background:linear-gradient(135deg,#0a6b0a,#1a4a1a)}
+  .segundo{width:23vw;min-height:34vh;border-color:#c0c0c0;background:linear-gradient(135deg,#8b0000,#4a0000)}
+  .terceiro{width:23vw;min-height:30vh;border-color:#cd7f32;background:linear-gradient(135deg,#0a2a4a,#0a1a2a)}
+  .mago-img{width:80px;height:80px;border-radius:50%;border:3px solid #ffd700;margin:0 auto .8vh;background-size:cover;background-position:center;background-color:#2a1b3d;box-shadow:0 0 30px rgba(255,215,0,.5)}
+  .position{font-size:2.8vh;font-weight:bold;color:#ffd700;margin-bottom:.5vh;text-transform:uppercase}
+  .rank-badge{font-size:2vh;color:#ffd700;background:rgba(0,0,0,.5);padding:.3vh 1vw;border-radius:30px;display:inline-block;margin-bottom:.5vh}
+  .name{font-size:2.4vh;color:#e6d5b8;font-weight:bold;margin-bottom:.5vh}
+  .points{font-size:3.8vh;color:#ffd700;font-weight:bold}
+  .points-small{font-size:1.8vh;color:#b19cd9;margin-top:.5vh}
+  .container-ranking-geral{max-width:80%;width:800px;padding:3vh 2vw;background:rgba(20,10,30,.92);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
+  .ranking-geral-title{font-size:4.5vh;margin-bottom:.5vh;color:#ffd700;text-shadow:4px 4px 0 #4b0082}
+  .ranking-geral-sub{font-size:2.2vh;color:#b19cd9;margin-bottom:2vh;font-style:italic}
+  .ranking-list{display:flex;flex-direction:column;gap:1vh;margin-top:1.5vh}
+  .rank-row{display:flex;justify-content:space-between;align-items:center;background:rgba(42,27,61,.8);padding:1vh 2vw;border-radius:40px;font-size:2.2vh;color:#e6d5b8;border-left:5px solid #ffd700}
+  .rank-pos{font-weight:bold;color:#ffd700;width:15%;text-align:left}
+  .rank-name{width:55%;text-align:left}
+  .rank-points{width:30%;text-align:right;font-weight:bold;color:#ffaa66}
+  .container-criterios{max-width:75%;width:900px;padding:2.5vh 3vw;background:rgba(20,10,30,.96);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
+  .criterios-title{font-size:4.5vh;color:#ffd700;text-shadow:0 0 20px #8a2be2;margin-bottom:2vh}
+  .criterio-card{background:rgba(75,0,130,.5);border:3px solid #b8860b;border-radius:50px 15px 50px 15px;padding:2.5vh 2vw;margin:1.5vh auto;text-align:center;width:90%}
+  .criterio-destaque-novo{font-size:3.2vh;color:#ffd700;font-weight:bold;margin-bottom:1.5vh}
+  .criterio-texto{font-size:2.6vh;color:#e6d5b8;line-height:1.4}
+  .criterio-texto strong{color:#ffaa66}
+  .regra-extra{margin-top:2.5vh;background:rgba(138,43,226,.4);border-radius:40px;padding:1.5vh;border:2px solid #ffd700}
+  .regra-extra p{color:#ffd700;font-size:2.2vh}
+  .container-pontuacao-turmas{max-width:85%;width:1100px;padding:3vh 2vw;background:linear-gradient(145deg,#0f0a1f,#1e1230);border-radius:80px 30px 80px 30px;border:6px solid #ffd700;box-shadow:0 0 60px rgba(255,215,0,.4)}
+  .turmas-title{font-size:5vh;color:#ffd700;text-shadow:0 0 15px #8a2be2;margin-bottom:1.5vh}
+  .turmas-sub{font-size:2.5vh;color:#b19cd9;margin-bottom:3vh;font-style:italic}
+  .turmas-grid{display:flex;justify-content:center;gap:3vw;flex-wrap:wrap;margin:2vh 0}
+  .turma-card{background:rgba(0,0,0,.7);border:3px solid #b8860b;border-radius:60px 20px 60px 20px;padding:2vh 2vw;min-width:220px;backdrop-filter:blur(4px)}
+  .turma-card h3{font-size:3.5vh;color:#ffd700;margin-bottom:1.2vh;border-bottom:2px solid #8a2be2;display:inline-block;padding-bottom:.5vh}
+  .turma-pontos{font-size:6vh;font-weight:bold;color:#e6d5b8;margin:1vh 0;text-shadow:2px 2px 0 #4b0082}
+  .turma-detalhe{font-size:2vh;color:#b19cd9}
+  .container-curiosidade{max-width:85%;width:1100px;padding:3vh 3vw;background:rgba(20,10,30,.94);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
+  .curiosidade-title{font-size:4.5vh;color:#ffd700;text-shadow:0 0 20px #8a2be2;margin-bottom:2vh}
+  .curiosidade-content{display:flex;flex-direction:row;align-items:center;gap:3vw;margin:2vh 0}
+  .curiosidade-imagem{flex:.8;text-align:center}
+  .math-image-wrapper{width:100%;max-width:280px;background:#1a0f2e;border:3px solid #ffd700;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:1;box-shadow:0 0 30px rgba(138,43,226,.6)}
+  .math-image-wrapper img{width:100%;height:100%;object-fit:cover;display:block}
+  .curiosidade-texto{flex:1.5;text-align:left;color:#e6d5b8;font-size:2.6vh;line-height:1.5;background:rgba(75,0,130,.4);padding:2vh 2vw;border-radius:40px 15px 40px 15px;border:2px solid #b8860b}
+  .curiosidade-texto strong{color:#ffd700}
+  .curiosidade-texto .citacao{font-style:italic;color:#b19cd9;margin-top:1.5vh;font-size:2.2vh;border-top:1px solid #b8860b;padding-top:1.5vh}
+  .nav-btn{bottom:2.5vh;background:#2a1b3d;border:3px solid #b8860b;padding:1.2vh 2.5vw;font-size:2vh;font-weight:bold;border-radius:40px 10px 40px 10px;cursor:pointer;color:#e6d5b8;text-transform:uppercase;letter-spacing:3px;font-family:Cinzel,serif;min-width:130px}
+  .nav-btn:hover{background:#3a2b4d;border-color:#ffd700}
+  .prev-btn{left:2vw}.next-btn{right:2vw}
+  .slide-indicator{bottom:3vh;left:50%;transform:translateX(-50%);display:flex;gap:2vw;z-index:100}
+  .dot{width:2vh;height:2vh;border-radius:50%;background:rgba(100,70,130,.6);cursor:pointer;border:2px solid #b8860b}
+  .dot.active{background:#ffd700;width:6vh;border-radius:30px;border-color:#8a2be2}
+  
+  /* Estilos do QR Code */
+  .qr-container {
+    position: fixed;
+    bottom: 10vh;
+    right: 2.5vw;
+    background: #2a1b3d;
+    padding: 2vh 1.5vw;
+    border-radius: 60px 15px 60px 15px;
+    border: 3px solid #b8860b;
+    z-index: 50;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+  }
+  .qr-container:hover { border-color: #ffd700; }
+  .qr-label { font-size: 2.2vh; margin-bottom: 1.5vh; color: #ffd700; text-align: center; white-space: nowrap; }
+  .qr-code-wrapper { width: 100px; height: 100px; background: #ffffff; border: 3px solid #ffd700; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 1vh; }
+  .qr-code-wrapper img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .qr-footer { font-size: 1.8vh; margin-top: 1vh; color: #b19cd9; text-align: center; white-space: nowrap; }
 
-        .desafio-flex {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2vw;
-            margin-bottom: 1vh;
-        }
-
-        .figura-magica {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .figura-magica svg {
-            width: 100%;
-            max-width: 360px;
-            height: auto;
-            background: radial-gradient(circle at center, #1a1024, #08040f);
-            border-radius: 30px;
-            border: 3px solid #b8860b;
-            box-shadow: 0 0 25px rgba(138, 43, 226, 0.35);
-            padding: 1vh;
-        }
-
-        .figura-magica svg.grande {
-            max-width: 390px;
-        }
-
-        .legenda-pontos {
-            margin-top: 1vh;
-            font-size: 2vh;
-            color: #4b0082;
-            font-weight: bold;
-        }
-
-        .container-resolucao {
-            text-align: center;
-            max-width: 75%;
-            width: 920px;
-            padding: 3vh 4vw;
-            background: rgba(20, 10, 30, 0.95);
-            border-radius: 70px 25px 70px 25px;
-            border: 5px solid #ffd700;
-            margin: auto;
-            z-index: 20;
-            position: relative;
-        }
-
-        .resolucao-title {
-            font-size: 4.2vh;
-            color: #ffd700;
-            text-shadow: 3px 3px 0 #4b0082;
-            margin-bottom: 1.5vh;
-            letter-spacing: 2px;
-        }
-
-        .resolucao-box {
-            background: rgba(75, 0, 130, 0.35);
-            border: 3px solid #b8860b;
-            border-radius: 35px;
-            padding: 2.2vh 2vw;
-            color: #e6d5b8;
-            font-size: 2.5vh;
-            line-height: 1.55;
-            text-align: left;
-        }
-
-        .resolucao-box p { margin: 1.2vh 0; }
-
-        .resposta-final {
-            margin-top: 2vh;
-            font-size: 3vh;
-            color: #ffd700;
-            font-weight: bold;
-            text-align: center;
-            background: rgba(0,0,0,0.35);
-            padding: 1.2vh 1vw;
-            border-radius: 30px;
-            border: 2px solid #8a2be2;
-        }
-        
-        .instrucao { 
-            font-size: 2.2vh;
-            margin: 1.5vh 0 0.5vh;
-            color: #8a2be2; 
-            font-weight: bold;
-            text-align: center;
-        }
-        
-        .prazo { 
-            font-size: 2vh;
-            color: #4b0082; 
-            font-weight: bold;
-            margin-bottom: 0.5vh;
-            text-align: center;
-        }
-
-        .container-podio, .container-ranking-geral, .container-criterios, .container-pontuacao-turmas, .container-curiosidade, .container-curiosidade {
-            margin: auto;
-            z-index: 15;
-        }
-
-        .container-podio { 
-            text-align: center; 
-            max-width: 85%;
-            width: 1000px;
-            padding: 2vh 2vw;
-            background: rgba(20, 10, 30, 0.85);
-            border-radius: 70px 25px 70px 25px;
-            border: 5px solid #ffd700;
-        }
-        .podio-title { font-size: 5vh; margin-bottom: 0.5vh; color: #ffd700; text-shadow: 4px 4px 0 #4b0082; letter-spacing: 3px; }
-        .podio-subtitle { font-size: 2.5vh; color: #b19cd9; margin-bottom: 2vh; font-style: italic; border-bottom: 2px solid #b8860b; display: inline-block; padding-bottom: 0.8vh; }
-        .podio { display: flex; justify-content: center; align-items: flex-end; gap: 2vw; margin: 2vh 0 1vh; }
-        .podio-place { padding: 1.5vh 1.5vw; border: 4px solid; text-align: center; display: flex; flex-direction: column; justify-content: space-between; border-radius: 40px 15px 40px 15px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
-        .primeiro { width: 26vw; min-height: 38vh; border-color: #ffd700; background: linear-gradient(135deg, #0a6b0a, #1a4a1a); }
-        .segundo { width: 23vw; min-height: 34vh; border-color: #c0c0c0; background: linear-gradient(135deg, #8b0000, #4a0000); }
-        .terceiro { width: 23vw; min-height: 30vh; border-color: #cd7f32; background: linear-gradient(135deg, #0a2a4a, #0a1a2a); }
-        .mago-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #ffd700; margin: 0 auto 0.8vh; background-size: cover; background-position: center; background-color: #2a1b3d; box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
-        .position { font-size: 2.8vh; font-weight: bold; color: #ffd700; margin-bottom: 0.5vh; text-transform: uppercase; }
-        .rank-badge { font-size: 2vh; color: #ffd700; background: rgba(0,0,0,0.5); padding: 0.3vh 1vw; border-radius: 30px; display: inline-block; margin-bottom: 0.5vh; }
-        .name { font-size: 2.4vh; color: #e6d5b8; font-weight: bold; margin-bottom: 0.5vh; }
-        .points { font-size: 3.8vh; color: #ffd700; font-weight: bold; }
-        .points-small { font-size: 1.8vh; color: #b19cd9; margin-top: 0.5vh; }
-        
-        .container-ranking-geral {
-            text-align: center; max-width: 80%; width: 800px; padding: 3vh 2vw;
-            background: rgba(20, 10, 30, 0.92); border-radius: 70px 25px 70px 25px; border: 5px solid #ffd700;
-        }
-        .ranking-geral-title { font-size: 4.5vh; margin-bottom: 0.5vh; color: #ffd700; text-shadow: 4px 4px 0 #4b0082; letter-spacing: 3px; }
-        .ranking-geral-sub { font-size: 2.2vh; color: #b19cd9; margin-bottom: 2vh; font-style: italic; }
-        .ranking-list { display: flex; flex-direction: column; gap: 1vh; margin-top: 1.5vh; }
-        .rank-row { display: flex; justify-content: space-between; align-items: center; background: rgba(42, 27, 61, 0.8); padding: 1vh 2vw; border-radius: 40px; font-size: 2.2vh; color: #e6d5b8; border-left: 5px solid #ffd700; }
-        .rank-row .rank-pos { font-weight: bold; color: #ffd700; width: 15%; text-align: left; }
-        .rank-row .rank-name { width: 55%; text-align: left; }
-        .rank-row .rank-points { width: 30%; text-align: right; font-weight: bold; color: #ffaa66; }
-        
-        .container-criterios {
-            text-align: center; max-width: 75%; width: 900px; padding: 2.5vh 3vw;
-            background: rgba(20, 10, 30, 0.96); border-radius: 70px 25px 70px 25px; border: 5px solid #ffd700; position: relative; backdrop-filter: blur(3px);
-        }
-        .criterios-title { font-size: 4.5vh; color: #ffd700; text-shadow: 0 0 20px #8a2be2; margin-bottom: 2vh; letter-spacing: 3px; }
-        .criterio-card { background: rgba(75, 0, 130, 0.5); border: 3px solid #b8860b; border-radius: 50px 15px 50px 15px; padding: 2.5vh 2vw; margin: 1.5vh auto; text-align: center; width: 90%; }
-        .criterio-destaque-novo { font-size: 3.2vh; color: #ffd700; font-weight: bold; margin-bottom: 1.5vh; }
-        .criterio-texto { font-size: 2.6vh; color: #e6d5b8; line-height: 1.4; }
-        .criterio-texto strong { color: #ffaa66; }
-        .regra-extra { margin-top: 2.5vh; background: rgba(138, 43, 226, 0.4); border-radius: 40px; padding: 1.5vh; border: 2px solid #ffd700; }
-        .regra-extra p { color: #ffd700; font-size: 2.2vh; }
-        
-        .container-pontuacao-turmas {
-            text-align: center; max-width: 85%; width: 1100px; padding: 3vh 2vw;
-            background: linear-gradient(145deg, #0f0a1f, #1e1230); border-radius: 80px 30px 80px 30px; border: 6px solid #ffd700; box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
-        }
-        .turmas-title { font-size: 5vh; color: #ffd700; text-shadow: 0 0 15px #8a2be2; margin-bottom: 1.5vh; letter-spacing: 4px; }
-        .turmas-sub { font-size: 2.5vh; color: #b19cd9; margin-bottom: 3vh; font-style: italic; }
-        .turmas-grid { display: flex; justify-content: center; gap: 3vw; flex-wrap: wrap; margin: 2vh 0; }
-        .turma-card { background: rgba(0, 0, 0, 0.7); border: 3px solid #b8860b; border-radius: 60px 20px 60px 20px; padding: 2vh 2vw; min-width: 220px; backdrop-filter: blur(4px); transition: transform 0.3s; }
-        .turma-card h3 { font-size: 3.5vh; color: #ffd700; margin-bottom: 1.2vh; border-bottom: 2px solid #8a2be2; display: inline-block; padding-bottom: 0.5vh; }
-        .turma-pontos { font-size: 6vh; font-weight: bold; color: #e6d5b8; margin: 1vh 0; text-shadow: 2px 2px 0 #4b0082; }
-        .turma-detalhe { font-size: 2vh; color: #b19cd9; }
-        
-        .container-curiosidade {
-            text-align: center; max-width: 85%; width: 1100px; padding: 3vh 3vw;
-            background: rgba(20, 10, 30, 0.94); border-radius: 70px 25px 70px 25px; border: 5px solid #ffd700; position: relative; backdrop-filter: blur(3px);
-        }
-        .curiosidade-title { font-size: 4.5vh; color: #ffd700; text-shadow: 0 0 20px #8a2be2; margin-bottom: 2vh; letter-spacing: 3px; }
-        .curiosidade-content { display: flex; flex-direction: row; align-items: center; gap: 3vw; margin: 2vh 0; }
-        .curiosidade-imagem { flex: 0.8; text-align: center; }
-        .curiosidade-imagem img { width: 100%; max-width: 280px; height: auto; border-radius: 50%; border: 4px solid #ffd700; box-shadow: 0 0 30px rgba(138, 43, 226, 0.6); object-fit: cover; aspect-ratio: 1 / 1; background-color: #2a1b3d; }
-        .curiosidade-texto { flex: 1.5; text-align: left; color: #e6d5b8; font-size: 2.6vh; line-height: 1.5; background: rgba(75, 0, 130, 0.4); padding: 2vh 2vw; border-radius: 40px 15px 40px 15px; border: 2px solid #b8860b; }
-        .curiosidade-texto strong { color: #ffd700; }
-        .curiosidade-texto .citacao { font-style: italic; color: #b19cd9; margin-top: 1.5vh; font-size: 2.2vh; border-top: 1px solid #b8860b; padding-top: 1.5vh; }
-        
-        .qr-container {
-            position: fixed; bottom: 10vh; right: 2.5vw; background: #2a1b3d; padding: 2vh 1.5vw; border-radius: 60px 15px 60px 15px; border: 3px solid #b8860b; z-index: 50; cursor: pointer; display: flex; flex-direction: column; align-items: center; min-width: 200px;
-        }
-        .qr-container:hover { border-color: #ffd700; }
-        .qr-label { font-size: 2.2vh; margin-bottom: 1.5vh; color: #ffd700; text-align: center; white-space: nowrap; }
-        .qr-code-wrapper { width: 100px; height: 100px; background: #ffffff; border: 3px solid #ffd700; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 1vh; }
-        .qr-code-wrapper img { width: 100%; height: 100%; object-fit: contain; display: block; }
-        .qr-footer { font-size: 1.8vh; margin-top: 1vh; color: #b19cd9; text-align: center; white-space: nowrap; }
-        .ia-credit { position: fixed; top: 1.2vh; right: 1.5vw; z-index: 100; color: #d8c8ff; font-size: 1.6vh; background: rgba(42, 27, 61, 0.75); padding: 0.6vh 1vw; border: 1px solid rgba(255, 215, 0, 0.45); border-radius: 20px; backdrop-filter: blur(3px); }
-        
-        .math-image-wrapper {
-            width: 100%;
-            max-width: 280px;
-            background: #1a0f2e;
-            border: 3px solid #ffd700;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 1 / 1;
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
-        }
-        .math-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        @media (max-width: 900px) {
-            .curiosidade-content, .desafio-flex { flex-direction: column; }
-            .container-criterios, .container-resolucao, .container-desafio { max-width: 90%; }
-            .turma-card { min-width: 160px; }
-            .podio { flex-direction: column; align-items: center; gap: 1.5vh; }
-            .primeiro, .segundo, .terceiro { width: 80%; min-height: auto; }
-            .container-ranking-geral { width: 90%; }
-            .qr-container { min-width: 160px; transform: scale(0.9); transform-origin: bottom right; }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+  @media (max-width:900px){
+    .curiosidade-content,.desafio-flex{flex-direction:column}
+    .container-criterios,.container-resolucao,.container-desafio{max-width:90%}
+    .turma-card{min-width:160px}
+    .podio{flex-direction:column;align-items:center;gap:1.5vh}
+    .primeiro,.segundo,.terceiro{width:80%;min-height:auto}
+    .container-ranking-geral{width:90%}
+    .qr-container { min-width: 160px; transform: scale(0.9); transform-origin: bottom right; }
+  }
+</style>
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div>
-    <div class="mystic-symbol"></div>
-    <div class="mystic-symbol-right"></div>
-    <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
-    
-    <!-- Slide 0: Intro -->
-    <div class="slide active" id="slide0">
-        <div class="container-intro">
-            <div class="intro-icon">
-                <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop');"></div>
-                <div class="mago-icon" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div>
-                <div class="mago-icon" style="background-image: url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop');"></div>
-            </div>
-            <h2 class="intro-title">ACADEMIA ARCANA</h2>
-            <p class="intro-subtitle">Ordem dos Mathemagos Olímpicos • Desafio 7</p>
-            <p class="intro-cta">Desvende figuras, padrões e enigmas arcanos<br>Onde a lógica e a magia se entrelaçam</p>
-            <p class="intro-highlight">O ENIGMA DAS IDADES INVERTIDAS</p>
-            <p class="intro-footer">Grão-Conselho dos Magos<br><strong>Instituto Federal do Paraná</strong><br>Torre Assis Chateaubriand</p>
-        </div>
-    </div>
-    
-    <!-- Slide 1: DESAFIO 6 (Triângulos no relógio) -->
-    <div class="slide" id="slide1">
-        <div class="container-desafio">
-            <div class="spell-number">DESAFIO DA SEMANA PASSADA...</div>
-            <div class="crystal-ball"></div>
-            <h1> RELÓGIO DOS TRIÂNGULOS </h1>
-            <p class="subtitulo">Combinatória geométrica • 12 pontos na circunferência</p>
-            <div class="desafio-flex" style="align-items:center; gap: 2vw;">
-                <div class="figura-magica" style="flex: 1.5; max-width: 70%;">
-                    <svg class="grande" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" aria-label="Relógio com 12 pontos na circunferência" style="width:100%; height:auto; max-height:66vh;">
-                        <defs><radialGradient id="clockBg" cx="50%" cy="50%" r="62%"><stop offset="0%" stop-color="#1b1031"/><stop offset="100%" stop-color="#07040d"/></radialGradient></defs>
-                        <rect x="0" y="0" width="700" height="700" rx="28" fill="url(#clockBg)"/>
-                        <circle cx="350" cy="350" r="260" fill="none" stroke="#ffd700" stroke-width="6" opacity="0.9"/>
-                        <circle cx="610" cy="350" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="575.13" cy="480" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="480" cy="575.13" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="350" cy="610" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="220" cy="575.13" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="124.87" cy="480" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="90" cy="350" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="124.87" cy="220" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="220" cy="124.87" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="350" cy="90" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="480" cy="124.87" r="11" fill="#ff4d6d" stroke="#ffd700" stroke-width="3"/>
-                        <circle cx="575.13" cy="220" r="11" fill="#4df0ff" stroke="#ffd700" stroke-width="3"/>
-                    </svg>
-                </div>
-                <div class="enunciado-magico" style="flex: 0.95;">
-                    <p>Em um relógio há <strong>12 pontos marcados sobre a circunferência</strong>.</p>
-                    <p>Usando <strong>quaisquer 3 desses 12 pontos</strong> como vértices, <strong>quantos triângulos diferentes</strong> podem ser formados?</p>
-                </div>
-            </div>
-            <p class="instrucao">Envie sua resposta no formulário com o número exato de triângulos.</p>
-            <p class="prazo"> Prazo: Lua Minguante (09/05 23h59)</p>
-        </div>
-        <div class="qr-container" onclick="window.location.href='https://forms.gle/dijCPNjc8TyGZ8vb8'">
-            <div class="qr-label">ENVIAR RESPOSTA</div>
-            <div class="qr-code-wrapper"><a href="https://forms.gle/dijCPNjc8TyGZ8vb8"><img src="frame7.png" alt="QR Code para formulário"/></a></div>
-            <div class="qr-footer">Aponte a câmera</div>
-        </div>
-    </div>
+<div class="stars"></div>
+<div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div>
+<div class="mystic-symbol"></div>
+<div class="mystic-symbol-right"></div>
+<div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
 
-    <!-- Slide 2: RESOLUÇÃO DO DESAFIO 6 -->
-    <div class="slide" id="slide2">
-        <div class="container-resolucao">
-            <div class="spell-number">RESOLUÇÃO DO DESAFIO DA SEMANA PASSADA...</div>
-            <h2 class="resolucao-title"> TRIÂNGULOS NO RELÓGIO MÁGICO </h2>
-            <div class="resolucao-box">
-                <p>O número de triângulos é o número de maneiras de escolher <strong>3 pontos distintos</strong> entre os 12 da circunferência.</p>
-                <p>A ordem dos vértices não importa.</p>
-                <p>Primeiro calculamos <strong>12 × 11 × 10 = 1320</strong> possibilidades ordenadas.</p>
-                <p>Mas cada triângulo é contado várias vezes: o triângulo ABC é o mesmo que ACB, CAB, CBA, BAC, BCA. Ou seja, cada triângulo aparece <strong>6 vezes</strong> (3! = 6).</p>
-                <p>Por isso, dividimos o total ordenado por 6: <strong>1320 ÷ 6 = 220</strong>.</p>
-                <p style="margin-top: 1.5vh;">Portanto, <strong style="color:#ffd700; font-size:3vh;">220 triângulos</strong> distintos.</p>
-            </div>
-            <div class="resposta-final"> RESPOSTA: 220 TRIÂNGULOS </div>
-        </div>
+<div class="slide active" id="slide0">
+  <div class="container-intro">
+    <div class="intro-icon">
+      <div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop')"></div>
+      <div class="mago-icon" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div>
+      <div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop')"></div>
     </div>
-    
-    <!-- Slide 3: Pódio -->
-    <div class="slide" id="slide3">
-        <div class="container-podio">
-            <h2 class="podio-title"> PÓDIO DO DESAFIO 6 </h2>
-            <p class="podio-subtitle">2º Mês • Desafio 6 (Relógio dos Triângulos)</p>
-            <div class="podio">
-                <div class="podio-place segundo"><div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div><div class="position">2º LUGAR</div><div class="rank-badge">Maga Celestial</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+3 pts</div><div class="points-small">Nível 1</div></div>
-                <div class="podio-place primeiro"><div class="mago-img" style="background-image: url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop');"></div><div class="position">1º LUGAR</div><div class="rank-badge">Mago Supremo</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+4 pts</div><div class="points-small">Nível 5</div></div>
-                <div class="podio-place terceiro"><div class="mago-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div><div class="position">3º LUGAR</div><div class="rank-badge">Mago do Tempo</div><div class="name">Aluno 3</div><div class="points">+2 pts</div><div class="points-small">Nível 1</div></div>
-            </div>
-        </div>
-    </div>
+    <h2 class="intro-title">ACADEMIA ARCANA</h2>
+    <p class="intro-subtitle">Ordem dos Mathemagos Olímpicos • Desafio 8</p>
+    <p class="intro-cta">Desvende figuras, padrões e enigmas arcanos<br>Onde a lógica e a magia se entrelaçam.</p>
+    <p class="intro-highlight">TRIÂNGULO OCULTO</p>
+    <p class="intro-footer">Grão-Conselho dos Magos<br><strong>Instituto Federal do Paraná</strong><br>Torre Assis Chateaubriand</p>
+  </div>
+</div>
 
-<!-- Slide 4: DESAFIO 7 - O Enigma das Idades Invertidas -->
-    <div class="slide" id="slide4">
-        <div class="container-desafio">
-            <div class="spell-number">DESAFIO 7</div>
-            <div class="crystal-ball"></div>
-            <h1> ENIGMA DAS IDADES INVERTIDAS </h1>
-            <p class="subtitulo">Profecia Numérica • Algarismos Místicos</p>
-            <div class="enunciado-magico">
-                <p>O jovem mago <strong>Felipe</strong>, ao celebrar seu 14º aniversário, descobriu um encantamento nas idades: seu pai, um mago arcano, possuía <strong>41 anos</strong> — os algarismos estavam <strong>invertidos</strong>! (14 ↔ 41)</p>
-                <p>Uma profecia ancestral afirma que ambos viverão até os <strong>100 anos</strong>. Durante essa longa jornada, em <strong>quantos outros momentos</strong> além deste o fenômeno das <strong>idades com algarismos invertidos</strong> voltará a ocorrer?</p>
-                <p class="cidade">Considere apenas idades inteiras (em anos).</p>
-            </div>
-            <p class="instrucao">Envie o número exato de coincidências futuras (sem contar o momento atual).</p>
-            <p class="prazo"> Prazo: Lua Nova (16/05 23h59)</p>
-        </div>
-        <div class="qr-container" onclick="window.location.href='https://forms.gle/ABC123NOVOlinkMAGICO'">
-            <div class="qr-label">ENVIAR RESPOSTA</div>
-            <div class="qr-code-wrapper"><a href="https://forms.gle/ABC123NOVOlinkMAGICO"><img src="frame7.png" alt="QR Code Desafio 7"/></a></div>
-            <div class="qr-footer">Aponte a câmera</div>
-        </div>
+<div class="slide" id="slide1">
+  <div class="container-desafio">
+    <div class="spell-number">DESAFIO DA SEMANA PASSADA...</div>
+    <h1>ENIGMA DAS IDADES INVERTIDAS</h1>
+    <p class="subtitulo">Profecia numérica • algarismos invertidos</p>
+    <div class="enunciado-magico">
+      <p>O jovem mago <strong>Felipe</strong>, ao celebrar seu <strong>14º aniversário</strong>, percebeu um fenômeno raro: seu pai tinha <strong>41 anos</strong>.</p>
+      <p>Uma antiga profecia afirma que ambos viverão até os <strong>100 anos</strong>.</p>
+      <p>Em <strong>quantos outros momentos</strong>, além desse, as idades dos dois voltarão a aparecer com os <strong>algarismos invertidos</strong>?</p>
+      <p class="cidade">Considere apenas idades inteiras em anos.</p>
     </div>
-    
-    <!-- Slide 6: Critérios -->
-    <div class="slide" id="slide6">
-        <div class="container-criterios">
-            <h2 class="criterios-title"> DECRETO DOS CRITÉRIOS </h2>
-            <div class="criterio-card"><div class="criterio-destaque-novo"> AVALIAÇÃO POR PRECISÃO </div><div class="criterio-texto"><strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>➤ Respostas completas, claras e corretas têm prioridade na classificação.<br>➤ Critério de desempate: <strong>ordem de envio</strong>.<br></div></div>
-            <div class="regra-extra"><p> Pontuação: 1º lugar = 4 pts | 2º = 3 pts | 3º = 2 pts | 4º e 5º = 1 pt</p></div>
-        </div>
-    </div>
+    <p class="instrucao">Este foi o Desafio 7, agora com resolução comentada no próximo slide.</p>
+    <p class="prazo">Mistério já revelado pelos mathemagos da semana passada.</p>
+  </div>
+</div>
 
-    <!-- Slide 5: Ranking Geral -->
-    <div class="slide" id="slide5">
-        <div class="container-ranking-geral">
-            <h2 class="ranking-geral-title"> RANKING ACUMULADO GERAL </h2>
-            <p class="ranking-geral-sub">Pontuação total após 6 desafios</p>
-            <div class="ranking-list">
-                <div class="rank-row"><span class="rank-pos">1º</span><span class="rank-name">Eduardo Ambrosio (EIN2024)</span><span class="rank-points">20 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">2º</span><span class="rank-name">Diego Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">3º</span><span class="rank-name">Pedro Gomes (IIW2024A)</span><span class="rank-points">7 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">4º</span><span class="rank-name">Maria Luiza (MEC2026)</span><span class="rank-points">5 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">5º</span><span class="rank-name">Gustavo Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">6º</span><span class="rank-name">Pedro Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div>
-                <div class="rank-row"><span class="rank-pos">7º</span><span class="rank-name">João Victor (EIN2024)</span><span class="rank-points">3 pontos</span></div>
-            </div>
-        </div>
+<div class="slide" id="slide2">
+  <div class="container-resolucao">
+    <div class="spell-number">RESOLUÇÃO DO DESAFIO 7...</div>
+    <h2 class="resolucao-title">IDADES INVERTIDAS DO MAGO</h2>
+    <div class="resolucao-box">
+      <p>Seja a idade do filho dada por <strong>10x + y</strong> (com x e y algarismos, x &ge; 1) e a idade do pai por <strong>10y + x</strong> (algarismos invertidos).</p>
+      <p>A diferença entre as idades é constante e igual a 27 anos:</p>
+      <p style="text-align:center; background:#1a0f2e; padding:0.8vh; border-radius:20px; margin:1vh 0;"><strong>(10y + x) - (10x + y) = 27</strong></p>
+      <p>Simplificando: <strong>10y + x - 10x - y = 27</strong> &nbsp;→&nbsp; <strong>9y - 9x = 27</strong> &nbsp;→&nbsp; <strong>9(y - x) = 27</strong></p>
+      <p style="text-align:center; background:#ffd70020; padding:0.8vh; border-radius:20px; margin:1vh 0;"><strong>y - x = 3</strong></p>
+      <p>Portanto, a diferença entre os algarismos é <strong>3</strong>. Os pares (x, y) possíveis para idades de dois algarismos (até 99) são:</p>
+      <p><strong>(1,4), (2,5), (3,6), (4,7), (5,8)</strong></p>
+      <p>Isso gera os pares de idades: <strong>14 e 41</strong>, <strong>25 e 52</strong>, <strong>36 e 63</strong>, <strong>47 e 74</strong>, <strong>58 e 85</strong>.</p>
+      <p>Todos satisfazem a diferença de 27 anos e estão dentro do limite de 100 anos.</p>
+      <p style="margin-top:1.5vh;">Ao todo, há <strong>5 momentos</strong> com idades invertidas.</p>
+      <p>Como o enunciado pede os <strong>outros momentos além do atual</strong> (14 e 41), subtraímos 1 do total.</p>
+      <p style="margin-top:1.5vh; text-align:center; font-size:2.8vh;">✅ Portanto, a resposta é <strong style="color:#ffd700;">4 momentos futuros</strong>.</p>
     </div>
-    
-    <!-- Slide 7: Pontuação por turma -->
-    <div class="slide" id="slide7">
-        <div class="container-pontuacao-turmas">
-            <h2 class="turmas-title"> PONTUAÇÃO TOTAL POR TURMA </h2>
-            <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4, 5 e 6</p>
-            <div class="turmas-grid">
-                <div class="turma-card"><h3> EIN2024</h3><div class="turma-pontos">23 pts</div><div class="turma-detalhe">Magos Veteranos</div></div>
-                <div class="turma-card"><h3> EIN2023</h3><div class="turma-pontos">14 pts</div><div class="turma-detalhe">Chamas da Inovação</div></div>
-                <div class="turma-card"><h3> IIW2024A</h3><div class="turma-pontos">11 pts</div><div class="turma-detalhe">Sábios Lunares</div></div>
-                <div class="turma-card"><h3> MEC2026</h3><div class="turma-pontos">5 pts</div><div class="turma-detalhe">Sentinelas Estelares</div></div>
-            </div>
-            <div class="regra-extra" style="margin-top: 2vh;"><p> A turma líder ao final do ano receberá honraria arcana!</p><p style="font-size: 1.8vh;">Pontuação atualizada após cada desafio.</p></div>
-        </div>
-    </div>
+    <div class="resposta-final">RESPOSTA: 4 MOMENTOS</div>
+  </div>
+</div>
 
-    <!-- Slide 8: Curiosidade (Maryam Mirzakhani) -->
-    <div class="slide" id="slide8">
-        <div class="container-curiosidade">
-            <h2 class="curiosidade-title"> SABEDORIA MATEMÁTICA </h2>
-            <div class="curiosidade-content">
-                <div class="curiosidade-imagem"><div class="math-image-wrapper"><img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields"></div></div>
-                <div class="curiosidade-texto"><strong> MARYAM MIRZAKHANI (1977–2017) </strong><br><br>Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> (2014), o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>Mirzakhani descrevia seu trabalho como "desenhar" — usando intuição geométrica para resolver problemas complexos. Sua genialidade e humildade inspiraram uma geração inteira de jovens cientistas ao redor do mundo.<br><br><div class="citacao">"A beleza da matemática só se mostra à paciência."</div></div>
-            </div>
-        </div>
+<div class="slide" id="slide3">
+  <div class="container-podio">
+    <h2 class="podio-title">PÓDIO DO DESAFIO 7</h2>
+    <p class="podio-subtitle">Mês Desafio 7 • Enigma das Idades Invertidas</p>
+    <div class="podio">
+      <div class="podio-place segundo"><div class="mago-img" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="position">2º LUGAR</div><div class="rank-badge">Mago da Luz</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+3 pts</div><div class="points-small">Nível 7</div></div>
+      <div class="podio-place primeiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop')"></div><div class="position">1º LUGAR</div><div class="rank-badge">Maga Suprema</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+4 pts</div><div class="points-small">Nível 3</div></div>
+      <div class="podio-place terceiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop')"></div><div class="position">3º LUGAR</div><div class="rank-badge">Mago do Tempo</div><div class="name">Aluno 3</div><div class="points">+2 pts</div><div class="points-small">Nível 1</div></div>
     </div>
-    
-    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◀ Anterior</button>
-    <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo ▶</button>
-    <div class="slide-indicator" id="slideIndicators"></div>
-    
-    <script>
-        var currentSlide = 0;
-        var totalSlides = 9;
-        var timerInterval = null;
-        var timerProgress = document.getElementById('timerProgress');
-        var slideTimes = [20, 30, 30, 25, 100, 25, 25, 25, 25];
-        
-        function updateIndicators() {
-            const container = document.getElementById('slideIndicators');
-            if(!container) return;
-            let dotsHtml = '';
-            for(let i=0; i<totalSlides; i++) {
-                dotsHtml += `<span class="dot ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})"></span>`;
-            }
-            container.innerHTML = dotsHtml;
-        }
-        
-        function showSlide(n) {
-            var slides = document.getElementsByClassName('slide');
-            if (n >= totalSlides) currentSlide = 0;
-            if (n < 0) currentSlide = totalSlides - 1;
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].className = slides[i].className.replace(' active', '');
-            }
-            slides[currentSlide].className += ' active';
-            updateIndicators();
-            resetTimer();
-        }
-        
-        function changeSlide(n) { stopTimer(); currentSlide += n; showSlide(currentSlide); }
-        function goToSlide(n) { stopTimer(); currentSlide = n; showSlide(currentSlide); }
-        
-        function startTimer() {
-            stopTimer();
-            var timeLeft = slideTimes[currentSlide];
-            var totalTime = timeLeft;
-            updateProgressBar(0);
-            timerInterval = setInterval(function() {
-                timeLeft = timeLeft - 0.1;
-                if (timeLeft <= 0) {
-                    changeSlide(1);
-                } else {
-                    var progress = ((totalTime - timeLeft) / totalTime) * 100;
-                    updateProgressBar(progress);
-                }
-            }, 100);
-        }
-        
-        function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
-        function updateProgressBar(progress) { if (timerProgress) timerProgress.style.width = progress + '%'; }
-        function resetTimer() { stopTimer(); startTimer(); }
-        
-        document.onkeydown = function(e) {
-            if (e.keyCode == 37) changeSlide(-1);
-            if (e.keyCode == 39) changeSlide(1);
-        };
-        
-        window.onload = function() {
-            updateIndicators();
-            startTimer();
-            for (var i = 0; i < 80; i++) {
-                var star = document.createElement('div');
-                star.className = 'star';
-                star.style.width = (Math.random() * 3 + 1) + 'px';
-                star.style.height = star.style.width;
-                star.style.top = Math.random() * 100 + '%';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 2 + 's';
-                document.querySelector('.stars').appendChild(star);
-            }
-        };
-    </script>
+  </div>
+</div>
+
+<div class="slide" id="slide4">
+  <div class="container-desafio">
+    <div class="spell-number">DESAFIO 8</div>
+    <h1>TRIÂNGULO OCULTO DO RETÂNGULO</h1>
+    <p class="subtitulo">Geometria plana • pontos médios • área sombreada</p>
+    <div class="desafio-flex">
+      <div class="enunciado-magico">
+        <p>O retângulo <strong>ABCD</strong> tem área <strong>96 cm²</strong>.</p>
+        <p>Os pontos <strong>P</strong> e <strong>Q</strong> são os pontos médios dos lados <strong>AB</strong> e <strong>CD</strong>.</p>
+        <p>Os segmentos <strong>AC</strong> e <strong>QB</strong> se cruzam no interior do retângulo.</p>
+        <p>Qual é a <strong>área da região sombreada</strong>?</p>
+      </div>
+      <div class="figura-magica">
+        <div class="area-text-svg">Área do retângulo = 96 cm²</div>
+        <svg class="grande" viewBox="0 0 868 600" xmlns="http://www.w3.org/2000/svg" aria-label="Retângulo com pontos médios - região sombreada no triângulo CBX (X = interseção BQ ∩ AC)">
+          <defs>
+            <linearGradient id="geomBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1b1031"/>
+              <stop offset="100%" stop-color="#09050f"/>
+            </linearGradient>
+            <pattern id="shadePattern" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+              <rect width="14" height="14" fill="#d9d9d9" opacity="0.15"/>
+              <line x1="0" y1="0" x2="0" y2="14" stroke="#c0c0c0" stroke-width="6" opacity="0.55"/>
+            </pattern>
+          </defs>
+          <rect x="16" y="16" width="836" height="568" rx="39" fill="url(#geomBg)" stroke="#ffd700" stroke-width="6"/>
+          <rect x="168" y="133" width="532" height="350" fill="none" stroke="#f5f1e6" stroke-width="5"/>
+          <line x1="168" y1="483" x2="700" y2="133" stroke="#d8b4ff" stroke-width="6"/>
+          <line x1="434" y1="133" x2="700" y2="483" stroke="#d8b4ff" stroke-width="6"/>
+          <polygon points="700,133 700,483 522.67,249.67" fill="#cfcfcf" opacity="0.45"/>
+          <polygon points="700,133 700,483 522.67,249.67" fill="url(#shadePattern)"/>
+          <circle cx="168" cy="483" r="8" fill="#ffd700"/>
+          <circle cx="168" cy="133" r="8" fill="#ffd700"/>
+          <circle cx="700" cy="133" r="8" fill="#ffd700"/>
+          <circle cx="700" cy="483" r="8" fill="#ffd700"/>
+          <circle cx="434" cy="483" r="8" fill="#ffd700"/>
+          <circle cx="434" cy="133" r="8" fill="#ffd700"/>
+          <circle cx="522.67" cy="249.67" r="7.5" fill="#ff9f1c"/>
+          <text x="150" y="505" fill="#fff" font-size="30" font-weight="bold">A</text>
+          <text x="150" y="118" fill="#fff" font-size="30" font-weight="bold">D</text>
+          <text x="708" y="118" fill="#fff" font-size="30" font-weight="bold">C</text>
+          <text x="708" y="505" fill="#fff" font-size="30" font-weight="bold">B</text>
+          <text x="424" y="520" fill="#fff" font-size="30" font-weight="bold">P</text>
+          <text x="424" y="118" fill="#fff" font-size="30" font-weight="bold">Q</text>
+          <text x="540" y="235" fill="#ffaa66" font-size="22" font-weight="bold">X</text>
+        </svg>
+      </div>
+    </div>
+    <p class="instrucao">Envie sua resposta com estratégia, cálculos e justificativa geométrica.</p>
+    <p class="prazo">Prazo • Lua Crescente • 23/05 • 23h59</p>
+  </div>
+  <!-- QR CODE ADICIONADO AQUI (igual ao do Desafio 7) -->
+  <div class="qr-container" onclick="window.location.href='https://forms.gle/WgDZajqcjXv7byh27'">
+    <div class="qr-label">ENVIAR RESPOSTA</div>
+    <div class="qr-code-wrapper"><a href="https://forms.gle/WgDZajqcjXv7byh27"><img src="frame8.png" alt="QR Code para formulário"/></a></div>
+    <div class="qr-footer">Aponte a câmera</div>
+  </div>
+</div>
+
+<div class="slide" id="slide5">
+  <div class="container-ranking-geral">
+    <h2 class="ranking-geral-title">RANKING ACUMULADO GERAL</h2>
+    <p class="ranking-geral-sub">Pontuação total após 7 desafios</p>
+    <div class="ranking-list">
+      <div class="rank-row"><span class="rank-pos">1</span><span class="rank-name">Eduardo Ambrosio de Paula (EIN2024)</span><span class="rank-points">23 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">2</span><span class="rank-name">Diego Dallamarta Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">3</span><span class="rank-name">Maria Luiza Kaiser Gaspar (MEC2026)</span><span class="rank-points">9 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">4</span><span class="rank-name">Pedro Henrique dos Santos Gomes (IIW2024A)</span><span class="rank-points">7 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">5</span><span class="rank-name">Gustavo Gabriel Santos Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">6</span><span class="rank-name">Pedro Vinícius Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">7</span><span class="rank-name">João Victor de Oliveira Machado (EIN2024)</span><span class="rank-points">3 pontos</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="slide6">
+  <div class="container-criterios">
+    <h2 class="criterios-title">DECRETO DOS CRITÉRIOS</h2>
+    <div class="criterio-card">
+      <div class="criterio-destaque-novo">AVALIAÇÃO POR PRECISÃO</div>
+      <div class="criterio-texto">
+        <strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>
+        Respostas completas, claras e corretas têm prioridade na classificação.<br>
+        Critério de desempate <strong>ordem de envio</strong>.
+      </div>
+    </div>
+    <div class="regra-extra">
+      <p>Pontuação: 1º lugar 4 pts • 2º 3 pts • 3º 2 pts • 4º e 5º 1 pt</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="slide7">
+  <div class="container-pontuacao-turmas">
+    <h2 class="turmas-title">PONTUAÇÃO TOTAL POR TURMA</h2>
+    <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4, 5, 6 e 7</p>
+    <div class="turmas-grid">
+      <div class="turma-card">
+        <h3>EIN2024</h3>
+        <div class="turma-pontos">26 pts</div>
+        <div class="turma-detalhe">Magos Veteranos</div>
+      </div>
+      <div class="turma-card">
+        <h3>EIN2023</h3>
+        <div class="turma-pontos">14 pts</div>
+        <div class="turma-detalhe">Chamas da Inovação</div>
+      </div>
+      <div class="turma-card">
+        <h3>IIW2024A</h3>
+        <div class="turma-pontos">11 pts</div>
+        <div class="turma-detalhe">Sábios Lunares</div>
+      </div>
+      <div class="turma-card">
+        <h3>MEC2026</h3>
+        <div class="turma-pontos">9 pts</div>
+        <div class="turma-detalhe">Sentinelas Estelares</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="slide8">
+  <div class="container-curiosidade">
+    <h2 class="curiosidade-title">SABEDORIA MATEMÁTICA</h2>
+    <div class="curiosidade-content">
+      <div class="curiosidade-imagem">
+        <div class="math-image-wrapper">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Maryam_Mirzakhani_in_Seoul_2014.jpg/440px-Maryam_Mirzakhani_in_Seoul_2014.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields">
+        </div>
+      </div>
+      <div class="curiosidade-texto">
+        <strong>MARYAM MIRZAKHANI (1977–2017)</strong><br><br>
+        Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> em 2014, o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>
+        Mirzakhani descrevia seu trabalho como desenhar usando intuição geométrica para resolver problemas complexos. Sua genialidade e humildade inspiraram uma geração inteira de jovens cientistas ao redor do mundo.<br><br>
+        <div class="citacao">A beleza da matemática só se mostra à paciência.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="nav-btn prev-btn" onclick="changeSlide(-1)">Anterior</button>
+<button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo</button>
+<div class="slide-indicator" id="slideIndicators"></div>
+
+<script>
+let currentSlide = 0, totalSlides = 9, timerInterval = null;
+const timerProgress = document.getElementById('timerProgress');
+const slideTimes = [20,35,35,25,110,25,25,25,25];
+function updateIndicators(){
+  const c = document.getElementById('slideIndicators');
+  if (!c) return;
+  c.innerHTML = '';
+  for (let i = 0; i < totalSlides; i++) {
+    c.innerHTML += `<span class="dot ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})"></span>`;
+  }
+}
+function showSlide(n){
+  const s = document.getElementsByClassName('slide');
+  if (n >= totalSlides) currentSlide = 0;
+  if (n < 0) currentSlide = totalSlides - 1;
+  for (let i = 0; i < s.length; i++) {
+    s[i].className = s[i].className.replace(' active','');
+  }
+  s[currentSlide].className += ' active';
+  updateIndicators();
+  resetTimer();
+}
+function changeSlide(n){
+  stopTimer();
+  currentSlide += n;
+  showSlide(currentSlide);
+}
+function goToSlide(n){
+  stopTimer();
+  currentSlide = n;
+  showSlide(currentSlide);
+}
+function startTimer(){
+  stopTimer();
+  let timeLeft = slideTimes[currentSlide];
+  const totalTime = timeLeft;
+  updateProgressBar(0);
+  timerInterval = setInterval(() => {
+    timeLeft -= 0.1;
+    if (timeLeft <= 0) {
+      changeSlide(1);
+    } else {
+      let progress = (totalTime - timeLeft) / totalTime * 100;
+      updateProgressBar(progress);
+    }
+  }, 100);
+}
+function stopTimer(){
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = null;
+}
+function updateProgressBar(progress){
+  if (timerProgress) timerProgress.style.width = progress + '%';
+}
+function resetTimer(){
+  stopTimer();
+  startTimer();
+}
+document.onkeydown = function(e){
+  if (e.keyCode === 37) changeSlide(-1);
+  if (e.keyCode === 39) changeSlide(1);
+}
+window.onload = function(){
+  updateIndicators();
+  startTimer();
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.width = (Math.random() * 3 + 1) + 'px';
+    star.style.height = star.style.width;
+    star.style.top = (Math.random() * 100) + 'vh';
+    star.style.left = (Math.random() * 100) + 'vw';
+    star.style.animationDelay = (Math.random() * 2) + 's';
+    document.querySelector('.stars').appendChild(star);
+  }
+};
+</script>
 </body>
 </html>
