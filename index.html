@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<title>Academia Arcana - Desafio 8 | Triângulo Oculto</title>
+<title>Academia Arcana - Desafio 9 | O Santuário dos Três Portais</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -32,26 +32,24 @@
   .intro-cta{font-size:2.8vh;color:#e6d5b8;line-height:1.9;margin:2.5vh 0;background:rgba(75,0,130,.4);padding:2.5vh;border-radius:50px 15px 50px 15px;border:2px solid #b8860b}
   .intro-highlight{font-size:4vh;color:#ffd700;font-weight:bold;margin:2.5vh 0}
   .intro-footer{font-size:2.3vh;color:#a67c9e;margin-top:2.5vh;border-top:2px solid #b8860b;padding-top:2.5vh}
-  .container-desafio{max-width:75%;width:920px;padding:1.8vh 3vw 1.8vh 3vw;background:rgba(240,230,210,.96);border-radius:70px 25px 70px 25px;border:5px solid #8a2be2}
+  .container-desafio{max-width:82%;width:1080px;padding:2.4vh 3.2vw;background:rgba(240,230,210,.96);border-radius:70px 25px 70px 25px;border:5px solid #8a2be2}
   .spell-number{position:absolute;top:1.5vh;left:2.5vw;font-size:2.2vh;color:#ffd700;background:#2a1b3d;padding:.5vh 2vw;border:2px solid #b8860b;border-radius:40px 8px 40px 8px;z-index:21}
-  .container-desafio h1,.resolucao-title,.podio-title,.ranking-geral-title,.criterios-title,.turmas-title,.curiosidade-title{letter-spacing:3px}
-  .container-desafio h1{font-size:3.5vh;margin:0.3vh 0 0.2vh;color:#2a1b3d;text-shadow:2px 2px 0 #b8860b}
+  .container-desafio h1{font-size:3.5vh;margin:0.3vh 0 0.2vh;color:#2a1b3d;text-shadow:2px 2px 0 #b8860b;letter-spacing:3px}
   .subtitulo{font-size:1.8vh;margin-bottom:0.8vh;color:#4b0082;font-style:italic}
   .desafio-flex{display:flex;flex-direction:column;gap:0.6vh;margin-bottom:0.3vh;align-items:center}
-  .enunciado-magico{max-width:90%;margin:auto;font-size:2.3vh;line-height:1.35;text-align:center;font-family:Georgia,serif;color:#ffd700;border:3px solid #b8860b;border-radius:30px;background:#2a1b3d;padding:1.2vh 2vw;font-weight:bold}
-  .enunciado-magico p{margin:0.4vh 0}
-  .enunciado-magico .cidade{color:#ffaa66;font-weight:bold;font-size:2.5vh}
-  .figura-magica{width:100%;max-width:580px;margin:0 auto;align-items:center;justify-content:center;display:flex;flex-direction:column}
-  .figura-magica svg{width:100%;max-width:540px;height:auto;background:radial-gradient(circle at center,#1a1024,#08040f);border-radius:30px;border:3px solid #b8860b;box-shadow:0 0 25px rgba(138,43,226,.35);padding:0.6vh}
+  .enunciado-magico{max-width:90%;margin:auto;font-size:2.3vh;line-height:1.4;text-align:center;font-family:Georgia,serif;color:#ffd700;border:3px solid #b8860b;border-radius:30px;background:#2a1b3d;padding:1.5vh 2vw;font-weight:bold}
+  .enunciado-magico p{margin:0.6vh 0}
+  .figura-magica{width:100%;max-width:680px;margin:0 auto;align-items:center;justify-content:center;display:flex;flex-direction:column}
+  .figura-magica svg{width:100%;max-width:620px;height:auto;background:radial-gradient(circle at center,#1a1024,#08040f);border-radius:30px;border:3px solid #b8860b;box-shadow:0 0 25px rgba(138,43,226,.35);padding:0.6vh}
   .figura-magica svg.grande{max-width:540px}
   .area-text-svg{font-size:2vh;font-weight:bold;color:#ffd700;background:#1f102e;padding:0.3vh 2vw;border-radius:40px;margin-bottom:0.5vh;display:inline-block;border:2px solid #b8860b}
-  .legenda-pontos{margin-top:0.5vh;font-size:1.7vh;color:#4b0082;font-weight:bold}
   .instrucao,.prazo{font-size:1.7vh;margin:0.2vh 0}
-  .container-resolucao{max-width:75%;width:920px;padding:3vh 4vw;background:rgba(20,10,30,.95);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
-  .resolucao-title{font-size:4.2vh;color:#ffd700;text-shadow:3px 3px 0 #4b0082;margin-bottom:1.5vh}
-  .resolucao-box{background:rgba(75,0,130,.35);border:3px solid #b8860b;border-radius:35px;padding:2.2vh 2vw;color:#e6d5b8;font-size:2.5vh;line-height:1.55;text-align:left}
-  .resolucao-box p{margin:1.2vh 0}
-  .resposta-final{margin-top:2vh;font-size:3vh;color:#ffd700;font-weight:bold;text-align:center;background:rgba(0,0,0,.35);padding:1.2vh 1vw;border-radius:30px;border:2px solid #8a2be2}
+  .container-resolucao{max-width:75%;width:920px;padding:2.5vh 4vw;background:rgba(20,10,30,.95);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
+  .resolucao-title{font-size:3.8vh;color:#ffd700;text-shadow:3px 3px 0 #4b0082;margin-bottom:1vh}
+  .resolucao-box{background:rgba(75,0,130,.35);border:3px solid #b8860b;border-radius:35px;padding:1.5vh 2vw;color:#e6d5b8;font-size:2.3vh;line-height:1.45;text-align:left}
+  .resolucao-box p{margin:0.7vh 0}
+  .resolucao-box .destaque-geom{background:rgba(255,215,0,0.15);padding:0.6vh 1vw;border-radius:20px;margin:0.8vh 0;text-align:center;font-weight:bold}
+  .resposta-final{margin-top:1.2vh;font-size:2.8vh;color:#ffd700;font-weight:bold;text-align:center;background:rgba(0,0,0,.35);padding:0.8vh 1vw;border-radius:30px;border:2px solid #8a2be2}
   .container-podio{max-width:85%;width:1000px;padding:2vh 2vw;background:rgba(20,10,30,.85);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
   .podio-title{font-size:5vh;margin-bottom:.5vh;color:#ffd700;text-shadow:4px 4px 0 #4b0082}
   .podio-subtitle{font-size:2.5vh;color:#b19cd9;margin-bottom:2vh;font-style:italic;border-bottom:2px solid #b8860b;display:inline-block;padding-bottom:.8vh}
@@ -71,8 +69,8 @@
   .ranking-geral-sub{font-size:2.2vh;color:#b19cd9;margin-bottom:2vh;font-style:italic}
   .ranking-list{display:flex;flex-direction:column;gap:1vh;margin-top:1.5vh}
   .rank-row{display:flex;justify-content:space-between;align-items:center;background:rgba(42,27,61,.8);padding:1vh 2vw;border-radius:40px;font-size:2.2vh;color:#e6d5b8;border-left:5px solid #ffd700}
-  .rank-pos{font-weight:bold;color:#ffd700;width:15%;text-align:left}
-  .rank-name{width:55%;text-align:left}
+  .rank-pos{font-weight:bold;color:#ffd700;width:12%;text-align:left}
+  .rank-name{width:58%;text-align:left}
   .rank-points{width:30%;text-align:right;font-weight:bold;color:#ffaa66}
   .container-criterios{max-width:75%;width:900px;padding:2.5vh 3vw;background:rgba(20,10,30,.96);border-radius:70px 25px 70px 25px;border:5px solid #ffd700}
   .criterios-title{font-size:4.5vh;color:#ffd700;text-shadow:0 0 20px #8a2be2;margin-bottom:2vh}
@@ -86,7 +84,7 @@
   .turmas-title{font-size:5vh;color:#ffd700;text-shadow:0 0 15px #8a2be2;margin-bottom:1.5vh}
   .turmas-sub{font-size:2.5vh;color:#b19cd9;margin-bottom:3vh;font-style:italic}
   .turmas-grid{display:flex;justify-content:center;gap:3vw;flex-wrap:wrap;margin:2vh 0}
-  .turma-card{background:rgba(0,0,0,.7);border:3px solid #b8860b;border-radius:60px 20px 60px 20px;padding:2vh 2vw;min-width:220px;backdrop-filter:blur(4px)}
+  .turma-card{background:rgba(0,0,0,.7);border:3px solid #b8860b;border-radius:60px 20px 60px 20px;padding:2vh 2vw;min-width:200px;backdrop-filter:blur(4px)}
   .turma-card h3{font-size:3.5vh;color:#ffd700;margin-bottom:1.2vh;border-bottom:2px solid #8a2be2;display:inline-block;padding-bottom:.5vh}
   .turma-pontos{font-size:6vh;font-weight:bold;color:#e6d5b8;margin:1vh 0;text-shadow:2px 2px 0 #4b0082}
   .turma-detalhe{font-size:2vh;color:#b19cd9}
@@ -106,28 +104,34 @@
   .dot{width:2vh;height:2vh;border-radius:50%;background:rgba(100,70,130,.6);cursor:pointer;border:2px solid #b8860b}
   .dot.active{background:#ffd700;width:6vh;border-radius:30px;border-color:#8a2be2}
   
-  /* Estilos do QR Code */
-  .qr-container {
-    position: fixed;
-    bottom: 10vh;
-    right: 2.5vw;
-    background: #2a1b3d;
-    padding: 2vh 1.5vw;
-    border-radius: 60px 15px 60px 15px;
-    border: 3px solid #b8860b;
-    z-index: 50;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 200px;
+  .portais-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5vw;margin-top:1.5vh;width:100%;max-width:1000px;margin-left:auto;margin-right:auto}
+  .portal-card{background:linear-gradient(160deg,#1a0f2e,#2d1743);border:3px solid #b8860b;border-radius:32px 12px 32px 12px;padding:2vh 1.5vw;color:#e6d5b8;box-shadow:0 0 20px rgba(138,43,226,.3);transition:all 0.2s ease}
+  .portal-card:hover{transform:translateY(-3px);border-color:#ffd700}
+  .portal-card h3{font-size:2.8vh;color:#ffd700;margin-bottom:1vh;border-bottom:2px solid #8a2be2;display:inline-block;padding-bottom:0.5vh}
+  .portal-status{font-size:2.2vh;margin-bottom:1vh;font-weight:bold;padding:0.5vh 1vw;border-radius:40px;display:inline-block}
+  .portal-status.brilhando{color:#ffd700;background:rgba(255,215,0,0.25);box-shadow:0 0 15px rgba(255,215,0,0.6);text-shadow:0 0 5px #ffd700;animation:pulse-glow 1.5s infinite}
+  .portal-status.apagado{color:#a0a0a0;background:rgba(100,100,100,0.2)}
+  .portal-frase{font-size:2.2vh;line-height:1.45;font-family:Georgia,serif;background:rgba(0,0,0,.5);padding:1.2vh 1vw;border-radius:20px;margin-top:1vh;font-style:italic}
+  
+  @keyframes pulse-glow{
+    0%{box-shadow:0 0 5px rgba(255,215,0,0.4);text-shadow:0 0 2px #ffd700}
+    50%{box-shadow:0 0 20px rgba(255,215,0,0.9);text-shadow:0 0 8px #ffd700}
+    100%{box-shadow:0 0 5px rgba(255,215,0,0.4);text-shadow:0 0 2px #ffd700}
   }
-  .qr-container:hover { border-color: #ffd700; }
-  .qr-label { font-size: 2.2vh; margin-bottom: 1.5vh; color: #ffd700; text-align: center; white-space: nowrap; }
-  .qr-code-wrapper { width: 100px; height: 100px; background: #ffffff; border: 3px solid #ffd700; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 1vh; }
-  .qr-code-wrapper img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .qr-footer { font-size: 1.8vh; margin-top: 1vh; color: #b19cd9; text-align: center; white-space: nowrap; }
-
+  
+  .verde-magia{color:#2ecc71;text-shadow:0 0 2px #1a5a2a;font-weight:bold}
+  .vermelho-magia{color:#e74c3c;text-shadow:0 0 2px #7a1a0a;font-weight:bold}
+  .azul-magia{color:#58a6ff;text-shadow:0 0 2px #0a3a6a;font-weight:bold}
+  .dourado{color:#ffd700;font-weight:bold}
+  
+  .qr-container{position:fixed;bottom:10vh;right:2.5vw;background:#2a1b3d;padding:2vh 1.5vw;border-radius:60px 15px 60px 15px;border:3px solid #b8860b;z-index:50;cursor:pointer;display:flex;flex-direction:column;align-items:center;min-width:200px;backdrop-filter:blur(2px);transition:0.2s}
+  .qr-container:hover{border-color:#ffd700;transform:scale(1.02)}
+  .qr-label{font-size:2.2vh;margin-bottom:1.5vh;color:#ffd700;text-align:center;white-space:nowrap;font-weight:bold}
+  .qr-code-wrapper{width:110px;height:110px;background:#ffffff;border:3px solid #ffd700;border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:1vh}
+  .qr-code-wrapper img{width:100%;height:100%;object-fit:contain;display:block}
+  .qr-footer{font-size:1.8vh;margin-top:1vh;color:#b19cd9;text-align:center}
+  .ia-credit{position:fixed;bottom:1vh;left:1vw;font-size:1.4vh;color:rgba(255,215,0,0.4);z-index:200;font-style:italic}
+  
   @media (max-width:900px){
     .curiosidade-content,.desafio-flex{flex-direction:column}
     .container-criterios,.container-resolucao,.container-desafio{max-width:90%}
@@ -135,7 +139,12 @@
     .podio{flex-direction:column;align-items:center;gap:1.5vh}
     .primeiro,.segundo,.terceiro{width:80%;min-height:auto}
     .container-ranking-geral{width:90%}
-    .qr-container { min-width: 160px; transform: scale(0.9); transform-origin: bottom right; }
+    .portais-grid{grid-template-columns:1fr;gap:1.2vh}
+    .portal-card h3{font-size:2.4vh}
+    .portal-frase{font-size:2vh}
+    .portal-status{font-size:2vh}
+    .qr-container{min-width:160px;transform:scale(0.9);transform-origin:bottom right;bottom:8vh;right:2vw;padding:1.5vh 1vw}
+    .qr-code-wrapper{width:85px;height:85px}
   }
 </style>
 </head>
@@ -148,15 +157,11 @@
 
 <div class="slide active" id="slide0">
   <div class="container-intro">
-    <div class="intro-icon">
-      <div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop')"></div>
-      <div class="mago-icon" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div>
-      <div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop')"></div>
-    </div>
+    <div class="intro-icon"><div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop')"></div><div class="mago-icon" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop')"></div></div>
     <h2 class="intro-title">ACADEMIA ARCANA</h2>
-    <p class="intro-subtitle">Ordem dos Mathemagos Olímpicos • Desafio 8</p>
+    <p class="intro-subtitle">Ordem dos Mathemagos Olímpicos • Desafio 9</p>
     <p class="intro-cta">Desvende figuras, padrões e enigmas arcanos<br>Onde a lógica e a magia se entrelaçam.</p>
-    <p class="intro-highlight">TRIÂNGULO OCULTO</p>
+    <p class="intro-highlight">O SANTUÁRIO DOS TRÊS PORTAIS</p>
     <p class="intro-footer">Grão-Conselho dos Magos<br><strong>Instituto Federal do Paraná</strong><br>Torre Assis Chateaubriand</p>
   </div>
 </div>
@@ -164,192 +169,97 @@
 <div class="slide" id="slide1">
   <div class="container-desafio">
     <div class="spell-number">DESAFIO DA SEMANA PASSADA...</div>
-    <h1>ENIGMA DAS IDADES INVERTIDAS</h1>
-    <p class="subtitulo">Profecia numérica • algarismos invertidos</p>
-    <div class="enunciado-magico">
-      <p>O jovem mago <strong>Felipe</strong>, ao celebrar seu <strong>14º aniversário</strong>, percebeu um fenômeno raro: seu pai tinha <strong>41 anos</strong>.</p>
-      <p>Uma antiga profecia afirma que ambos viverão até os <strong>100 anos</strong>.</p>
-      <p>Em <strong>quantos outros momentos</strong>, além desse, as idades dos dois voltarão a aparecer com os <strong>algarismos invertidos</strong>?</p>
-      <p class="cidade">Considere apenas idades inteiras em anos.</p>
-    </div>
-    <p class="instrucao">Este foi o Desafio 7, agora com resolução comentada no próximo slide.</p>
+    <h1>TRIÂNGULO OCULTO DO RETÂNGULO</h1>
+    <p class="subtitulo">Geometria plana • pontos médios • área sombreada</p>
+    <div class="desafio-flex"><div class="enunciado-magico"><p>O retângulo <strong>ABCD</strong> tem área <strong>96 cm²</strong>.</p><p>Os pontos <strong>P</strong> e <strong>Q</strong> são os pontos médios dos lados <strong>AB</strong> e <strong>CD</strong>.</p><p>Os segmentos <strong>AC</strong> e <strong>QB</strong> se cruzam no interior do retângulo.</p><p>Qual é a <strong>área da região sombreada</strong>?</p><p class="cidade">Mistério geométrico revelado no próximo slide.</p></div><div class="figura-magica"><div class="area-text-svg">Área do retângulo = 96 cm²</div><svg class="grande" viewBox="0 0 868 600" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="geomBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1b1031"/><stop offset="100%" stop-color="#09050f"/></linearGradient><pattern id="shadePattern" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(25)"><rect width="14" height="14" fill="#d9d9d9" opacity="0.15"/><line x1="0" y1="0" x2="0" y2="14" stroke="#c0c0c0" stroke-width="6" opacity="0.55"/></pattern></defs><rect x="16" y="16" width="836" height="568" rx="39" fill="url(#geomBg)" stroke="#ffd700" stroke-width="6"/><rect x="168" y="133" width="532" height="350" fill="none" stroke="#f5f1e6" stroke-width="5"/><line x1="168" y1="483" x2="700" y2="133" stroke="#d8b4ff" stroke-width="6"/><line x1="434" y1="133" x2="700" y2="483" stroke="#d8b4ff" stroke-width="6"/><polygon points="700,133 700,483 522.67,249.67" fill="#cfcfcf" opacity="0.45"/><polygon points="700,133 700,483 522.67,249.67" fill="url(#shadePattern)"/><circle cx="168" cy="483" r="8" fill="#ffd700"/><circle cx="168" cy="133" r="8" fill="#ffd700"/><circle cx="700" cy="133" r="8" fill="#ffd700"/><circle cx="700" cy="483" r="8" fill="#ffd700"/><circle cx="434" cy="483" r="8" fill="#ffd700"/><circle cx="434" cy="133" r="8" fill="#ffd700"/><circle cx="522.67" cy="249.67" r="7.5" fill="#ff9f1c"/><text x="150" y="505" fill="#fff" font-size="30" font-weight="bold">A</text><text x="150" y="118" fill="#fff" font-size="30" font-weight="bold">D</text><text x="708" y="118" fill="#fff" font-size="30" font-weight="bold">C</text><text x="708" y="505" fill="#fff" font-size="30" font-weight="bold">B</text><text x="424" y="520" fill="#fff" font-size="30" font-weight="bold">P</text><text x="424" y="118" fill="#fff" font-size="30" font-weight="bold">Q</text><text x="540" y="235" fill="#ffaa66" font-size="22" font-weight="bold">X</text></svg></div></div>
+    <p class="instrucao">Este foi o Desafio 8, agora com resolução comentada no próximo slide.</p>
     <p class="prazo">Mistério já revelado pelos mathemagos da semana passada.</p>
   </div>
 </div>
 
 <div class="slide" id="slide2">
   <div class="container-resolucao">
-    <div class="spell-number">RESOLUÇÃO DO DESAFIO 7...</div>
-    <h2 class="resolucao-title">IDADES INVERTIDAS DO MAGO</h2>
+    <div class="spell-number">RESOLUÇÃO DO DESAFIO 8</div>
+    <h2 class="resolucao-title">ÁREA DO TRIÂNGULO OCULTO</h2>
     <div class="resolucao-box">
-      <p>Seja a idade do filho dada por <strong>10x + y</strong> (com x e y algarismos, x &ge; 1) e a idade do pai por <strong>10y + x</strong> (algarismos invertidos).</p>
-      <p>A diferença entre as idades é constante e igual a 27 anos:</p>
-      <p style="text-align:center; background:#1a0f2e; padding:0.8vh; border-radius:20px; margin:1vh 0;"><strong>(10y + x) - (10x + y) = 27</strong></p>
-      <p>Simplificando: <strong>10y + x - 10x - y = 27</strong> &nbsp;→&nbsp; <strong>9y - 9x = 27</strong> &nbsp;→&nbsp; <strong>9(y - x) = 27</strong></p>
-      <p style="text-align:center; background:#ffd70020; padding:0.8vh; border-radius:20px; margin:1vh 0;"><strong>y - x = 3</strong></p>
-      <p>Portanto, a diferença entre os algarismos é <strong>3</strong>. Os pares (x, y) possíveis para idades de dois algarismos (até 99) são:</p>
-      <p><strong>(1,4), (2,5), (3,6), (4,7), (5,8)</strong></p>
-      <p>Isso gera os pares de idades: <strong>14 e 41</strong>, <strong>25 e 52</strong>, <strong>36 e 63</strong>, <strong>47 e 74</strong>, <strong>58 e 85</strong>.</p>
-      <p>Todos satisfazem a diferença de 27 anos e estão dentro do limite de 100 anos.</p>
-      <p style="margin-top:1.5vh;">Ao todo, há <strong>5 momentos</strong> com idades invertidas.</p>
-      <p>Como o enunciado pede os <strong>outros momentos além do atual</strong> (14 e 41), subtraímos 1 do total.</p>
-      <p style="margin-top:1.5vh; text-align:center; font-size:2.8vh;">✅ Portanto, a resposta é <strong style="color:#ffd700;">4 momentos futuros</strong>.</p>
+      <p>Sejam <strong>AB = L</strong> e <strong>BC = H</strong>. Área total: <strong>L·H = 96</strong>.</p>
+      <div class="destaque-geom">🔺 <strong>SEMELHANÇA ΔAXB ~ ΔCXQ</strong></div>
+      <p>Os triângulos <strong>ΔAXB</strong> e <strong>ΔCXQ</strong> são semelhantes (ângulos alternos internos).<br>A razão de semelhança é:<br><strong>AX / XC = AB / CQ = L / (L/2) = 2</strong><br>Portanto, <strong>AX = 2·XC</strong> e <strong>AX = (2/3)·AC</strong>.</p>
+      <div class="destaque-geom">📐 <strong>ALTURA DO TRIÂNGULO SOMBREADO</strong></div>
+      <p>O triângulo <strong>CBX</strong> tem base <strong>CB = H</strong>.<br>A distância de <strong>X</strong> até o lado <strong>CB</strong> é <strong>(1/3)·L</strong>.</p>
+      <div class="destaque-geom">✨ <strong>ÁREA = (1/2) × H × (L/3) = (L·H)/6 = 96/6 = 16 cm²</strong></div>
+      <p style="text-align:center; margin-top:0.5vh;">✅ Portanto, a região sombreada mede <strong class="dourado">16 cm²</strong>.</p>
     </div>
-    <div class="resposta-final">RESPOSTA: 4 MOMENTOS</div>
+    <div class="resposta-final">RESPOSTA: 16 cm²</div>
   </div>
 </div>
 
 <div class="slide" id="slide3">
-  <div class="container-podio">
-    <h2 class="podio-title">PÓDIO DO DESAFIO 7</h2>
-    <p class="podio-subtitle">Mês Desafio 7 • Enigma das Idades Invertidas</p>
-    <div class="podio">
-      <div class="podio-place segundo"><div class="mago-img" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="position">2º LUGAR</div><div class="rank-badge">Mago da Luz</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+3 pts</div><div class="points-small">Nível 7</div></div>
-      <div class="podio-place primeiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop')"></div><div class="position">1º LUGAR</div><div class="rank-badge">Maga Suprema</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+4 pts</div><div class="points-small">Nível 3</div></div>
-      <div class="podio-place terceiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop')"></div><div class="position">3º LUGAR</div><div class="rank-badge">Mago do Tempo</div><div class="name">Aluno 3</div><div class="points">+2 pts</div><div class="points-small">Nível 1</div></div>
-    </div>
-  </div>
+  <div class="container-podio"><h2 class="podio-title">PÓDIO DO DESAFIO 8</h2><p class="podio-subtitle">Mês Desafio 8 • Triângulo Oculto do Retângulo</p><div class="podio"><div class="podio-place segundo"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop')"></div><div class="position">2º LUGAR</div><div class="rank-badge">Maga Celestial</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+3 pts</div><div class="points-small">Nível 4</div></div><div class="podio-place primeiro"><div class="mago-img" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="position">1º LUGAR</div><div class="rank-badge">Mago Supremo</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+4 pts</div><div class="points-small">Nível 8</div></div><div class="podio-place terceiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop')"></div><div class="position">3º LUGAR</div><div class="rank-badge">Guardião Lógico</div><div class="name">João Victor (EIN2024)</div><div class="points">+2 pts</div><div class="points-small">Nível 2</div></div></div></div>
 </div>
 
 <div class="slide" id="slide4">
   <div class="container-desafio">
-    <div class="spell-number">DESAFIO 8</div>
-    <h1>TRIÂNGULO OCULTO DO RETÂNGULO</h1>
-    <p class="subtitulo">Geometria plana • pontos médios • área sombreada</p>
+    <div class="spell-number">DESAFIO 9</div>
+    <h1>O SANTUÁRIO DOS TRÊS PORTAIS</h1>
+    <p class="subtitulo">Lógica proposicional • o dilema da feiticeira</p>
     <div class="desafio-flex">
       <div class="enunciado-magico">
-        <p>O retângulo <strong>ABCD</strong> tem área <strong>96 cm²</strong>.</p>
-        <p>Os pontos <strong>P</strong> e <strong>Q</strong> são os pontos médios dos lados <strong>AB</strong> e <strong>CD</strong>.</p>
-        <p>Os segmentos <strong>AC</strong> e <strong>QB</strong> se cruzam no interior do retângulo.</p>
-        <p>Qual é a <strong>área da região sombreada</strong>?</p>
+        <p>Uma feiticeira chega ao santuário onde três portais guardam destinos distintos. Apenas um deles conduz à liberdade; os outros dois a aprisionam para sempre.</p>
+        <p>Cada portal possui uma runa encantada e uma frase gravada. <strong>Sabe-se que um dos portais é a <span class="verde-magia">VERDADE</span>, outro é a <span class="vermelho-magia">ILUSÃO</span> e o terceiro é o <span class="azul-magia">CAOS</span>.</strong></p>
+        <p>O comportamento das runas obedece às seguintes leis:</p>
+        <p><span class="verde-magia">VERDADE</span> — sua runa brilha se a frase for <span class="verde-magia">verdadeira</span> e apaga se a frase for <span class="vermelho-magia">falsa</span>.</p>
+        <p><span class="vermelho-magia">ILUSÃO</span> — sua runa apaga se a frase for <span class="verde-magia">verdadeira</span> e brilha se a frase for <span class="vermelho-magia">falsa</span>.</p>
+        <p><span class="azul-magia">CAOS</span> — sua runa brilha ou apaga de forma aleatória, independentemente da frase.</p>
+        <p>Ao entrar no santuário, a feiticeira observa: apenas o <strong class="dourado">Portal do Sol</strong> está brilhando. Os portais da <strong>Lua</strong> e da <strong>Estrela</strong> estão apagados.</p>
+        <p>Com base nas frases abaixo, determine <strong>qual portal a feiticeira deve escolher</strong> (qual deles é a <span class="verde-magia">VERDADE</span>).</p>
       </div>
-      <div class="figura-magica">
-        <div class="area-text-svg">Área do retângulo = 96 cm²</div>
-        <svg class="grande" viewBox="0 0 868 600" xmlns="http://www.w3.org/2000/svg" aria-label="Retângulo com pontos médios - região sombreada no triângulo CBX (X = interseção BQ ∩ AC)">
-          <defs>
-            <linearGradient id="geomBg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#1b1031"/>
-              <stop offset="100%" stop-color="#09050f"/>
-            </linearGradient>
-            <pattern id="shadePattern" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
-              <rect width="14" height="14" fill="#d9d9d9" opacity="0.15"/>
-              <line x1="0" y1="0" x2="0" y2="14" stroke="#c0c0c0" stroke-width="6" opacity="0.55"/>
-            </pattern>
-          </defs>
-          <rect x="16" y="16" width="836" height="568" rx="39" fill="url(#geomBg)" stroke="#ffd700" stroke-width="6"/>
-          <rect x="168" y="133" width="532" height="350" fill="none" stroke="#f5f1e6" stroke-width="5"/>
-          <line x1="168" y1="483" x2="700" y2="133" stroke="#d8b4ff" stroke-width="6"/>
-          <line x1="434" y1="133" x2="700" y2="483" stroke="#d8b4ff" stroke-width="6"/>
-          <polygon points="700,133 700,483 522.67,249.67" fill="#cfcfcf" opacity="0.45"/>
-          <polygon points="700,133 700,483 522.67,249.67" fill="url(#shadePattern)"/>
-          <circle cx="168" cy="483" r="8" fill="#ffd700"/>
-          <circle cx="168" cy="133" r="8" fill="#ffd700"/>
-          <circle cx="700" cy="133" r="8" fill="#ffd700"/>
-          <circle cx="700" cy="483" r="8" fill="#ffd700"/>
-          <circle cx="434" cy="483" r="8" fill="#ffd700"/>
-          <circle cx="434" cy="133" r="8" fill="#ffd700"/>
-          <circle cx="522.67" cy="249.67" r="7.5" fill="#ff9f1c"/>
-          <text x="150" y="505" fill="#fff" font-size="30" font-weight="bold">A</text>
-          <text x="150" y="118" fill="#fff" font-size="30" font-weight="bold">D</text>
-          <text x="708" y="118" fill="#fff" font-size="30" font-weight="bold">C</text>
-          <text x="708" y="505" fill="#fff" font-size="30" font-weight="bold">B</text>
-          <text x="424" y="520" fill="#fff" font-size="30" font-weight="bold">P</text>
-          <text x="424" y="118" fill="#fff" font-size="30" font-weight="bold">Q</text>
-          <text x="540" y="235" fill="#ffaa66" font-size="22" font-weight="bold">X</text>
-        </svg>
+      <div class="portais-grid">
+        <div class="portal-card"><h3>PORTAL DO SOL</h3><div class="portal-status brilhando">✦ BRILHANDO ✦</div><div class="portal-frase">"O Portal da Estrela é o <span class="azul-magia">Caos</span>."</div></div>
+        <div class="portal-card"><h3>PORTAL DA LUA</h3><div class="portal-status apagado">⚫ APAGADO ⚫</div><div class="portal-frase">"O Portal do Sol é a <span class="verde-magia">Verdade</span>."</div></div>
+        <div class="portal-card"><h3>PORTAL DA ESTRELA</h3><div class="portal-status apagado">⚫ APAGADO ⚫</div><div class="portal-frase">"A <span class="verde-magia">Verdade</span> está em um portal apagado."</div></div>
       </div>
     </div>
-    <p class="instrucao">Envie sua resposta com estratégia, cálculos e justificativa geométrica.</p>
-    <p class="prazo">Prazo • Lua Crescente • 23/05 • 23h59</p>
+    <p class="instrucao">Questão: qual porta a feiticeira deve escolher? Justifique eliminando os casos impossíveis.</p>
+    <p class="prazo">Prazo • Lua Crescente • 30/05 • 23h59</p>
   </div>
-  <!-- QR CODE ADICIONADO AQUI (igual ao do Desafio 7) -->
-  <div class="qr-container" onclick="window.location.href='https://forms.gle/WgDZajqcjXv7byh27'">
-    <div class="qr-label">ENVIAR RESPOSTA</div>
-    <div class="qr-code-wrapper"><a href="https://forms.gle/WgDZajqcjXv7byh27"><img src="frame8.png" alt="QR Code para formulário"/></a></div>
-    <div class="qr-footer">Aponte a câmera</div>
-  </div>
+  <div class="qr-container" onclick="window.location.href='https://forms.gle/HuXwQ2DaFCcSikH57'"><div class="qr-label">ENVIAR RESPOSTA</div><div class="qr-code-wrapper"><a href="https://forms.gle/HuXwQ2DaFCcSikH57"><img src="frame9.png" alt="QR Code para formulário"/></a></div><div class="qr-footer">Aponte a câmera ou clique</div></div>
 </div>
 
 <div class="slide" id="slide5">
   <div class="container-ranking-geral">
     <h2 class="ranking-geral-title">RANKING ACUMULADO GERAL</h2>
-    <p class="ranking-geral-sub">Pontuação total após 7 desafios</p>
+    <p class="ranking-geral-sub">Pontuação total após 8 desafios</p>
     <div class="ranking-list">
-      <div class="rank-row"><span class="rank-pos">1</span><span class="rank-name">Eduardo Ambrosio de Paula (EIN2024)</span><span class="rank-points">23 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">2</span><span class="rank-name">Diego Dallamarta Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">3</span><span class="rank-name">Maria Luiza Kaiser Gaspar (MEC2026)</span><span class="rank-points">9 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">1</span><span class="rank-name">Eduardo Ambrosio de Paula (EIN2024)</span><span class="rank-points">27 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">2</span><span class="rank-name">Maria Luiza Kaiser Gaspar (MEC2026)</span><span class="rank-points">12 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">3</span><span class="rank-name">Diego Dallamarta Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
       <div class="rank-row"><span class="rank-pos">4</span><span class="rank-name">Pedro Henrique dos Santos Gomes (IIW2024A)</span><span class="rank-points">7 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">5</span><span class="rank-name">Gustavo Gabriel Santos Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">6</span><span class="rank-name">Pedro Vinícius Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">7</span><span class="rank-name">João Victor de Oliveira Machado (EIN2024)</span><span class="rank-points">3 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">5</span><span class="rank-name">João Victor de Oliveira Machado (EIN2024)</span><span class="rank-points">5 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">6</span><span class="rank-name">Gustavo Gabriel Santos Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">7</span><span class="rank-name">Pedro Vinícius Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div>
+      <div class="rank-row"><span class="rank-pos">8</span><span class="rank-name">Davi Heberhardt de Souza de Santana (IIW2026A)</span><span class="rank-points">1 ponto</span></div>
     </div>
   </div>
 </div>
 
-<div class="slide" id="slide6">
-  <div class="container-criterios">
-    <h2 class="criterios-title">DECRETO DOS CRITÉRIOS</h2>
-    <div class="criterio-card">
-      <div class="criterio-destaque-novo">AVALIAÇÃO POR PRECISÃO</div>
-      <div class="criterio-texto">
-        <strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>
-        Respostas completas, claras e corretas têm prioridade na classificação.<br>
-        Critério de desempate <strong>ordem de envio</strong>.
-      </div>
-    </div>
-    <div class="regra-extra">
-      <p>Pontuação: 1º lugar 4 pts • 2º 3 pts • 3º 2 pts • 4º e 5º 1 pt</p>
-    </div>
-  </div>
-</div>
+<div class="slide" id="slide6"><div class="container-criterios"><h2 class="criterios-title">DECRETO DOS CRITÉRIOS</h2><div class="criterio-card"><div class="criterio-destaque-novo">AVALIAÇÃO POR PRECISÃO</div><div class="criterio-texto"><strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>Respostas completas, claras e corretas têm prioridade na classificação.<br>Critério de desempate <strong>ordem de envio</strong>.</div></div><div class="regra-extra"><p>Pontuação: 1º lugar 4 pts • 2º 3 pts • 3º 2 pts • 4º e 5º 1 pt</p></div></div></div>
 
 <div class="slide" id="slide7">
   <div class="container-pontuacao-turmas">
     <h2 class="turmas-title">PONTUAÇÃO TOTAL POR TURMA</h2>
-    <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4, 5, 6 e 7</p>
+    <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4, 5, 6, 7 e 8</p>
     <div class="turmas-grid">
-      <div class="turma-card">
-        <h3>EIN2024</h3>
-        <div class="turma-pontos">26 pts</div>
-        <div class="turma-detalhe">Magos Veteranos</div>
-      </div>
-      <div class="turma-card">
-        <h3>EIN2023</h3>
-        <div class="turma-pontos">14 pts</div>
-        <div class="turma-detalhe">Chamas da Inovação</div>
-      </div>
-      <div class="turma-card">
-        <h3>IIW2024A</h3>
-        <div class="turma-pontos">11 pts</div>
-        <div class="turma-detalhe">Sábios Lunares</div>
-      </div>
-      <div class="turma-card">
-        <h3>MEC2026</h3>
-        <div class="turma-pontos">9 pts</div>
-        <div class="turma-detalhe">Sentinelas Estelares</div>
-      </div>
+      <div class="turma-card"><h3>EIN2024</h3><div class="turma-pontos">32 pts</div><div class="turma-detalhe">Magos Veteranos</div></div>
+      <div class="turma-card"><h3>EIN2023</h3><div class="turma-pontos">14 pts</div><div class="turma-detalhe">Chamas da Inovação</div></div>
+      <div class="turma-card"><h3>MEC2026</h3><div class="turma-pontos">12 pts</div><div class="turma-detalhe">Sentinelas Estelares</div></div>
+      <div class="turma-card"><h3>IIW2024A</h3><div class="turma-pontos">11 pts</div><div class="turma-detalhe">Sábios Lunares</div></div>
+      <div class="turma-card"><h3>IIW2026A</h3><div class="turma-pontos">1 pt</div><div class="turma-detalhe">Aprendizes Arcanos</div></div>
     </div>
   </div>
 </div>
 
-<div class="slide" id="slide8">
-  <div class="container-curiosidade">
-    <h2 class="curiosidade-title">SABEDORIA MATEMÁTICA</h2>
-    <div class="curiosidade-content">
-      <div class="curiosidade-imagem">
-        <div class="math-image-wrapper">
-          <img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields">
-        </div>
-      </div>
-      <div class="curiosidade-texto">
-        <strong>MARYAM MIRZAKHANI (1977–2017)</strong><br><br>
-        Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> em 2014, o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>
-        Mirzakhani descrevia seu trabalho como desenhar usando intuição geométrica para resolver problemas complexos. Sua genialidade e humildade inspiraram uma geração inteira de jovens cientistas ao redor do mundo.<br><br>
-        <div class="citacao">A beleza da matemática só se mostra à paciência.</div>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="slide" id="slide8"><div class="container-curiosidade"><h2 class="curiosidade-title">SABEDORIA MATEMÁTICA</h2><div class="curiosidade-content"><div class="curiosidade-imagem"><div class="math-image-wrapper"><img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields"></div></div><div class="curiosidade-texto"><strong>MARYAM MIRZAKHANI (1977–2017)</strong><br><br>Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> em 2014, o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>Mirzakhani descrevia seu trabalho como desenhar usando intuição geométrica para resolver problemas complexos. Sua genialidade e humildade inspiraram uma geração inteira de jovens cientistas ao redor do mundo.<br><br><div class="citacao">A beleza da matemática só se mostra à paciência.</div></div></div></div></div>
 
 <button class="nav-btn prev-btn" onclick="changeSlide(-1)">Anterior</button>
 <button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo</button>
@@ -358,80 +268,17 @@
 <script>
 let currentSlide = 0, totalSlides = 9, timerInterval = null;
 const timerProgress = document.getElementById('timerProgress');
-const slideTimes = [20,35,35,25,110,25,25,25,25];
-function updateIndicators(){
-  const c = document.getElementById('slideIndicators');
-  if (!c) return;
-  c.innerHTML = '';
-  for (let i = 0; i < totalSlides; i++) {
-    c.innerHTML += `<span class="dot ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i})"></span>`;
-  }
-}
-function showSlide(n){
-  const s = document.getElementsByClassName('slide');
-  if (n >= totalSlides) currentSlide = 0;
-  if (n < 0) currentSlide = totalSlides - 1;
-  for (let i = 0; i < s.length; i++) {
-    s[i].className = s[i].className.replace(' active','');
-  }
-  s[currentSlide].className += ' active';
-  updateIndicators();
-  resetTimer();
-}
-function changeSlide(n){
-  stopTimer();
-  currentSlide += n;
-  showSlide(currentSlide);
-}
-function goToSlide(n){
-  stopTimer();
-  currentSlide = n;
-  showSlide(currentSlide);
-}
-function startTimer(){
-  stopTimer();
-  let timeLeft = slideTimes[currentSlide];
-  const totalTime = timeLeft;
-  updateProgressBar(0);
-  timerInterval = setInterval(() => {
-    timeLeft -= 0.1;
-    if (timeLeft <= 0) {
-      changeSlide(1);
-    } else {
-      let progress = (totalTime - timeLeft) / totalTime * 100;
-      updateProgressBar(progress);
-    }
-  }, 100);
-}
-function stopTimer(){
-  if (timerInterval) clearInterval(timerInterval);
-  timerInterval = null;
-}
-function updateProgressBar(progress){
-  if (timerProgress) timerProgress.style.width = progress + '%';
-}
-function resetTimer(){
-  stopTimer();
-  startTimer();
-}
-document.onkeydown = function(e){
-  if (e.keyCode === 37) changeSlide(-1);
-  if (e.keyCode === 39) changeSlide(1);
-}
-window.onload = function(){
-  updateIndicators();
-  startTimer();
-  for (let i = 0; i < 80; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.width = (Math.random() * 3 + 1) + 'px';
-    star.style.height = star.style.width;
-    star.style.top = (Math.random() * 100) + 'vh';
-    star.style.left = (Math.random() * 100) + 'vw';
-    star.style.animationDelay = (Math.random() * 2) + 's';
-    document.querySelector('.stars').appendChild(star);
-  }
-};
+const slideTimes = [20,35,28,25,130,30,25,30,25];
+function updateIndicators(){const c=document.getElementById('slideIndicators');if(!c)return;c.innerHTML='';for(let i=0;i<totalSlides;i++)c.innerHTML+=`<span class="dot ${i===currentSlide?'active':''}" onclick="goToSlide(${i})"></span>`;}
+function showSlide(n){const s=document.getElementsByClassName('slide');if(n>=totalSlides)currentSlide=0;if(n<0)currentSlide=totalSlides-1;for(let i=0;i<s.length;i++)s[i].className=s[i].className.replace(' active','');s[currentSlide].className+=' active';updateIndicators();resetTimer();}
+function changeSlide(n){stopTimer();currentSlide+=n;showSlide(currentSlide);}
+function goToSlide(n){stopTimer();currentSlide=n;showSlide(currentSlide);}
+function startTimer(){stopTimer();let timeLeft=slideTimes[currentSlide];const totalTime=timeLeft;updateProgressBar(0);timerInterval=setInterval(()=>{timeLeft-=0.1;if(timeLeft<=0)changeSlide(1);else updateProgressBar((totalTime-timeLeft)/totalTime*100);},100);}
+function stopTimer(){if(timerInterval)clearInterval(timerInterval);timerInterval=null;}
+function updateProgressBar(progress){if(timerProgress)timerProgress.style.width=progress+'%';}
+function resetTimer(){stopTimer();startTimer();}
+document.onkeydown=function(e){if(e.keyCode===37)changeSlide(-1);if(e.keyCode===39)changeSlide(1);}
+window.onload=function(){updateIndicators();startTimer();for(let i=0;i<80;i++){const star=document.createElement('div');star.className='star';star.style.width=(Math.random()*3+1)+'px';star.style.height=star.style.width;star.style.top=(Math.random()*100)+'vh';star.style.left=(Math.random()*100)+'vw';star.style.animationDelay=(Math.random()*2)+'s';document.querySelector('.stars').appendChild(star);}};
 </script>
 </body>
 </html>
