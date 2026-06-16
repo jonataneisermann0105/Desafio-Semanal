@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<title>Academia Arcana - Desafio 10 | O Círculo Arcano do Raio Oculto</title>
+<title>Academia Arcana - Desafio 11 | As Coroas e os Selos do Tabuleiro</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -39,9 +39,9 @@
   .desafio-flex{display:flex;flex-direction:column;gap:0.8vh;margin-bottom:0.3vh;align-items:center}
   .enunciado-magico{max-width:95%;margin:auto;font-size:2.5vh;line-height:1.4;text-align:center;font-family:Georgia,serif;color:#ffd700;border:2px solid #b8860b;border-radius:25px;background:#2a1b3d;padding:1.2vh 2vw;font-weight:bold}
   .enunciado-magico p{margin:0.5vh 0}
-  .figura-magica{width:100%;max-width:720px;margin:0 auto;align-items:center;justify-content:center;display:flex;flex-direction:column}
-  .figura-magica svg{width:100%;max-width:660px;height:auto;background:radial-gradient(circle at center,#1a1024,#08040f);border-radius:25px;border:2px solid #b8860b;box-shadow:0 0 20px rgba(138,43,226,.35);padding:0.5vh}
-  .figura-magica svg.grande{max-width:580px}
+  .figura-magica{width:100%;max-width:900px;margin:0 auto;align-items:center;justify-content:center;display:flex;flex-direction:column}
+  .figura-magica svg{width:100%;max-width:760px;height:auto;background:radial-gradient(circle at center,#1a1024,#08040f);border-radius:25px;border:2px solid #b8860b;box-shadow:0 0 20px rgba(138,43,226,.35);padding:0.5vh}
+  .figura-magica svg.grande{max-width:760px}
   .area-text-svg{font-size:2.3vh;font-weight:bold;color:#ffd700;background:#1f102e;padding:0.4vh 2vw;border-radius:35px;margin-bottom:0.5vh;display:inline-block;border:2px solid #b8860b}
   .instrucao,.prazo{font-size:1.9vh;margin:0.2vh 0}
   .container-resolucao{max-width:75%;width:920px;padding:2vh 3.5vw;background:rgba(20,10,30,.95);border-radius:60px 20px 60px 20px;border:4px solid #ffd700}
@@ -103,19 +103,6 @@
   .slide-indicator{bottom:2vh;left:50%;transform:translateX(-50%);display:flex;gap:1.5vw;z-index:100}
   .dot{width:1.8vh;height:1.8vh;border-radius:50%;background:rgba(100,70,130,.6);cursor:pointer;border:2px solid #b8860b}
   .dot.active{background:#ffd700;width:5vh;border-radius:30px;border-color:#8a2be2}
-  .portais-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2vw;margin-top:1.2vh;width:100%;max-width:950px;margin-left:auto;margin-right:auto}
-  .portal-card{background:linear-gradient(160deg,#1a0f2e,#2d1743);border:2px solid #b8860b;border-radius:24px 6px 24px 6px;padding:1vh 1vw;color:#e6d5b8;box-shadow:0 0 12px rgba(138,43,226,.3);transition:all 0.2s ease;display:flex;flex-direction:column;gap:0.4vh}
-  .portal-card:hover{transform:translateY(-1px);border-color:#ffd700;}
-  .portal-card h3{font-size:2.5vh;color:#ffd700;margin-bottom:0.3vh;border-bottom:1.5px solid #8a2be2;display:inline-block;padding-bottom:0.2vh;letter-spacing:1px}
-  .portal-status{font-size:2vh;margin-bottom:0.3vh;font-weight:bold;padding:0.3vh 0.6vw;border-radius:25px;display:inline-block;align-self:center;text-align:center}
-  .portal-status.brilhando{color:#ffd700;background:rgba(255,215,0,0.25);box-shadow:0 0 10px rgba(255,215,0,0.5);text-shadow:0 0 3px #ffd700;animation:pulse-glow 1.5s infinite}
-  .portal-status.apagado{color:#a0a0a0;background:rgba(100,100,100,0.2)}
-  .portal-frase{font-size:2vh;line-height:1.35;font-family:Georgia,serif;background:rgba(0,0,0,.5);padding:0.6vh 0.6vw;border-radius:14px;margin-top:0.2vh;font-style:italic}
-  @keyframes pulse-glow{0%{box-shadow:0 0 3px rgba(255,215,0,0.4);text-shadow:0 0 1px #ffd700}50%{box-shadow:0 0 12px rgba(255,215,0,0.8);text-shadow:0 0 4px #ffd700}100%{box-shadow:0 0 3px rgba(255,215,0,0.4);text-shadow:0 0 1px #ffd700}}
-  .verde-magia{color:#2ecc71;text-shadow:0 0 2px #1a5a2a;font-weight:bold}
-  .vermelho-magia{color:#e74c3c;text-shadow:0 0 2px #7a1a0a;font-weight:bold}
-  .azul-magia{color:#58a6ff;text-shadow:0 0 2px #0a3a6a;font-weight:bold}
-  .dourado{color:#ffd700;font-weight:bold}
   .qr-container{position:fixed;bottom:8vh;right:2.5vw;background:#2a1b3d;padding:1.5vh 1.5vw;border-radius:50px 12px 50px 12px;border:2px solid #b8860b;z-index:50;cursor:pointer;display:flex;flex-direction:column;align-items:center;min-width:180px;backdrop-filter:blur(2px);transition:0.2s}
   .qr-container:hover{border-color:#ffd700;transform:scale(1.02)}
   .qr-label{font-size:2.2vh;margin-bottom:1vh;color:#ffd700;text-align:center;white-space:nowrap;font-weight:bold}
@@ -123,22 +110,9 @@
   .qr-code-wrapper img{width:100%;height:100%;object-fit:contain;display:block}
   .qr-footer{font-size:1.8vh;margin-top:0.5vh;color:#b19cd9;text-align:center}
   .ia-credit{position:fixed;bottom:0.5vh;left:1vw;font-size:1.4vh;color:rgba(255,215,0,0.4);z-index:200;font-style:italic}
-  @media (max-width:900px){
-    .curiosidade-content,.desafio-flex{flex-direction:column}
-    .container-criterios,.container-resolucao,.container-desafio{max-width:90%}
-    .turma-card{min-width:140px}
-    .podio{flex-direction:column;align-items:center;gap:1vh}
-    .primeiro,.segundo,.terceiro{width:80%;min-height:auto}
-    .container-ranking-geral{width:90%}
-    .portais-grid{grid-template-columns:1fr;gap:1vh;max-width:95%}
-    .qr-container{min-width:140px;transform:scale(0.9);transform-origin:bottom right;bottom:6vh;right:2vw;padding:1vh 1vw}
-    .qr-code-wrapper{width:70px;height:70px}
-  }
-  @media (min-width:1920px){
-    .container-desafio{max-width:88%;width:1350px;}
-    .portais-grid{max-width:1000px;gap:1.5vw;}
-    .enunciado-magico{font-size:2.7vh;}
-  }
+  .belt-svg text{font-family:Cinzel,serif}
+  @media (max-width:900px){.curiosidade-content,.desafio-flex{flex-direction:column}.container-criterios,.container-resolucao,.container-desafio{max-width:90%}.turma-card{min-width:140px}.podio{flex-direction:column;align-items:center;gap:1vh}.primeiro,.segundo,.terceiro{width:80%;min-height:auto}.container-ranking-geral{width:90%}.qr-container{min-width:140px;transform:scale(0.9);transform-origin:bottom right;bottom:6vh;right:2vw;padding:1vh 1vw}.qr-code-wrapper{width:70px;height:70px}}
+  @media (min-width:1920px){.container-desafio{max-width:88%;width:1350px;}.enunciado-magico{font-size:2.7vh;}}
 </style>
 </head>
 <body>
@@ -147,137 +121,16 @@
 <div class="mystic-symbol"></div>
 <div class="mystic-symbol-right"></div>
 <div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
-
-<div class="slide active" id="slide0">
-  <div class="container-intro">
-    <div class="intro-icon"><div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop')"></div><div class="mago-icon" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop')"></div></div>
-    <h2 class="intro-title">ACADEMIA ARCANA</h2>
-    <p class="intro-subtitle">Ordem dos Mathemagos Olímpicos • Desafio 10</p>
-    <p class="intro-cta">Desvende figuras, padrões e enigmas arcanos<br>Onde a lógica e a magia se entrelaçam.</p>
-    <p class="intro-highlight">O CÍRCULO ARCANO DO RAIO OCULTO</p>
-    <p class="intro-footer">Grão-Conselho dos Magos<br><strong>Instituto Federal do Paraná</strong><br>Torre Assis Chateaubriand</p>
-  </div>
-</div>
-
-<div class="slide" id="slide1">
-  <div class="container-desafio">
-    <div class="spell-number">DESAFIO DA SEMANA PASSADA...</div>
-    <h1>O SANTUÁRIO DOS TRÊS PORTAIS</h1>
-    <p class="subtitulo">Lógica proposicional • o dilema da feiticeira</p>
-    <div class="desafio-flex">
-      <div class="enunciado-magico">
-        <p>Uma feiticeira chega ao santuário onde três portais guardam destinos distintos. Apenas um deles conduz à liberdade; os outros dois a aprisionam para sempre.</p>
-        <p>Cada portal possui uma runa encantada e uma frase gravada. <strong>Sabe-se que um dos portais é a <span class="verde-magia">VERDADE</span>, outro é a <span class="vermelho-magia">ILUSÃO</span> e o terceiro é o <span class="azul-magia">CAOS</span>.</strong></p>
-        <p>O comportamento das runas obedece às seguintes leis:</p>
-        <p><span class="verde-magia">VERDADE</span> — sua runa brilha se a frase for <span class="verde-magia">verdadeira</span> e apaga se a frase for <span class="vermelho-magia">falsa</span>.</p>
-        <p><span class="vermelho-magia">ILUSÃO</span> — sua runa apaga se a frase for <span class="verde-magia">verdadeira</span> e brilha se a frase for <span class="vermelho-magia">falsa</span>.</p>
-        <p><span class="azul-magia">CAOS</span> — sua runa brilha ou apaga de forma aleatória, independentemente da frase.</p>
-        <p>Ao entrar no santuário, a feiticeira observa: apenas o <strong class="dourado">Portal do Sol</strong> está brilhando. Os portais da <strong>Lua</strong> e da <strong>Estrela</strong> estão apagados.</p>
-        <p>Com base nas frases abaixo, determine <strong>qual portal a feiticeira deve escolher</strong> (qual deles é a <span class="verde-magia">VERDADE</span>).</p>
-      </div>
-      <div class="portais-grid">
-        <div class="portal-card"><h3>PORTAL DO SOL</h3><div class="portal-status brilhando">✦ BRILHANDO ✦</div><div class="portal-frase">"O Portal da Estrela é o <span class="azul-magia">Caos</span>."</div></div>
-        <div class="portal-card"><h3>PORTAL DA LUA</h3><div class="portal-status apagado">⚫ APAGADO ⚫</div><div class="portal-frase">"O Portal do Sol é a <span class="verde-magia">Verdade</span>."</div></div>
-        <div class="portal-card"><h3>PORTAL DA ESTRELA</h3><div class="portal-status apagado">⚫ APAGADO ⚫</div><div class="portal-frase">"A <span class="verde-magia">Verdade</span> está em um portal apagado."</div></div>
-      </div>
-    </div>
-    <p class="instrucao">Questão: qual porta a feiticeira deve escolher? Justifique eliminando os casos impossíveis.</p>
-    <p class="prazo">Prazo • Lua Crescente • 30/05 • 23h59</p>
-  </div>
-  <div class="qr-container" onclick="window.location.href='https://forms.gle/QJ6MDkRRTDjFF2Gn7'"><div class="qr-label">ENVIAR RESPOSTA</div><div class="qr-code-wrapper"><a href="https://forms.gle/QJ6MDkRRTDjFF2Gn7"><img src="frame10.png" alt="QR Code para formulário"/></a></div><div class="qr-footer">Aponte a câmera ou clique</div></div>
-</div>
-
-<div class="slide" id="slide2">
-  <div class="container-resolucao">
-    <div class="spell-number">RESPOSTA DO DESAFIO 9</div>
-    <h2 class="resolucao-title">OS TRÊS PORTAIS</h2>
-    <div class="resolucao-box">
-      <div class="destaque-geom">✨ ATRIBUIÇÃO DOS PORTAIS ✨</div>
-      <p><strong>PORTAL DO SOL</strong> → <span class="verde-magia">VERDADE</span></p>
-      <p><strong>PORTAL DA LUA</strong> → <span class="vermelho-magia">ILUSÃO</span></p>
-      <p><strong>PORTAL DA ESTRELA</strong> → <span class="azul-magia">CAOS</span></p>
-    </div>
-    <div class="resposta-final">RESPOSTA: PORTAL DO SOL</div>
-  </div>
-</div>
-
-<div class="slide" id="slide3">
-  <div class="container-podio"><h2 class="podio-title">PÓDIO DO DESAFIO 9</h2><p class="podio-subtitle">Mês Desafio 9 • O Santuário dos Três Portais</p><div class="podio"><div class="podio-place segundo"><div class="mago-img" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="position">2º LUGAR</div><div class="rank-badge">Mago da Luz</div><div class="name">Davi Heberhardt (IIW2026A)</div><div class="points">+3 pts</div><div class="points-small">Nível 4</div></div><div class="podio-place primeiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop')"></div><div class="position">1º LUGAR</div><div class="rank-badge">Maga Suprema</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+4 pts</div><div class="points-small">Nível 8</div></div><div class="podio-place terceiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop')"></div><div class="position">3º LUGAR</div><div class="rank-badge">Guardião Lógico</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+2 pts</div><div class="points-small">Nível 2</div></div></div></div>
-</div>
-
-<div class="slide" id="slide4">
-  <div class="container-desafio">
-    <div class="spell-number">DESAFIO 10</div>
-    <h1>O CÍRCULO ARCANO DO RAIO OCULTO</h1>
-    <p class="subtitulo">Geometria plana • circunferência • ângulo reto</p>
-    <div class="desafio-flex">
-      <div class="enunciado-magico">
-        <p> Na figura, o segmento que passa pelo centro da circunferência mede <strong>18 cm</strong>, e o outro mede <strong>6 cm</strong>. Os dois segmentos formam um ângulo reto. Qual é o <strong>raio</strong> da circunferência?</p>
-      </div>
-      <div class="figura-magica">
-        <div class="area-text-svg">Descubra o raio da circunferência</div>
-        <svg class="grande" viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="geomBg10" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1b1031"/><stop offset="100%" stop-color="#09050f"/></linearGradient>
-          </defs>
-          <rect x="16" y="16" width="868" height="588" rx="38" fill="url(#geomBg10)" stroke="#ffd700" stroke-width="6"/>
-          <circle cx="450" cy="315" r="190" fill="none" stroke="#f5f1e6" stroke-width="4.5"/>
-          <line x1="640" y1="315" x2="308" y2="315" stroke="#f5f1e6" stroke-width="4.5"/>
-          <line x1="308" y1="315" x2="308" y2="188" stroke="#f5f1e6" stroke-width="4.5"/>
-          <path d="M308 315 L308 295 L328 295 L328 315" fill="none" stroke="#f5f1e6" stroke-width="3.5"/>
-          <circle cx="450" cy="315" r="6.5" fill="#000" stroke="#ffd700" stroke-width="2"/>
-          <text x="435" y="285" fill="#ffd700" font-size="28" font-weight="bold" font-family="Cinzel">O</text>
-          <text x="440" y="358" fill="#ffd700" font-size="32" font-weight="bold" font-family="Cinzel">18 cm</text>
-          <text x="238" y="252" fill="#ffd700" font-size="32" font-weight="bold" font-family="Cinzel">6 cm</text>
-          <circle cx="308" cy="188" r="4" fill="#ffd700" opacity="0.8"/>
-        </svg>
-      </div>
-    </div>
-    <p class="instrucao">Questão: determine o raio da circunferência.</p>
-    <p class="prazo">Prazo • Lua Nova • 14/06 • 23h59</p>
-  </div>
-  <div class="qr-container" onclick="window.location.href='https://forms.gle/QJ6MDkRRTDjFF2Gn7'"><div class="qr-label">ENVIAR RESPOSTA</div><div class="qr-code-wrapper"><a href="https://forms.gle/QJ6MDkRRTDjFF2Gn7"><img src="frame10.png" alt="QR Code para formulário"/></a></div><div class="qr-footer">Aponte a câmera ou clique</div></div>
-</div>
-
-<div class="slide" id="slide5">
-  <div class="container-ranking-geral">
-    <h2 class="ranking-geral-title">RANKING ACUMULADO GERAL</h2>
-    <p class="ranking-geral-sub">Pontuação total após 9 desafios</p>
-    <div class="ranking-list">
-      <div class="rank-row"><span class="rank-pos">1</span><span class="rank-name">Eduardo Ambrosio de Paula (EIN2024)</span><span class="rank-points">29 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">2</span><span class="rank-name">Maria Luiza Kaiser Gaspar (MEC2026)</span><span class="rank-points">16 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">3</span><span class="rank-name">Diego Dallamarta Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">4</span><span class="rank-name">Pedro Henrique dos Santos Gomes (IIW2024A)</span><span class="rank-points">7 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">5</span><span class="rank-name">João Victor de Oliveira Machado (EIN2024)</span><span class="rank-points">5 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">6</span><span class="rank-name">Gustavo Gabriel Santos Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">7</span><span class="rank-name">Pedro Vinícius Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div>
-      <div class="rank-row"><span class="rank-pos">8</span><span class="rank-name">Davi Heberhardt de Souza de Santana (IIW2026A)</span><span class="rank-points">4 pontos</span></div>
-    </div>
-  </div>
-</div>
-
+<div class="slide active" id="slide0"><div class="container-intro"><div class="intro-icon"><div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop')"></div><div class="mago-icon" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop')"></div></div><h2 class="intro-title">ACADEMIA ARCANA</h2><p class="intro-subtitle">Ordem dos Mathemagos Olímpicos • Desafio 11</p><p class="intro-cta">Desvende figuras, padrões e enigmas arcanos<br>Onde a lógica e a magia se entrelaçam.</p><p class="intro-highlight">AS COROAS E OS SELOS DO TABULEIRO</p><p class="intro-footer">Grão-Conselho dos Magos<br><strong>Instituto Federal do Paraná</strong><br>Torre Assis Chateaubriand</p></div></div>
+<div class="slide" id="slide1"><div class="container-desafio"><div class="spell-number">DESAFIO DA SEMANA PASSADA...</div><h1>O CÍRCULO ARCANO DO RAIO OCULTO</h1><p class="subtitulo">Geometria plana • circunferência • ângulo reto</p><div class="desafio-flex"><div class="enunciado-magico"><p>Na figura, o segmento que passa pelo centro da circunferência mede <strong>18 cm</strong>, e o outro mede <strong>6 cm</strong>. Os dois segmentos formam um ângulo reto.</p><p>Qual é o <strong>raio</strong> da circunferência?</p></div><div class="figura-magica"><div class="area-text-svg">Descubra o raio da circunferência</div><svg class="grande" viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="geomBg10" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1b1031"/><stop offset="100%" stop-color="#09050f"/></linearGradient></defs><rect x="16" y="16" width="868" height="588" rx="38" fill="url(#geomBg10)" stroke="#ffd700" stroke-width="6"/><circle cx="450" cy="315" r="190" fill="none" stroke="#f5f1e6" stroke-width="4.5"/><line x1="640" y1="315" x2="308" y2="315" stroke="#f5f1e6" stroke-width="4.5"/><line x1="308" y1="315" x2="308" y2="188" stroke="#f5f1e6" stroke-width="4.5"/><path d="M308 315 L308 295 L328 295 L328 315" fill="none" stroke="#f5f1e6" stroke-width="3.5"/><circle cx="450" cy="315" r="6.5" fill="#000" stroke="#ffd700" stroke-width="2"/><text x="435" y="285" fill="#ffd700" font-size="28" font-weight="bold">O</text><text x="440" y="358" fill="#ffd700" font-size="32" font-weight="bold">18 cm</text><text x="238" y="252" fill="#ffd700" font-size="32" font-weight="bold">6 cm</text><circle cx="308" cy="188" r="4" fill="#ffd700" opacity="0.8"/></svg></div></div><p class="instrucao">Questão: determine o raio da circunferência.</p><p class="prazo">Prazo • Lua Crescente • 14/06 • 23h59</p></div><div class="qr-container" onclick="window.location.href='https://forms.gle/QJ6MDkRRTDjFF2Gn7'"><div class="qr-label">ENVIAR RESPOSTA</div><div class="qr-code-wrapper"><a href="https://forms.gle/QJ6MDkRRTDjFF2Gn7"><img src="frame10.png" alt="QR Code para formulário"/></a></div><div class="qr-footer">Aponte a câmera ou clique</div></div></div>
+<div class="slide" id="slide2"><div class="container-resolucao"><div class="spell-number">RESPOSTA DO DESAFIO 10</div><h2 class="resolucao-title">O CÍRCULO ARCANO DO RAIO OCULTO</h2><div class="resolucao-box"><div class="destaque-geom"> CAMINHO DA RESOLUÇÃO </div><p>Seja <strong>R</strong> o raio da circunferência. Pela figura, o segmento de reta horizontal visível é <strong>18 cm</strong>.</p><p>O ponto onde sobe o segmento vertical está a <strong>6 cm</strong> da borda superior, formando um triângulo retângulo com hipotenusa <strong>R<strong>, e catetos <strong> 6</strong> e <strong>18 - R</strong>.</p><p class="destaque-geom">Aplicando Pitágoras: <strong>(18 - R)^2 + 6^2 = R^2</strong></p><p>Resolvendo a equação, obtemos <strong>R = 10 cm</strong>.</p></div><div class="resposta-final">RESPOSTA: 10 cm</div></div></div>
+<div class="slide" id="slide3"><div class="container-podio"><h2 class="podio-title">PÓDIO DO DESAFIO 10</h2><p class="podio-subtitle">Mês Desafio 10 • O Círculo Arcano do Raio Oculto</p><div class="podio"><div class="podio-place segundo"><div class="mago-img" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="position">2º LUGAR</div><div class="rank-badge">Mago da Luz</div><div class="name">Eduardo Ambrosio (EIN2024)</div><div class="points">+3 pts</div><div class="points-small">Nível 4</div></div><div class="podio-place primeiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop')"></div><div class="position">1º LUGAR</div><div class="rank-badge">Maga Suprema</div><div class="name">Maria Luiza (MEC2026)</div><div class="points">+4 pts</div><div class="points-small">Nível 8</div></div><div class="podio-place terceiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop')"></div><div class="position">3º LUGAR</div><div class="rank-badge">Guardião Lógico</div><div class="name">Aluno 3</div><div class="points">+2 pts</div><div class="points-small">Nível 2</div></div></div></div></div>
+<div class="slide" id="slide4"><div class="container-desafio"><div class="spell-number">DESAFIO 11</div><h1>AS COROAS E OS SELOS DO TABULEIRO</h1><p class="subtitulo">Combinatória • geometria • comparação de possibilidades</p><div class="desafio-flex"><div class="enunciado-magico"><p>Em um tabuleiro circular encantado com 8 posições na borda, cada posição pode receber uma coroa dourada ou permanecer com um selo azul. Sabendo que duas coroas não podem ficar lado a lado, qual das opções — exatamente 1, exatamente 2 ou exatamente 3 coroas — gera o maior número de configurações válidas?</p></div><div class="figura-magica"><div class="area-text-svg">Compare as combinações possíveis</div><svg class="grande belt-svg" viewBox="0 0 1100 620" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="boardBg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#1b1031"/><stop offset="100%" stop-color="#09050f"/></radialGradient><linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff1b8"/><stop offset="50%" stop-color="#ffd700"/><stop offset="100%" stop-color="#c28c00"/></linearGradient><linearGradient id="blueGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#cfe7ff"/><stop offset="50%" stop-color="#58a6ff"/><stop offset="100%" stop-color="#2256b3"/></linearGradient></defs><rect x="16" y="16" width="1068" height="588" rx="38" fill="url(#boardBg)" stroke="#ffd700" stroke-width="6"/><circle cx="550" cy="310" r="195" fill="none" stroke="#f5f1e6" stroke-width="5" opacity="0.9"/><circle cx="550" cy="310" r="10" fill="#ffd700"/><g><circle cx="550" cy="115" r="24" fill="url(#goldGrad)" stroke="#fff1b8" stroke-width="4"/><circle cx="687" cy="173" r="24" fill="url(#blueGrad)" stroke="#cfe7ff" stroke-width="4"/><circle cx="745" cy="310" r="24" fill="url(#goldGrad)" stroke="#fff1b8" stroke-width="4"/><circle cx="687" cy="447" r="24" fill="url(#blueGrad)" stroke="#cfe7ff" stroke-width="4"/><circle cx="550" cy="505" r="24" fill="url(#goldGrad)" stroke="#fff1b8" stroke-width="4"/><circle cx="413" cy="447" r="24" fill="url(#blueGrad)" stroke="#cfe7ff" stroke-width="4"/><circle cx="355" cy="310" r="24" fill="url(#goldGrad)" stroke="#fff1b8" stroke-width="4"/><circle cx="413" cy="173" r="24" fill="url(#blueGrad)" stroke="#cfe7ff" stroke-width="4"/></g><g stroke="#8a2be2" stroke-width="3" opacity="0.55"><line x1="550" y1="310" x2="550" y2="115"/><line x1="550" y1="310" x2="687" y2="173"/><line x1="550" y1="310" x2="745" y2="310"/><line x1="550" y1="310" x2="687" y2="447"/><line x1="550" y1="310" x2="550" y2="505"/><line x1="550" y1="310" x2="413" y2="447"/><line x1="550" y1="310" x2="355" y2="310"/><line x1="550" y1="310" x2="413" y2="173"/></g><text x="356" y="560" fill="#ffd700" font-size="30" font-weight="bold">8 posições na borda do círculo</text></svg></div></div><p class="instrucao"></p><p class="prazo">Prazo • Lua Crescente • 21/06 • 23h59</p></div><div class="qr-container" onclick="window.location.href='https://forms.gle/2nmz7PfCBEgU7Ksu8'"><div class="qr-label">ENVIAR RESPOSTA</div><div class="qr-code-wrapper"><a href="https://forms.gle/2nmz7PfCBEgU7Ksu8"><img src="frame11.png" alt="QR Code para formulário"/></a></div><div class="qr-footer">Aponte a câmera ou clique</div></div></div>
+<div class="slide" id="slide5"><div class="container-ranking-geral"><h2 class="ranking-geral-title">RANKING ACUMULADO GERAL</h2><p class="ranking-geral-sub">Pontuação total após 10 desafios</p><div class="ranking-list"><div class="rank-row"><span class="rank-pos">1</span><span class="rank-name">Eduardo Ambrosio de Paula (EIN2024)</span><span class="rank-points">32 pontos</span></div><div class="rank-row"><span class="rank-pos">2</span><span class="rank-name">Maria Luiza Kaiser Gaspar (MEC2026)</span><span class="rank-points">20 pontos</span></div><div class="rank-row"><span class="rank-pos">3</span><span class="rank-name">Diego Dallamarta Ribeiro (EIN2023)</span><span class="rank-points">10 pontos</span></div><div class="rank-row"><span class="rank-pos">4</span><span class="rank-name">Pedro Henrique dos Santos Gomes (IIW2024A)</span><span class="rank-points">7 pontos</span></div><div class="rank-row"><span class="rank-pos">5</span><span class="rank-name">João Victor de Oliveira Machado (EIN2024)</span><span class="rank-points">5 pontos</span></div><div class="rank-row"><span class="rank-pos">6</span><span class="rank-name">Gustavo Gabriel Santos Oliveira (IIW2024A)</span><span class="rank-points">4 pontos</span></div><div class="rank-row"><span class="rank-pos">7</span><span class="rank-name">Pedro Vinícius Sozza (EIN2023)</span><span class="rank-points">4 pontos</span></div><div class="rank-row"><span class="rank-pos">8</span><span class="rank-name">Davi Heberhardt de Souza de Santana (IIW2026A)</span><span class="rank-points">4 pontos</span></div></div></div></div>
 <div class="slide" id="slide6"><div class="container-criterios"><h2 class="criterios-title">DECRETO DOS CRITÉRIOS</h2><div class="criterio-card"><div class="criterio-destaque-novo">AVALIAÇÃO POR PRECISÃO</div><div class="criterio-texto"><strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>Respostas completas, claras e corretas têm prioridade na classificação.<br>Critério de desempate <strong>ordem de envio</strong>.</div></div><div class="regra-extra"><p>Pontuação: 1º lugar 4 pts • 2º 3 pts • 3º 2 pts • 4º e 5º 1 pt</p></div></div></div>
-
-<div class="slide" id="slide7">
-  <div class="container-pontuacao-turmas">
-    <h2 class="turmas-title">PONTUAÇÃO TOTAL POR TURMA</h2>
-    <p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4, 5, 6, 7, 8 e 9</p>
-    <div class="turmas-grid">
-      <div class="turma-card"><h3>EIN2024</h3><div class="turma-pontos">34 pts</div><div class="turma-detalhe">Magos Veteranos</div></div>
-      <div class="turma-card"><h3>MEC2026</h3><div class="turma-pontos">16 pts</div><div class="turma-detalhe">Sentinelas Estelares</div></div>      
-<div class="turma-card"><h3>EIN2023</h3><div class="turma-pontos">14 pts</div><div class="turma-detalhe">Chamas da Inovação</div></div>
-      <div class="turma-card"><h3>IIW2024A</h3><div class="turma-pontos">11 pts</div><div class="turma-detalhe">Sábios Lunares</div></div>
-      <div class="turma-card"><h3>IIW2026A</h3><div class="turma-pontos">4 pts</div><div class="turma-detalhe">Aprendizes Arcanos</div></div>
-    </div>
-  </div>
-</div>
-
+<div class="slide" id="slide7"><div class="container-pontuacao-turmas"><h2 class="turmas-title">PONTUAÇÃO TOTAL POR TURMA</h2><p class="turmas-sub">Pontuação acumulada - Desafios 1, 2, 3, 4, 5, 6, 7, 8, 9 e 10</p><div class="turmas-grid"><div class="turma-card"><h3>EIN2024</h3><div class="turma-pontos">34 pts</div><div class="turma-detalhe">Magos Veteranos</div></div><div class="turma-card"><h3>MEC2026</h3><div class="turma-pontos">16 pts</div><div class="turma-detalhe">Sentinelas Estelares</div></div><div class="turma-card"><h3>EIN2023</h3><div class="turma-pontos">14 pts</div><div class="turma-detalhe">Chamas da Inovação</div></div><div class="turma-card"><h3>IIW2024A</h3><div class="turma-pontos">11 pts</div><div class="turma-detalhe">Sábios Lunares</div></div><div class="turma-card"><h3>IIW2026A</h3><div class="turma-pontos">4 pts</div><div class="turma-detalhe">Aprendizes Arcanos</div></div></div></div></div>
 <div class="slide" id="slide8"><div class="container-curiosidade"><h2 class="curiosidade-title">SABEDORIA MATEMÁTICA</h2><div class="curiosidade-content"><div class="curiosidade-imagem"><div class="math-image-wrapper"><img src="Mirzakhani.jpg" alt="Maryam Mirzakhani - Matemática e Medalha Fields"></div></div><div class="curiosidade-texto"><strong>MARYAM MIRZAKHANI (1977–2017)</strong><br><br>Primeira mulher e primeira iraniana a receber a prestigiada <strong>Medalha Fields</strong> em 2014, o mais alto reconhecimento em matemática. Suas contribuições revolucionaram áreas como geometria de superfícies de Riemann, dinâmica e teoria de Teichmüller.<br><br>Mirzakhani descrevia seu trabalho como desenhar usando intuição geométrica para resolver problemas complexos. Sua genialidade e humildade inspiraram uma geração inteira de jovens cientistas ao redor do mundo.<br><br><div class="citacao">A beleza da matemática só se mostra à paciência.</div></div></div></div></div>
-
-<button class="nav-btn prev-btn" onclick="changeSlide(-1)">Anterior</button>
-<button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo</button>
-<div class="slide-indicator" id="slideIndicators"></div>
-
+<button class="nav-btn prev-btn" onclick="changeSlide(-1)">Anterior</button><button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo</button><div class="slide-indicator" id="slideIndicators"></div>
 <script>
 let currentSlide = 0, totalSlides = 9, timerInterval = null;
 const timerProgress = document.getElementById('timerProgress');
@@ -286,7 +139,7 @@ function updateIndicators(){const c=document.getElementById('slideIndicators');i
 function showSlide(n){const s=document.getElementsByClassName('slide');if(n>=totalSlides)currentSlide=0;if(n<0)currentSlide=totalSlides-1;for(let i=0;i<s.length;i++)s[i].className=s[i].className.replace(' active','');s[currentSlide].className+=' active';updateIndicators();resetTimer();}
 function changeSlide(n){stopTimer();currentSlide+=n;showSlide(currentSlide);}
 function goToSlide(n){stopTimer();currentSlide=n;showSlide(currentSlide);}
-function startTimer(){stopTimer();let timeLeft=slideTimes[currentSlide];const totalTime=timeLeft;updateProgressBar(0);timerInterval=setInterval(()=>{timeLeft-=0.1;if(timeLeft<=0)changeSlide(1);else updateProgressBar((totalTime-timeLeft)/totalTime*100);},100);}
+function startTimer(){stopTimer();let timeLeft=slideTimes[currentSlide];const totalTime=timeLeft;updateProgressBar(0);timerInterval=setInterval(()=>{timeLeft-=0.1;if(timeLeft<=0){if(currentSlide<totalSlides-1){currentSlide++;showSlide(currentSlide);}else{timeLeft=totalTime;}}else updateProgressBar((totalTime-timeLeft)/totalTime*100);},100);}
 function stopTimer(){if(timerInterval)clearInterval(timerInterval);timerInterval=null;}
 function updateProgressBar(progress){if(timerProgress)timerProgress.style.width=progress+'%';}
 function resetTimer(){stopTimer();startTimer();}
