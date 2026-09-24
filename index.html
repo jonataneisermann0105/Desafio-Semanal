@@ -4,39 +4,1456 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <title>Academia Arcana - Ciclo 2 | Desafio 1 | Os Portais Gêmeos</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:Cinzel,Georgia,serif;background:url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop') no-repeat center center fixed;background-size:cover;width:100vw;height:100vh;overflow:hidden;position:relative}
-  body:before{content:'';position:fixed;inset:0;background:rgba(10,5,20,.75);pointer-events:none;z-index:1}
-  .stars,.mystic-symbol,.mystic-symbol-right,.ia-credit,.timer-bar,.slide-indicator,.nav-btn{position:fixed;z-index:100}.stars{inset:0;z-index:2;pointer-events:none}.star{position:absolute;background:#ffd700;border-radius:50%;animation:twinkle 2s infinite}@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
-  .mystic-symbol{top:15vh;left:5vw;width:8vh;height:8vh;border:.3vh solid #ffd700;border-radius:50%;opacity:.6;animation:rotate 10s linear infinite;z-index:4}.mystic-symbol:before{content:'✦';position:absolute;inset:0;display:grid;place-items:center;color:#ffd700;font-size:4vh}.mystic-symbol-right{bottom:15vh;right:5vw;width:10vh;height:10vh;border:.3vh solid #8a2be2;border-radius:30% 70% 30% 70%;opacity:.5;animation:pulse 3s infinite;z-index:4}.mystic-symbol-right:before{content:'✧';position:absolute;inset:0;display:grid;place-items:center;color:#8a2be2;font-size:5vh}@keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}@keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.2);opacity:.8}}
-  .timer-bar{top:0;left:0;width:100%;height:4px;background:rgba(0,0,0,.3);z-index:1000}.timer-progress{height:100%;width:0;background:linear-gradient(90deg,#ffd700,#8a2be2);box-shadow:0 0 20px #ffd700}.slide{display:none;width:100vw;height:100vh;justify-content:center;align-items:center;position:absolute;inset:0;padding:.5vh 3vw;z-index:10}.slide.active{display:flex}
-  .container-intro,.container-desafio,.container-podio,.container-ranking-geral,.container-criterios,.container-pontuacao-turmas,.container-curiosidade,.container-insignias{position:relative;margin:auto;z-index:15;text-align:center}
-  .container-intro{max-width:80%;width:1100px;padding:3vh 6vw;background:rgba(20,10,30,.94);border-radius:80px 30px 80px 30px;border:4px solid rgba(184,134,11,.7)}.intro-icon{display:flex;justify-content:center;gap:2rem;margin-bottom:1vh}.mago-icon{width:70px;height:70px;border-radius:50%;border:3px solid #ffd700;box-shadow:0 0 30px #8a2be2;background-size:cover;background-position:center;background-color:#2a1b3d}.intro-title{font-size:5vh;margin-bottom:1vh;color:#ffd700;text-shadow:4px 4px 0 #4b0082;font-weight:900;letter-spacing:5px}.intro-subtitle{font-size:2.8vh;color:#b19cd9;margin-bottom:1.5vh;font-style:italic}.intro-cta{font-size:2.4vh;color:#e6d5b8;line-height:1.6;margin:1.5vh 0;background:rgba(75,0,130,.4);padding:1.5vh;border-radius:50px 15px 50px 15px;border:2px solid #b8860b}.intro-highlight{font-size:3.5vh;color:#ffd700;font-weight:bold;margin:1.5vh 0}.intro-footer{font-size:2vh;color:#a67c9e;margin-top:1.5vh;border-top:2px solid #b8860b;padding-top:1.5vh}
-  .container-desafio{max-width:92%;width:1280px;padding:2vh 3.5vw;background:rgba(240,230,210,.96);border-radius:60px 20px 60px 20px;border:4px solid #8a2be2}.spell-number{position:absolute;top:1.2vh;left:2.5vw;font-size:2.4vh;color:#ffd700;background:#2a1b3d;padding:.4vh 1.8vw;border:2px solid #b8860b;border-radius:35px 6px 35px 6px;z-index:21}.container-desafio h1{font-size:4.2vh;margin:.2vh 0;color:#2a1b3d;text-shadow:2px 2px 0 #b8860b;letter-spacing:3px}.subtitulo{font-size:2.2vh;margin-bottom:.6vh;color:#4b0082;font-style:italic}.desafio-flex{display:flex;flex-direction:column;gap:.8vh;margin-bottom:.3vh;align-items:center}.enunciado-magico{max-width:95%;margin:auto;font-size:2.5vh;line-height:1.4;text-align:center;font-family:Georgia,serif;color:#ffd700;border:2px solid #b8860b;border-radius:25px;background:#2a1b3d;padding:1.2vh 2vw;font-weight:bold}.enunciado-magico p{margin:.5vh 0}.figura-magica{width:100%;max-width:900px;margin:0 auto;align-items:center;justify-content:center;display:flex;flex-direction:column}.figura-magica svg{width:100%;max-width:760px;height:auto;background:radial-gradient(circle at center,#1a1024,#08040f);border-radius:25px;border:2px solid #b8860b;box-shadow:0 0 20px rgba(138,43,226,.35);padding:.5vh}.instrucao,.prazo{font-size:1.9vh;margin:.2vh 0}
-  .container-podio{max-width:85%;width:1000px;padding:1.8vh 2vw;background:rgba(20,10,30,.85);border-radius:60px 20px 60px 20px;border:4px solid #ffd700}.podio-title{font-size:4.8vh;margin-bottom:.5vh;color:#ffd700;text-shadow:4px 4px 0 #4b0082}.podio-subtitle{font-size:2.5vh;color:#b19cd9;margin-bottom:1.5vh;font-style:italic;border-bottom:2px solid #b8860b;display:inline-block;padding-bottom:.5vh}.podio{display:flex;justify-content:center;align-items:flex-end;gap:2vw;margin:1.5vh 0 .8vh}.podio-place{padding:1.2vh 1.2vw;border:3px solid;text-align:center;display:flex;flex-direction:column;justify-content:space-between;border-radius:35px 12px 35px 12px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}.primeiro{width:26vw;min-height:32vh;border-color:#ffd700;background:linear-gradient(135deg,#0a6b0a,#1a4a1a)}.segundo{width:23vw;min-height:29vh;border-color:#c0c0c0;background:linear-gradient(135deg,#8b0000,#4a0000)}.terceiro{width:23vw;min-height:26vh;border-color:#cd7f32;background:linear-gradient(135deg,#0a2a4a,#0a1a2a)}.mago-img{width:70px;height:70px;border-radius:50%;border:3px solid #ffd700;margin:0 auto .5vh;background-size:cover;background-position:center;background-color:#2a1b3d;box-shadow:0 0 25px rgba(255,215,0,.5)}.position{font-size:2.7vh;font-weight:bold;color:#ffd700;margin-bottom:.3vh;text-transform:uppercase}.rank-badge{font-size:2vh;color:#ffd700;background:rgba(0,0,0,.5);padding:.2vh 1vw;border-radius:25px;display:inline-block;margin-bottom:.3vh}.name{font-size:2.3vh;color:#e6d5b8;font-weight:bold;margin-bottom:.3vh}.points{font-size:3.5vh;color:#ffd700;font-weight:bold}.points-small{font-size:1.8vh;color:#b19cd9;margin-top:.3vh}
-  .container-ranking-geral{max-width:80%;width:800px;padding:2vh 2vw;background:rgba(20,10,30,.92);border-radius:60px 20px 60px 20px;border:4px solid #ffd700}.ranking-geral-title{font-size:4.2vh;margin-bottom:.5vh;color:#ffd700;text-shadow:4px 4px 0 #4b0082}.ranking-geral-sub{font-size:2.2vh;color:#b19cd9;margin-bottom:1.5vh;font-style:italic}.ranking-list{display:flex;flex-direction:column;gap:.7vh;margin-top:1vh}.rank-row{display:flex;justify-content:space-between;align-items:center;background:rgba(42,27,61,.8);padding:.7vh 2vw;border-radius:35px;font-size:2.2vh;color:#e6d5b8;border-left:4px solid #ffd700}.rank-pos{font-weight:bold;color:#ffd700;width:12%;text-align:left}.rank-name{width:58%;text-align:left}.rank-points{width:30%;text-align:right;font-weight:bold;color:#ffaa66}
-  .container-criterios{max-width:75%;width:900px;padding:2vh 3vw;background:rgba(20,10,30,.96);border-radius:60px 20px 60px 20px;border:4px solid #ffd700}.criterios-title{font-size:4.2vh;color:#ffd700;text-shadow:0 0 20px #8a2be2;margin-bottom:1.5vh}.criterio-card{background:rgba(75,0,130,.5);border:3px solid #b8860b;border-radius:45px 12px 45px 12px;padding:1.8vh 2vw;margin:1vh auto;text-align:center;width:90%}.criterio-destaque-novo{font-size:3vh;color:#ffd700;font-weight:bold;margin-bottom:1vh}.criterio-texto{font-size:2.5vh;color:#e6d5b8;line-height:1.4}.criterio-texto strong{color:#ffaa66}.regra-extra{margin-top:1.5vh;background:rgba(138,43,226,.4);border-radius:35px;padding:1vh;border:2px solid #ffd700}.regra-extra p{color:#ffd700;font-size:2.2vh}
-  .container-pontuacao-turmas{max-width:85%;width:1100px;padding:2vh 2vw;background:linear-gradient(145deg,#0f0a1f,#1e1230);border-radius:70px 25px 70px 25px;border:5px solid #ffd700;box-shadow:0 0 50px rgba(255,215,0,.4)}.turmas-title{font-size:4.8vh;color:#ffd700;text-shadow:0 0 15px #8a2be2;margin-bottom:1vh}.turmas-sub{font-size:2.4vh;color:#b19cd9;margin-bottom:2vh;font-style:italic}.turmas-grid{display:flex;justify-content:center;gap:2vw;flex-wrap:wrap;margin:1.5vh 0}.turma-card{background:rgba(0,0,0,.7);border:2px solid #b8860b;border-radius:50px 15px 50px 15px;padding:1.5vh 1.5vw;min-width:180px;backdrop-filter:blur(4px)}.turma-card h3{font-size:3.2vh;color:#ffd700;margin-bottom:.8vh;border-bottom:2px solid #8a2be2;display:inline-block;padding-bottom:.3vh}.turma-pontos{font-size:5.5vh;font-weight:bold;color:#e6d5b8;margin:.5vh 0;text-shadow:2px 2px 0 #4b0082}.turma-detalhe{font-size:2vh;color:#b19cd9}
-  .container-insignias{max-width:88%;width:1100px;padding:1.5vh 2vw;background:rgba(20,10,30,.95);border-radius:60px 20px 60px 20px;border:4px solid #ffd700;box-shadow:0 0 45px rgba(138,43,226,.35)}.insignias-title{font-size:4vh;color:#ffd700;text-shadow:4px 4px 0 #4b0082;margin-bottom:.2vh}.insignias-sub{font-size:1.9vh;color:#b19cd9;font-style:italic;margin-bottom:.8vh}.insignias-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9vh 1vw}.insignia-card{background:rgba(75,0,130,.35);border:2px solid #b8860b;border-radius:30px 10px 30px 10px;min-height:20vh;padding:.45vh .7vw;display:flex;flex-direction:column;align-items:center;justify-content:space-between}.insignia-desenho{font-size:7.8vh;line-height:1;height:8.5vh;display:grid;place-items:center;filter:drop-shadow(0 0 10px rgba(255,215,0,.4))}.insignia-nome{font-size:2.15vh;color:#ffd700;font-weight:bold;margin:.1vh 0}.mago-slot-label{font-size:1.25vh;color:#b19cd9;align-self:flex-start;margin-left:7%}.mago-slot{width:86%;height:2.2vh;border-bottom:2px solid #e6d5b8;color:#e6d5b8;font-size:1.6vh;text-align:left}
-  .container-curiosidade{max-width:85%;width:1100px;padding:2vh 3vw;background:rgba(20,10,30,.94);border-radius:60px 20px 60px 20px;border:4px solid #ffd700}.curiosidade-title{font-size:4.2vh;color:#ffd700;text-shadow:0 0 20px #8a2be2;margin-bottom:1.5vh}.curiosidade-content{display:flex;flex-direction:row;align-items:center;gap:2.5vw;margin:1.5vh 0}.curiosidade-imagem{flex:.8;text-align:center}.math-image-wrapper{width:100%;max-width:240px;background:#1a0f2e;border:3px solid #ffd700;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:1;box-shadow:0 0 25px rgba(138,43,226,.6)}.math-image-wrapper img{width:100%;height:100%;object-fit:cover;display:block}.curiosidade-texto{flex:1.5;text-align:left;color:#e6d5b8;font-size:2.5vh;line-height:1.45;background:rgba(75,0,130,.4);padding:1.5vh 2vw;border-radius:35px 12px 35px 12px;border:2px solid #b8860b}.curiosidade-texto strong{color:#ffd700}.curiosidade-texto .citacao{font-style:italic;color:#b19cd9;margin-top:1vh;font-size:2.2vh;border-top:1px solid #b8860b;padding-top:1vh}
-  .nav-btn{bottom:2vh;background:#2a1b3d;border:2px solid #b8860b;padding:.8vh 2vw;font-size:2vh;font-weight:bold;border-radius:35px 8px 35px 8px;cursor:pointer;color:#e6d5b8;text-transform:uppercase;letter-spacing:3px;font-family:Cinzel,serif;min-width:110px}.nav-btn:hover{background:#3a2b4d;border-color:#ffd700}.prev-btn{left:2vw}.next-btn{right:2vw}.slide-indicator{bottom:2vh;left:50%;transform:translateX(-50%);display:flex;gap:1.5vw;z-index:100}.dot{width:1.8vh;height:1.8vh;border-radius:50%;background:rgba(100,70,130,.6);cursor:pointer;border:2px solid #b8860b}.dot.active{background:#ffd700;width:5vh;border-radius:30px;border-color:#8a2be2}.qr-container{position:fixed;bottom:8vh;right:2.5vw;background:#2a1b3d;padding:1.5vh 1.5vw;border-radius:50px 12px 50px 12px;border:2px solid #b8860b;z-index:50;cursor:pointer;display:flex;flex-direction:column;align-items:center;min-width:180px;backdrop-filter:blur(2px);transition:.2s}.qr-container:hover{border-color:#ffd700;transform:scale(1.02)}.qr-label{font-size:2.2vh;margin-bottom:1vh;color:#ffd700;text-align:center;white-space:nowrap;font-weight:bold}.qr-code-wrapper{width:90px;height:90px;background:#fff;border:2px solid #ffd700;border-radius:15px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:.5vh}.qr-code-wrapper img{width:100%;height:100%;object-fit:contain;display:block}.qr-footer{font-size:1.8vh;margin-top:.5vh;color:#b19cd9;text-align:center}.ia-credit{position:fixed;bottom:.5vh;left:1vw;font-size:1.4vh;color:rgba(255,215,0,.4);z-index:200;font-style:italic}
-  @media(max-width:900px){.desafio-flex,.curiosidade-content{flex-direction:column}.container-criterios,.container-desafio{max-width:90%}.turma-card{min-width:140px}.podio{flex-direction:column;align-items:center;gap:1vh}.primeiro,.segundo,.terceiro{width:80%;min-height:auto}.container-ranking-geral{width:90%}.insignias-grid{grid-template-columns:repeat(3,1fr);gap:.5vh}.insignia-card{min-height:16vh}.insignia-desenho{font-size:5vh;height:6vh}.insignia-nome{font-size:1.55vh}.mago-slot-label{font-size:1vh}.qr-container{min-width:140px;transform:scale(.9);transform-origin:bottom right;bottom:6vh;right:2vw;padding:1vh 1vw}.qr-code-wrapper{width:70px;height:70px}}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Cinzel, Georgia, serif;
+  background: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop')
+    no-repeat center center fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+body:before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 5, 20, .75);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stars,
+.mystic-symbol,
+.mystic-symbol-right,
+.ia-credit,
+.timer-bar,
+.slide-indicator,
+.nav-btn {
+  position: fixed;
+  z-index: 100;
+}
+
+.stars {
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: #ffd700;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: .2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.mystic-symbol {
+  top: 15vh;
+  left: 5vw;
+  width: 8vh;
+  height: 8vh;
+  border: .3vh solid #ffd700;
+  border-radius: 50%;
+  opacity: .6;
+  animation: rotate 10s linear infinite;
+  z-index: 4;
+}
+
+.mystic-symbol:before {
+  content: '✦';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #ffd700;
+  font-size: 4vh;
+}
+
+.mystic-symbol-right {
+  bottom: 15vh;
+  right: 5vw;
+  width: 10vh;
+  height: 10vh;
+  border: .3vh solid #8a2be2;
+  border-radius: 30% 70% 30% 70%;
+  opacity: .5;
+  animation: pulse 3s infinite;
+  z-index: 4;
+}
+
+.mystic-symbol-right:before {
+  content: '✧';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #8a2be2;
+  font-size: 5vh;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: .5;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: .8;
+  }
+}
+
+.timer-bar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, .3);
+  z-index: 1000;
+}
+
+.timer-progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ffd700, #8a2be2);
+  box-shadow: 0 0 20px #ffd700;
+}
+
+.slide {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  padding: .5vh 3vw;
+  z-index: 10;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.container-intro,
+.container-desafio,
+.container-podio,
+.container-ranking-geral,
+.container-criterios,
+.container-pontuacao-turmas,
+.container-curiosidade {
+  position: relative;
+  margin: auto;
+  z-index: 15;
+  text-align: center;
+}
+
+.container-intro {
+  max-width: 80%;
+  width: 1100px;
+  padding: 3vh 6vw;
+  background: rgba(20, 10, 30, .94);
+  border-radius: 80px 30px 80px 30px;
+  border: 4px solid rgba(184, 134, 11, .7);
+}
+
+.intro-icon {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1vh;
+}
+
+.mago-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 30px #8a2be2;
+  background-size: cover;
+  background-position: center;
+  background-color: #2a1b3d;
+}
+
+.intro-title {
+  font-size: 5vh;
+  margin-bottom: 1vh;
+  color: #ffd700;
+  text-shadow: 4px 4px 0 #4b0082;
+  font-weight: 900;
+  letter-spacing: 5px;
+}
+
+.intro-subtitle {
+  font-size: 2.8vh;
+  color: #b19cd9;
+  margin-bottom: 1.5vh;
+  font-style: italic;
+}
+
+.intro-cta {
+  font-size: 2.4vh;
+  color: #e6d5b8;
+  line-height: 1.6;
+  margin: 1.5vh 0;
+  background: rgba(75, 0, 130, .4);
+  padding: 1.5vh;
+  border-radius: 50px 15px 50px 15px;
+  border: 2px solid #b8860b;
+}
+
+.intro-highlight {
+  font-size: 3.5vh;
+  color: #ffd700;
+  font-weight: bold;
+  margin: 1.5vh 0;
+}
+
+.intro-footer {
+  font-size: 2vh;
+  color: #a67c9e;
+  margin-top: 1.5vh;
+  border-top: 2px solid #b8860b;
+  padding-top: 1.5vh;
+}
+
+.container-desafio {
+  max-width: 92%;
+  width: 1280px;
+  padding: 2vh 3.5vw;
+  background: rgba(240, 230, 210, .96);
+  border-radius: 60px 20px 60px 20px;
+  border: 4px solid #8a2be2;
+}
+
+.spell-number {
+  position: absolute;
+  top: 1.2vh;
+  left: 2.5vw;
+  font-size: 2.4vh;
+  color: #ffd700;
+  background: #2a1b3d;
+  padding: .4vh 1.8vw;
+  border: 2px solid #b8860b;
+  border-radius: 35px 6px 35px 6px;
+  z-index: 21;
+}
+
+.container-desafio h1 {
+  font-size: 4.2vh;
+  margin: .2vh 0;
+  color: #2a1b3d;
+  text-shadow: 2px 2px 0 #b8860b;
+  letter-spacing: 3px;
+}
+
+.subtitulo {
+  font-size: 2.2vh;
+  margin-bottom: .6vh;
+  color: #4b0082;
+  font-style: italic;
+}
+
+.desafio-flex {
+  display: flex;
+  flex-direction: column;
+  gap: .8vh;
+  margin-bottom: .3vh;
+  align-items: center;
+}
+
+.enunciado-magico {
+  max-width: 95%;
+  margin: auto;
+  font-size: 2.5vh;
+  line-height: 1.4;
+  text-align: center;
+  font-family: Georgia, serif;
+  color: #ffd700;
+  border: 2px solid #b8860b;
+  border-radius: 25px;
+  background: #2a1b3d;
+  padding: 1.2vh 2vw;
+  font-weight: bold;
+}
+
+.enunciado-magico p {
+  margin: .5vh 0;
+}
+
+.figura-magica {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.figura-magica svg {
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  background: radial-gradient(circle at center, #1a1024, #08040f);
+  border-radius: 25px;
+  border: 2px solid #b8860b;
+  box-shadow: 0 0 20px rgba(138, 43, 226, .35);
+  padding: .5vh;
+}
+
+.instrucao,
+.prazo {
+  font-size: 1.9vh;
+  margin: .2vh 0;
+}
+
+.container-podio {
+  max-width: 85%;
+  width: 1000px;
+  padding: 1.8vh 2vw;
+  background: rgba(20, 10, 30, .85);
+  border-radius: 60px 20px 60px 20px;
+  border: 4px solid #ffd700;
+}
+
+.podio-title {
+  font-size: 4.8vh;
+  margin-bottom: .5vh;
+  color: #ffd700;
+  text-shadow: 4px 4px 0 #4b0082;
+}
+
+.podio-subtitle {
+  font-size: 2.5vh;
+  color: #b19cd9;
+  margin-bottom: 1.5vh;
+  font-style: italic;
+  border-bottom: 2px solid #b8860b;
+  display: inline-block;
+  padding-bottom: .5vh;
+}
+
+.podio {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 2vw;
+  margin: 1.5vh 0 .8vh;
+}
+
+.podio-place {
+  padding: 1.2vh 1.2vw;
+  border: 3px solid;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 35px 12px 35px 12px;
+  background: rgba(0, 0, 0, .6);
+}
+
+.primeiro {
+  width: 26vw;
+  min-height: 32vh;
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #0a6b0a, #1a4a1a);
+}
+
+.segundo {
+  width: 23vw;
+  min-height: 29vh;
+  border-color: #c0c0c0;
+  background: linear-gradient(135deg, #8b0000, #4a0000);
+}
+
+.terceiro {
+  width: 23vw;
+  min-height: 26vh;
+  border-color: #cd7f32;
+  background: linear-gradient(135deg, #0a2a4a, #0a1a2a);
+}
+
+.mago-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #ffd700;
+  margin: 0 auto .5vh;
+  background-size: cover;
+  background-position: center;
+  background-color: #2a1b3d;
+  box-shadow: 0 0 25px rgba(255, 215, 0, .5);
+}
+
+.position {
+  font-size: 2.7vh;
+  font-weight: bold;
+  color: #ffd700;
+  margin-bottom: .3vh;
+  text-transform: uppercase;
+}
+
+.rank-badge {
+  font-size: 2vh;
+  color: #ffd700;
+  background: rgba(0, 0, 0, .5);
+  padding: .2vh 1vw;
+  border-radius: 25px;
+  display: inline-block;
+  margin-bottom: .3vh;
+}
+
+.name {
+  font-size: 2.3vh;
+  color: #e6d5b8;
+  font-weight: bold;
+  margin-bottom: .3vh;
+}
+
+.points {
+  font-size: 3.5vh;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.points-small {
+  font-size: 1.8vh;
+  color: #b19cd9;
+  margin-top: .3vh;
+}
+
+.container-ranking-geral {
+  max-width: 80%;
+  width: 800px;
+  padding: 2vh 2vw;
+  background: rgba(20, 10, 30, .92);
+  border-radius: 60px 20px 60px 20px;
+  border: 4px solid #ffd700;
+}
+
+.ranking-geral-title {
+  font-size: 4.2vh;
+  margin-bottom: .5vh;
+  color: #ffd700;
+  text-shadow: 4px 4px 0 #4b0082;
+}
+
+.ranking-geral-sub {
+  font-size: 2.2vh;
+  color: #b19cd9;
+  margin-bottom: 1.5vh;
+  font-style: italic;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: .7vh;
+  margin-top: 1vh;
+}
+
+.rank-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(42, 27, 61, .8);
+  padding: .7vh 2vw;
+  border-radius: 35px;
+  font-size: 2.2vh;
+  color: #e6d5b8;
+  border-left: 4px solid #ffd700;
+}
+
+.rank-pos {
+  font-weight: bold;
+  color: #ffd700;
+  width: 12%;
+  text-align: left;
+}
+
+.rank-name {
+  width: 58%;
+  text-align: left;
+}
+
+.rank-points {
+  width: 30%;
+  text-align: right;
+  font-weight: bold;
+  color: #ffaa66;
+}
+
+.container-criterios {
+  max-width: 75%;
+  width: 900px;
+  padding: 2vh 3vw;
+  background: rgba(20, 10, 30, .96);
+  border-radius: 60px 20px 60px 20px;
+  border: 4px solid #ffd700;
+}
+
+.criterios-title {
+  font-size: 4.2vh;
+  color: #ffd700;
+  text-shadow: 0 0 20px #8a2be2;
+  margin-bottom: 1.5vh;
+}
+
+.criterio-card {
+  background: rgba(75, 0, 130, .5);
+  border: 3px solid #b8860b;
+  border-radius: 45px 12px 45px 12px;
+  padding: 1.8vh 2vw;
+  margin: 1vh auto;
+  text-align: center;
+  width: 90%;
+}
+
+.criterio-destaque-novo {
+  font-size: 3vh;
+  color: #ffd700;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+
+.criterio-texto {
+  font-size: 2.5vh;
+  color: #e6d5b8;
+  line-height: 1.4;
+}
+
+.criterio-texto strong {
+  color: #ffaa66;
+}
+
+.regra-extra {
+  margin-top: 1.5vh;
+  background: rgba(138, 43, 226, .4);
+  border-radius: 35px;
+  padding: 1vh;
+  border: 2px solid #ffd700;
+}
+
+.regra-extra p {
+  color: #ffd700;
+  font-size: 2.2vh;
+}
+
+.container-pontuacao-turmas {
+  max-width: 85%;
+  width: 1100px;
+  padding: 2vh 2vw;
+  background: linear-gradient(145deg, #0f0a1f, #1e1230);
+  border-radius: 70px 25px 70px 25px;
+  border: 5px solid #ffd700;
+  box-shadow: 0 0 50px rgba(255, 215, 0, .4);
+}
+
+.turmas-title {
+  font-size: 4.8vh;
+  color: #ffd700;
+  text-shadow: 0 0 15px #8a2be2;
+  margin-bottom: 1vh;
+}
+
+.turmas-sub {
+  font-size: 2.4vh;
+  color: #b19cd9;
+  margin-bottom: 2vh;
+  font-style: italic;
+}
+
+.turmas-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+  flex-wrap: wrap;
+  margin: 1.5vh 0;
+}
+
+.turma-card {
+  background: rgba(0, 0, 0, .7);
+  border: 2px solid #b8860b;
+  border-radius: 50px 15px 50px 15px;
+  padding: 1.5vh 1.5vw;
+  min-width: 180px;
+}
+
+.turma-card h3 {
+  font-size: 3.2vh;
+  color: #ffd700;
+  margin-bottom: .8vh;
+  border-bottom: 2px solid #8a2be2;
+  display: inline-block;
+  padding-bottom: .3vh;
+}
+
+.turma-pontos {
+  font-size: 5.5vh;
+  font-weight: bold;
+  color: #e6d5b8;
+  margin: .5vh 0;
+  text-shadow: 2px 2px 0 #4b0082;
+}
+
+.turma-detalhe {
+  font-size: 2vh;
+  color: #b19cd9;
+}
+
+/* Slide das insígnias usando a imagem */
+.container-insignias-imagem {
+  position: relative;
+  z-index: 15;
+  width: 92vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vh 1vw;
+  background: rgba(20, 10, 30, .95);
+  border: 4px solid #ffd700;
+  border-radius: 60px 20px 60px 20px;
+  box-shadow: 0 0 45px rgba(138, 43, 226, .35);
+  overflow: hidden;
+}
+
+.container-insignias-imagem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.container-curiosidade {
+  max-width: 85%;
+  width: 1100px;
+  padding: 2vh 3vw;
+  background: rgba(20, 10, 30, .94);
+  border-radius: 60px 20px 60px 20px;
+  border: 4px solid #ffd700;
+}
+
+.curiosidade-title {
+  font-size: 4.2vh;
+  color: #ffd700;
+  text-shadow: 0 0 20px #8a2be2;
+  margin-bottom: 1.5vh;
+}
+
+.curiosidade-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5vw;
+  margin: 1.5vh 0;
+}
+
+.curiosidade-imagem {
+  flex: .8;
+  text-align: center;
+}
+
+.math-image-wrapper {
+  width: 100%;
+  max-width: 240px;
+  background: #1a0f2e;
+  border: 3px solid #ffd700;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  box-shadow: 0 0 25px rgba(138, 43, 226, .6);
+}
+
+.math-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.curiosidade-texto {
+  flex: 1.5;
+  text-align: left;
+  color: #e6d5b8;
+  font-size: 2.5vh;
+  line-height: 1.45;
+  background: rgba(75, 0, 130, .4);
+  padding: 1.5vh 2vw;
+  border-radius: 35px 12px 35px 12px;
+  border: 2px solid #b8860b;
+}
+
+.curiosidade-texto strong {
+  color: #ffd700;
+}
+
+.curiosidade-texto .citacao {
+  font-style: italic;
+  color: #b19cd9;
+  margin-top: 1vh;
+  font-size: 2.2vh;
+  border-top: 1px solid #b8860b;
+  padding-top: 1vh;
+}
+
+.nav-btn {
+  bottom: 2vh;
+  background: #2a1b3d;
+  border: 2px solid #b8860b;
+  padding: .8vh 2vw;
+  font-size: 2vh;
+  font-weight: bold;
+  border-radius: 35px 8px 35px 8px;
+  cursor: pointer;
+  color: #e6d5b8;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: Cinzel, serif;
+  min-width: 110px;
+}
+
+.nav-btn:hover {
+  background: #3a2b4d;
+  border-color: #ffd700;
+}
+
+.prev-btn {
+  left: 2vw;
+}
+
+.next-btn {
+  right: 2vw;
+}
+
+.slide-indicator {
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.5vw;
+  z-index: 100;
+}
+
+.dot {
+  width: 1.8vh;
+  height: 1.8vh;
+  border-radius: 50%;
+  background: rgba(100, 70, 130, .6);
+  cursor: pointer;
+  border: 2px solid #b8860b;
+}
+
+.dot.active {
+  background: #ffd700;
+  width: 5vh;
+  border-radius: 30px;
+  border-color: #8a2be2;
+}
+
+.qr-container {
+  position: fixed;
+  bottom: 8vh;
+  right: 2.5vw;
+  background: #2a1b3d;
+  padding: 1.5vh 1.5vw;
+  border-radius: 50px 12px 50px 12px;
+  border: 2px solid #b8860b;
+  z-index: 50;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 180px;
+  transition: .2s;
+}
+
+.qr-container:hover {
+  border-color: #ffd700;
+  transform: scale(1.02);
+}
+
+.qr-label {
+  font-size: 2.2vh;
+  margin-bottom: 1vh;
+  color: #ffd700;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.qr-code-wrapper {
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .5vh;
+}
+
+.qr-code-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.qr-footer {
+  font-size: 1.8vh;
+  margin-top: .5vh;
+  color: #b19cd9;
+  text-align: center;
+}
+
+.ia-credit {
+  position: fixed;
+  bottom: .5vh;
+  left: 1vw;
+  font-size: 1.4vh;
+  color: rgba(255, 215, 0, .4);
+  z-index: 200;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .desafio-flex,
+  .curiosidade-content {
+    flex-direction: column;
+  }
+
+  .container-criterios,
+  .container-desafio {
+    max-width: 90%;
+  }
+
+  .turma-card {
+    min-width: 140px;
+  }
+
+  .podio {
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+  }
+
+  .primeiro,
+  .segundo,
+  .terceiro {
+    width: 80%;
+    min-height: auto;
+  }
+
+  .container-ranking-geral {
+    width: 90%;
+  }
+
+  .container-insignias-imagem {
+    width: 94vw;
+    height: 84vh;
+    padding: .5vh .5vw;
+  }
+
+  .qr-container {
+    min-width: 140px;
+    transform: scale(.9);
+    transform-origin: bottom right;
+    bottom: 6vh;
+    right: 2vw;
+    padding: 1vh 1vw;
+  }
+
+  .qr-code-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="stars"></div><div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div><div class="mystic-symbol"></div><div class="mystic-symbol-right"></div><div class="ia-credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
-<div class="slide active" id="slide0"><div class="container-intro"><div class="intro-icon"><div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop')"></div><div class="mago-icon" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="mago-icon" style="background-image:url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop')"></div></div><h2 class="intro-title">ACADEMIA ARCANA</h2><p class="intro-subtitle">Ordem dos Mathemagos Olímpicos • Ciclo 2 (Setembro–Dezembro)</p><p class="intro-cta">Desvende figuras, padrões e enigmas arcanos<br>Onde a lógica e a magia se entrelaçam.</p><p class="intro-highlight">NOVO CICLO • RANKING ZERADO</p><p class="intro-footer">Grão-Conselho dos Magos<br><strong>Instituto Federal do Paraná</strong><br>Torre Assis Chateaubriand</p></div></div>
-<div class="slide" id="slide1"><div class="container-desafio"><div class="spell-number">DESAFIO 1 • CICLO 2</div><h1>OS PORTAIS GÊMEOS</h1><p class="subtitulo">Paridade • soma • invariantes</p><div class="desafio-flex"><div class="enunciado-magico"><p>Uma maga possui <strong>10 portais mágicos</strong> numerados de 1 a 10. Cada portal pode estar <strong>aberto</strong> (deixando passar energia) ou <strong>fechado</strong>.</p><p>Inicialmente, <strong>todos os portais estão fechados</strong>. A maga pode realizar o seguinte ritual: escolher <strong>dois portais consecutivos</strong> (como 3 e 4, ou 9 e 10) e <strong>inverter</strong> o estado de ambos (aberto → fechado, ou fechado → aberto).</p><p>Após executar o ritual exatamente <strong>7 vezes</strong>, é possível que <strong>exatamente 5 portais</strong> estejam abertos?</p></div><div class="figura-magica"><svg viewBox="0 0 1300 480" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="portalBg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#1b1031"/><stop offset="100%" stop-color="#09050f"/></radialGradient><linearGradient id="portalClosed" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4a4a6a"/><stop offset="50%" stop-color="#2a2a4a"/><stop offset="100%" stop-color="#1a1a3a"/></linearGradient></defs><rect x="16" y="16" width="1268" height="448" rx="38" fill="url(#portalBg)" stroke="#ffd700" stroke-width="6"/><g fill="url(#portalClosed)" stroke="#8a2be2" stroke-width="5"><rect x="80" y="140" width="95" height="200" rx="12"/><rect x="195" y="140" width="95" height="200" rx="12"/><rect x="310" y="140" width="95" height="200" rx="12"/><rect x="425" y="140" width="95" height="200" rx="12"/><rect x="540" y="140" width="95" height="200" rx="12"/><rect x="655" y="140" width="95" height="200" rx="12"/><rect x="770" y="140" width="95" height="200" rx="12"/><rect x="885" y="140" width="95" height="200" rx="12"/><rect x="1000" y="140" width="95" height="200" rx="12"/><rect x="1115" y="140" width="95" height="200" rx="12"/></g><g fill="#ffd700" font-family="Cinzel,serif" font-size="56" font-weight="bold" text-anchor="middle"><text x="127" y="255">1</text><text x="242" y="255">2</text><text x="357" y="255">3</text><text x="472" y="255">4</text><text x="587" y="255">5</text><text x="702" y="255">6</text><text x="817" y="255">7</text><text x="932" y="255">8</text><text x="1047" y="255">9</text><text x="1162" y="255">10</text></g></svg></div></div><p class="instrucao">Justifique sua resposta usando argumentos de paridade.</p><p class="prazo">Prazo • Lua Cheia • 26/09 • 23h59</p></div><div class="qr-container" onclick="window.location.href='https://forms.gle/KsbVnp1YT9HxiJjJ6'"><div class="qr-label">ENVIAR RESPOSTA</div><div class="qr-code-wrapper"><a href="https://forms.gle/KsbVnp1YT9HxiJjJ6"><img src="frame12.png" alt="QR Code para formulário"/></a></div><div class="qr-footer">Aponte a câmera ou clique</div></div></div>
-<div class="slide" id="slide2"><div class="container-criterios"><h2 class="criterios-title">DECRETO DOS CRITÉRIOS</h2><div class="criterio-card"><div class="criterio-destaque-novo">AVALIAÇÃO POR PRECISÃO</div><div class="criterio-texto"><strong>A resposta deve ser bem elaborada e o mais correta possível.</strong><br><br>Respostas completas, claras e corretas têm prioridade na classificação.<br>Critério de desempate <strong>ordem de envio</strong>.</div></div><div class="regra-extra"><p>Pontuação: 1º lugar 4 pts • 2º 3 pts • 3º 2 pts • 4º e 5º 1 pt</p></div></div></div>
-<div class="slide" id="slide3"><div class="container-ranking-geral"><h2 class="ranking-geral-title">RANKING DO CICLO 2</h2><p class="ranking-geral-sub">Início do novo ciclo • Pontuação zerada</p><div class="ranking-list"><div class="rank-row"><span class="rank-pos">1</span><span class="rank-name">Aguardando primeiras submissões...</span><span class="rank-points">0 pontos</span></div><div class="rank-row"><span class="rank-pos">2</span><span class="rank-name">Aguardando primeiras submissões...</span><span class="rank-points">0 pontos</span></div><div class="rank-row"><span class="rank-pos">3</span><span class="rank-name">Aguardando primeiras submissões...</span><span class="rank-points">0 pontos</span></div><div class="rank-row"><span class="rank-pos">4</span><span class="rank-name">Aguardando primeiras submissões...</span><span class="rank-points">0 pontos</span></div><div class="rank-row"><span class="rank-pos">5</span><span class="rank-name">Aguardando primeiras submissões...</span><span class="rank-points">0 pontos</span></div></div></div></div>
-<div class="slide" id="slide4"><div class="container-podio"><h2 class="podio-title">PÓDIO DO DESAFIO 1</h2><p class="podio-subtitle">Ciclo 2 • Aguardando resultados</p><div class="podio"><div class="podio-place segundo"><div class="mago-img" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="position">2º LUGAR</div><div class="rank-badge">Aguardando</div><div class="name">---</div><div class="points">+0 pts</div><div class="points-small">Nível --</div></div><div class="podio-place primeiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop')"></div><div class="position">1º LUGAR</div><div class="rank-badge">Aguardando</div><div class="name">---</div><div class="points">+0 pts</div><div class="points-small">Nível --</div></div><div class="podio-place terceiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop')"></div><div class="position">3º LUGAR</div><div class="rank-badge">Aguardando</div><div class="name">---</div><div class="points">+0 pts</div><div class="points-small">Nível --</div></div></div></div></div>
-<div class="slide" id="slide5"><div class="container-pontuacao-turmas"><h2 class="turmas-title">ACUMULADO DO CICLO 1</h2><p class="turmas-sub">Pontuação final • Desafios 1 a 11</p><div class="turmas-grid"><div class="turma-card"><h3>EIN2024</h3><div class="turma-pontos">37 pts</div><div class="turma-detalhe">Magos Veteranos</div></div><div class="turma-card"><h3>MEC2026</h3><div class="turma-pontos">20 pts</div><div class="turma-detalhe">Sentinelas Estelares</div></div><div class="turma-card"><h3>EIN2023</h3><div class="turma-pontos">14 pts</div><div class="turma-detalhe">Chamas da Inovação</div></div><div class="turma-card"><h3>IIW2024A</h3><div class="turma-pontos">11 pts</div><div class="turma-detalhe">Sábios Lunares</div></div><div class="turma-card"><h3>IIW2026A</h3><div class="turma-pontos">4 pts</div><div class="turma-detalhe">Aprendizes Arcanos</div></div></div></div></div>
-<div class="slide" id="slide6"><div class="container-insignias"><h2 class="insignias-title">INSÍGNIAS CONQUISTADAS</h2><p class="insignias-sub">Os três melhores de cada mês recebem uma insígnia especial da Academia Arcana</p><div class="insignias-grid"><div class="insignia-card"><div class="insignia-desenho">⛰️</div><div class="insignia-nome">TERRA</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div><div class="insignia-card"><div class="insignia-desenho">🌊</div><div class="insignia-nome">ÁGUA</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div><div class="insignia-card"><div class="insignia-desenho">🌀</div><div class="insignia-nome">AR</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div><div class="insignia-card"><div class="insignia-desenho">🔥</div><div class="insignia-nome">FOGO</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div><div class="insignia-card"><div class="insignia-desenho">❄️</div><div class="insignia-nome">GELO</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div><div class="insignia-card"><div class="insignia-desenho">⚗️</div><div class="insignia-nome">ALQUIMIA</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div><div class="insignia-card"><div class="insignia-desenho">☠️</div><div class="insignia-nome">NECROMANCIA</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div><div class="insignia-card"><div class="insignia-desenho">⚡</div><div class="insignia-nome">RELÂMPAGO</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div><div class="insignia-card"><div class="insignia-desenho">☀️</div><div class="insignia-nome">LUZ</div><div class="mago-slot-label">Mago conquistador:</div><div class="mago-slot"></div></div></div></div></div>
-<div class="slide" id="slide7"><div class="container-curiosidade"><h2 class="curiosidade-title">SABEDORIA MATEMÁTICA</h2><div class="curiosidade-content"><div class="curiosidade-imagem"><div class="math-image-wrapper"><img src="Ada.png" alt="Ada Lovelace - Pioneira da Computação"></div></div><div class="curiosidade-texto"><strong>ADA LOVELACE (1815–1852)</strong><br><br>Augusta Ada King, Condessa de Lovelace, foi uma matemática britânica reconhecida como a <strong>primeira programadora da história</strong>. Em 1843, ela traduziu e ampliou as notas sobre a Máquina Analítica de Charles Babbage, incluindo o que é considerado o <strong>primeiro algoritmo</strong> destinado a ser processado por uma máquina.<br><br>Ada previu que computadores poderiam ir além de cálculos numéricos e manipular símbolos, música e qualquer dado representável logicamente — uma visão extraordinária quase um século antes dos computadores modernos.<br><br><div class="citacao">O talento científico exige imaginação tanto quanto observação.</div></div></div></div></div>
-<button class="nav-btn prev-btn" onclick="changeSlide(-1)">Anterior</button><button class="nav-btn next-btn" onclick="changeSlide(1)">Próximo</button><div class="slide-indicator" id="slideIndicators"></div>
+
+<div class="stars"></div>
+
+<div class="timer-bar">
+  <div class="timer-progress" id="timerProgress"></div>
+</div>
+
+<div class="mystic-symbol"></div>
+<div class="mystic-symbol-right"></div>
+
+<div class="ia-credit">
+  Material desenvolvido com auxílio de Perplexity e DeepSeek
+</div>
+
+<!-- Slide 0 -->
+<div class="slide active" id="slide0">
+  <div class="container-intro">
+    <div class="intro-icon">
+      <div
+        class="mago-icon"
+        style="background-image:url('https://plus.unsplash.com/premium_photo-1740430846829-ccb719529710?q=80&w=679&auto=format&fit=crop')">
+      </div>
+
+      <div
+        class="mago-icon"
+        style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')">
+      </div>
+
+      <div
+        class="mago-icon"
+        style="background-image:url('https://plus.unsplash.com/premium_photo-1723780847603-b87de6e417f8?q=80&w=1529&auto=format&fit=crop')">
+      </div>
+    </div>
+
+    <h2 class="intro-title">ACADEMIA ARCANA</h2>
+
+    <p class="intro-subtitle">
+      Ordem dos Mathemagos Olímpicos • Ciclo 2 (Setembro–Dezembro)
+    </p>
+
+    <p class="intro-cta">
+      Desvende figuras, padrões e enigmas arcanos<br>
+      Onde a lógica e a magia se entrelaçam.
+    </p>
+
+    <p class="intro-highlight">
+      NOVO CICLO • RANKING ZERADO
+    </p>
+
+    <p class="intro-footer">
+      Grão-Conselho dos Magos<br>
+      <strong>Instituto Federal do Paraná</strong><br>
+      Torre Assis Chateaubriand
+    </p>
+  </div>
+</div>
+
+<!-- Slide 1 -->
+<div class="slide" id="slide1">
+  <div class="container-desafio">
+    <div class="spell-number">DESAFIO 1 • CICLO 2</div>
+
+    <h1>OS PORTAIS GÊMEOS</h1>
+
+    <p class="subtitulo">
+      Paridade • soma • invariantes
+    </p>
+
+    <div class="desafio-flex">
+      <div class="enunciado-magico">
+        <p>
+          Uma maga possui <strong>10 portais mágicos</strong> numerados de 1 a 10.
+          Cada portal pode estar <strong>aberto</strong> ou <strong>fechado</strong>.
+        </p>
+
+        <p>
+          Inicialmente, <strong>todos os portais estão fechados</strong>.
+          A maga pode realizar o seguinte ritual: escolher
+          <strong>dois portais consecutivos</strong> e inverter o estado de ambos.
+        </p>
+
+        <p>
+          Após executar o ritual exatamente <strong>7 vezes</strong>,
+          é possível que exatamente <strong>5 portais</strong> estejam abertos?
+        </p>
+      </div>
+
+      <div class="figura-magica">
+        <svg viewBox="0 0 1300 480" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="portalBg" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#1b1031"/>
+              <stop offset="100%" stop-color="#09050f"/>
+            </radialGradient>
+
+            <linearGradient id="portalClosed" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#4a4a6a"/>
+              <stop offset="50%" stop-color="#2a2a4a"/>
+              <stop offset="100%" stop-color="#1a1a3a"/>
+            </linearGradient>
+          </defs>
+
+          <rect
+            x="16"
+            y="16"
+            width="1268"
+            height="448"
+            rx="38"
+            fill="url(#portalBg)"
+            stroke="#ffd700"
+            stroke-width="6"
+          />
+
+          <g fill="url(#portalClosed)" stroke="#8a2be2" stroke-width="5">
+            <rect x="80" y="140" width="95" height="200" rx="12"/>
+            <rect x="195" y="140" width="95" height="200" rx="12"/>
+            <rect x="310" y="140" width="95" height="200" rx="12"/>
+            <rect x="425" y="140" width="95" height="200" rx="12"/>
+            <rect x="540" y="140" width="95" height="200" rx="12"/>
+            <rect x="655" y="140" width="95" height="200" rx="12"/>
+            <rect x="770" y="140" width="95" height="200" rx="12"/>
+            <rect x="885" y="140" width="95" height="200" rx="12"/>
+            <rect x="1000" y="140" width="95" height="200" rx="12"/>
+            <rect x="1115" y="140" width="95" height="200" rx="12"/>
+          </g>
+
+          <g
+            fill="#ffd700"
+            font-family="Cinzel, serif"
+            font-size="56"
+            font-weight="bold"
+            text-anchor="middle">
+            <text x="127" y="255">1</text>
+            <text x="242" y="255">2</text>
+            <text x="357" y="255">3</text>
+            <text x="472" y="255">4</text>
+            <text x="587" y="255">5</text>
+            <text x="702" y="255">6</text>
+            <text x="817" y="255">7</text>
+            <text x="932" y="255">8</text>
+            <text x="1047" y="255">9</text>
+            <text x="1162" y="255">10</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <p class="instrucao">
+      Justifique sua resposta usando argumentos de paridade.
+    </p>
+
+    <p class="prazo">
+      Prazo • Lua Cheia • 26/09 • 23h59
+    </p>
+  </div>
+
+  <div
+    class="qr-container"
+    onclick="window.location.href='https://forms.gle/KsbVnp1YT9HxiJjJ6'">
+
+    <div class="qr-label">ENVIAR RESPOSTA</div>
+
+    <div class="qr-code-wrapper">
+      <a href="https://forms.gle/KsbVnp1YT9HxiJjJ6">
+        <img src="frame12.png" alt="QR Code para formulário">
+      </a>
+    </div>
+
+    <div class="qr-footer">
+      Aponte a câmera ou clique
+    </div>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="slide2">
+  <div class="container-criterios">
+    <h2 class="criterios-title">DECRETO DOS CRITÉRIOS</h2>
+
+    <div class="criterio-card">
+      <div class="criterio-destaque-novo">
+        AVALIAÇÃO POR PRECISÃO
+      </div>
+
+      <div class="criterio-texto">
+        <strong>
+          A resposta deve ser bem elaborada e o mais correta possível.
+        </strong>
+        <br><br>
+        Respostas completas, claras e corretas têm prioridade na classificação.
+        <br>
+        Critério de desempate:
+        <strong>ordem de envio</strong>.
+      </div>
+    </div>
+
+    <div class="regra-extra">
+      <p>
+        Pontuação: 1º lugar 4 pts • 2º 3 pts • 3º 2 pts • 4º e 5º 1 pt
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="slide3">
+  <div class="container-ranking-geral">
+    <h2 class="ranking-geral-title">RANKING DO CICLO 2</h2>
+
+    <p class="ranking-geral-sub">
+      Início do novo ciclo • Pontuação zerada
+    </p>
+
+    <div class="ranking-list">
+      <div class="rank-row">
+        <span class="rank-pos">1</span>
+        <span class="rank-name">Aguardando primeiras submissões...</span>
+        <span class="rank-points">0 pontos</span>
+      </div>
+
+      <div class="rank-row">
+        <span class="rank-pos">2</span>
+        <span class="rank-name">Aguardando primeiras submissões...</span>
+        <span class="rank-points">0 pontos</span>
+      </div>
+
+      <div class="rank-row">
+        <span class="rank-pos">3</span>
+        <span class="rank-name">Aguardando primeiras submissões...</span>
+        <span class="rank-points">0 pontos</span>
+      </div>
+
+      <div class="rank-row">
+        <span class="rank-pos">4</span>
+        <span class="rank-name">Aguardando primeiras submissões...</span>
+        <span class="rank-points">0 pontos</span>
+      </div>
+
+      <div class="rank-row">
+        <span class="rank-pos">5</span>
+        <span class="rank-name">Aguardando primeiras submissões...</span>
+        <span class="rank-points">0 pontos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" id="slide4">
+  <div class="container-podio">
+    <h2 class="podio-title">PÓDIO DO DESAFIO 1</h2>
+
+    <p class="podio-subtitle">
+      Ciclo 2 • Aguardando resultados
+    </p>
+
+    <div class="podio">
+      <div class="podio-place segundo">
+        <div
+          class="mago-img"
+          style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')">
+        </div>
+
+        <div class="position">2º LUGAR</div>
+        <div class="rank-badge">Aguardando</div>
+        <div class="name">---</div>
+        <div class="points">+0 pts</div>
+        <div class="points-small">Nível --</div>
+      </div>
+
+      <div class="podio-place primeiro">
+        <div
+          class="mago-img"
+          style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop')">
+        </div>
+
+        <div class="position">1º LUGAR</div>
+        <div class="rank-badge">Aguardando</div>
+        <div class="name">---</div>
+        <div class="points">+0 pts</div>
+        <div class="points-small">Nível --</div>
+      </div>
+
+      <div class="podio-place terceiro">
+        <div
+          class="mago-img"
+          style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop')">
+        </div>
+
+        <div class="position">3º LUGAR</div>
+        <div class="rank-badge">Aguardando</div>
+        <div class="name">---</div>
+        <div class="points">+0 pts</div>
+        <div class="points-small">Nível --</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" id="slide5">
+  <div class="container-pontuacao-turmas">
+    <h2 class="turmas-title">ACUMULADO DO CICLO 1</h2>
+
+    <p class="turmas-sub">
+      Pontuação final • Desafios 1 a 11
+    </p>
+
+    <div class="turmas-grid">
+      <div class="turma-card">
+        <h3>EIN2024</h3>
+        <div class="turma-pontos">37 pts</div>
+        <div class="turma-detalhe">Magos Veteranos</div>
+      </div>
+
+      <div class="turma-card">
+        <h3>MEC2026</h3>
+        <div class="turma-pontos">20 pts</div>
+        <div class="turma-detalhe">Sentinelas Estelares</div>
+      </div>
+
+      <div class="turma-card">
+        <h3>EIN2023</h3>
+        <div class="turma-pontos">14 pts</div>
+        <div class="turma-detalhe">Chamas da Inovação</div>
+      </div>
+
+      <div class="turma-card">
+        <h3>IIW2024A</h3>
+        <div class="turma-pontos">11 pts</div>
+        <div class="turma-detalhe">Sábios Lunares</div>
+      </div>
+
+      <div class="turma-card">
+        <h3>IIW2026A</h3>
+        <div class="turma-pontos">4 pts</div>
+        <div class="turma-detalhe">Aprendizes Arcanos</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: imagem substituindo os emojis das insígnias -->
+<div class="slide" id="slide6">
+  <div class="container-insignias-imagem">
+    <img
+      src="Insígnias2.png"
+      alt="Quadro de insígnias conquistadas">
+  </div>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide" id="slide7">
+  <div class="container-curiosidade">
+    <h2 class="curiosidade-title">SABEDORIA MATEMÁTICA</h2>
+
+    <div class="curiosidade-content">
+      <div class="curiosidade-imagem">
+        <div class="math-image-wrapper">
+          <img
+            src="Ada.png"
+            alt="Ada Lovelace - Pioneira da Computação">
+        </div>
+      </div>
+
+      <div class="curiosidade-texto">
+        <strong>ADA LOVELACE (1815–1852)</strong>
+        <br><br>
+
+        Augusta Ada King, Condessa de Lovelace, foi uma matemática britânica
+        reconhecida como a <strong>primeira programadora da história</strong>.
+        Em 1843, ela traduziu e ampliou as notas sobre a Máquina Analítica de
+        Charles Babbage, incluindo o que é considerado o
+        <strong>primeiro algoritmo</strong> destinado a ser processado por uma máquina.
+        <br><br>
+
+        Ada previu que computadores poderiam ir além de cálculos numéricos
+        e manipular símbolos, música e qualquer dado representável logicamente —
+        uma visão extraordinária quase um século antes dos computadores modernos.
+        <br><br>
+
+        <div class="citacao">
+          O talento científico exige imaginação tanto quanto observação.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="nav-btn prev-btn" onclick="changeSlide(-1)">
+  Anterior
+</button>
+
+<button class="nav-btn next-btn" onclick="changeSlide(1)">
+  Próximo
+</button>
+
+<div class="slide-indicator" id="slideIndicators"></div>
+
 <script>
-let currentSlide=0,totalSlides=8,timerInterval=null;const timerProgress=document.getElementById('timerProgress');const slideTimes=[20,130,25,30,25,25,38,25];function updateIndicators(){const c=document.getElementById('slideIndicators');if(!c)return;c.innerHTML='';for(let i=0;i<totalSlides;i++)c.innerHTML+=`<span class="dot ${i===currentSlide?'active':''}" onclick="goToSlide(${i})"></span>`}function showSlide(n){const s=document.getElementsByClassName('slide');if(n>=totalSlides)currentSlide=0;if(n<0)currentSlide=totalSlides-1;for(let i=0;i<s.length;i++)s[i].className=s[i].className.replace(' active','');s[currentSlide].className+=' active';updateIndicators();resetTimer()}function changeSlide(n){stopTimer();currentSlide+=n;showSlide(currentSlide)}function goToSlide(n){stopTimer();currentSlide=n;showSlide(currentSlide)}function startTimer(){stopTimer();let timeLeft=slideTimes[currentSlide];const totalTime=timeLeft;updateProgressBar(0);timerInterval=setInterval(()=>{timeLeft-=.1;if(timeLeft<=0){if(currentSlide<totalSlides-1){currentSlide++;showSlide(currentSlide)}else{timeLeft=totalTime}}else updateProgressBar((totalTime-timeLeft)/totalTime*100)},100)}function stopTimer(){if(timerInterval)clearInterval(timerInterval);timerInterval=null}function updateProgressBar(progress){if(timerProgress)timerProgress.style.width=progress+'%'}function resetTimer(){stopTimer();startTimer()}document.onkeydown=function(e){if(e.keyCode===37)changeSlide(-1);if(e.keyCode===39)changeSlide(1)};window.onload=function(){updateIndicators();startTimer();for(let i=0;i<80;i++){const star=document.createElement('div');star.className='star';star.style.width=(Math.random()*3+1)+'px';star.style.height=star.style.width;star.style.top=(Math.random()*100)+'vh';star.style.left=(Math.random()*100)+'vw';star.style.animationDelay=(Math.random()*2)+'s';document.querySelector('.stars').appendChild(star)}};
+let currentSlide = 0;
+const totalSlides = 8;
+let timerInterval = null;
+
+const timerProgress = document.getElementById('timerProgress');
+
+const slideTimes = [
+  20,
+  130,
+  25,
+  30,
+  25,
+  25,
+  38,
+  25
+];
+
+function updateIndicators() {
+  const container = document.getElementById('slideIndicators');
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = '';
+
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('span');
+
+    dot.className = 'dot' + (i === currentSlide ? ' active' : '');
+    dot.onclick = function () {
+      goToSlide(i);
+    };
+
+    container.appendChild(dot);
+  }
+}
+
+function showSlide(number) {
+  const slides = document.getElementsByClassName('slide');
+
+  if (number >= totalSlides) {
+    currentSlide = 0;
+  }
+
+  if (number < 0) {
+    currentSlide = totalSlides - 1;
+  }
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].className = slides[i].className.replace(' active', '');
+  }
+
+  slides[currentSlide].className += ' active';
+
+  updateIndicators();
+  resetTimer();
+}
+
+function changeSlide(number) {
+  stopTimer();
+  currentSlide += number;
+  showSlide(currentSlide);
+}
+
+function goToSlide(number) {
+  stopTimer();
+  currentSlide = number;
+  showSlide(currentSlide);
+}
+
+function startTimer() {
+  stopTimer();
+
+  let timeLeft = slideTimes[currentSlide];
+  const totalTime = timeLeft;
+
+  updateProgressBar(0);
+
+  timerInterval = setInterval(function () {
+    timeLeft -= .1;
+
+    if (timeLeft <= 0) {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        showSlide(currentSlide);
+      } else {
+        timeLeft = totalTime;
+      }
+    } else {
+      updateProgressBar(
+        ((totalTime - timeLeft) / totalTime) * 100
+      );
+    }
+  }, 100);
+}
+
+function stopTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+
+  timerInterval = null;
+}
+
+function updateProgressBar(progress) {
+  if (timerProgress) {
+    timerProgress.style.width = progress + '%';
+  }
+}
+
+function resetTimer() {
+  stopTimer();
+  startTimer();
+}
+
+document.onkeydown = function (event) {
+  if (event.keyCode === 37) {
+    changeSlide(-1);
+  }
+
+  if (event.keyCode === 39) {
+    changeSlide(1);
+  }
+};
+
+window.onload = function () {
+  updateIndicators();
+  startTimer();
+
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+
+    star.className = 'star';
+    star.style.width = (Math.random() * 3 + 1) + 'px';
+    star.style.height = star.style.width;
+    star.style.top = (Math.random() * 100) + 'vh';
+    star.style.left = (Math.random() * 100) + 'vw';
+    star.style.animationDelay = (Math.random() * 2) + 's';
+
+    document.querySelector('.stars').appendChild(star);
+  }
+};
 </script>
-</body></html>
+
+</body>
+</html>
