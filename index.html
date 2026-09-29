@@ -1,32 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Academia Arcana — Ciclo 2 | Desafio 2</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Cinzel,Georgia,serif}body{background:#10091d url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop') center/cover fixed;color:#e6d5b8;font-size:clamp(1.3rem,2.8vh,2rem)}body::before{content:"";position:fixed;inset:0;background:rgba(10,5,20,.78);pointer-events:none}.stars{position:fixed;inset:0;pointer-events:none}.star{position:absolute;background:#ffd700;border-radius:50%;animation:twinkle 2s infinite}@keyframes twinkle{50%{opacity:.2}}.timer-bar{position:fixed;top:0;left:0;width:100%;height:5px;background:#24152d;z-index:100}.timer-progress{height:100%;width:0;background:linear-gradient(90deg,#ffd700,#8a2be2)}.slide{display:none;position:relative;z-index:2;width:100%;min-height:100dvh;padding:4vh 3vw 10vh;align-items:center;justify-content:center}.slide.active{display:flex}.panel{width:min(1150px,100%);max-height:86dvh;overflow:auto;padding:clamp(18px,2.5vh,36px) clamp(18px,3vw,42px);border:4px solid #ffd700;border-radius:60px 20px;background:rgba(20,10,30,.96);text-align:center;box-shadow:0 0 35px #30134d}.challenge{width:min(1260px,100%);padding:1.2vh 2vw;background:rgba(240,230,210,.97);color:#2a1b3d;border-color:#8a2be2}h1,h2{color:#ffd700;margin:.25em 0;font-size:clamp(2.2rem,5.6vh,4.3rem);line-height:1.12;text-shadow:2px 2px #4b0082}h3{font-size:clamp(1.5rem,3.2vh,2.5rem);margin:.3em 0}.challenge h1{color:#2a1b3d;text-shadow:2px 2px #b8860b;font-size:clamp(1.8rem,4.4vh,3.4rem);margin:0 0 .2em}.subtitle{color:#b19cd9;font-style:italic;font-size:clamp(1.3rem,3vh,2.1rem);margin:.5em 0}.intro-cycle{display:block;margin-top:.25em}.prompt{background:#2a1b3d;color:#ffd700;border:2px solid #b8860b;border-radius:20px;padding:.45em .8em;margin:.5vh auto;font:700 clamp(1.2rem,2.5vh,1.8rem)/1.3 Georgia,serif;max-width:1100px}.challenge-image{display:block;max-width:100%;max-height:58dvh;width:auto;height:auto;margin:.5vh auto;border:2px solid #b8860b;border-radius:12px;background:#fff;object-fit:contain}.note{font-size:clamp(1rem,2.2vh,1.5rem);margin:.2em auto}.card{padding:.75em;margin:.7em auto;background:rgba(75,0,130,.43);border:2px solid #b8860b;border-radius:32px 12px;line-height:1.4}.card p{margin:.5em 0}.list{max-width:900px;margin:1em auto}.row{display:flex;align-items:center;justify-content:space-between;gap:1em;margin:.5em 0;padding:.7em 1em;background:#2a1b3d;border-left:4px solid #ffd700;border-radius:24px;text-align:left;font-size:clamp(1.3rem,3.3vh,2.3rem)}.score{color:#ffd700;white-space:nowrap;font-weight:bold}.rank-position{color:#ffd700;font-weight:bold;min-width:2em}.rank-label{flex:1}.history{font-size:clamp(1.1rem,2.4vh,1.7rem);color:#b19cd9}.image-full{display:block;max-width:100%;max-height:74dvh;object-fit:contain;margin:auto}.nav-btn{position:fixed;bottom:1.5vh;z-index:100;background:#2a1b3d;color:#e6d5b8;border:2px solid #b8860b;border-radius:25px 8px;padding:.55em .85em;font:700 clamp(1rem,2.2vh,1.5rem) Cinzel,serif;cursor:pointer}.prev{left:2vw}.next{right:2vw}.indicators{position:fixed;bottom:2vh;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:.5em}.dot{width:14px;height:14px;border:1px solid #b8860b;border-radius:50%;background:#4b3260;cursor:pointer}.dot.active{background:#ffd700}.credit{position:fixed;bottom:.2vh;left:1vw;z-index:100;font-size:12px;color:#d5b963}
-.podio{display:flex;justify-content:center;align-items:flex-end;gap:2vw;margin:1.5vh 0 .8vh}.podio-place{padding:1.2vh 1.2vw;border:3px solid;text-align:center;display:flex;flex-direction:column;justify-content:space-between;border-radius:35px 12px 35px 12px;background:rgba(0,0,0,.6)}.primeiro{width:26vw;min-height:32vh;border-color:#ffd700;background:linear-gradient(135deg,#0a6b0a,#1a4a1a)}.segundo{width:23vw;min-height:29vh;border-color:#c0c0c0;background:linear-gradient(135deg,#8b0000,#4a0000)}.terceiro{width:23vw;min-height:26vh;border-color:#cd7f32;background:linear-gradient(135deg,#0a2a4a,#0a1a2a)}.mago-img{width:70px;height:70px;border-radius:50%;border:3px solid #ffd700;margin:0 auto .5vh;background-size:cover;background-position:center;background-color:#2a1b3d;box-shadow:0 0 25px rgba(255,215,0,.5)}.position{font-size:clamp(1.35rem,3vh,2rem);font-weight:bold;color:#ffd700;text-transform:uppercase}.rank-badge{font-size:clamp(1rem,2.2vh,1.5rem);color:#ffd700;background:rgba(0,0,0,.5);padding:.2vh 1vw;border-radius:25px;display:inline-block;align-self:center}.name{font-size:clamp(1.15rem,2.7vh,1.8rem);color:#e6d5b8;font-weight:bold}.points{font-size:clamp(1.7rem,4vh,2.8rem);color:#ffd700;font-weight:bold}.points-small{font-size:clamp(.95rem,2vh,1.3rem);color:#d9c4ed}
-.qr-container{position:absolute;right:2.5vw;bottom:8vh;z-index:50;display:flex;flex-direction:column;align-items:center;min-width:165px;padding:1vh 1vw;background:#2a1b3d;border:2px solid #b8860b;border-radius:35px 12px;color:#ffd700;text-align:center;text-decoration:none;box-shadow:0 0 15px rgba(0,0,0,.5)}.qr-container:hover,.qr-container:focus-visible{border-color:#ffd700}.qr-label{font-size:clamp(.8rem,1.7vh,1.2rem);font-weight:bold}.qr-code-wrapper{display:grid;place-items:center;width:90px;height:90px;margin:.4vh 0;background:white;border:2px solid #ffd700;border-radius:12px;overflow:hidden}.qr-code-wrapper img{display:block;width:100%;height:100%;object-fit:contain}.qr-footer{font-size:clamp(.7rem,1.4vh,1rem);color:#d8c2e7}.math-portrait{width:180px;height:180px;object-fit:cover;border-radius:50%;border:3px solid #ffd700}
-@media(max-width:900px){.podio{flex-direction:column;align-items:center;gap:1vh}.primeiro,.segundo,.terceiro{width:min(85%,500px);min-height:auto;gap:.25em}}
-@media(max-width:650px){body{font-size:1.2rem}.slide{padding:4vh 2vw 13vh}.panel{max-height:83dvh;border-radius:25px 10px}.challenge{padding:1vh 2vw}.challenge-image{max-height:48dvh}.indicators{bottom:6vh}.credit{display:none}.row{font-size:1.15rem}h1,h2{font-size:clamp(1.8rem,5vh,2.5rem)}.prompt{font-size:1.13rem}.qr-container{right:2vw;bottom:7vh;min-width:100px;padding:.4em}.qr-code-wrapper{width:65px;height:65px}.qr-label{font-size:.7rem}.qr-footer{font-size:.65rem}}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{position:relative;font-family:Cinzel,Georgia,serif;background:#10091d url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&h=1080&fit=crop') no-repeat center center fixed;background-size:cover;color:#e6d5b8;font-size:2.7vh}
+body:before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,5,20,.78);pointer-events:none;z-index:1}
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.star{position:absolute;background:#ffd700;border-radius:50%;animation:twinkle 2s infinite}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.2}}
+.timer-bar{position:fixed;top:0;left:0;width:100%;height:5px;background:#24152d;z-index:100}
+.timer-progress{height:100%;width:0;background:linear-gradient(90deg,#ffd700,#8a2be2)}
+.slide{display:none;position:absolute;top:0;left:0;width:100%;height:100vh;padding:1vh 3vw 7vh;align-items:center;justify-content:center;z-index:10}
+.slide.active{display:flex}
+.panel{width:100%;max-width:1150px;max-height:88vh;overflow:auto;padding:2.5vh 3vw;border:4px solid #ffd700;border-radius:60px 20px;background:rgba(20,10,30,.96);text-align:center;box-shadow:0 0 35px #30134d}
+.challenge{max-width:1260px;padding:1vh 2vw;background:rgba(240,230,210,.97);color:#2a1b3d;border-color:#8a2be2}
+h1,h2{color:#ffd700;margin:.25em 0;font-size:5vh;line-height:1.12;text-shadow:2px 2px #4b0082}
+h3{font-size:3vh;margin:.3em 0}
+.challenge h1{color:#2a1b3d;text-shadow:2px 2px #b8860b;font-size:4.3vh;margin:0 0 .2em}
+.subtitle{color:#b19cd9;font-style:italic;font-size:2.7vh;margin:.5em 0}
+.intro-cycle{display:block;margin-top:.25em}
+.prompt{background:#2a1b3d;color:#ffd700;border:2px solid #b8860b;border-radius:20px;padding:.45em .8em;margin:.5vh auto;font:bold 2.45vh/1.3 Georgia,serif;max-width:1100px}
+.challenge-image{display:block;max-width:100%;max-height:57vh;width:auto;height:auto;margin:.5vh auto;border:2px solid #b8860b;border-radius:12px;background:#fff}
+.note{font-size:2vh;margin:.2em auto}
+.card{padding:.75em;margin:.7em auto;background:rgba(75,0,130,.43);border:2px solid #b8860b;border-radius:32px 12px;line-height:1.4}
+.card p{margin:.5em 0}
+.list{max-width:900px;margin:1em auto}
+.row{display:flex;align-items:center;justify-content:space-between;margin:.5em 0;padding:.7em 1em;background:#2a1b3d;border-left:4px solid #ffd700;border-radius:24px;text-align:left;font-size:3vh}
+.row span{margin-right:.5em}
+.score{color:#ffd700;white-space:nowrap;font-weight:bold;margin-left:auto}
+.rank-position{color:#ffd700;font-weight:bold;min-width:2em}
+.rank-label{flex:1}
+.history{font-size:2.3vh;color:#b19cd9}
+.image-full{display:block;max-width:100%;max-height:74vh;width:auto;height:auto;margin:auto}
+.nav-btn{position:fixed;bottom:1.5vh;z-index:100;background:#2a1b3d;color:#e6d5b8;border:2px solid #b8860b;border-radius:25px 8px;padding:.55em .85em;font:bold 2vh Cinzel,serif;cursor:pointer}
+.prev{left:2vw}.next{right:2vw}
+.indicators{position:fixed;bottom:2vh;left:50%;z-index:100;display:flex;transform:translateX(-50%)}
+.dot{width:16px;height:16px;margin:0 5px;padding:0;border:1px solid #b8860b;border-radius:50%;background:#4b3260;cursor:pointer}
+.dot.active{background:#ffd700}
+.credit{position:fixed;bottom:.2vh;left:1vw;z-index:100;font-size:12px;color:#d5b963}
+.podio{display:flex;justify-content:center;align-items:flex-end;margin:1.5vh 0 .8vh}
+.podio-place{padding:1.2vh 1.2vw;margin:0 1vw;border:3px solid;text-align:center;display:flex;flex-direction:column;justify-content:space-between;border-radius:35px 12px;background:rgba(0,0,0,.6)}
+.primeiro{width:26vw;min-height:32vh;border-color:#ffd700;background:linear-gradient(135deg,#0a6b0a,#1a4a1a)}
+.segundo{width:23vw;min-height:29vh;border-color:#c0c0c0;background:linear-gradient(135deg,#8b0000,#4a0000)}
+.terceiro{width:23vw;min-height:26vh;border-color:#cd7f32;background:linear-gradient(135deg,#0a2a4a,#0a1a2a)}
+.mago-img{width:70px;height:70px;border-radius:50%;border:3px solid #ffd700;margin:0 auto .5vh;background-size:cover;background-position:center;background-color:#2a1b3d;box-shadow:0 0 25px rgba(255,215,0,.5)}
+.position{font-size:2.8vh;font-weight:bold;color:#ffd700;text-transform:uppercase}
+.rank-badge{font-size:2vh;color:#ffd700;background:rgba(0,0,0,.5);padding:.2vh 1vw;border-radius:25px;display:inline-block;align-self:center}
+.name{font-size:2.4vh;color:#e6d5b8;font-weight:bold}
+.points{font-size:3.6vh;color:#ffd700;font-weight:bold}
+.points-small{font-size:1.9vh;color:#d9c4ed}
+.qr-container{position:absolute;right:2.5vw;bottom:8vh;z-index:50;display:flex;flex-direction:column;align-items:center;min-width:165px;padding:1vh 1vw;background:#2a1b3d;border:2px solid #b8860b;border-radius:35px 12px;color:#ffd700;text-align:center;text-decoration:none;box-shadow:0 0 15px rgba(0,0,0,.5)}
+.qr-container:hover{border-color:#ffd700}
+.qr-label{font-size:1.7vh;font-weight:bold}
+.qr-code-wrapper{display:flex;align-items:center;justify-content:center;width:90px;height:90px;margin:.4vh 0;background:white;border:2px solid #ffd700;border-radius:12px;overflow:hidden}
+.qr-code-wrapper img{display:block;width:100%;height:100%}
+.qr-footer{font-size:1.4vh;color:#d8c2e7}
+.math-portrait{width:180px;height:180px;border-radius:50%;border:3px solid #ffd700}
+@media(max-width:650px){body{font-size:18px}.slide{padding:2vh 2vw 12vh}.panel{max-height:85vh;border-radius:25px 10px}.challenge{padding:1vh 2vw}.challenge-image{max-height:48vh}.indicators{bottom:6vh}.credit{display:none}.row{font-size:18px}h1,h2{font-size:30px}.challenge h1{font-size:27px}.prompt{font-size:17px}.nav-btn{font-size:15px}.qr-container{right:2vw;bottom:7vh;min-width:100px;padding:.4em}.qr-code-wrapper{width:65px;height:65px}.qr-label{font-size:11px}.qr-footer{font-size:10px}.podio{flex-direction:column;align-items:center}.primeiro,.segundo,.terceiro{width:85%;min-height:0;margin:.5vh 0}}
 </style>
 </head>
 <body>
-<div class="stars" aria-hidden="true"></div><div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div>
-<div class="slide active" id="slide0"><main class="panel"><h1>ACADEMIA ARCANA</h1><p class="subtitle">Ordem dos Mathemagos Olímpicos<span class="intro-cycle">Ciclo 2 (Setembro–Dezembro)</span></p><div class="card">Desvende figuras, padrões e enigmas arcanos.<br>Onde a lógica e a magia se entrelaçam.</div><h2>DESAFIO 2</h2><p>Grão-Conselho dos Magos<br>Instituto Federal do Paraná<br>Torre Assis Chateaubriand</p></main></div>
-<div class="slide" id="slide1"><main class="panel challenge"><h1>O QUADRADO ENCANTADO</h1><div class="prompt">No quadrado ABCD, de lado 1, as quatro circunferências são tangentes aos lados e segmentos indicados. As maiores têm raio <em>a</em>; as menores, raio <em>b</em>. Se BT mede <em>c</em>, encontre <em>a</em> e <em>b</em>.</div><img class="challenge-image" src="Desafio2.png" alt="Quadrado ABCD de lado 1, quatro circunferências de raios a e b e segmento BT de medida c" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<p role=&quot;alert&quot;>Imagem Desafio2.png não encontrada. Coloque-a na mesma pasta deste arquivo HTML.</p>')"><p class="note">Justifique os valores encontrados. Prazo: Lua Minguante • 03/10.</p></main><a class="qr-container" href="https://forms.gle/gHU8ceqrujQoNiBcA" target="_blank" rel="noopener noreferrer" aria-label="Abrir formulário do desafio"><span class="qr-label">ENVIAR RESPOSTA</span><span class="qr-code-wrapper"><img src="frame13.png" alt="QR code para acessar o Google Forms"></span><span class="qr-footer">Aponte a câmera ou clique</span></a></div>
-<div class="slide" id="slide2"><main class="panel"><h2>DECRETO DOS CRITÉRIOS</h2><div class="card"><h3>AVALIAÇÃO POR PRECISÃO</h3><p>A resposta deve ser bem elaborada e o mais correta possível. Respostas completas, claras e corretas têm prioridade na classificação.</p><p>Critério de desempate: ordem de envio.</p></div><div class="card">Pontuação: 1º lugar 4 pts • 2º 3 pts • 3º 2 pts • 4º e 5º 1 pt</div></main></div>
-<div class="slide" id="slide3"><main class="panel"><h2>RANKING DO CICLO 2</h2><p class="subtitle">Pontuação conhecida após o Desafio 1</p><div class="list"><div class="row"><span>1º • Gabriel Izidoro <small>(IIW2026B)</small></span><span class="score">4 pts</span></div></div><p class="history">Demais colocações não informadas.</p></main></div>
-<div class="slide" id="slide4"><main class="panel"><h2>PÓDIO DO DESAFIO 1</h2><p class="subtitle">Ciclo 2 • Resultado informado</p><div class="podio"><div class="podio-place segundo"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&w=2069&auto=format&fit=crop')"></div><div class="position">2º LUGAR</div><div class="rank-badge">Aguardando</div><div class="name">---</div><div class="points">—</div><div class="points-small">Resultado não informado</div></div><div class="podio-place primeiro"><div class="mago-img" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&w=687&auto=format&fit=crop')"></div><div class="position">1º LUGAR</div><div class="rank-badge">IIW2026B</div><div class="name">Gabriel Izidoro</div><div class="points">+4 pts</div><div class="points-small">Desafio 1 • Ciclo 2</div></div><div class="podio-place terceiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&w=861&auto=format&fit=crop')"></div><div class="position">3º LUGAR</div><div class="rank-badge">Aguardando</div><div class="name">---</div><div class="points">—</div><div class="points-small">Resultado não informado</div></div></div></main></div>
-<div class="slide" id="slide5"><main class="panel"><h2>RANKING GERAL DAS TURMAS</h2><p class="subtitle">Pontuação acumulada • Ciclos 1 e 2</p><div class="list"><div class="row"><span class="rank-position">1º</span><span class="rank-label">EIN2024</span><span class="score">37 pts</span></div><div class="row"><span class="rank-position">2º</span><span class="rank-label">MEC2026</span><span class="score">20 pts</span></div><div class="row"><span class="rank-position">3º</span><span class="rank-label">EIN2023</span><span class="score">14 pts</span></div><div class="row"><span class="rank-position">4º</span><span class="rank-label">IIW2024A</span><span class="score">11 pts</span></div><div class="row"><span class="rank-position">5º</span><span class="rank-label">IIW2026A</span><span class="score">4 pts</span></div><div class="row"><span class="rank-position">5º</span><span class="rank-label">IIW2026B</span><span class="score">4 pts</span></div></div></main></div>
-<div class="slide" id="slide6"><main class="panel"><img class="image-full" src="Insígnias2.png" alt="Quadro de insígnias conquistadas"></main></div>
-<div class="slide" id="slide7"><main class="panel"><h2>SABEDORIA MATEMÁTICA</h2><img class="math-portrait" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sofia_Kovalevskaya.jpg" alt="Retrato de Sofia Kovalevskaya"><div class="card"><h3>SOFIA KOVALEVSKAYA (1850–1891)</h3><p>Matemática russa que fez contribuições importantes ao estudo das equações diferenciais e da mecânica.</p><p>Ela também investigou como um corpo rígido gira em torno de um ponto fixo — um problema em que matemática e física se encontram.</p></div></main></div>
+<div class="stars" aria-hidden="true"></div>
+<div class="timer-bar"><div class="timer-progress" id="timerProgress"></div></div>
+<div class="slide active" id="slide0"><div class="panel"><h1>ACADEMIA ARCANA</h1><p class="subtitle">Ordem dos Mathemagos Olímpicos<span class="intro-cycle">Ciclo 2 (Setembro–Dezembro)</span></p><div class="card">Desvende figuras, padrões e enigmas arcanos.<br>Onde a lógica e a magia se entrelaçam.</div><h2>DESAFIO 2</h2><p>Grão-Conselho dos Magos<br>Instituto Federal do Paraná<br>Torre Assis Chateaubriand</p></div></div>
+<div class="slide" id="slide1"><div class="panel challenge"><h1>O QUADRADO ENCANTADO</h1><div class="prompt">No quadrado ABCD, de lado 1, as quatro circunferências são tangentes aos lados e segmentos indicados. As maiores têm raio <em>a</em>; as menores, raio <em>b</em>. Se BT mede <em>c</em>, encontre <em>a</em> e <em>b</em>.</div><img class="challenge-image" src="Desafio2.png" alt="Quadrado ABCD de lado 1, quatro circunferências de raios a e b e segmento BT de medida c"><p class="note">Justifique os valores encontrados. Prazo: Lua Minguante • 03/10.</p></div><a class="qr-container" href="https://forms.gle/gHU8ceqrujQoNiBcA" target="_blank" aria-label="Abrir formulário do desafio"><span class="qr-label">ENVIAR RESPOSTA</span><span class="qr-code-wrapper"><img src="frame13.png" alt="QR code para acessar o Google Forms"></span><span class="qr-footer">Aponte a câmera ou clique</span></a></div>
+<div class="slide" id="slide2"><div class="panel"><h2>DECRETO DOS CRITÉRIOS</h2><div class="card"><h3>AVALIAÇÃO POR PRECISÃO</h3><p>A resposta deve ser bem elaborada e o mais correta possível. Respostas completas, claras e corretas têm prioridade na classificação.</p><p>Critério de desempate: ordem de envio.</p></div><div class="card">Pontuação: 1º lugar 4 pts • 2º 3 pts • 3º 2 pts • 4º e 5º 1 pt</div></div></div>
+<div class="slide" id="slide3"><div class="panel"><h2>RANKING DO CICLO 2</h2><p class="subtitle">Pontuação conhecida após o Desafio 1</p><div class="list"><div class="row"><span>1º • Gabriel Izidoro <small>(IIW2026B)</small></span><span class="score">4 pts</span></div></div><p class="history">Demais colocações não informadas.</p></div></div>
+<div class="slide" id="slide4"><div class="panel"><h2>PÓDIO DO DESAFIO 1</h2><p class="subtitle">Ciclo 2 • Resultado informado</p><div class="podio"><div class="podio-place segundo"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1664442593104-75e5d455324f?q=80&amp;w=2069&amp;auto=format&amp;fit=crop')"></div><div class="position">2º LUGAR</div><div class="rank-badge">Aguardando</div><div class="name">---</div><div class="points">—</div><div class="points-small">Resultado não informado</div></div><div class="podio-place primeiro"><div class="mago-img" style="background-image:url('https://images.unsplash.com/photo-1634409884980-a30da0b2b010?q=80&amp;w=687&amp;auto=format&amp;fit=crop')"></div><div class="position">1º LUGAR</div><div class="rank-badge">IIW2026B</div><div class="name">Gabriel Izidoro</div><div class="points">+4 pts</div><div class="points-small">Desafio 1 • Ciclo 2</div></div><div class="podio-place terceiro"><div class="mago-img" style="background-image:url('https://plus.unsplash.com/premium_photo-1661434884467-7bc4b67f752c?q=80&amp;w=861&amp;auto=format&amp;fit=crop')"></div><div class="position">3º LUGAR</div><div class="rank-badge">Aguardando</div><div class="name">---</div><div class="points">—</div><div class="points-small">Resultado não informado</div></div></div></div></div>
+<div class="slide" id="slide5"><div class="panel"><h2>RANKING GERAL DAS TURMAS</h2><p class="subtitle">Pontuação acumulada • Ciclos 1 e 2</p><div class="list"><div class="row"><span class="rank-position">1º</span><span class="rank-label">EIN2024</span><span class="score">37 pts</span></div><div class="row"><span class="rank-position">2º</span><span class="rank-label">MEC2026</span><span class="score">20 pts</span></div><div class="row"><span class="rank-position">3º</span><span class="rank-label">EIN2023</span><span class="score">14 pts</span></div><div class="row"><span class="rank-position">4º</span><span class="rank-label">IIW2024A</span><span class="score">11 pts</span></div><div class="row"><span class="rank-position">5º</span><span class="rank-label">IIW2026A</span><span class="score">4 pts</span></div><div class="row"><span class="rank-position">5º</span><span class="rank-label">IIW2026B</span><span class="score">4 pts</span></div></div></div></div>
+<div class="slide" id="slide6"><div class="panel"><img class="image-full" src="Insígnias2.png" alt="Quadro de insígnias conquistadas"></div></div>
+<div class="slide" id="slide7"><div class="panel"><h2>SABEDORIA MATEMÁTICA</h2><img class="math-portrait" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sofia_Kovalevskaya.jpg" alt="Retrato de Sofia Kovalevskaya"><div class="card"><h3>SOFIA KOVALEVSKAYA (1850–1891)</h3><p>Matemática russa que fez contribuições importantes ao estudo das equações diferenciais e da mecânica.</p><p>Ela também investigou como um corpo rígido gira em torno de um ponto fixo — um problema em que matemática e física se encontram.</p></div></div></div>
 <button class="nav-btn prev" type="button" onclick="changeSlide(-1)">Anterior</button><button class="nav-btn next" type="button" onclick="changeSlide(1)">Próximo</button><div class="indicators" id="slideIndicators" aria-label="Navegação entre slides"></div><div class="credit">Material desenvolvido com auxílio de Perplexity e DeepSeek</div>
 <script>
-const slides=[...document.querySelectorAll('.slide')],durations=[20,130,25,30,25,25,38,25],progress=document.getElementById('timerProgress');let current=0,timer=null,started=0;
-function showSlide(n){current=(n+slides.length)%slides.length;slides.forEach((slide,i)=>slide.classList.toggle('active',i===current));document.getElementById('slideIndicators').replaceChildren(...slides.map((_,i)=>{const dot=document.createElement('button');dot.type='button';dot.className='dot'+(i===current?' active':'');dot.setAttribute('aria-label','Ir para slide '+(i+1));dot.onclick=()=>showSlide(i);return dot}));clearInterval(timer);progress.style.width='0%';started=Date.now();timer=setInterval(()=>{const fraction=Math.min((Date.now()-started)/(durations[current]*1000),1);progress.style.width=fraction*100+'%';if(fraction>=1)showSlide((current+1)%slides.length)},100)}
-function changeSlide(offset){showSlide(current+offset)}document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')changeSlide(-1);if(e.key==='ArrowRight')changeSlide(1)});for(let i=0;i<80;i++){const star=document.createElement('span');star.className='star';const size=(Math.random()*3+1)+'px';Object.assign(star.style,{width:size,height:size,top:Math.random()*100+'%',left:Math.random()*100+'%',animationDelay:Math.random()*2+'s'});document.querySelector('.stars').append(star)}showSlide(0);
+var slides = document.getElementsByClassName('slide');
+var durations = [20, 130, 25, 30, 25, 25, 38, 25];
+var progress = document.getElementById('timerProgress');
+var current = 0;
+var timer = null;
+var started = 0;
+function updateIndicators() {
+  var container = document.getElementById('slideIndicators');
+  container.innerHTML = '';
+  for (var i = 0; i < slides.length; i++) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = i === current ? 'dot active' : 'dot';
+    dot.setAttribute('aria-label', 'Ir para slide ' + (i + 1));
+    dot.setAttribute('data-slide', i);
+    dot.onclick = function () { showSlide(parseInt(this.getAttribute('data-slide'), 10)); };
+    container.appendChild(dot);
+  }
+}
+function showSlide(n) {
+  current = (n + slides.length) % slides.length;
+  for (var i = 0; i < slides.length; i++) {
+    slides[i].className = i === current ? 'slide active' : 'slide';
+  }
+  updateIndicators();
+  if (timer !== null) clearInterval(timer);
+  progress.style.width = '0%';
+  started = new Date().getTime();
+  timer = setInterval(function () {
+    var fraction = Math.min((new Date().getTime() - started) / (durations[current] * 1000), 1);
+    progress.style.width = (fraction * 100) + '%';
+    if (fraction >= 1) showSlide(current + 1);
+  }, 100);
+}
+function changeSlide(offset) { showSlide(current + offset); }
+document.onkeydown = function (event) {
+  event = event || window.event;
+  if (event.keyCode === 37) changeSlide(-1);
+  if (event.keyCode === 39) changeSlide(1);
+};
+var starsContainer = document.getElementsByClassName('stars')[0];
+for (var j = 0; j < 80; j++) {
+  var star = document.createElement('span');
+  var size = (Math.random() * 3 + 1) + 'px';
+  star.className = 'star';
+  star.style.width = size;
+  star.style.height = size;
+  star.style.top = (Math.random() * 100) + '%';
+  star.style.left = (Math.random() * 100) + '%';
+  star.style.animationDelay = (Math.random() * 2) + 's';
+  starsContainer.appendChild(star);
+}
+showSlide(0);
 </script>
 </body>
 </html>
